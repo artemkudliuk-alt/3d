@@ -203,18 +203,18 @@ const initHeroAnimation = () => {
       );
     }
 
-    // 2. ЛІВА КАРТОЧКА (y: 90px -> -70px)
+    // 2. ЛІВА КАРТОЧКА: Активне виринання знизу вгору при скролі (y: -180px -> +40px)
     if (leftCard) {
       gsap.fromTo(leftCard,
-        { y: 90 },
+        { y: -180 },
         {
-          y: -70,
+          y: 40,
           ease: "none",
           scrollTrigger: {
             trigger: testimonialsSection,
             start: "top 95%",
             end: "bottom 5%",
-            scrub: 1.2,
+            scrub: 1.4,
             invalidateOnRefresh: true,
           }
         }
