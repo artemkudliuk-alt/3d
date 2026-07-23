@@ -1,4 +1,4 @@
-/* Перший екран та паралакс-ефекти секцій NextWeb Hotels. */
+/* Перший екран та асинхронний 3D-паралакс секцій NextWeb Hotels. */
 
 const initHeroAnimation = () => {
   const intro = document.querySelector(".intro");
@@ -71,7 +71,7 @@ const initHeroAnimation = () => {
   }
 
   // ============================================================
-  // ПАРАЛАКС-РУХИ СЕКЦІЇ 2 (Наші проєкти)
+  // ПАРАЛАКС СЕКЦІЇ 2 (Наші проєкти)
   // ============================================================
   const projectsSection = document.querySelector(".projects");
   if (projectsSection) {
@@ -90,7 +90,7 @@ const initHeroAnimation = () => {
             trigger: projectsSection,
             start: "top 90%",
             end: "top 20%",
-            scrub: 1.2,
+            scrub: 0.8,
           }
         }
       );
@@ -107,7 +107,7 @@ const initHeroAnimation = () => {
             trigger: projectsSection,
             start: "top 85%",
             end: "top 25%",
-            scrub: 1.0,
+            scrub: 0.6,
           }
         }
       );
@@ -124,7 +124,7 @@ const initHeroAnimation = () => {
             trigger: projectsSection,
             start: "top 85%",
             end: "top 25%",
-            scrub: 1.4,
+            scrub: 0.8,
           }
         }
       );
@@ -132,7 +132,7 @@ const initHeroAnimation = () => {
   }
 
   // ============================================================
-  // ПАРАЛАКС-РУХИ СЕКЦІЇ 3 (Переваги)
+  // ПАРАЛАКС СЕКЦІЇ 3 (Переваги)
   // ============================================================
   const benefitsSection = document.querySelector(".benefits");
   if (benefitsSection) {
@@ -150,7 +150,7 @@ const initHeroAnimation = () => {
             trigger: benefitsSection,
             start: "top 90%",
             end: "top 20%",
-            scrub: 1.2,
+            scrub: 0.8,
           }
         }
       );
@@ -167,7 +167,7 @@ const initHeroAnimation = () => {
             trigger: benefitsSection,
             start: "top 85%",
             end: "top 25%",
-            scrub: 1.0,
+            scrub: 0.6,
           }
         }
       );
@@ -175,81 +175,99 @@ const initHeroAnimation = () => {
   }
 
   // ============================================================
-  // СЕКЦІЯ 4: ПОВНИЙ АСИНХРОННИЙ ПАРАЛАКС УСІХ ТРЬОХ КАРТОЧОК
+  // СЕКЦІЯ 4: ПЛАВНИЙ УЛЬТРА-М'ЯКИЙ ПАРАЛАКС УСІХ 3-Х КАРТОЧОК
   // ============================================================
   const testimonialsSection = document.querySelector(".testimonials-partners");
   if (testimonialsSection) {
-    const headerBlock = testimonialsSection.querySelector(".tp-header-block");
-    const leftCard = testimonialsSection.querySelector(".tp-card-left");
-    const centerCard = testimonialsSection.querySelector(".tp-card-center-main");
-    const rightPoster = testimonialsSection.querySelector(".tp-card-right");
+    const indexEl = testimonialsSection.querySelector(".nw-parallax-index");
+    const headerBlock = testimonialsSection.querySelector(".nw-parallax-header");
+    const leftCard = testimonialsSection.querySelector(".nw-parallax-left");
+    const centerCard = testimonialsSection.querySelector(".nw-parallax-center");
+    const rightPoster = testimonialsSection.querySelector(".nw-parallax-right");
+
+    if (indexEl) {
+      gsap.fromTo(indexEl,
+        { y: 60, opacity: 0.4 },
+        {
+          y: -30,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: testimonialsSection,
+            start: "top 95%",
+            end: "top 10%",
+            scrub: 0.6,
+          }
+        }
+      );
+    }
 
     if (headerBlock) {
       gsap.fromTo(headerBlock,
-        { y: 45, opacity: 0.4 },
+        { y: 50, opacity: 0.4 },
         {
           y: -25,
           opacity: 1,
           ease: "none",
           scrollTrigger: {
             trigger: testimonialsSection,
-            start: "top 90%",
-            end: "top 20%",
-            scrub: 1.0,
+            start: "top 95%",
+            end: "top 10%",
+            scrub: 0.5,
           }
         }
       );
     }
 
-    // 1. Ліва карточка — плавний середній паралакс
+    // 1. ЛІВА КАРТОЧКА: Плавне вспливання (y: 80px -> -50px)
     if (leftCard) {
       gsap.fromTo(leftCard,
-        { y: 65, opacity: 0.4 },
+        { y: 80, opacity: 0.5 },
         {
-          y: -45,
+          y: -50,
           opacity: 1,
           ease: "none",
           scrollTrigger: {
             trigger: testimonialsSection,
-            start: "top 90%",
-            end: "bottom 10%",
-            scrub: 1.2,
+            start: "top 95%",
+            end: "bottom 5%",
+            scrub: 0.7,
           }
         }
       );
     }
 
-    // 2. Центральна ревью-карточка — плавний центрований паралакс
+    // 2. ЦЕНТРАЛЬНА ВЕЛИКА РЕВЬЮ-КАРТОЧКА: Центральне плавне вспливання (y: 110px -> -40px)
     if (centerCard) {
       gsap.fromTo(centerCard,
-        { y: 85, opacity: 0.4 },
+        { y: 110, opacity: 0.5 },
         {
-          y: -35,
+          y: -40,
           opacity: 1,
           ease: "none",
           scrollTrigger: {
             trigger: testimonialsSection,
-            start: "top 90%",
-            end: "bottom 10%",
-            scrub: 1.0,
+            start: "top 95%",
+            end: "bottom 5%",
+            scrub: 0.5,
           }
         }
       );
     }
 
-    // 3. Права картинка-постер — активний швидкий паралакс
+    // 3. ПРАВА КАРТИНКА-ПОСТЕР: Активне плавне вспливання (y: 140px -> -80px)
     if (rightPoster) {
       gsap.fromTo(rightPoster,
-        { y: 110, opacity: 0.4 },
+        { y: 140, opacity: 0.5 },
         {
-          y: -75,
+          y: -80,
           opacity: 1,
           ease: "none",
           scrollTrigger: {
             trigger: testimonialsSection,
-            start: "top 90%",
-            end: "bottom 10%",
-            scrub: 1.6,
+            start: "top 95%",
+            end: "bottom 5%",
+            scrub: 0.9,
           }
         }
       );
