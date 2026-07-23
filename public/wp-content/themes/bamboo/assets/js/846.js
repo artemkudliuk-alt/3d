@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunklagom=self.webpackChunklagom||[]).push([["846"],{21:function(e,t,c){c.d(t,{default:function(){return n}});function n(){let e=document.querySelector("header"),t=e.querySelector(".header-burger");t.addEventListener("click",()=>{let c=e.classList.contains("opened");e.classList.toggle("opened",!c),t.classList.toggle("active",!c)})}}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunklagom=self.webpackChunklagom||[]).push([["678"],{349:function(e,t,n){n.d(t,{default:function(){return c}});function c(){let e=document.querySelectorAll("section"),t=0;return e.forEach((e,n)=>{let c=`00${n+1}`.slice(-3),u=e.querySelector(".container-index");u&&(u.textContent=c,t++)}),t}}}]);
