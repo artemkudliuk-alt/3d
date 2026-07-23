@@ -175,7 +175,7 @@ const initHeroAnimation = () => {
   }
 
   // ============================================================
-  // СЕКЦІЯ 4: УЛЬТРА-М'ЯКИЙ ПАРАЛАКС ЗАГОЛОВКА СЕКЦІЇ
+  // СЕКЦІЯ 4: ДИНАМІЧНИЙ ПОМІТНИЙ ПАРАЛАКС ТЕКСТУ ТА КАРТОЧОК
   // ============================================================
   const testimonialsSection = document.querySelector(".testimonials-partners");
   if (testimonialsSection) {
@@ -184,72 +184,74 @@ const initHeroAnimation = () => {
     const centerCard = testimonialsSection.querySelector(".nw-parallax-center");
     const rightPoster = testimonialsSection.querySelector(".nw-parallax-right");
 
-    // М'який паралакс для всього блоку заголовка (004 + Заголовок + Підзаголовок)
+    // 1. ЗАГОЛОВОК СЕКЦІЇ (004 + Заголовок + Підзаголовок)
+    // Рух з -160px до +120px для яскравого помітного зміщення відносно карточок при скроллі!
     if (headerGroup) {
       gsap.fromTo(headerGroup,
-        { y: 75 },
+        { y: -160 },
         {
-          y: -35,
+          y: 120,
           ease: "none",
           scrollTrigger: {
             trigger: testimonialsSection,
-            start: "top 98%",
-            end: "top 10%",
-            scrub: 1.0,
+            start: "top 95%",
+            end: "bottom 5%",
+            scrub: 1.5,
+            invalidateOnRefresh: true,
           }
         }
       );
     }
 
-    // 1. ЛІВА КАРТОЧКА: Плавне вспливання (y: 80px -> -50px)
+    // 2. ЛІВА КАРТОЧКА (y: 90px -> -70px)
     if (leftCard) {
       gsap.fromTo(leftCard,
-        { y: 80 },
+        { y: 90 },
         {
-          y: -50,
-          opacity: 1,
+          y: -70,
           ease: "none",
           scrollTrigger: {
             trigger: testimonialsSection,
             start: "top 95%",
             end: "bottom 5%",
-            scrub: 0.7,
+            scrub: 1.2,
+            invalidateOnRefresh: true,
           }
         }
       );
     }
 
-    // 2. ЦЕНТРАЛЬНА ВЕЛИКА РЕВЬЮ-КАРТОЧКА: Центральне плавне вспливання (y: 110px -> -40px)
+    // 3. ЦЕНТРАЛЬНА ВЕЛИКА ЧОРНА РЕВЬЮ-КАРТОЧКА (y: 140px -> -110px)
     if (centerCard) {
       gsap.fromTo(centerCard,
-        { y: 110 },
+        { y: 140 },
         {
-          y: -40,
-          opacity: 1,
+          y: -110,
           ease: "none",
           scrollTrigger: {
             trigger: testimonialsSection,
             start: "top 95%",
             end: "bottom 5%",
-            scrub: 0.5,
+            scrub: 1.0,
+            invalidateOnRefresh: true,
           }
         }
       );
     }
 
-    // 3. ПРАВА КАРТИНКА-ПОСТЕР: Активне плавне вспливання (y: 140px -> -80px)
+    // 4. ПРАВА КАРТИНКА-ПОСТЕР (y: 180px -> -140px)
     if (rightPoster) {
       gsap.fromTo(rightPoster,
-        { y: 140 },
+        { y: 180 },
         {
-          y: -80,
-          opacity: 1,
+          y: -140,
           ease: "none",
           scrollTrigger: {
             trigger: testimonialsSection,
             start: "top 95%",
             end: "bottom 5%",
-            scrub: 0.9,
+            scrub: 1.6,
+            invalidateOnRefresh: true,
           }
         }
       );
