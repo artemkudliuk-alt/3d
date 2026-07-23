@@ -133,6 +133,83 @@ const initHeroAnimation = () => {
     }
   }
 
+  // Section 4: Testimonials Multi-Speed Parallax
+  const testimonialsSection = document.querySelector(".testimonials-partners");
+  if (testimonialsSection) {
+    const leftCard = testimonialsSection.querySelector(".tp-card-left");
+    const centerCard = testimonialsSection.querySelector(".tp-card-center-main");
+    const rightPoster = testimonialsSection.querySelector(".tp-card-right");
+    const headerBlock = testimonialsSection.querySelector(".tp-header-block");
+
+    if (headerBlock) {
+      gsap.fromTo(headerBlock,
+        { y: 40, opacity: 0.4 },
+        {
+          y: -20,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: testimonialsSection,
+            start: "top 85%",
+            end: "top 25%",
+            scrub: 1.0,
+          }
+        }
+      );
+    }
+
+    if (leftCard) {
+      gsap.fromTo(leftCard,
+        { y: 50, opacity: 0.5 },
+        {
+          y: -30,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: testimonialsSection,
+            start: "top 85%",
+            end: "top 15%",
+            scrub: 1.3,
+          }
+        }
+      );
+    }
+
+    if (centerCard) {
+      gsap.fromTo(centerCard,
+        { y: 30, opacity: 0.6 },
+        {
+          y: -15,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: testimonialsSection,
+            start: "top 85%",
+            end: "top 15%",
+            scrub: 1.0,
+          }
+        }
+      );
+    }
+
+    if (rightPoster) {
+      gsap.fromTo(rightPoster,
+        { y: 70, opacity: 0.5 },
+        {
+          y: -50,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: testimonialsSection,
+            start: "top 85%",
+            end: "top 10%",
+            scrub: 1.6,
+          }
+        }
+      );
+    }
+  }
+
   // Section 3: Benefits Header Parallax
   const benefitsSection = document.querySelector(".benefits");
   if (benefitsSection) {
@@ -253,4 +330,24 @@ if (document.readyState === "loading") {
       }
     });
   }
+})();
+
+// 4-Step Left Badge Automatic Fade Carousel (Every 3 seconds)
+(() => {
+  const container = document.getElementById("tp-badge-carousel");
+  if (!container) return;
+
+  const slides = container.querySelectorAll(".tp-badge-slide");
+  if (!slides || slides.length === 0) return;
+
+  let currentSlide = 0;
+  setInterval(() => {
+    slides[currentSlide].style.opacity = "0";
+    slides[currentSlide].style.pointerEvents = "none";
+    
+    currentSlide = (currentSlide + 1) % slides.length;
+    
+    slides[currentSlide].style.opacity = "1";
+    slides[currentSlide].style.pointerEvents = "auto";
+  }, 3000);
 })();
