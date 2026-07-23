@@ -187,7 +187,7 @@ const initHeroAnimation = () => {
 
     if (indexEl) {
       gsap.fromTo(indexEl,
-        { y: 60, opacity: 0.4 },
+        { y: 60 },
         {
           y: -30,
           opacity: 1,
@@ -204,7 +204,7 @@ const initHeroAnimation = () => {
 
     if (headerBlock) {
       gsap.fromTo(headerBlock,
-        { y: 50, opacity: 0.4 },
+        { y: 50 },
         {
           y: -25,
           opacity: 1,
@@ -222,7 +222,7 @@ const initHeroAnimation = () => {
     // 1. ЛІВА КАРТОЧКА: Плавне вспливання (y: 80px -> -50px)
     if (leftCard) {
       gsap.fromTo(leftCard,
-        { y: 80, opacity: 0.5 },
+        { y: 80 },
         {
           y: -50,
           opacity: 1,
@@ -240,7 +240,7 @@ const initHeroAnimation = () => {
     // 2. ЦЕНТРАЛЬНА ВЕЛИКА РЕВЬЮ-КАРТОЧКА: Центральне плавне вспливання (y: 110px -> -40px)
     if (centerCard) {
       gsap.fromTo(centerCard,
-        { y: 110, opacity: 0.5 },
+        { y: 110 },
         {
           y: -40,
           opacity: 1,
@@ -258,7 +258,7 @@ const initHeroAnimation = () => {
     // 3. ПРАВА КАРТИНКА-ПОСТЕР: Активне плавне вспливання (y: 140px -> -80px)
     if (rightPoster) {
       gsap.fromTo(rightPoster,
-        { y: 140, opacity: 0.5 },
+        { y: 140 },
         {
           y: -80,
           opacity: 1,
