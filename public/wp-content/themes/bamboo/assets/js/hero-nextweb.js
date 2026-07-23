@@ -71,10 +71,8 @@ const initHeroAnimation = () => {
   }
 
   // ============================================================
-  // ПАРАЛАКС МІКРО-РУХИ ДЛЯ СЕКЦІЇ 2 (Наші проєкти) ТА СЕКЦІЇ 3
+  // ПАРАЛАКС-РУХИ СЕКЦІЇ 2 (Наші проєкти)
   // ============================================================
-  
-  // Section 2: Projects Header Parallax
   const projectsSection = document.querySelector(".projects");
   if (projectsSection) {
     const indexEl = projectsSection.querySelector(".container-index");
@@ -133,84 +131,9 @@ const initHeroAnimation = () => {
     }
   }
 
-  // Section 4: Testimonials Multi-Speed Parallax
-  const testimonialsSection = document.querySelector(".testimonials-partners");
-  if (testimonialsSection) {
-    const leftCard = testimonialsSection.querySelector(".tp-card-left");
-    const centerCard = testimonialsSection.querySelector(".tp-card-center-main");
-    const rightPoster = testimonialsSection.querySelector(".tp-card-right");
-    const headerBlock = testimonialsSection.querySelector(".tp-header-block");
-
-    if (headerBlock) {
-      gsap.fromTo(headerBlock,
-        { y: 40, opacity: 0.4 },
-        {
-          y: -20,
-          opacity: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: testimonialsSection,
-            start: "top 85%",
-            end: "top 25%",
-            scrub: 1.0,
-          }
-        }
-      );
-    }
-
-    if (leftCard) {
-      gsap.fromTo(leftCard,
-        { y: 50, opacity: 0.5 },
-        {
-          y: -30,
-          opacity: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: testimonialsSection,
-            start: "top 85%",
-            end: "top 15%",
-            scrub: 1.3,
-          }
-        }
-      );
-    }
-
-    if (centerCard) {
-      gsap.fromTo(centerCard,
-        { y: 30, opacity: 0.6 },
-        {
-          y: -15,
-          opacity: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: testimonialsSection,
-            start: "top 85%",
-            end: "top 15%",
-            scrub: 1.0,
-          }
-        }
-      );
-    }
-
-    if (rightPoster) {
-      gsap.fromTo(rightPoster,
-        { y: 70, opacity: 0.5 },
-        {
-          y: -50,
-          opacity: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: testimonialsSection,
-            start: "top 85%",
-            end: "top 10%",
-            scrub: 1.6,
-          }
-        }
-      );
-    }
-  }
-
-  // Section 3: Benefits Header Parallax
+  // ============================================================
+  // ПАРАЛАКС-РУХИ СЕКЦІЇ 3 (Переваги)
+  // ============================================================
   const benefitsSection = document.querySelector(".benefits");
   if (benefitsSection) {
     const indexEl = benefitsSection.querySelector(".container-index");
@@ -250,6 +173,88 @@ const initHeroAnimation = () => {
       );
     }
   }
+
+  // ============================================================
+  // СЕКЦІЯ 4: ПОВНИЙ АСИНХРОННИЙ ПАРАЛАКС УСІХ ТРЬОХ КАРТОЧОК
+  // ============================================================
+  const testimonialsSection = document.querySelector(".testimonials-partners");
+  if (testimonialsSection) {
+    const headerBlock = testimonialsSection.querySelector(".tp-header-block");
+    const leftCard = testimonialsSection.querySelector(".tp-card-left");
+    const centerCard = testimonialsSection.querySelector(".tp-card-center-main");
+    const rightPoster = testimonialsSection.querySelector(".tp-card-right");
+
+    if (headerBlock) {
+      gsap.fromTo(headerBlock,
+        { y: 45, opacity: 0.4 },
+        {
+          y: -25,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: testimonialsSection,
+            start: "top 90%",
+            end: "top 20%",
+            scrub: 1.0,
+          }
+        }
+      );
+    }
+
+    // 1. Ліва карточка — плавний середній паралакс
+    if (leftCard) {
+      gsap.fromTo(leftCard,
+        { y: 65, opacity: 0.4 },
+        {
+          y: -45,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: testimonialsSection,
+            start: "top 90%",
+            end: "bottom 10%",
+            scrub: 1.2,
+          }
+        }
+      );
+    }
+
+    // 2. Центральна ревью-карточка — плавний центрований паралакс
+    if (centerCard) {
+      gsap.fromTo(centerCard,
+        { y: 85, opacity: 0.4 },
+        {
+          y: -35,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: testimonialsSection,
+            start: "top 90%",
+            end: "bottom 10%",
+            scrub: 1.0,
+          }
+        }
+      );
+    }
+
+    // 3. Права картинка-постер — активний швидкий паралакс
+    if (rightPoster) {
+      gsap.fromTo(rightPoster,
+        { y: 110, opacity: 0.4 },
+        {
+          y: -75,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: testimonialsSection,
+            start: "top 90%",
+            end: "bottom 10%",
+            scrub: 1.6,
+          }
+        }
+      );
+    }
+  }
 };
 
 if (document.readyState === "loading") {
@@ -257,6 +262,26 @@ if (document.readyState === "loading") {
 } else {
   initHeroAnimation();
 }
+
+// Автоматичний фейд-слайдер для лівої карточки (кожні 3 секунди)
+(() => {
+  const container = document.getElementById("tp-badge-carousel");
+  if (!container) return;
+
+  const slides = container.querySelectorAll(".tp-badge-slide");
+  if (!slides || slides.length === 0) return;
+
+  let currentSlide = 0;
+  setInterval(() => {
+    slides[currentSlide].style.opacity = "0";
+    slides[currentSlide].style.pointerEvents = "none";
+    
+    currentSlide = (currentSlide + 1) % slides.length;
+    
+    slides[currentSlide].style.opacity = "1";
+    slides[currentSlide].style.pointerEvents = "auto";
+  }, 3000);
+})();
 
 // Модальні вікна
 (() => {
@@ -330,24 +355,4 @@ if (document.readyState === "loading") {
       }
     });
   }
-})();
-
-// 4-Step Left Badge Automatic Fade Carousel (Every 3 seconds)
-(() => {
-  const container = document.getElementById("tp-badge-carousel");
-  if (!container) return;
-
-  const slides = container.querySelectorAll(".tp-badge-slide");
-  if (!slides || slides.length === 0) return;
-
-  let currentSlide = 0;
-  setInterval(() => {
-    slides[currentSlide].style.opacity = "0";
-    slides[currentSlide].style.pointerEvents = "none";
-    
-    currentSlide = (currentSlide + 1) % slides.length;
-    
-    slides[currentSlide].style.opacity = "1";
-    slides[currentSlide].style.pointerEvents = "auto";
-  }, 3000);
 })();
