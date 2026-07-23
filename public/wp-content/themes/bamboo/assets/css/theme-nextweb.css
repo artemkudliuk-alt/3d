@@ -1574,3 +1574,51 @@ footer.site-footer {
 .testimonials-partners .tp-user-role {
   color: #b0b0d0 !important;
 }
+
+
+/* ==========================================================================
+   HEADER NAVIGATION BAR: ONLY LOGO, SCREEN LINKS, AND CTA BUTTON
+   ========================================================================== */
+.header .header-wrapper .container {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 1320px !important;
+  margin: 0 auto !important;
+}
+
+.header-menu {
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 auto !important;
+}
+
+.header-menu ul {
+  display: flex !important;
+  gap: 36px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.header-menu ul li a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-family: 'Mulish', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  letter-spacing: 0.02em !important;
+  transition: opacity 0.3s ease, color 0.3s ease !important;
+}
+
+.header-menu ul li a:hover {
+  opacity: 0.75 !important;
+  color: #ffffff !important;
+}
+
+.header-menu-tell,
+.header-menu-email,
+.header-menu-soc {
+  display: none !important;
+}
