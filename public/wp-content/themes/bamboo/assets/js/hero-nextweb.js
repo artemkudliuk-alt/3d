@@ -175,45 +175,27 @@ const initHeroAnimation = () => {
   }
 
   // ============================================================
-  // СЕКЦІЯ 4: ПЛАВНИЙ УЛЬТРА-М'ЯКИЙ ПАРАЛАКС УСІХ 3-Х КАРТОЧОК
+  // СЕКЦІЯ 4: УЛЬТРА-М'ЯКИЙ ПАРАЛАКС ЗАГОЛОВКА СЕКЦІЇ
   // ============================================================
   const testimonialsSection = document.querySelector(".testimonials-partners");
   if (testimonialsSection) {
-    const indexEl = testimonialsSection.querySelector(".nw-parallax-index");
-    const headerBlock = testimonialsSection.querySelector(".nw-parallax-header");
+    const headerGroup = testimonialsSection.querySelector(".nw-section4-header-group");
     const leftCard = testimonialsSection.querySelector(".nw-parallax-left");
     const centerCard = testimonialsSection.querySelector(".nw-parallax-center");
     const rightPoster = testimonialsSection.querySelector(".nw-parallax-right");
 
-    if (indexEl) {
-      gsap.fromTo(indexEl,
-        { y: 60 },
+    // М'який паралакс для всього блоку заголовка (004 + Заголовок + Підзаголовок)
+    if (headerGroup) {
+      gsap.fromTo(headerGroup,
+        { y: 75 },
         {
-          y: -30,
-          opacity: 1,
+          y: -35,
           ease: "none",
           scrollTrigger: {
             trigger: testimonialsSection,
-            start: "top 95%",
+            start: "top 98%",
             end: "top 10%",
-            scrub: 0.6,
-          }
-        }
-      );
-    }
-
-    if (headerBlock) {
-      gsap.fromTo(headerBlock,
-        { y: 50 },
-        {
-          y: -25,
-          opacity: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: testimonialsSection,
-            start: "top 95%",
-            end: "top 10%",
-            scrub: 0.5,
+            scrub: 1.0,
           }
         }
       );
