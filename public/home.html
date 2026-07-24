@@ -989,12 +989,169 @@
   }
 </style>
 
+<style>
+  @keyframes tpMarqueePerpetual {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-33.33333%, 0, 0); }
+  }
+
+  .tp-partners-block {
+    margin-top: 90px !important;
+    margin-bottom: 90px !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    z-index: 5 !important;
+    opacity: 1 !important;
+    width: 100% !important;
+  }
+
+  /* TITLE OUTSIDE THE FRAME WITH BALANCED MARGIN */
+  .tp-partners-title {
+    font-family: 'Mulish', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 13px !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    color: #888899 !important;
+    margin: 0 0 32px 0 !important;
+    text-align: center !important;
+  }
+
+  /* BOUNDED 1100px TUNNEL STRIP ENCLOSING ONLY BRAND LOGOS */
+  .tp-marquee-tunnel-strip {
+    width: 100% !important;
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+    position: relative !important;
+    overflow: visible !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+    padding: 26px 0 !important;
+    background: rgba(0, 0, 0, 0.015) !important;
+
+    /* GRADIENT SIDE FADE DISSOLVE (TRANSPARENT OUTSIDE 1100px EDGE) */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%) !important;
+    mask-image: linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%) !important;
+  }
+
+  .tp-marquee-track {
+    display: flex !important;
+    gap: 72px !important;
+    align-items: center !important;
+    width: max-content !important;
+    will-change: transform !important;
+    animation: tpMarqueePerpetual 35s linear infinite !important;
+  }
+
+  .tp-marquee-tunnel-strip:hover .tp-marquee-track {
+    animation-play-state: paused !important;
+  }
+
+  .tp-brand-item {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    cursor: pointer !important;
+  }
+
+  .tp-brand-name {
+    font-family: 'Mulish', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 21px !important;
+    color: #0c0c10 !important;
+    letter-spacing: 0.05em !important;
+    white-space: nowrap !important;
+    transition: color 0.3s ease !important;
+  }
+
+  .tp-brand-item:hover .tp-brand-name {
+    color: #ff5c2b !important;
+  }
+
+  /* FLOATING DARK POPOVER CARD ABOVE BRAND NAME */
+  .tp-brand-popover {
+    position: absolute !important;
+    bottom: 48px !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(12px) !important;
+    width: 290px !important;
+    background: #0c0c10 !important;
+    color: #ffffff !important;
+    padding: 16px 20px !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease !important;
+    z-index: 999999 !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+    display: block !important;
+  }
+
+  .tp-brand-item:hover .tp-brand-popover {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateX(-50%) translateY(0) !important;
+  }
+
+  .tp-popover-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .tp-popover-icon {
+    font-size: 18px !important;
+    line-height: 1 !important;
+  }
+
+  .tp-popover-title {
+    font-family: 'Mulish', sans-serif !important;
+    font-size: 14.5px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    letter-spacing: 0.03em !important;
+  }
+
+  .tp-popover-text {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 12.5px !important;
+    line-height: 1.5 !important;
+    color: #d0d0e8 !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+  }
+
+  .tp-popover-arrow {
+    position: absolute !important;
+    top: 100% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 0 !important;
+    height: 0 !important;
+    border-left: 7px solid transparent !important;
+    border-right: 7px solid transparent !important;
+    border-top: 7px solid #0c0c10 !important;
+  }
+</style>
+
 <div class="tp-partners-block">
+  <!-- TITLE OUTSIDE THE MARQUEE STRIP -->
   <h3 class="tp-partners-title">
     НАШІ ПАРТНЕРИ ТА ГОТЕЛЬНІ МЕРЕЖІ
   </h3>
   
-  <div class="tp-marquee-tunnel-box">
+  <!-- MARQUEE TUNNEL STRIP ENCLOSING ONLY BRAND LOGOS -->
+  <div class="tp-marquee-tunnel-strip">
     <div class="tp-marquee-track">
       <!-- LOOP 1 -->
       <div class="tp-brand-item">
