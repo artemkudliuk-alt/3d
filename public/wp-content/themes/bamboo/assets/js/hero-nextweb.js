@@ -480,34 +480,41 @@ if (document.readyState === "loading") {
   }
 })();
 
-// 100% НАДІЙНІ ІНТЕРАКТИВНІ ВІДНОШЕННЯ ДЛЯ ПОПОВЕРІВ БРЕНДІВ
+
+// 100% НАДІЙНЕ ДИНАМІЧНЕ ПОЗИЦІОНУВАННЯ ГЛОБАЛЬНОГО ПОПОВЕРА
 (() => {
   document.addEventListener("DOMContentLoaded", () => {
+    const popover = document.getElementById("tp-global-brand-popover");
+    const popIcon = document.getElementById("tp-global-popover-icon");
+    const popTitle = document.getElementById("tp-global-popover-title");
+    const popText = document.getElementById("tp-global-popover-text");
     const brandItems = document.querySelectorAll(".tp-brand-item");
-    const track = document.querySelector(".tp-marquee-track");
+
+    if (!popover) return;
 
     brandItems.forEach((item) => {
-      const popover = item.querySelector(".tp-brand-popover");
-      const name = item.querySelector(".tp-brand-name");
-      if (!popover) return;
-
       item.addEventListener("mouseenter", () => {
-        if (track) track.style.animationPlayState = "paused";
-        if (name) name.style.color = "#ff5c2b";
-        popover.style.opacity = "1";
-        popover.style.visibility = "visible";
-        popover.style.pointerEvents = "auto";
-        popover.style.transform = "translateX(-50%) translateY(0)";
+        const icon = item.getAttribute("data-icon") || "🏰";
+        const title = item.getAttribute("data-title") || "";
+        const text = item.getAttribute("data-text") || "";
+
+        if (popIcon) popIcon.textContent = icon;
+        if (popTitle) popTitle.textContent = title;
+        if (popText) popText.textContent = text;
+
+        const r = item.getBoundingClientRect();
+        popover.style.left = (r.left + r.width / 2) + "px";
+        popover.style.top = (r.top) + "px";
+        popover.classList.add("active");
       });
 
       item.addEventListener("mouseleave", () => {
-        if (track) track.style.animationPlayState = "running";
-        if (name) name.style.color = "#0c0c10";
-        popover.style.opacity = "0";
-        popover.style.visibility = "hidden";
-        popover.style.pointerEvents = "none";
-        popover.style.transform = "translateX(-50%) translateY(10px)";
+        popover.classList.remove("active");
       });
+    });
+
+    window.addEventListener("scroll", () => {
+      popover.classList.remove("active");
     });
   });
 })();
