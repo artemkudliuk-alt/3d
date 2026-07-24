@@ -165,32 +165,24 @@ window.initHeroAnimation = function() {
       });
     }
 
-    // 3. Staggered 3D Depth Entrance for Section 2 Header Elements
+        // 3. Ultra-Smooth Unified Staggered Parallax for Section 2 Header Elements
     var indexEl = projectsSection.querySelector('.container-index');
     var titleEl = projectsSection.querySelector('h2');
     var btnEl = projectsSection.querySelector('#open-catalog-btn');
 
-    if (indexEl) {
-      gsap.fromTo(indexEl,
-        { y: 110, opacity: 0 },
-        {
-          y: 0, opacity: 1, ease: 'power2.out',
-          scrollTrigger: { trigger: projectsSection, start: 'top 92%', end: 'top 48%', scrub: 0.8, invalidateOnRefresh: true }
-        }
-      );
-    }
-    if (titleEl) {
-      gsap.fromTo(titleEl,
-        { y: 150, opacity: 0 },
-        {
-          y: 0, opacity: 1, ease: 'power2.out',
-          scrollTrigger: { trigger: projectsSection, start: 'top 88%', end: 'top 42%', scrub: 1.0, invalidateOnRefresh: true }
-        }
-      );
-    }
-    if (btnEl) {
-      gsap.fromTo(btnEl,
-        { y: 190, opacity: 0 },
+    var headerTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: projectsSection,
+        start: 'top 85%',
+        end: 'top 30%',
+        scrub: 1.2,
+        invalidateOnRefresh: true,
+      }
+    });
+
+    if (indexEl) headerTl.fromTo(indexEl, { y: 70, opacity: 0 }, { y: 0, opacity: 1, ease: 'power1.out' }, 0);
+    if (titleEl) headerTl.fromTo(titleEl, { y: 95, opacity: 0 }, { y: 0, opacity: 1, ease: 'power1.out' }, 0.1);
+    if (btnEl)   headerTl.fromTo(btnEl,   { y: 120, opacity: 0 }, { y: 0, opacity: 1, ease: 'power1.out' }, 0.2);,
         {
           y: 0, opacity: 1, ease: 'power2.out',
           scrollTrigger: { trigger: projectsSection, start: 'top 82%', end: 'top 36%', scrub: 1.2, invalidateOnRefresh: true }
