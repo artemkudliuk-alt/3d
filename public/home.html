@@ -205,7 +205,7 @@
                   <div class="btn-text">Дивитись 3D-тур</div>
                   <div class="btn-icon mask def" aria-hidden="true"></div>
                 </button>
-                <button class="btn btn-border map" type="button" aria-label="На карті" data-location='{"title":"Ribas Karpaty Hotel","subtitle":"Luxury Resort & SPA","location":"с. Поляниця, урочище Вишня, 154"}'>
+                <button class="btn btn-border map" type="button" aria-label="На карті" data-map-id="ribas">
                   <div class="btn-text">На карті</div>
                   <div class="btn-icon mask def" aria-hidden="true"></div>
                 </button>
@@ -265,7 +265,7 @@
                   <div class="btn-text">Дивитись 3D-тур</div>
                   <div class="btn-icon mask def" aria-hidden="true"></div>
                 </button>
-                <button class="btn btn-border map" type="button" aria-label="На карті" data-location='{"title":"Redling Beach Hotel","subtitle":"Family Beach Resort","location":"м. Одеса, вул. Дача Ковалевського, 71"}'>
+                <button class="btn btn-border map" type="button" aria-label="На карті" data-map-id="redling">
                   <div class="btn-text">На карті</div>
                   <div class="btn-icon mask def" aria-hidden="true"></div>
                 </button>
@@ -312,12 +312,12 @@
               <div class="title flex-v">
                 <p class="num"><span class="mulish-24">03</span>/03</p>
                 <h3 class="mulish-50">Moonrock Hotel &amp; Chalet</h3>
-                <p>Exclusive Mountain Retreat &bull; Яремче</p>
+                <p>Exclusive Mountain &amp; Jungle Retreat &bull; Балі</p>
               </div>
 
               <div class="location flex-h" style="margin-top: 14px;">
                 <div class="icon icon-location"></div>
-                <p class="inter-16-semi">смт. Яремче, присілок Ямна, 45</p>
+                <p class="inter-16-semi">Gianyar, Bali, Indonesia</p>
               </div>
 
               <div class="navs" style="margin-top: 24px;">
@@ -325,7 +325,7 @@
                   <div class="btn-text">Дивитись 3D-тур</div>
                   <div class="btn-icon mask def" aria-hidden="true"></div>
                 </button>
-                <button class="btn btn-border map" type="button" aria-label="На карті" data-location='{"title":"Moonrock Hotel & Chalet","subtitle":"Exclusive Mountain Retreat","location":"смт. Яремче, присілок Ямна, 45"}'>
+                <button class="btn btn-border map" type="button" aria-label="На карті" data-map-id="moonrock">
                   <div class="btn-text">На карті</div>
                   <div class="btn-icon mask def" aria-hidden="true"></div>
                 </button>
@@ -1103,69 +1103,63 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
 </div>
 
 <!-- Interactive Projects Map Modal -->
-<div id="nw-map-modal" class="nw-modal" aria-hidden="true">
-  <div class="nw-modal__backdrop"></div>
-  <div class="nw-modal__container map-container" style="max-width: 1080px; width: 92%; padding: 24px; border-radius: 0px !important;">
-    <button class="nw-modal__close" id="nw-map-close" aria-label="Закрити" style="border-radius: 0px !important;">✕</button>
-    <div class="nw-modal__header" style="margin-bottom: 16px;">
-      <h3 style="font-family: 'Unbounded', sans-serif; font-size: 24px; margin: 0;">Карта об'єктів (5 проєктів)</h3>
-      <p style="color: #a0a0ab; margin: 4px 0 0 0; font-size: 13px;">Оберіть метку на карті для відкриття 3D-відеотура</p>
+<!-- Interactive Projects Map Modal -->
+<div id="nw-map-modal" class="nw-modal" aria-hidden="true" style="display:none; position:fixed; inset:0; z-index:99999; align-items:center; justify-content:center;">
+  <div class="nw-modal__backdrop" style="position:absolute; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(10px);"></div>
+  <div class="nw-modal__container map-container" style="position:relative; z-index:10; max-width: 1100px; width: 94%; padding: 24px; border-radius: 12px; background: #0d0d12; border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 30px 90px rgba(0,0,0,0.9);">
+    <button class="nw-modal__close" id="nw-map-close" aria-label="Закрити" style="position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; width: 36px; height: 36px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 100;">✕</button>
+    
+    <div class="nw-modal__header" style="margin-bottom: 16px; display: flex; justify-content: space-between; align-items: flex-end;">
+      <div>
+        <h3 style="font-family: 'Mulish', sans-serif; font-size: 22px; font-weight: 800; color: #fff; margin: 0;">Інтерактивна карта проєктів (3 гео-локації)</h3>
+        <p style="color: #a0a0ab; margin: 4px 0 0 0; font-size: 13px;">Натисніть на об'єкт або скрольте карту назад для огляду всіх кейсів у світі</p>
+      </div>
+      <button id="nw-fit-all-btn" class="btn" type="button" style="padding: 8px 16px; font-size: 12px; font-family:'Mulish',sans-serif; font-weight:700; border-radius: 100px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; transition: all 0.3s ease;">
+        🌍 Всі проєкти на карті
+      </button>
     </div>
     
-    <div class="nw-map-modal-wrapper" style="display: flex; gap: 20px; height: 480px;">
-      <!-- Sidebar with 5 Project Cards -->
-      <div class="nw-map-sidebar" style="width: 280px; flex-shrink: 0; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; padding-right: 6px;">
-        <!-- Card 1 -->
-        <div class="nw-map-item nw-open-map-item" data-id="grand_royal" data-lat="48.8475" data-lng="23.4475" data-video-src="/media/gen/cases/grand_royal/flythrough.mp4" data-title="Grand Royal Resort & SPA">
-          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative;">
-            <img src="/media/gen/cases/grand_royal/photo1.png" alt="Grand Royal" style="width: 100%; height: 100%; object-fit: cover;">
-            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px;">▶ 3D-тур</span>
+    <div class="nw-map-modal-wrapper" style="display: flex; gap: 20px; height: 500px;">
+      <!-- Sidebar with 3 Real Project Cards -->
+      <div class="nw-map-sidebar" style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; padding-right: 6px;">
+        
+        <!-- Project 1: Ribas -->
+        <div class="nw-map-item" data-id="ribas" data-lat="48.3539" data-lng="24.4124" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px; cursor: pointer; transition: all 0.3s ease;">
+          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative; border-radius: 6px;">
+            <img src="/cases/ribas 1.webp" alt="Ribas Karpaty Hotel" style="width: 100%; height: 100%; object-fit: cover;">
+            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px;">▶ 3D-тур</span>
           </div>
-          <h5 style="margin: 6px 0 2px 0; font-size: 13px; color: #fff; font-family: 'Unbounded', sans-serif;">Grand Royal Resort & SPA</h5>
-          <p style="margin: 0; font-size: 11px; color: #a0a0ab;">смт. Славське, вул. Олімпійська, 12</p>
+          <h5 style="margin: 8px 0 2px 0; font-size: 14px; color: #fff; font-family: 'Mulish', sans-serif; font-weight: 700;">Ribas Karpaty Hotel</h5>
+          <p style="margin: 0; font-size: 12px; color: #a0a0ab;">с. Поляниця, урочище Вишня, 154</p>
         </div>
-        <!-- Card 2 -->
-        <div class="nw-map-item nw-open-map-item" data-id="villas_riviera" data-lat="46.4825" data-lng="30.7233" data-video-src="/media/gen/cases/villas_riviera/flythrough.mp4" data-title="Villas Riviera & Marina">
-          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative;">
-            <img src="/media/gen/cases/villas_riviera/photo1.png" alt="Villas Riviera" style="width: 100%; height: 100%; object-fit: cover;">
-            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px;">▶ 3D-тур</span>
+
+        <!-- Project 2: Redling -->
+        <div class="nw-map-item" data-id="redling" data-lat="46.3768" data-lng="30.7431" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px; cursor: pointer; transition: all 0.3s ease;">
+          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative; border-radius: 6px;">
+            <img src="/cases/redling 1.webp" alt="Redling Beach Hotel" style="width: 100%; height: 100%; object-fit: cover;">
+            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px;">▶ 3D-тур</span>
           </div>
-          <h5 style="margin: 6px 0 2px 0; font-size: 13px; color: #fff; font-family: 'Unbounded', sans-serif;">Villas Riviera & Marina</h5>
-          <p style="margin: 0; font-size: 11px; color: #a0a0ab;">м. Одеса, Французький бульвар, 85</p>
+          <h5 style="margin: 8px 0 2px 0; font-size: 14px; color: #fff; font-family: 'Mulish', sans-serif; font-weight: 700;">Redling Beach Hotel</h5>
+          <p style="margin: 0; font-size: 12px; color: #a0a0ab;">м. Одеса, вул. Дача Ковалевського, 71</p>
         </div>
-        <!-- Card 3 -->
-        <div class="nw-map-item nw-open-map-item" data-id="zenith_hotel" data-lat="49.8397" data-lng="24.0297" data-video-src="/media/gen/cases/zenith_hotel/flythrough.mp4" data-title="Zenith Boutique Hotel">
-          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative;">
-            <img src="/media/gen/cases/zenith_hotel/photo1.png" alt="Zenith Hotel" style="width: 100%; height: 100%; object-fit: cover;">
-            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px;">▶ 3D-тур</span>
+
+        <!-- Project 3: Moonrock -->
+        <div class="nw-map-item" data-id="moonrock" data-lat="-8.5435" data-lng="115.3262" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px; cursor: pointer; transition: all 0.3s ease;">
+          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative; border-radius: 6px;">
+            <img src="/cases/moonrock 1.webp" alt="Moonrock Hotel & Chalet" style="width: 100%; height: 100%; object-fit: cover;">
+            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px;">▶ 3D-тур</span>
           </div>
-          <h5 style="margin: 6px 0 2px 0; font-size: 13px; color: #fff; font-family: 'Unbounded', sans-serif;">Zenith Boutique Hotel</h5>
-          <p style="margin: 0; font-size: 11px; color: #a0a0ab;">м. Львів, вул. Паркова, 4</p>
+          <h5 style="margin: 8px 0 2px 0; font-size: 14px; color: #fff; font-family: 'Mulish', sans-serif; font-weight: 700;">Moonrock Hotel &amp; Chalet</h5>
+          <p style="margin: 0; font-size: 12px; color: #a0a0ab;">Gianyar, Bali, Indonesia</p>
         </div>
-        <!-- Card 4 -->
-        <div class="nw-map-item nw-open-map-item" data-id="mountain_chalet" data-lat="48.3539" data-lng="24.4124" data-video-src="/media/gen/cases/mountain_chalet/flythrough.mp4" data-title="Mountain Chalet & Suites">
-          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative;">
-            <img src="/media/gen/cases/mountain_chalet/photo1.png" alt="Mountain Chalet" style="width: 100%; height: 100%; object-fit: cover;">
-            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px;">▶ 3D-тур</span>
-          </div>
-          <h5 style="margin: 6px 0 2px 0; font-size: 13px; color: #fff; font-family: 'Unbounded', sans-serif;">Mountain Chalet & Suites</h5>
-          <p style="margin: 0; font-size: 11px; color: #a0a0ab;">с. Поляниця, вул. Вишня, 18</p>
-        </div>
-        <!-- Card 5 -->
-        <div class="nw-map-item nw-open-map-item" data-id="urban_skyline" data-lat="50.4501" data-lng="30.5234" data-video-src="/media/gen/cases/urban_skyline/flythrough.mp4" data-title="Urban Skyline Plaza">
-          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative;">
-            <img src="/media/gen/cases/urban_skyline/photo1.png" alt="Urban Skyline" style="width: 100%; height: 100%; object-fit: cover;">
-            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px;">▶ 3D-тур</span>
-          </div>
-          <h5 style="margin: 6px 0 2px 0; font-size: 13px; color: #fff; font-family: 'Unbounded', sans-serif;">Urban Skyline Plaza</h5>
-          <p style="margin: 0; font-size: 11px; color: #a0a0ab;">м. Київ, вул. Хрещатик, 24</p>
-        </div>
+
       </div>
       
       <!-- Interactive Leaflet Map Container -->
-      <div id="nw-leaflet-map" style="flex: 1; height: 100%; background: #16161c; border: 1px solid rgba(255,255,255,0.12);"></div>
+      <div id="nw-leaflet-map" style="flex: 1; height: 100%; background: #16161c; border-radius: 8px; border: 1px solid rgba(255,255,255,0.12); overflow: hidden;"></div>
     </div>
   </div>
+</div>
 </div>
 
 
@@ -1352,5 +1346,165 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
 
 
 
+<style>
+  #nw-map-modal.active { display: flex !important; }
+  .leaflet-popup-content-wrapper { background: #121218 !important; color: #fff !important; border-radius: 8px !important; border: 1px solid rgba(255,255,255,0.15) !important; }
+  .leaflet-popup-tip { background: #121218 !important; }
+</style>
+<script>
+(function initProjectsWorldMapModal() {
+  const casesData = {
+    ribas: {
+      id: 'ribas',
+      title: 'Ribas Karpaty Hotel',
+      sub: 'Luxury Resort & SPA • Буковель',
+      location: 'с. Поляниця, урочище Вишня, 154',
+      lat: 48.3539,
+      lng: 24.4124,
+      video: '/cases/ribas.mp4',
+      img: '/cases/ribas 1.webp'
+    },
+    redling: {
+      id: 'redling',
+      title: 'Redling Beach Hotel',
+      sub: 'Family Beach Resort • Одеса',
+      location: 'м. Одеса, вул. Дача Ковалевського, 71',
+      lat: 46.3768,
+      lng: 30.7431,
+      video: '/cases/redling.mp4',
+      img: '/cases/redling 1.webp'
+    },
+    moonrock: {
+      id: 'moonrock',
+      title: 'Moonrock Hotel & Chalet',
+      sub: 'Exclusive Mountain Retreat • Балі',
+      location: 'Gianyar, Bali, Indonesia',
+      lat: -8.5435,
+      lng: 115.3262,
+      video: '/cases/moonrock.mp4',
+      img: '/cases/moonrock 1.webp'
+    }
+  };
+
+  let map = null;
+  let markers = {};
+
+  function openMap(targetId) {
+    const modal = document.getElementById('nw-map-modal');
+    if (!modal) return;
+
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    setTimeout(() => {
+      if (!map && window.L) {
+        map = L.map('nw-leaflet-map', {
+          zoomControl: true,
+          scrollWheelZoom: true
+        });
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+          attribution: '&copy; OpenStreetMap &copy; CARTO',
+          maxZoom: 18
+        }).addTo(map);
+
+        Object.keys(casesData).forEach(key => {
+          const item = casesData[key];
+          const customIcon = L.divIcon({
+            className: 'nw-custom-map-pin',
+            html: `<div style="background:#08080a; border:2px solid #ffffff; color:#ffffff; padding:6px 12px; border-radius:100px; font-family:'Mulish',sans-serif; font-size:11px; font-weight:700; white-space:nowrap; box-shadow:0 6px 20px rgba(0,0,0,0.6); cursor:pointer;">📍 ${item.title}</div>`,
+            iconSize: [140, 32],
+            iconAnchor: [70, 16]
+          });
+
+          const popupContent = `
+            <div style="padding:4px; font-family:'Mulish',sans-serif; max-width:220px;">
+              <img src="${item.img}" style="width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:4px; margin-bottom:6px;">
+              <h4 style="margin:0 0 2px 0; font-size:13px; font-weight:700; color:#fff;">${item.title}</h4>
+              <p style="margin:0 0 8px 0; font-size:11px; color:#aaa;">${item.location}</p>
+              <button class="btn btn-orange nw-open-video-btn" data-video-src="${item.video}" data-title="${item.title}" style="width:100%; padding:6px 10px; font-size:11px; border-radius:4px; cursor:pointer;">▶ Дивитись 3D-тур</button>
+            </div>
+          `;
+
+          const marker = L.marker([item.lat, item.lng], { icon: customIcon }).addTo(map);
+          marker.bindPopup(popupContent, { className: 'nw-map-popup' });
+          markers[key] = marker;
+
+          marker.on('click', () => {
+            map.flyTo([item.lat, item.lng], 11, { duration: 1.2 });
+            highlightSidebarItem(key);
+          });
+        });
+      }
+
+      if (map) {
+        map.invalidateSize();
+        if (targetId && casesData[targetId]) {
+          const target = casesData[targetId];
+          map.flyTo([target.lat, target.lng], 11, { duration: 1.4 });
+          if (markers[targetId]) markers[targetId].openPopup();
+          highlightSidebarItem(targetId);
+        } else {
+          fitAllMarkers();
+        }
+      }
+    }, 200);
+  }
+
+  function fitAllMarkers() {
+    if (!map) return;
+    const group = L.featureGroup(Object.values(markers));
+    map.fitBounds(group.getBounds().pad(0.2));
+  }
+
+  function highlightSidebarItem(id) {
+    document.querySelectorAll('.nw-map-item').forEach(item => {
+      if (item.getAttribute('data-id') === id) {
+        item.style.borderColor = 'rgba(255,255,255,0.6)';
+        item.style.background = 'rgba(255,255,255,0.12)';
+      } else {
+        item.style.borderColor = 'rgba(255,255,255,0.1)';
+        item.style.background = 'rgba(255,255,255,0.04)';
+      }
+    });
+  }
+
+  function closeMap() {
+    const modal = document.getElementById('nw-map-modal');
+    if (modal) {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  }
+
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.map, .nw-open-map-trigger, [data-map-id], .nw-map-item');
+    if (btn) {
+      const id = btn.getAttribute('data-map-id') || btn.getAttribute('data-id');
+      if (btn.classList.contains('nw-map-item')) {
+        if (map && id && casesData[id]) {
+          map.flyTo([casesData[id].lat, casesData[id].lng], 11, { duration: 1.2 });
+          if (markers[id]) markers[id].openPopup();
+          highlightSidebarItem(id);
+        }
+      } else {
+        e.preventDefault();
+        openMap(id);
+      }
+    }
+
+    if (e.target.closest('#nw-map-close, .nw-modal__backdrop')) {
+      closeMap();
+    }
+
+    if (e.target.closest('#nw-fit-all-btn')) {
+      fitAllMarkers();
+    }
+  });
+
+})();
+</script>
 </body>
 </html>
