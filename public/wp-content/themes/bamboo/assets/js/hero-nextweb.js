@@ -118,11 +118,29 @@ window.initHeroAnimation = function() {
 
   // ============================================================
     // ============================================================
-  // SECTION 2: PROJECTS PARALLAX & HEADER RETURN
+    // ============================================================
+  // SECTION 2: PROJECTS SLIDE-OVER PARALLAX & STAGGERED ELEMENTS
   // ============================================================
   var projectsSection = document.querySelector('.projects');
   if (projectsSection) {
-    // Header softly & slowly returns ONLY when Section 2 (.projects) comes into view!
+    // 1. Layering Slide-Over Parallax: Section 1 (.intro) scales down & darkens as Section 2 glides over it
+    var introEl = document.querySelector('.intro');
+    if (introEl) {
+      gsap.to(introEl, {
+        scale: 0.94,
+        opacity: 0.35,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: projectsSection,
+          start: 'top 100%',
+          end: 'top 20%',
+          scrub: true,
+          invalidateOnRefresh: true,
+        }
+      });
+    }
+
+    // 2. Top Header softly & slowly returns ONLY when Section 2 (.projects) comes into view!
     if (header) {
       ScrollTrigger.create({
         trigger: projectsSection,
@@ -141,31 +159,40 @@ window.initHeroAnimation = function() {
       });
     }
 
+    // 3. Staggered 3D Depth Entrance for Section 2 Header Elements
     var indexEl = projectsSection.querySelector('.container-index');
     var titleEl = projectsSection.querySelector('h2');
     var btnEl = projectsSection.querySelector('#open-catalog-btn');
 
     if (indexEl) {
-      gsap.fromTo(indexEl, { y: 60, opacity: 0.3 }, {
-        y: -40, opacity: 1, ease: 'none',
-        scrollTrigger: { trigger: projectsSection, start: 'top 90%', end: 'top 20%', scrub: 0.8 }
-      });
+      gsap.fromTo(indexEl,
+        { y: 110, opacity: 0 },
+        {
+          y: 0, opacity: 1, ease: 'power2.out',
+          scrollTrigger: { trigger: projectsSection, start: 'top 92%', end: 'top 48%', scrub: 0.8, invalidateOnRefresh: true }
+        }
+      );
     }
     if (titleEl) {
-      gsap.fromTo(titleEl, { y: 50, opacity: 0.4 }, {
-        y: -25, opacity: 1, ease: 'none',
-        scrollTrigger: { trigger: projectsSection, start: 'top 85%', end: 'top 25%', scrub: 0.6 }
-      });
+      gsap.fromTo(titleEl,
+        { y: 150, opacity: 0 },
+        {
+          y: 0, opacity: 1, ease: 'power2.out',
+          scrollTrigger: { trigger: projectsSection, start: 'top 88%', end: 'top 42%', scrub: 1.0, invalidateOnRefresh: true }
+        }
+      );
     }
     if (btnEl) {
-      gsap.fromTo(btnEl, { y: 45, opacity: 0.4 }, {
-        y: -20, opacity: 1, ease: 'none',
-        scrollTrigger: { trigger: projectsSection, start: 'top 80%', end: 'top 30%', scrub: 0.5 }
-      });
+      gsap.fromTo(btnEl,
+        { y: 190, opacity: 0 },
+        {
+          y: 0, opacity: 1, ease: 'power2.out',
+          scrollTrigger: { trigger: projectsSection, start: 'top 82%', end: 'top 36%', scrub: 1.2, invalidateOnRefresh: true }
+        }
+      );
     }
   }
 
-  // ============================================================
   // SECTION 4: TESTIMONIALS CARDS PARALLAX
   // ============================================================
   var testimonialsSection = document.querySelector('.testimonials-partners');
