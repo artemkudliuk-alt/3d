@@ -1624,24 +1624,26 @@ footer.site-footer {
 }
 
 
-/* PERPETUAL INFINITE MARQUEE & SMOOTH EDGE BLUR DISSOLVE */
+/* ARCHITECTURAL TUNNEL MARQUEE WITH FADE-IN & FADE-OUT MASK */
 @keyframes tpMarqueePerpetual {
   0% { transform: translate3d(0, 0, 0); }
   100% { transform: translate3d(-33.33333%, 0, 0); }
 }
 
-.tp-marquee-wrapper {
-  overflow: visible !important;
+.tp-marquee-tunnel-wrapper {
   width: 100% !important;
+  max-width: 1100px !important;
+  margin: 0 auto !important;
   position: relative !important;
-  padding: 28px 0 !important;
-  border-top: 1px solid rgba(0, 0, 0, 0.09) !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.09) !important;
+  overflow: hidden !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.12) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+  padding: 26px 0 !important;
   background: rgba(0, 0, 0, 0.015) !important;
   
-  /* Smooth edge fade out blur mask */
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%) !important;
-  mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%) !important;
+  /* Fade-in on right, Fade-out on left edge dissolve mask */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%) !important;
+  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%) !important;
 }
 
 .tp-marquee-track {
@@ -1653,7 +1655,7 @@ footer.site-footer {
   animation: tpMarqueePerpetual 35s linear infinite !important;
 }
 
-.tp-marquee-wrapper:hover .tp-marquee-track {
+.tp-marquee-tunnel-wrapper:hover .tp-marquee-track {
   animation-play-state: paused !important;
 }
 
