@@ -1285,5 +1285,86 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
     }
   });
 </script>
+<script>
+(function initReviewTabSwitcher() {
+  const reviews = [
+    {
+      name: "Іван Демідов",
+      role: "Управляючий директор Grand Plaza Hotel",
+      text: "«Після інтеграції 3D-туру від NextWeb час перебування гостей на сторінках номерного фонду зріс майже вдвічі. Гості бронюють номери преміум-сегменту значно впевненіше, оскільки бачать кожен куточок та краєвид з вікна у реальному часі.»",
+      idx: "01 / VERIFIED"
+    },
+    {
+      name: "Олена Ковальчук",
+      role: "Маркетинг-директор Boutique Resort & Spa",
+      text: "«Наші гості відзначити, що віртуальне занурення в інтер'єри перед бронюванням зняло всі сумніви. Прямі бронювання зросли на третину за перші 2 місяці роботи 3D-двигуна!»",
+      idx: "02 / VERIFIED"
+    },
+    {
+      name: "Олександр Кравченко",
+      role: "Генеральний менеджер City Premier Hotel",
+      text: "«3D-візуалізація конференц-залів та номерів дозволила нам збільшити корпоративні бронювання на 45%. Клієнти бачать реальну розкіш та оснащення без виїзду на об'єкт.»",
+      idx: "03 / VERIFIED"
+    },
+    {
+      name: "Вікторія Мельник",
+      role: "Керівник відділу продажів Luxury Suites",
+      text: "«Впровадження 3D-двигуна NextWeb стало найкращим інвестиційним рішенням року. Окупність 100% за перші тижні благодаря зануренню VIP-гостей у 60 FPS.»",
+      idx: "04 / VERIFIED"
+    }
+  ];
+
+  function setupTabs() {
+    const btns = document.querySelectorAll('.tp-tab-btn');
+    btns.forEach((btn) => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const index = parseInt(this.getAttribute('data-tab') || '0', 10);
+        const data = reviews[index];
+        if (!data) return;
+
+        btns.forEach((b, i) => {
+          if (i === index) {
+            b.classList.add('active');
+            b.style.cssText = "width: 48px !important; height: 48px !important; border-radius: 4px !important; background: #0c0c10 !important; color: #ffffff !important; border: 1px solid #0c0c10 !important; font-family: 'Mulish', sans-serif !important; font-weight: 800 !important; font-size: 15px !important; cursor: pointer !important; transition: all 0.3s ease !important;";
+          } else {
+            b.classList.remove('active');
+            b.style.cssText = "width: 48px !important; height: 48px !important; border-radius: 4px !important; background: #ffffff !important; color: #666678 !important; border: 1px solid rgba(0, 0, 0, 0.14) !important; font-family: 'Mulish', sans-serif !important; font-weight: 800 !important; font-size: 15px !important; cursor: pointer !important; transition: all 0.3s ease !important;";
+          }
+        });
+
+        const nameEl = document.getElementById('tp-active-name');
+        const roleEl = document.getElementById('tp-active-role');
+        const textEl = document.getElementById('tp-active-text');
+        const idxEl = document.getElementById('tp-active-index');
+
+        if (nameEl) nameEl.textContent = data.name;
+        if (roleEl) roleEl.textContent = data.role;
+        if (textEl) textEl.textContent = data.text;
+        if (idxEl) idxEl.textContent = data.idx;
+
+        document.querySelectorAll('.tp-badge-slide').forEach((slide, i) => {
+          if (i === index) {
+            slide.classList.add('active');
+            slide.style.opacity = '1';
+            slide.style.pointerEvents = 'auto';
+          } else {
+            slide.classList.remove('active');
+            slide.style.opacity = '0';
+            slide.style.pointerEvents = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  if (document.readyState === 'complete') setupTabs();
+  else window.addEventListener('load', setupTabs);
+  document.addEventListener('DOMContentLoaded', setupTabs);
+})();
+</script>
+
 </body>
 </html>
