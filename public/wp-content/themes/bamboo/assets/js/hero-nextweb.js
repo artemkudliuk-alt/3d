@@ -334,21 +334,21 @@ if (document.readyState === "loading") {
     const data = testimonialsData[idx];
     if (!data) return;
 
-    // 1. М'яке згасання вмісту карточки та постера (opacity: 0)
+    // 1. Повне шовкове розчинення вмісту (opacity -> 0) без будь-яких бликів чи стрибків
     const targetsToFade = [cardInner, rightPoster].filter(Boolean);
     if (window.gsap && targetsToFade.length) {
       window.gsap.to(targetsToFade, {
-        opacity: 0.25,
-        duration: 0.35,
-        ease: "power2.inOut",
+        opacity: 0,
+        duration: 0.4,
+        ease: "power1.inOut",
         onComplete: () => {
-          // 2. Оновлення даних
+          // 2. Оновлення даних відбувається коли елементи ПОВНІСТЮ невидимки (opacity: 0)
           if (activeName) activeName.textContent = data.name;
           if (activeRole) activeRole.textContent = data.role;
-          if (activeIndex) activeIndex.textContent = `0${idx + 1} / VERIFIED`;
           if (activeQuote) activeQuote.textContent = data.quote;
           if (activeAvatar) activeAvatar.src = data.avatar;
           if (activePoster) activePoster.src = data.poster;
+          if (activeIndex) activeIndex.textContent = `0${idx + 1} / VERIFIED`;
 
           // Оновлення табів 01-04
           tabBtns.forEach((btn, bIdx) => {
@@ -376,11 +376,11 @@ if (document.readyState === "loading") {
             }
           });
 
-          // 3. М'яка поява оновленого вмісту (opacity: 1)
+          // 3. М'який шовковий прояв нового контенту (opacity -> 1)
           window.gsap.to(targetsToFade, {
             opacity: 1,
-            duration: 0.45,
-            ease: "power2.out",
+            duration: 0.5,
+            ease: "power1.inOut",
             onComplete: () => {
               isTransitioning = false;
             }
@@ -392,7 +392,7 @@ if (document.readyState === "loading") {
     }
   };
 
-  // Ручне переключення при кліку на таби 01-04
+    // Ручне переключення при кліку на таби 01-04
   tabBtns.forEach((btn, idx) => {
     btn.addEventListener("click", () => {
       switchToIndex(idx);
