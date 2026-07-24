@@ -127,8 +127,7 @@ window.initHeroAnimation = function() {
     var introEl = document.querySelector('.intro');
     if (introEl) {
       gsap.to(introEl, {
-        scale: 0.94,
-        opacity: 0.35,
+        opacity: 0.3,
         ease: 'none',
         scrollTrigger: {
           trigger: projectsSection,
