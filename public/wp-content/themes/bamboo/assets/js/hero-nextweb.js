@@ -17,6 +17,7 @@ window.initHeroAnimation = function() {
   var intro = document.querySelector('.intro');
 
   if (intro) {
+    gsap.set(intro, { position: "sticky", top: 0, zIndex: 1 });
     var video = document.getElementById('hero-video');
     var titleWrap = intro.querySelector('.hero-title-wrap');
     var title = intro.querySelector('.hero-title');
@@ -48,7 +49,7 @@ window.initHeroAnimation = function() {
         start: 'top top',
         end: '+=380%',
         pin: true,
-        pinSpacing: true,
+        pinSpacing: false,
         scrub: 1.0,
         anticipatePin: 1,
         refreshPriority: 10,
@@ -121,6 +122,12 @@ window.initHeroAnimation = function() {
     // ============================================================
   // SECTION 2: PROJECTS SLIDE-OVER PARALLAX & STAGGERED ELEMENTS
   // ============================================================
+    // Ensure .projects arrives exactly when Hero presentation ends (220vh scroll offset)
+  var projectsSection = document.querySelector('.projects');
+  if (projectsSection) {
+    projectsSection.style.marginTop = '220vh';
+  }
+
   var projectsSection = document.querySelector('.projects');
   if (projectsSection) {
     // 1. Layering Slide-Over Parallax: Section 1 (.intro) scales down & darkens as Section 2 glides over it

@@ -244,14 +244,14 @@ section {
 
 /* Просторний верхній відступ для 2-го екрана (.projects) */
 section.projects#cases, .projects {
-  margin-top: -6px !important;
+  margin-top: 0 !important;
   padding-top: clamp(40px, 6vh, 80px) !important;
   position: relative !important;
   z-index: 10 !important;
   background: #08080a !important;
   border: none !important;
   outline: none !important;
-  box-shadow: 0 -20px 40px #08080a;
+  box-shadow: 0 -25px 50px rgba(0,0,0,0.95);
 }
 
 .projects .project-info {
