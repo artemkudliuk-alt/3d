@@ -1292,7 +1292,7 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
   });
 </script>
 <script>
-(function initCompleteReviewSwitcher() {
+(function initSmoothReviewSwitcher() {
   const reviews = [
     {
       name: "Іван Демідов",
@@ -1307,7 +1307,7 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
       role: "Маркетинг-директор Boutique Resort & Spa",
       quote: "«Наші гості відзначили, що віртуальне занурення в інтер'єри перед бронюванням зняло всі сумніви. Прямі бронювання зросли на третину за перші 2 місяці роботи 3D-двигуна NextWeb!»",
       avatar: "/media/gen/testimonials/avatar2.png",
-      poster: "/media/gen/case-villa.webp",
+      poster: "/media/gen/case-spa.webp",
       idx: "02 / VERIFIED"
     },
     {
@@ -1315,7 +1315,7 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
       role: "Генеральний менеджер City Premier Hotel",
       quote: "«3D-візуалізація конференц-залів та номерів дозволила нам збільшити корпоративні бронювання на 45%. Клієнти бачать реальну розкіш та оснащення без виїзду на об'єкт.»",
       avatar: "/media/gen/testimonials/avatar3.png",
-      poster: "/media/gen/case-suite.webp",
+      poster: "/media/gen/case-presidential-suite.webp",
       idx: "03 / VERIFIED"
     },
     {
@@ -1323,7 +1323,7 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
       role: "Керівник відділу продажів Luxury Suites",
       quote: "«Впровадження 3D-двигуна NextWeb стало найкращим інвестиційним рішенням року. Окупність 100% за перші тижні завдяки зануренню VIP-гостей у 60 FPS.»",
       avatar: "/media/gen/testimonials/avatar4.png",
-      poster: "/media/gen/case-penthouse.webp",
+      poster: "/media/gen/case-rooftop-bar.webp",
       idx: "04 / VERIFIED"
     }
   ];
@@ -1331,25 +1331,27 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
   let currentIdx = 0;
   let autoplayTimer = null;
   let isHovered = false;
+  let isTransitioning = false;
 
   function activateTab(index) {
+    if (isTransitioning && index === currentIdx) return;
+    isTransitioning = true;
     currentIdx = index;
     const data = reviews[index];
     if (!data) return;
 
-    // Update Tab Buttons (01, 02, 03, 04)
+    // Update Tab Buttons immediately
     const btns = document.querySelectorAll('.tp-tab-btn');
     btns.forEach((b, i) => {
       if (i === index) {
         b.classList.add('active');
-        b.style.cssText = "width: 48px !important; height: 48px !important; border-radius: 4px !important; background: #0c0c10 !important; color: #ffffff !important; border: 1px solid #0c0c10 !important; font-family: 'Mulish', sans-serif !important; font-weight: 800 !important; font-size: 15px !important; cursor: pointer !important; transition: all 0.3s ease !important;";
+        b.style.cssText = "width: 48px !important; height: 48px !important; border-radius: 4px !important; background: #0c0c10 !important; color: #ffffff !important; border: 1px solid #0c0c10 !important; font-family: 'Mulish', sans-serif !important; font-weight: 800 !important; font-size: 15px !important; cursor: pointer !important; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;";
       } else {
         b.classList.remove('active');
-        b.style.cssText = "width: 48px !important; height: 48px !important; border-radius: 4px !important; background: #ffffff !important; color: #666678 !important; border: 1px solid rgba(0, 0, 0, 0.14) !important; font-family: 'Mulish', sans-serif !important; font-weight: 800 !important; font-size: 15px !important; cursor: pointer !important; transition: all 0.3s ease !important;";
+        b.style.cssText = "width: 48px !important; height: 48px !important; border-radius: 4px !important; background: #ffffff !important; color: #666678 !important; border: 1px solid rgba(0, 0, 0, 0.14) !important; font-family: 'Mulish', sans-serif !important; font-weight: 800 !important; font-size: 15px !important; cursor: pointer !important; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;";
       }
     });
 
-    // Update Text Content with subtle fade
     const nameEl = document.getElementById('tp-active-name');
     const roleEl = document.getElementById('tp-active-role');
     const quoteEl = document.getElementById('tp-active-quote') || document.querySelector('.tp-quote-text');
@@ -1357,49 +1359,82 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
     const avatarEl = document.getElementById('tp-active-avatar');
     const posterEl = document.getElementById('tp-active-poster');
 
-    if (nameEl) nameEl.textContent = data.name;
-    if (roleEl) roleEl.textContent = data.role;
-    if (quoteEl) quoteEl.textContent = data.quote;
-    if (idxEl) idxEl.textContent = data.idx;
-
-    if (avatarEl && data.avatar) {
-      avatarEl.style.opacity = '0.4';
-      setTimeout(() => {
-        avatarEl.src = data.avatar;
-        avatarEl.style.opacity = '1';
-      }, 150);
-    }
-
-    if (posterEl && data.poster) {
-      posterEl.style.opacity = '0.3';
-      setTimeout(() => {
-        posterEl.src = data.poster;
-        posterEl.style.opacity = '1';
-      }, 150);
-    }
-
-    // Update Left Card Badge Slides
-    document.querySelectorAll('.tp-badge-slide').forEach((slide, i) => {
-      if (i === index) {
-        slide.classList.add('active');
-        slide.style.opacity = '1';
-        slide.style.pointerEvents = 'auto';
-      } else {
-        slide.classList.remove('active');
-        slide.style.opacity = '0';
-        slide.style.pointerEvents = 'none';
-      }
+    // 1-st Phase: Smooth Fade Out
+    const textEls = [nameEl, roleEl, quoteEl, idxEl].filter(Boolean);
+    textEls.forEach(el => {
+      el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(6px)';
     });
+
+    if (avatarEl) {
+      avatarEl.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      avatarEl.style.opacity = '0';
+      avatarEl.style.transform = 'scale(0.92)';
+    }
+
+    if (posterEl) {
+      posterEl.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+      posterEl.style.opacity = '0';
+      posterEl.style.transform = 'scale(1.05)';
+    }
+
+    // 2-nd Phase: Update sources & Smooth Fade In after 250ms
+    setTimeout(() => {
+      if (nameEl) nameEl.textContent = data.name;
+      if (roleEl) roleEl.textContent = data.role;
+      if (quoteEl) quoteEl.textContent = data.quote;
+      if (idxEl) idxEl.textContent = data.idx;
+
+      if (avatarEl && data.avatar) avatarEl.src = data.avatar;
+      if (posterEl && data.poster) posterEl.src = data.poster;
+
+      textEls.forEach(el => {
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0px)';
+      });
+
+      if (avatarEl) {
+        avatarEl.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        avatarEl.style.opacity = '1';
+        avatarEl.style.transform = 'scale(1.0)';
+      }
+
+      if (posterEl) {
+        posterEl.style.transition = 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)';
+        posterEl.style.opacity = '1';
+        posterEl.style.transform = 'scale(1.0)';
+      }
+
+      document.querySelectorAll('.tp-badge-slide').forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.add('active');
+          slide.style.transition = 'opacity 0.5s ease';
+          slide.style.opacity = '1';
+          slide.style.pointerEvents = 'auto';
+        } else {
+          slide.classList.remove('active');
+          slide.style.transition = 'opacity 0.5s ease';
+          slide.style.opacity = '0';
+          slide.style.pointerEvents = 'none';
+        }
+      });
+
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 500);
+    }, 280);
   }
 
   function startAutoplay() {
     stopAutoplay();
     autoplayTimer = setInterval(() => {
-      if (!isHovered) {
+      if (!isHovered && !isTransitioning) {
         const nextIdx = (currentIdx + 1) % reviews.length;
         activateTab(nextIdx);
       }
-    }, 8000); // EXACTLY 8 SECONDS
+    }, 8000); // 8 SECONDS AUTOPLAY
   }
 
   function stopAutoplay() {
@@ -1423,7 +1458,7 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
         e.stopPropagation();
         const idx = parseInt(this.getAttribute('data-tab') || '0', 10);
         activateTab(idx);
-        startAutoplay(); // Reset 8s timer on click
+        startAutoplay();
       });
     });
 
@@ -1436,6 +1471,7 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
   document.addEventListener('DOMContentLoaded', setupSwitcher);
 })();
 </script>
+
 
 
 </body>
