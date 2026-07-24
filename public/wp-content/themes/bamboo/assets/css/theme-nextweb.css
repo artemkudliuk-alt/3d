@@ -243,9 +243,15 @@ section {
 }
 
 /* Просторний верхній відступ для 2-го екрана (.projects) */
-section.projects#cases {
-  margin-top: clamp(90px, 14vh, 180px) !important;
+section.projects#cases, .projects {
+  margin-top: -6px !important;
   padding-top: clamp(40px, 6vh, 80px) !important;
+  position: relative !important;
+  z-index: 10 !important;
+  background: #08080a !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: 0 -20px 40px #08080a;
 }
 
 .projects .project-info {
@@ -1040,4 +1046,12 @@ section.testimonials-partners,
   visibility: visible !important;
   pointer-events: auto !important;
   transform: translateX(-50%) translateY(0) !important;
+}
+
+
+/* Повне усунення будь-яких 1px ліній, рамок та бліків між 1-м і 2-м екранами */
+.intro, .intro .container-kivi, .intro .container-kivi video, .pin-spacer {
+  border: none !important;
+  outline: none !important;
+  background: #08080a;
 }
