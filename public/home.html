@@ -736,12 +736,11 @@
     align-items: center !important;
     width: max-content !important;
     animation: tpMarqueePerpetual 32s linear infinite !important;
-    transition: animation-duration 0.8s ease-out !important;
   }
 
-  /* ON HOVER: SLOWS DOWN VERY SLOWLY AND CONTINUES MOVING VERY SLOWLY */
+  /* ON HOVER: PAUSES INSTANTLY IN PLACE WITHOUT ANY JUMPING */
   .tp-marquee-tunnel-strip:hover .tp-marquee-track {
-    animation-duration: 150s !important;
+    animation-play-state: paused !important;
   }
 
   .tp-brand-item {
