@@ -175,7 +175,8 @@ const initHeroAnimation = () => {
   }
 
   // ============================================================
-  // СЕКЦІЯ 4: М'ЯКИЙ УЛЬТРА-ПЛАВНИЙ 3-ЕТАПНИЙ ЗАКРІПЛЕНИЙ СКРОЛЛ
+  // СЕКЦІЯ 4: ВІЛЬНИЙ СКРОЛЛ БЕЗ ЗАМОРАЖИВАНИЯ СТРАНИЦЫ (UNPINNED)
+  // ПООЧЕРЕДНОЕ МЯГКОЕ ПОЯВЛЕНИЕ 1 -> 2 -> 3 ПРИ ЕСТЕСТВЕННОМ СКРОЛЛЕ
   // ============================================================
   const testimonialsSection = document.querySelector(".testimonials-partners");
   if (testimonialsSection) {
@@ -184,40 +185,81 @@ const initHeroAnimation = () => {
     const rightPoster = testimonialsSection.querySelector(".nw-parallax-right");
     const leftCard = testimonialsSection.querySelector(".nw-parallax-left");
 
-    // Початковий стан: картки приховані знизу
-    if (centerCard) gsap.set(centerCard, { y: 160, opacity: 0 });
-    if (rightPoster) gsap.set(rightPoster, { y: 220, opacity: 0 });
-    if (leftCard) gsap.set(leftCard, { y: 260, opacity: 0 });
-    if (headerGroup) gsap.set(headerGroup, { y: 40, opacity: 0 });
+    // 0. Заголовок секції — М'яка поява при звичайному скролі
+    if (headerGroup) {
+      gsap.fromTo(headerGroup,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: testimonialsSection,
+            start: "top 95%",
+            end: "top 60%",
+            scrub: 0.8,
+            invalidateOnRefresh: true,
+          }
+        }
+      );
+    }
 
-    // Створюємо фіксований PIN-таймлайн з м'яким scrub 1.8
-    const sectionTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: testimonialsSection,
-        start: "top top",
-        end: "+=320%",
-        pin: true,
-        pinSpacing: true,
-        scrub: 1.8,
-        anticipatePin: 1,
-        refreshPriority: 5,
-      }
-    });
+    // 1-Й ЕТАП: Спочатку плавно виринає ЦЕНТРАЛЬНА картка Review
+    if (centerCard) {
+      gsap.fromTo(centerCard,
+        { y: 130, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: testimonialsSection,
+            start: "top 90%",
+            end: "top 45%",
+            scrub: 1.0,
+            invalidateOnRefresh: true,
+          }
+        }
+      );
+    }
 
-    // 0. Заголовок показується спочатку
-    sectionTl.to(headerGroup, { y: 0, opacity: 1, duration: 1.2, ease: "power2.out" }, 0);
+    // 2-Й ЕТАП: За нею при продовженні скролу виринає ДРУГА картка (Справа)
+    if (rightPoster) {
+      gsap.fromTo(rightPoster,
+        { y: 170, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: testimonialsSection,
+            start: "top 75%",
+            end: "top 30%",
+            scrub: 1.2,
+            invalidateOnRefresh: true,
+          }
+        }
+      );
+    }
 
-    // 1-Й ЕТАП: Спочатку виринає ТІЛЬКИ картка Review
-    sectionTl.to(centerCard, { y: 0, opacity: 1, duration: 2.5, ease: "power2.out" }, 0.6);
-
-    // 2-Й ЕТАП: Окремим наступним скролом з'являється картка Справа
-    sectionTl.to(rightPoster, { y: 0, opacity: 1, duration: 2.5, ease: "power2.out" }, 3.2);
-
-    // 3-Й ЕТАП: Останнім окремим скролом підлітає картка Сліва
-    sectionTl.to(leftCard, { y: 0, opacity: 1, duration: 2.5, ease: "power2.out" }, 5.8);
-
-    // Пауза перед розблокуванням скролу
-    sectionTl.to({}, { duration: 1.5 });
+    // 3-Й ЕТАП: Третьою плавно підтягується КАРТКА СЛІВА
+    if (leftCard) {
+      gsap.fromTo(leftCard,
+        { y: 210, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: testimonialsSection,
+            start: "top 60%",
+            end: "top 15%",
+            scrub: 1.4,
+            invalidateOnRefresh: true,
+          }
+        }
+      );
+    }
   }
 };
 
