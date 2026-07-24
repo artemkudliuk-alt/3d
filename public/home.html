@@ -583,88 +583,63 @@
 
     <!-- ASYMMETRICAL STAGGERED PARALLAX GRID: 1st Review -> 2nd Right Poster -> 3rd Left Card -->
     <script>
-(function initSection4Parallax() {
-  function run() {
-    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-      setTimeout(run, 50);
-      return;
-    }
-    gsap.registerPlugin(ScrollTrigger);
+(function initVanillaSec4Parallax() {
+  function updateParallax() {
+    const grid = document.querySelector('.tp-asymmetric-grid');
+    if (!grid) return;
 
-    const sec = document.querySelector('.testimonials-partners');
-    if (!sec) return;
-    const grid = sec.querySelector('.tp-asymmetric-grid') || sec;
+    const rect = grid.getBoundingClientRect();
+    const vh = window.innerHeight;
+
+    // Progress from 0 (grid top at bottom of screen) to 1 (grid top centered near top)
+    const totalDist = vh * 0.65;
+    const currentDist = vh - rect.top;
+    let progress = currentDist / totalDist;
+    if (progress < 0) progress = 0;
+    if (progress > 1) progress = 1;
 
     const centerCard = grid.querySelector('.nw-parallax-center');
     const rightPoster = grid.querySelector('.nw-parallax-right');
     const leftCard = grid.querySelector('.nw-parallax-left');
 
-    // 1-Й ЕТАП: ЦЕНТРАЛЬНА КАРТКА REVIEW — З'являється першою при вході секції (95% -> 75%)
+    // 1-st: Center card (progress 0.0 -> 0.33)
+    let p1 = progress / 0.33;
+    if (p1 < 0) p1 = 0; if (p1 > 1) p1 = 1;
+    const y1 = (1 - p1) * 120;
     if (centerCard) {
-      gsap.fromTo(centerCard,
-        { y: 100, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sec,
-            start: "top 95%",
-            end: "top 75%",
-            scrub: true,
-            invalidateOnRefresh: true,
-          }
-        }
-      );
+      centerCard.style.transform = 'translate3d(0, ' + y1.toFixed(2) + 'px, 0)';
+      centerCard.style.opacity = p1.toFixed(3);
     }
 
-    // 2-Й ЕТАП: ПРАВА КАРТКА ФОТО — Підтягується другою (75% -> 55%)
+    // 2-nd: Right photo card (progress 0.33 -> 0.66)
+    let p2 = (progress - 0.33) / 0.33;
+    if (p2 < 0) p2 = 0; if (p2 > 1) p2 = 1;
+    const y2 = (1 - p2) * 220;
     if (rightPoster) {
-      gsap.fromTo(rightPoster,
-        { y: 200, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sec,
-            start: "top 75%",
-            end: "top 55%",
-            scrub: true,
-            invalidateOnRefresh: true,
-          }
-        }
-      );
+      rightPoster.style.transform = 'translate3d(0, ' + y2.toFixed(2) + 'px, 0)';
+      rightPoster.style.opacity = p2.toFixed(3);
     }
 
-    // 3-Й ЕТАП: ЛІВА КАРТКА БІЛА — Підтягується третьою і ЗАВЕРШУЄТЬСЯ РІВНО В ЦЕНТРІ ЕКРАНУ (55% -> 35%)
+    // 3-rd: Left white card (progress 0.66 -> 1.0)
+    let p3 = (progress - 0.66) / 0.34;
+    if (p3 < 0) p3 = 0; if (p3 > 1) p3 = 1;
+    const y3 = (1 - p3) * 300;
     if (leftCard) {
-      gsap.fromTo(leftCard,
-        { y: 280, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sec,
-            start: "top 55%",
-            end: "top 35%",
-            scrub: true,
-            invalidateOnRefresh: true,
-          }
-        }
-      );
+      leftCard.style.transform = 'translate3d(0, ' + y3.toFixed(2) + 'px, 0)';
+      leftCard.style.opacity = p3.toFixed(3);
     }
-
-    ScrollTrigger.refresh();
   }
 
-  if (document.readyState === 'complete') run();
-  else window.addEventListener('load', run);
-  document.addEventListener('DOMContentLoaded', run);
-  setTimeout(run, 200);
+  window.addEventListener('scroll', updateParallax, { passive: true });
+  window.addEventListener('resize', updateParallax, { passive: true });
+  if (document.readyState === 'complete') updateParallax();
+  else window.addEventListener('load', updateParallax);
+  document.addEventListener('DOMContentLoaded', updateParallax);
+  setTimeout(updateParallax, 100);
+  setTimeout(updateParallax, 500);
 })();
 </script>
+
 
 
 <div class="tp-asymmetric-grid" style="display: grid !important; grid-template-columns: minmax(0, 1.1fr) minmax(0, 2.8fr) minmax(0, 1.1fr) !important; gap: 36px !important; align-items: center !important; width: 100% !important;">
