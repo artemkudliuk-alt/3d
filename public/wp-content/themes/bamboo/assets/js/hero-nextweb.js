@@ -46,7 +46,7 @@ window.initHeroAnimation = function() {
       scrollTrigger: {
         trigger: intro,
         start: 'top top',
-        end: '+=260%',
+        end: '+=340%',
         pin: true,
         pinSpacing: true,
         scrub: 1.0,
