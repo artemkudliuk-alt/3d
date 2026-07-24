@@ -345,30 +345,38 @@ textarea:focus {
 
 /* скрим під текст: щільніший там, де лежить заголовок і кнопки */
 /* скрим під текст: щільніший там, де лежить заголовок і кнопки, із 100% розмиттям та переходом знизу */
+/* скрим під текст: щільніший там, де лежить заголовок і кнопки */
 .nw-hero__scrim {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(120% 75% at 50% 42%, rgba(8, 8, 10, 0.72) 0%, rgba(8, 8, 10, 0.3) 55%, transparent 78%),
-    linear-gradient(180deg, rgba(8, 8, 10, 0.6) 0%, transparent 25%, rgba(8, 8, 10, 0.4) 60%, rgba(8, 8, 10, 0.95) 88%, #08080a 100%);
+    radial-gradient(120% 75% at 50% 42%, rgba(8, 8, 10, 0.65) 0%, rgba(8, 8, 10, 0.25) 55%, transparent 78%),
+    linear-gradient(180deg, rgba(8, 8, 10, 0.5) 0%, transparent 25%, rgba(8, 8, 10, 0.3) 65%, rgba(8, 8, 10, 0.85) 90%, #08080a 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Градієнтне затемнение відео в кінці скроллу (анімується через GSAP наприкінці 1-го екрану) */
+.nw-hero__fade-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(8, 8, 10, 0.75) 45%, #08080a 100%);
+  opacity: 0;
   pointer-events: none;
   z-index: 2;
 }
 
-/* М'який розмитий розграничитель між 1-м та 2-м екранами (усуває лінію та бліки) */
-.intro::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 200px;
-  background: linear-gradient(180deg, transparent 0%, rgba(8, 8, 10, 0.6) 40%, #08080a 100%);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  pointer-events: none;
-  z-index: 3;
+/* Безшовне накладання 2-го екрану (усуває 1px лінію та бліки) */
+.projects {
+  position: relative;
+  z-index: 10;
+  margin-top: -4px !important;
+  background: #08080a !important;
+  box-shadow: 0 -20px 40px #08080a;
 }
+
+/* М'який розмитий розграничитель між 1-м та 2-м екранами (усуває лінію та бліки) */
+
 
 /* Оформлення шрифтів та кнопок в оригінальній лівій колонці */
 .intro .container-content {

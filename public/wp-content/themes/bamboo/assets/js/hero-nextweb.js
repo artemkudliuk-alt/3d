@@ -23,7 +23,8 @@ window.initHeroAnimation = function() {
     var subtitle = intro.querySelector('.hero-sub');
     var cta = intro.querySelector('.hero-cta');
     var header = document.querySelector('.header');
-
+    var fadeOverlay = intro.querySelector('.nw-hero__fade-overlay');
+    
     var play = function() { if (video && video.play) video.play().catch(function(){}); };
     play();
     document.addEventListener('pointerdown', play, { once: true });
@@ -92,8 +93,9 @@ window.initHeroAnimation = function() {
     // ============================================================
     // STAGE 4 (5.4 -> 6.6): Subtitle & CTA float up & fade out (Header STAYS INVISIBLE until Section 2!)
     // ============================================================
-    if (subtitle) tl.to(subtitle, { y: -80, opacity: 0, duration: 1.2, ease: 'power2.in' }, 5.4);
-    if (cta)      tl.to(cta,      { y: -80, opacity: 0, duration: 1.2, ease: 'power2.in' }, 5.4);
+    if (subtitle) tl.to(subtitle, { y: -80, opacity: 0, duration: 1.4, ease: 'power2.in' }, 4.4);
+    if (cta)      tl.to(cta,      { y: -80, opacity: 0, duration: 1.4, ease: 'power2.in' }, 4.4);
+    if (fadeOverlay) tl.to(fadeOverlay, { opacity: 1, duration: 1.8, ease: 'power1.inOut' }, 4.2);
 
     // Video speed boost on scroll
     if (video) {
