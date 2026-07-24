@@ -175,8 +175,8 @@ const initHeroAnimation = () => {
   }
 
   // ============================================================
-  // СЕКЦІЯ 4: 100% ГАРАНТОВАНИЙ ПООЧЕРЕДНИЙ 1-2-3 ЗАЕЗД
-  // З ИЗОЛИРОВАННЫМИ ОКНАМИ СКРОЛЛА (БЕЗ PIN/ЗАМОРАЖИВАНИЯ)
+  // СЕКЦІЯ 4: ГЛУБОКИЙ ПООЧЕРЕДНЫЙ ЗАЕЗД (1 -> 2 -> 3)
+  // КАРТОЧКА 2 ТА 3 СПОЧАТКУ СХОВАНІ ГЛИБОКО ПІД ЕКРАНОМ (500px / 700px)
   // ============================================================
   const testimonialsSection = document.querySelector(".testimonials-partners");
   if (testimonialsSection) {
@@ -185,30 +185,34 @@ const initHeroAnimation = () => {
     const rightPoster = testimonialsSection.querySelector(".nw-parallax-right");
     const leftCard = testimonialsSection.querySelector(".nw-parallax-left");
 
-    // 0. Заголовок секції
+    // Заголовок секції — Поява при наближенні
     if (headerGroup) {
       gsap.fromTo(headerGroup,
-        { y: 35, opacity: 0 },
+        { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           ease: "power2.out",
           scrollTrigger: {
             trigger: testimonialsSection,
-            start: "top 98%",
-            end: "top 80%",
-            scrub: 0.5,
+            start: "top 95%",
+            end: "top 75%",
+            scrub: 0.6,
             invalidateOnRefresh: true,
           }
         }
       );
     }
 
-    // 1-Й ЕТАП: ТІЛЬКИ ЦЕНТРАЛЬНА КАРТКА REVIEW (Впливає з 90% до 65% екрана)
-    // У цей момент картки 2 та 3 ПОВНІСТЮ НЕВИДИМІ!
+    // Явно ховаємо карточки 2 та 3 до старту їхніх власні тригерів!
+    gsap.set(centerCard, { opacity: 0, y: 140 });
+    gsap.set(rightPoster, { opacity: 0, y: 450 });
+    gsap.set(leftCard, { opacity: 0, y: 650 });
+
+    // 1-Й ЕТАП: Спочатку підлітає та встає на місце ТІЛЬКИ центральна картка Review
     if (centerCard) {
       gsap.fromTo(centerCard,
-        { y: 150, opacity: 0 },
+        { y: 140, opacity: 0 },
         {
           y: 0,
           opacity: 1,
@@ -224,38 +228,38 @@ const initHeroAnimation = () => {
       );
     }
 
-    // 2-Й ЕТАП: ДРУГА КАРТКА СПРАВА (Починає виринати ТІЛЬКИ з 45% екрана, після заїзду Review)
+    // 2-Й ЕТАП: ДРУГА КАРТКА СПРАВА вилітає з глибокого низу (y: 450px -> 0px) ТІЛЬКИ з top 50%
     if (rightPoster) {
       gsap.fromTo(rightPoster,
-        { y: 180, opacity: 0 },
+        { y: 450, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           ease: "power2.out",
           scrollTrigger: {
             trigger: testimonialsSection,
-            start: "top 45%",
+            start: "top 50%",
             end: "top 20%",
-            scrub: 0.9,
+            scrub: 1.0,
             invalidateOnRefresh: true,
           }
         }
       );
     }
 
-    // 3-Й ЕТАП: ТРЕЦЯ КАРТКА СЛІВА (Починає виринати ТІЛЬКИ з 10% екрана, після заїзду карти Справа)
+    // 3-Й ЕТАП: ТРЕЦЯ КАРТКА СЛІВА вилітає з ще більшої глибини (y: 650px -> 0px) ТІЛЬКИ з top 20%
     if (leftCard) {
       gsap.fromTo(leftCard,
-        { y: 210, opacity: 0 },
+        { y: 650, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           ease: "power2.out",
           scrollTrigger: {
             trigger: testimonialsSection,
-            start: "top 10%",
-            end: "bottom 85%",
-            scrub: 1.0,
+            start: "top 20%",
+            end: "bottom 80%",
+            scrub: 1.2,
             invalidateOnRefresh: true,
           }
         }
