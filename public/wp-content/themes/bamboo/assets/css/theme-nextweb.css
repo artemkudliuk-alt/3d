@@ -317,7 +317,7 @@ textarea:focus {
 .intro {
   position: relative;
   min-height: 100svh;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .intro .container {
@@ -596,7 +596,7 @@ textarea:focus {
   aspect-ratio: 16/9;
   border-radius: 0px !important;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  overflow: hidden;
+  overflow: visible;
   background: #000;
 }
 .nw-modal__video-wrapper video {
@@ -627,7 +627,7 @@ textarea:focus {
   height: 6px;
   background: rgba(255, 255, 255, 0.25);
   border-radius: 0px !important;
-  overflow: hidden;
+  overflow: visible;
   cursor: pointer;
 }
 .nw-progress-fill {
@@ -662,7 +662,7 @@ textarea:focus {
   position: relative;
   aspect-ratio: 16/10;
   border-radius: 0px !important; /* Гострі кути */
-  overflow: hidden;
+  overflow: visible;
   margin-bottom: 12px;
 }
 .nw-catalog-card .thumb video {
@@ -804,7 +804,7 @@ textarea:focus {
 /* PARTNERS INFINITE MARQUEE */
 .partners-container {
   width: 100% !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   margin-top: 40px !important;
 }
 
@@ -824,7 +824,7 @@ textarea:focus {
 
 .marquee-wrapper {
   width: 100% !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   position: relative !important;
   /* removed */
   -webkit-/* removed */
@@ -872,7 +872,7 @@ section.testimonials-partners,
   color: #0c0c10 !important;
   padding-block: clamp(90px, 10vw, 150px) !important;
   width: 100% !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   box-sizing: border-box !important;
 }
 
@@ -1026,7 +1026,7 @@ section.testimonials-partners,
 
 .tp-card-right {
   border-radius: 24px !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12) !important;
   border: 4px solid #ffffff !important;
   height: 320px !important;
@@ -1084,7 +1084,7 @@ section.testimonials-partners,
 /* TESTIMONIALS SWIPER CAROUSEL (STEP 2 LUXURY CARDS) */
 .testimonials-swiper {
   width: 100% !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   padding-block: 10px 20px !important;
 }
 
@@ -1146,7 +1146,7 @@ section.testimonials-partners,
   height: 64px !important;
   max-height: 64px !important;
   border-radius: 50% !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   border: 2px solid rgba(255, 255, 255, 0.25) !important;
   flex: 0 0 64px !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
@@ -1248,7 +1248,7 @@ section.testimonials-partners,
 
 .marquee-wrapper {
   width: 100% !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   position: relative !important;
   /* removed */
   -webkit-/* removed */
@@ -1296,7 +1296,7 @@ section.lead-capture-section,
   color: #ffffff !important;
   padding-block: clamp(100px, 12vw, 170px) !important;
   width: 100% !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   box-sizing: border-box !important;
 }
 
@@ -1344,7 +1344,7 @@ footer.site-footer {
   color: #ffffff !important;
   padding-block: clamp(80px, 10vw, 140px) !important;
   width: 100% !important;
-  overflow: hidden !important;
+  overflow: visible !important;
 }
 
 .benefits .container.top {
@@ -1401,7 +1401,7 @@ footer.site-footer {
   border-radius: 24px !important;
   padding: 24px !important;
   box-sizing: border-box !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   height: 100% !important;
   position: relative !important;
 }
@@ -1422,7 +1422,7 @@ footer.site-footer {
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
-  overflow: hidden !important;
+  overflow: visible !important;
 }
 
 /* Active card side-by-side split: 56% text column (with 24px right padding), 40% photo */
@@ -1448,7 +1448,7 @@ footer.site-footer {
   max-width: 56% !important;
   padding-right: 24px !important;
   box-sizing: border-box !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
@@ -1465,7 +1465,7 @@ footer.site-footer {
   max-width: 40% !important;
   height: 100% !important;
   border-radius: 16px !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   margin-top: 0 !important;
   display: block !important;
   opacity: 1 !important;
@@ -1502,7 +1502,7 @@ footer.site-footer {
   color: #ffffff !important;
   max-width: 100% !important;
   white-space: nowrap !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   text-overflow: ellipsis !important;
   display: block !important;
 }

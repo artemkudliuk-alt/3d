@@ -122,7 +122,7 @@ img[src*="logo-black"],img[src*="logo-foot"]{filter:brightness(0) invert(.92)}
 .tours-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:20px; max-width:1280px; margin:44px auto 0; padding:0 24px; }
 .tour-card{ position:relative; border:0; padding:0; cursor:pointer; border-radius:18px;
-  overflow:hidden; aspect-ratio:16/10; background:var(--background-card); }
+  overflow:visible; aspect-ratio:16/10; background:var(--background-card); }
 .tour-card img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease-in-out; }
 .tour-card:hover img{ transform:scale(1.05); }
 .tour-card::after{ content:""; position:absolute; inset:0;
@@ -144,7 +144,7 @@ img[src*="logo-black"],img[src*="logo-foot"]{filter:brightness(0) invert(.92)}
    Mobile polish + creative-reveal initial states
    ============================================================ */
 @media (max-width:1024px){
-  .tours{ padding:64px 0; overflow:hidden; }
+  .tours{ padding:64px 0; overflow:visible; }
   .tours-grid,.testimonials .t-grid{ grid-template-columns:1fr; gap:16px; padding:0 20px; }
   .tour-card{ width:100%; aspect-ratio:16/11; }
   .testimonials{ padding:72px 0; }
