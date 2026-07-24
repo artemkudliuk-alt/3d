@@ -1292,85 +1292,151 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
   });
 </script>
 <script>
-(function initReviewTabSwitcher() {
+(function initCompleteReviewSwitcher() {
   const reviews = [
     {
       name: "Іван Демідов",
       role: "Управляючий директор Grand Plaza Hotel",
-      text: "«Після інтеграції 3D-туру від NextWeb час перебування гостей на сторінках номерного фонду зріс майже вдвічі. Гості бронюють номери преміум-сегменту значно впевненіше, оскільки бачать кожен куточок та краєвид з вікна у реальному часі.»",
+      quote: "«Після інтеграції 3D-туру від NextWeb час перебування гостей на сторінках номерного фонду зріс майже вдвічі. Гості бронюють номери преміум-сегменту значно впевненіше, оскільки бачать кожен куточок та краєвид з вікна у реальному часі.»",
+      avatar: "/media/gen/testimonials/avatar1.png",
+      poster: "/media/gen/case-pool.webp",
       idx: "01 / VERIFIED"
     },
     {
       name: "Олена Ковальчук",
       role: "Маркетинг-директор Boutique Resort & Spa",
-      text: "«Наші гості відзначити, що віртуальне занурення в інтер'єри перед бронюванням зняло всі сумніви. Прямі бронювання зросли на третину за перші 2 місяці роботи 3D-двигуна!»",
+      quote: "«Наші гості відзначили, що віртуальне занурення в інтер'єри перед бронюванням зняло всі сумніви. Прямі бронювання зросли на третину за перші 2 місяці роботи 3D-двигуна NextWeb!»",
+      avatar: "/media/gen/testimonials/avatar2.png",
+      poster: "/media/gen/case-villa.webp",
       idx: "02 / VERIFIED"
     },
     {
       name: "Олександр Кравченко",
       role: "Генеральний менеджер City Premier Hotel",
-      text: "«3D-візуалізація конференц-залів та номерів дозволила нам збільшити корпоративні бронювання на 45%. Клієнти бачать реальну розкіш та оснащення без виїзду на об'єкт.»",
+      quote: "«3D-візуалізація конференц-залів та номерів дозволила нам збільшити корпоративні бронювання на 45%. Клієнти бачать реальну розкіш та оснащення без виїзду на об'єкт.»",
+      avatar: "/media/gen/testimonials/avatar3.png",
+      poster: "/media/gen/case-suite.webp",
       idx: "03 / VERIFIED"
     },
     {
       name: "Вікторія Мельник",
       role: "Керівник відділу продажів Luxury Suites",
-      text: "«Впровадження 3D-двигуна NextWeb стало найкращим інвестиційним рішенням року. Окупність 100% за перші тижні благодаря зануренню VIP-гостей у 60 FPS.»",
+      quote: "«Впровадження 3D-двигуна NextWeb стало найкращим інвестиційним рішенням року. Окупність 100% за перші тижні завдяки зануренню VIP-гостей у 60 FPS.»",
+      avatar: "/media/gen/testimonials/avatar4.png",
+      poster: "/media/gen/case-penthouse.webp",
       idx: "04 / VERIFIED"
     }
   ];
 
-  function setupTabs() {
+  let currentIdx = 0;
+  let autoplayTimer = null;
+  let isHovered = false;
+
+  function activateTab(index) {
+    currentIdx = index;
+    const data = reviews[index];
+    if (!data) return;
+
+    // Update Tab Buttons (01, 02, 03, 04)
+    const btns = document.querySelectorAll('.tp-tab-btn');
+    btns.forEach((b, i) => {
+      if (i === index) {
+        b.classList.add('active');
+        b.style.cssText = "width: 48px !important; height: 48px !important; border-radius: 4px !important; background: #0c0c10 !important; color: #ffffff !important; border: 1px solid #0c0c10 !important; font-family: 'Mulish', sans-serif !important; font-weight: 800 !important; font-size: 15px !important; cursor: pointer !important; transition: all 0.3s ease !important;";
+      } else {
+        b.classList.remove('active');
+        b.style.cssText = "width: 48px !important; height: 48px !important; border-radius: 4px !important; background: #ffffff !important; color: #666678 !important; border: 1px solid rgba(0, 0, 0, 0.14) !important; font-family: 'Mulish', sans-serif !important; font-weight: 800 !important; font-size: 15px !important; cursor: pointer !important; transition: all 0.3s ease !important;";
+      }
+    });
+
+    // Update Text Content with subtle fade
+    const nameEl = document.getElementById('tp-active-name');
+    const roleEl = document.getElementById('tp-active-role');
+    const quoteEl = document.getElementById('tp-active-quote') || document.querySelector('.tp-quote-text');
+    const idxEl = document.getElementById('tp-active-index');
+    const avatarEl = document.getElementById('tp-active-avatar');
+    const posterEl = document.getElementById('tp-active-poster');
+
+    if (nameEl) nameEl.textContent = data.name;
+    if (roleEl) roleEl.textContent = data.role;
+    if (quoteEl) quoteEl.textContent = data.quote;
+    if (idxEl) idxEl.textContent = data.idx;
+
+    if (avatarEl && data.avatar) {
+      avatarEl.style.opacity = '0.4';
+      setTimeout(() => {
+        avatarEl.src = data.avatar;
+        avatarEl.style.opacity = '1';
+      }, 150);
+    }
+
+    if (posterEl && data.poster) {
+      posterEl.style.opacity = '0.3';
+      setTimeout(() => {
+        posterEl.src = data.poster;
+        posterEl.style.opacity = '1';
+      }, 150);
+    }
+
+    // Update Left Card Badge Slides
+    document.querySelectorAll('.tp-badge-slide').forEach((slide, i) => {
+      if (i === index) {
+        slide.classList.add('active');
+        slide.style.opacity = '1';
+        slide.style.pointerEvents = 'auto';
+      } else {
+        slide.classList.remove('active');
+        slide.style.opacity = '0';
+        slide.style.pointerEvents = 'none';
+      }
+    });
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayTimer = setInterval(() => {
+      if (!isHovered) {
+        const nextIdx = (currentIdx + 1) % reviews.length;
+        activateTab(nextIdx);
+      }
+    }, 8000); // EXACTLY 8 SECONDS
+  }
+
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function setupSwitcher() {
+    const sec = document.querySelector('.testimonials-partners');
+    if (sec) {
+      sec.addEventListener('mouseenter', () => { isHovered = true; });
+      sec.addEventListener('mouseleave', () => { isHovered = false; });
+    }
+
     const btns = document.querySelectorAll('.tp-tab-btn');
     btns.forEach((btn) => {
       btn.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-
-        const index = parseInt(this.getAttribute('data-tab') || '0', 10);
-        const data = reviews[index];
-        if (!data) return;
-
-        btns.forEach((b, i) => {
-          if (i === index) {
-            b.classList.add('active');
-            b.style.cssText = "width: 48px !important; height: 48px !important; border-radius: 4px !important; background: #0c0c10 !important; color: #ffffff !important; border: 1px solid #0c0c10 !important; font-family: 'Mulish', sans-serif !important; font-weight: 800 !important; font-size: 15px !important; cursor: pointer !important; transition: all 0.3s ease !important;";
-          } else {
-            b.classList.remove('active');
-            b.style.cssText = "width: 48px !important; height: 48px !important; border-radius: 4px !important; background: #ffffff !important; color: #666678 !important; border: 1px solid rgba(0, 0, 0, 0.14) !important; font-family: 'Mulish', sans-serif !important; font-weight: 800 !important; font-size: 15px !important; cursor: pointer !important; transition: all 0.3s ease !important;";
-          }
-        });
-
-        const nameEl = document.getElementById('tp-active-name');
-        const roleEl = document.getElementById('tp-active-role');
-        const textEl = document.getElementById('tp-active-text');
-        const idxEl = document.getElementById('tp-active-index');
-
-        if (nameEl) nameEl.textContent = data.name;
-        if (roleEl) roleEl.textContent = data.role;
-        if (textEl) textEl.textContent = data.text;
-        if (idxEl) idxEl.textContent = data.idx;
-
-        document.querySelectorAll('.tp-badge-slide').forEach((slide, i) => {
-          if (i === index) {
-            slide.classList.add('active');
-            slide.style.opacity = '1';
-            slide.style.pointerEvents = 'auto';
-          } else {
-            slide.classList.remove('active');
-            slide.style.opacity = '0';
-            slide.style.pointerEvents = 'none';
-          }
-        });
+        const idx = parseInt(this.getAttribute('data-tab') || '0', 10);
+        activateTab(idx);
+        startAutoplay(); // Reset 8s timer on click
       });
     });
+
+    activateTab(0);
+    startAutoplay();
   }
 
-  if (document.readyState === 'complete') setupTabs();
-  else window.addEventListener('load', setupTabs);
-  document.addEventListener('DOMContentLoaded', setupTabs);
+  if (document.readyState === 'complete') setupSwitcher();
+  else window.addEventListener('load', setupSwitcher);
+  document.addEventListener('DOMContentLoaded', setupSwitcher);
 })();
 </script>
+
 
 </body>
 </html>
