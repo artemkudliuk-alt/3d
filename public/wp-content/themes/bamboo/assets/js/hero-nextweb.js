@@ -1,4 +1,4 @@
-/* Перший екран та асинхронний 3D-паралакс секцій NextWeb Hotels. */
+/* Перший екран, 1-2-3 каскадний паралакс та 4 інтерактивні відгуки NextWeb Hotels. */
 
 const initHeroAnimation = () => {
   const intro = document.querySelector(".intro");
@@ -175,17 +175,16 @@ const initHeroAnimation = () => {
   }
 
   // ============================================================
-  // СЕКЦІЯ 4: ДИНАМІЧНИЙ ПОМІТНИЙ ПАРАЛАКС ТЕКСТУ ТА КАРТОЧОК
+  // СЕКЦІЯ 4: КАСКАДНИЙ 1-2-3 ПАРАЛАКС (REVIEW -> СПРАВА -> СЛІВА)
   // ============================================================
   const testimonialsSection = document.querySelector(".testimonials-partners");
   if (testimonialsSection) {
     const headerGroup = testimonialsSection.querySelector(".nw-section4-header-group");
-    const leftCard = testimonialsSection.querySelector(".nw-parallax-left");
     const centerCard = testimonialsSection.querySelector(".nw-parallax-center");
     const rightPoster = testimonialsSection.querySelector(".nw-parallax-right");
+    const leftCard = testimonialsSection.querySelector(".nw-parallax-left");
 
-    // 1. ЗАГОЛОВОК СЕКЦІЇ (004 + Заголовок + Підзаголовок)
-    // Рух з -160px до +120px для яскравого помітного зміщення відносно карточок при скроллі!
+    // 0. Заголовок (004 + Title)
     if (headerGroup) {
       gsap.fromTo(headerGroup,
         { y: -160 },
@@ -198,60 +197,64 @@ const initHeroAnimation = () => {
             end: "bottom 5%",
             scrub: 1.5,
             invalidateOnRefresh: true,
+            refreshPriority: -1,
           }
         }
       );
     }
 
-    // 2. ЛІВА КАРТОЧКА: Активне виринання знизу вгору при скролі (y: -180px -> +40px)
-    if (leftCard) {
-      gsap.fromTo(leftCard,
-        { y: -180 },
-        {
-          y: 40,
-          ease: "none",
-          scrollTrigger: {
-            trigger: testimonialsSection,
-            start: "top 95%",
-            end: "bottom 5%",
-            scrub: 1.4,
-            invalidateOnRefresh: true,
-          }
-        }
-      );
-    }
-
-    // 3. ЦЕНТРАЛЬНА ВЕЛИКА ЧОРНА РЕВЬЮ-КАРТОЧКА (y: 140px -> -110px)
+    // 1-Й НА СЦЕНУ (Перша картка Review): Підтягується ПЕРШОЮ
     if (centerCard) {
       gsap.fromTo(centerCard,
-        { y: 140 },
+        { y: 220 },
         {
-          y: -110,
-          ease: "none",
+          y: -40,
+          ease: "power1.out",
           scrollTrigger: {
             trigger: testimonialsSection,
             start: "top 95%",
-            end: "bottom 5%",
-            scrub: 1.0,
+            end: "top 20%",
+            scrub: 0.9,
             invalidateOnRefresh: true,
+            refreshPriority: -1,
           }
         }
       );
     }
 
-    // 4. ПРАВА КАРТИНКА-ПОСТЕР (y: 180px -> -140px)
+    // 2-Й НА СЦЕНУ (Друга картка Справа): Підтягується ДРУГОЮ одразу за Review
     if (rightPoster) {
       gsap.fromTo(rightPoster,
-        { y: 180 },
+        { y: 280 },
         {
-          y: -140,
-          ease: "none",
+          y: -60,
+          ease: "power1.out",
           scrollTrigger: {
             trigger: testimonialsSection,
-            start: "top 95%",
-            end: "bottom 5%",
-            scrub: 1.6,
+            start: "top 90%",
+            end: "top 15%",
+            scrub: 1.2,
             invalidateOnRefresh: true,
+            refreshPriority: -1,
+          }
+        }
+      );
+    }
+
+    // 3-Й НА СЦЕНУ (Третя картка Сліва): Доганяє ТРЕТЬОЮ через декілька пікселів
+    if (leftCard) {
+      gsap.fromTo(leftCard,
+        { y: 340 },
+        {
+          y: -80,
+          ease: "power1.out",
+          scrollTrigger: {
+            trigger: testimonialsSection,
+            start: "top 85%",
+            end: "top 10%",
+            scrub: 1.5,
+            invalidateOnRefresh: true,
+            refreshPriority: -1,
           }
         }
       );
@@ -265,24 +268,108 @@ if (document.readyState === "loading") {
   initHeroAnimation();
 }
 
-// Автоматичний фейд-слайдер для лівої карточки (кожні 3 секунди)
+// ============================================================
+// 4 ИНТЕРАКТИВНЫХ ОТЗЫВА С ПЕРЕКЛЮЧЕНИЕМ И СИНХРОНИЗАЦИЕЙ
+// ============================================================
 (() => {
-  const container = document.getElementById("tp-badge-carousel");
-  if (!container) return;
+  const testimonialsData = [
+    {
+      name: "Іван Демідов",
+      role: "Управляючий директор Grand Plaza Hotel",
+      badge: "+45% до конверсії",
+      quote: "«Після інтеграції 3D-туру від NextWeb час перебування гостей на сторінках номерного фонду зріс майже вдвічі. Гості бронюють номери преміум-сегменту значно впевненіше, оскільки бачать кожен куточок та краєвид з вікна у реальному часі.»",
+      avatar: "/media/gen/testimonials/avatar1.png",
+      poster: "/media/gen/case-pool.webp"
+    },
+    {
+      name: "Олена Ковальчук",
+      role: "Маркетинг-директор Boutique Resort & Spa",
+      badge: "+3.2x переглядів",
+      quote: "«Наші гості відзначили, що віртуальне занурення в інтер'єри перед бронюванням зняло всі сумніви. Прямі бронювання зросли на третину за перші 2 місяці роботи 3D-двигуна!»",
+      avatar: "/media/gen/testimonials/avatar2.png",
+      poster: "/media/gen/case-ocean.webp"
+    },
+    {
+      name: "Марк Березовський",
+      role: "Генеральний менеджер Riverside Luxury Suites",
+      badge: "+80% WOW-ефект",
+      quote: "«Інтерактивний 3D-контент дозволив показати ексклюзивні панорамні види з пентхаусів. Гості замовляють найдорожчі номери без вагань, оскільки візуалізація виглядає на 100% реалістично.»",
+      avatar: "/media/gen/testimonials/avatar3.png",
+      poster: "/media/gen/case-interior.webp"
+    },
+    {
+      name: "Вікторія Громова",
+      role: "Бренд-директорка Premier Palace Chain",
+      badge: "60 FPS потік",
+      quote: "«Впровадження 3D-технології від NextWeb вивело наш веб-сайт на світовий рівень Awwwards. Це найкраща інвестиція в бренд готелю та довіру преміум-клієнтів.»",
+      avatar: "/media/gen/testimonials/avatar4.png",
+      poster: "/media/gen/case-spa.webp"
+    }
+  ];
 
-  const slides = container.querySelectorAll(".tp-badge-slide");
-  if (!slides || slides.length === 0) return;
+  const tabBtns = document.querySelectorAll(".tp-tab-btn");
+  const slides = document.querySelectorAll(".tp-badge-slide");
+  const activeAvatar = document.getElementById("tp-active-avatar");
+  const activeName = document.getElementById("tp-active-name");
+  const activeRole = document.getElementById("tp-active-role");
+  const activeBadge = document.getElementById("tp-active-badge");
+  const activeQuote = document.getElementById("tp-active-quote");
+  const activePoster = document.getElementById("tp-active-poster");
 
-  let currentSlide = 0;
+  let currentIdx = 0;
+
+  const switchToIndex = (idx) => {
+    currentIdx = idx;
+    const data = testimonialsData[idx];
+    if (!data) return;
+
+    // 1. Оновлення кнопок табів 01-04
+    tabBtns.forEach((btn, bIdx) => {
+      if (bIdx === idx) {
+        btn.classList.add("active");
+        btn.style.background = "#0c0c10";
+        btn.style.color = "#ffffff";
+        btn.style.border = "1px solid #0c0c10";
+      } else {
+        btn.classList.remove("active");
+        btn.style.background = "#ffffff";
+        btn.style.color = "#666678";
+        btn.style.border = "1px solid rgba(0, 0, 0, 0.14)";
+      }
+    });
+
+    // 2. Оновлення лівої плашки слайдів
+    slides.forEach((slide, sIdx) => {
+      if (sIdx === idx) {
+        slide.style.opacity = "1";
+        slide.style.pointerEvents = "auto";
+      } else {
+        slide.style.opacity = "0";
+        slide.style.pointerEvents = "none";
+      }
+    });
+
+    // 3. Плавне оновлення центральної картки відгуку
+    if (activeName) activeName.textContent = data.name;
+    if (activeRole) activeRole.textContent = data.role;
+    if (activeBadge) activeBadge.textContent = data.badge;
+    if (activeQuote) activeQuote.textContent = data.quote;
+    if (activeAvatar) activeAvatar.src = data.avatar;
+    if (activePoster) activePoster.src = data.poster;
+  };
+
+  // Ручне переключення при кліку на таби 01, 02, 03, 04
+  tabBtns.forEach((btn, idx) => {
+    btn.addEventListener("click", () => {
+      switchToIndex(idx);
+    });
+  });
+
+  // Автоматичне переключення кожні 4 секунди
   setInterval(() => {
-    slides[currentSlide].style.opacity = "0";
-    slides[currentSlide].style.pointerEvents = "none";
-    
-    currentSlide = (currentSlide + 1) % slides.length;
-    
-    slides[currentSlide].style.opacity = "1";
-    slides[currentSlide].style.pointerEvents = "auto";
-  }, 3000);
+    const nextIdx = (currentIdx + 1) % testimonialsData.length;
+    switchToIndex(nextIdx);
+  }, 4000);
 })();
 
 // Модальні вікна
