@@ -1,17 +1,7 @@
-.nw-hero-pinned-wrapper {
-  position: relative;
-  height: 320vh;
-  width: 100%;
-}
-
 .intro {
-  position: sticky !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100vh !important;
-  z-index: 1 !important;
-  overflow: hidden !important;
+  position: relative;
+  min-height: 100svh;
+  overflow: visible;
 }
 
 /* ============================================================
@@ -260,7 +250,7 @@ section {
 
 /* Просторний верхній відступ для 2-го екрана (.projects) */
 section.projects#cases, .projects {
-  margin-top: 0 !important;
+  margin-top: -6px !important;
   padding-top: clamp(40px, 6vh, 80px) !important;
   position: relative !important;
   z-index: 10 !important;
@@ -276,7 +266,7 @@ section.projects#cases, .projects {
 }
 
 .projects .project-info-bottom {
-  margin-top: 0 !important;
+  margin-top: -6px !important;
 }
 
 /* ---------- великий напис у першому екрані ---------- */
@@ -337,13 +327,9 @@ textarea:focus {
    Перший екран: відео на всю площу + три кроки появи по скролу
    ============================================================ */
 .intro {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100vh !important;
-  z-index: 1 !important;
-  overflow: hidden !important;
+  position: relative;
+  min-height: 100svh;
+  overflow: visible;
 }
 
 .intro .container {

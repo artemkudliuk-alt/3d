@@ -17,7 +17,6 @@ window.initHeroAnimation = function() {
   var intro = document.querySelector('.intro');
 
   if (intro) {
-    gsap.set(intro, { position: "sticky", top: 0, zIndex: 1 });
     var video = document.getElementById('hero-video');
     var titleWrap = intro.querySelector('.hero-title-wrap');
     var title = intro.querySelector('.hero-title');
@@ -45,11 +44,11 @@ window.initHeroAnimation = function() {
         // Pinned scroll timeline (260vh total scroll distance for strict zero-overlap presentation)
     var tl = gsap.timeline({
       scrollTrigger: {
-        trigger: document.querySelector('.nw-hero-pinned-wrapper') || intro,
+        trigger: intro,
         start: 'top top',
-        end: '+=160%',
-        pin: false,
-        pinSpacing: false,
+        end: '+=260%',
+        pin: true,
+        pinSpacing: true,
         scrub: 1.0,
         anticipatePin: 1,
         refreshPriority: 10,
@@ -102,7 +101,7 @@ window.initHeroAnimation = function() {
     if (video) {
       var idle;
       ScrollTrigger.create({
-        trigger: document.querySelector('.nw-hero-pinned-wrapper') || intro,
+        trigger: intro,
         start: 'top bottom',
         end: 'bottom top',
         onUpdate: function(self) {
@@ -118,16 +117,8 @@ window.initHeroAnimation = function() {
   }
 
   // ============================================================
-    // ============================================================
-    // ============================================================
   // SECTION 2: PROJECTS SLIDE-OVER PARALLAX & STAGGERED ELEMENTS
   // ============================================================
-    // Ensure .projects arrives exactly when Hero presentation ends (220vh scroll offset)
-  var projectsSection = document.querySelector('.projects');
-  if (projectsSection) {
-    
-  }
-
   var projectsSection = document.querySelector('.projects');
   if (projectsSection) {
     // 1. Layering Slide-Over Parallax: Section 1 (.intro) scales down & darkens as Section 2 glides over it
@@ -182,13 +173,7 @@ window.initHeroAnimation = function() {
 
     if (indexEl) headerTl.fromTo(indexEl, { y: 70, opacity: 0 }, { y: 0, opacity: 1, ease: 'power1.out' }, 0);
     if (titleEl) headerTl.fromTo(titleEl, { y: 95, opacity: 0 }, { y: 0, opacity: 1, ease: 'power1.out' }, 0.1);
-    if (btnEl)   headerTl.fromTo(btnEl,   { y: 120, opacity: 0 }, { y: 0, opacity: 1, ease: 'power1.out' }, 0.2);,
-        {
-          y: 0, opacity: 1, ease: 'power2.out',
-          scrollTrigger: { trigger: projectsSection, start: 'top 82%', end: 'top 36%', scrub: 1.2, invalidateOnRefresh: true }
-        }
-      );
-    }
+    if (btnEl)   headerTl.fromTo(btnEl,   { y: 120, opacity: 0 }, { y: 0, opacity: 1, ease: 'power1.out' }, 0.2);
   }
 
   // SECTION 4: TESTIMONIALS CARDS PARALLAX
