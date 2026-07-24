@@ -188,28 +188,52 @@ window.initHeroAnimation = function() {
 
         const sec = document.querySelector('.testimonials-partners') || grid;
 
-    // 1. ЦЕНТРАЛЬНА КАРТКА REVIEW (Всплывает при начале скролла секции 4: top 30% -> top 10%)
+    const sec = document.querySelector('.testimonials-partners');
+  if (sec) {
+    const grid = sec.querySelector('.tp-asymmetric-grid') || sec;
+
+    const centerCard = grid.querySelector('.nw-parallax-center');
+    const rightPoster = grid.querySelector('.nw-parallax-right');
+    const leftCard = grid.querySelector('.nw-parallax-left');
+
     if (centerCard) {
       gsap.fromTo(centerCard,
-        { y: 140, opacity: 0 },
+        { y: 100, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           ease: "none",
           scrollTrigger: {
             trigger: sec,
-            start: "top 30%",
-            end: "top 5%",
-            scrub: 0.8,
+            start: "top 95%",
+            end: "top 75%",
+            scrub: true,
             invalidateOnRefresh: true,
           }
         }
       );
     }
 
-    // 2. ПРАВА КАРТКА ФОТО (Подтягивается следом: top 10% -> bottom 85%)
     if (rightPoster) {
       gsap.fromTo(rightPoster,
+        { y: 200, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sec,
+            start: "top 75%",
+            end: "top 55%",
+            scrub: true,
+            invalidateOnRefresh: true,
+          }
+        }
+      );
+    }
+
+    if (leftCard) {
+      gsap.fromTo(leftCard,
         { y: 280, opacity: 0 },
         {
           y: 0,
@@ -217,28 +241,9 @@ window.initHeroAnimation = function() {
           ease: "none",
           scrollTrigger: {
             trigger: sec,
-            start: "top 10%",
-            end: "bottom 85%",
-            scrub: 1.0,
-            invalidateOnRefresh: true,
-          }
-        }
-      );
-    }
-
-    // 3. ЛІВА КАРТКА БІЛА (Подтягивается третьей: bottom 85% -> bottom 60%)
-    if (leftCard) {
-      gsap.fromTo(leftCard,
-        { y: 400, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sec,
-            start: "bottom 85%",
-            end: "bottom 60%",
-            scrub: 1.2,
+            start: "top 55%",
+            end: "top 35%",
+            scrub: true,
             invalidateOnRefresh: true,
           }
         }
