@@ -47,8 +47,8 @@ window.initHeroAnimation = function() {
       scrollTrigger: {
         trigger: intro,
         start: 'top top',
-        end: '+=380%',
-        pin: true,
+        end: '+=160%',
+        pin: false,
         pinSpacing: false,
         scrub: 1.0,
         anticipatePin: 1,
@@ -125,7 +125,7 @@ window.initHeroAnimation = function() {
     // Ensure .projects arrives exactly when Hero presentation ends (220vh scroll offset)
   var projectsSection = document.querySelector('.projects');
   if (projectsSection) {
-    projectsSection.style.marginTop = '220vh';
+    
   }
 
   var projectsSection = document.querySelector('.projects');
