@@ -32,6 +32,8 @@
 /* accent buttons: brass fill, dark ink for a premium contrast */
 .btn-orange{ background:var(--base-1) !important; color:#0B0B0E !important; }
 .btn-orange .btn-text span{ color:#0B0B0E !important; }
+.btn-orange:hover{ background:#a88845 !important; color:#0B0B0E !important; }
+.btn-orange:hover .btn-text span{ color:#0B0B0E !important; }
 /* secondary / outline CTA */
 .btn-outline{
   background:transparent !important; color:var(--base-2) !important;

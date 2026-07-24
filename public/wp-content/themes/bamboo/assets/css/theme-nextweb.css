@@ -94,6 +94,9 @@
   --base-13: #101014; /* тема малює цим «білі» картки — робимо їх поверхнею */
   --base-14: #22222a; /* лінії */
 
+  /* Кнопка: золотисто-бронзовий tone */
+  --base-button: #C8A96A;
+
   --background-main: var(--base-10);
   --background-card: var(--base-11);
   --background-footer: var(--base-12);
@@ -126,18 +129,18 @@ section {
   --icon: var(--base-2);
 }
 .btn-orange {
-  --color: #ffffff;
-  --icon: #ffffff;
-  background: var(--base-1);
+  --color: #0B0B0E;
+  --icon: #0B0B0E;
+  background: var(--base-button) !important;
 }
 .btn-orange:hover {
-  background: rgba(251, 115, 57, 0.82);
+  background: #a88845 !important;
 }
 .btn-orange .btn-text span {
-  color: #ffffff !important;
+  color: #0B0B0E !important;
 }
 .btn-orange:hover .btn-text span {
-  color: #ffffff !important;
+  color: #0B0B0E !important;
 }
 .btn-orange:disabled {
   background: var(--base-6);
@@ -1103,68 +1106,73 @@ section.testimonials-partners,
 }
 
 /* ============================================================ */
-/* NEXTWEB: btn-orange text always white, hover slightly dimmer  */
+/* NEXTWEB: btn-orange = gold button, text always BLACK         */
 /* ============================================================ */
 .btn-orange,
 .btn-orange .btn-text,
 .btn-orange .btn-text span {
-  color: #ffffff !important;
+  color: #0B0B0E !important;
+}
+.btn-orange {
+  background: #C8A96A !important;
 }
 .btn-orange:hover {
-  background: rgba(220, 90, 30, 0.88) !important;
+  background: #a88845 !important;
 }
 .btn-orange:hover .btn-text,
 .btn-orange:hover .btn-text span {
-  color: #ffffff !important;
+  color: #0B0B0E !important;
 }
 
+
 /* ============================================================ */
-/* NEXTWEB: Section 3 benefit cards - prevent text overflow     */
+/* NEXTWEB: Section 3 benefit cards - smooth scaling, no dots  */
 /* ============================================================ */
 
-/* Card info column must not overflow into image column */
+/* Card info column stays within bounds */
 .benefits .swiper-item-info {
   min-width: 0 !important;
   overflow: hidden !important;
-  word-break: break-word !important;
 }
 
-/* The giant stat number must fit within the card's text column */
-.benefits .swiper-item .count {
-  font-size: clamp(36px, 6vw, 90px) !important;
-  line-height: 1.0 !important;
+/* Stat number scales down smoothly to fit - NO ellipsis */
+/* Collapsed card (narrow): small font */
+.benefits .swiper-slide .swiper-item .count {
+  font-size: clamp(28px, 3.5vw, 52px) !important;
+  line-height: 1.05 !important;
   overflow: hidden !important;
   white-space: nowrap !important;
-  text-overflow: ellipsis !important;
+  text-overflow: clip !important;
+  transition: font-size 0.45s ease-in-out !important;
 }
 
-/* Image wrapper must not shrink and clip behind text */
+/* Active (wide) card: full large font */
+.benefits .swiper-slide.active .swiper-item .count {
+  font-size: clamp(52px, 6.5vw, 100px) !important;
+}
+
+/* Image wrapper stays put, doesn't overflow text */
 .benefits .swiper-item-thumb {
   flex-shrink: 0 !important;
   min-width: 0 !important;
   overflow: hidden !important;
 }
 
-/* The swiper-item itself is flex row; ensure text col doesn't grow into image col */
+/* Card row */
 .benefits .swiper-item {
   align-items: flex-end !important;
   overflow: hidden !important;
 }
 
-/* On active (expanded) card: let the info take its natural space but bound it */
+/* Active card info column */
 @media (min-width: 1025px) {
   .benefits .swiper-slide.active .swiper-item-info {
     flex: 1 1 auto !important;
     min-width: 0 !important;
-    max-width: 55% !important;
+    max-width: 56% !important;
   }
-  
   .benefits .swiper-slide.active .swiper-item-thumb {
     flex: 0 0 auto !important;
     min-width: 0 !important;
-  }
-  
-  .benefits .swiper-slide.active .swiper-item .count {
-    font-size: clamp(36px, 7.5vw, 100px) !important;
   }
 }
