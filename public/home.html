@@ -60,18 +60,15 @@
   }
 
       body {
-        opacity: 1 !important;
+        opacity: 0;
       }
     </style>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 
-
-
-<body class="home wp-singular page-template page-template-front-page page-template-front-page-php page page-id-5 wp-embed-responsive dark-theme">
-
-<header class="header">
+<body class="home wp-singular page-template page-template-front-page page-template-front-page-php page page-id-5 wp-theme-bamboo">
+    <header class="header">
   <div class="header-wrapper">
     <div class="container" style="display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100% !important;">
       <div class="header-logo">
@@ -100,9 +97,9 @@
       </div>
     </div>
   </div>
-</header>
-
-<main>
+</header>  <div class="smooth-wrapper" id="smooth-wrapper">
+    <div class="smooth-content" id="smooth-content">
+      <main>
 <section class="intro">
   <div class="container md-space">
     <div class="container-kivi fit-cover">
@@ -133,9 +130,7 @@
       </div>
     </div>
   </div>
-</section>
-
-<section class="projects" id="cases">
+</section><section class="projects" id="cases">
   <div class="container">
     <div class="container-index">002</div>
 
@@ -334,7 +329,6 @@
     </div>
   </div>
 </section>
-
 <section class="benefits" id="benefits">
 
   <div class="container top">
@@ -789,6 +783,7 @@
 
 </section>
 
+<!-- SECTION 6: LEAD CAPTURE FORM (LEAD GENERATION) -->
 <section class="nw-cta-section" id="lead-capture" style="position:relative;width:100%;background:#09090d;color:#fff;padding:clamp(80px,10vw,150px) 0;overflow:hidden;border-radius:24px 24px 0 0;box-shadow:0 -40px 100px rgba(0,0,0,0.7);z-index:15;">
 
   <!-- Ambient lines only — NO big numeral duplicate -->
@@ -916,8 +911,8 @@
     </div>
   </div>
 </section>
-</main>
 
+<!-- SECTION 7: COMPACT THIN FOOTER -->
 <footer class="site-footer" style="background: #060608 !important; border-top: 1px solid rgba(255, 255, 255, 0.08) !important; padding-block: 28px !important; width: 100% !important; z-index: 20 !important; position: relative !important;">
   <div class="container" style="display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important; width: 100% !important; max-width: 1240px !important; margin: 0 auto !important; flex-wrap: wrap !important; gap: 20px !important; box-sizing: border-box !important;">
     
@@ -942,26 +937,471 @@
 
   </div>
 </footer>
+</main>
+</div>
+</div>
 
 
+<div class="popup popup-callback" data-popup-name='callback' data-msgs='null'>
+  <div class="back-close" data-popup-close></div>
 
-<!-- ============================================================ -->
-<!-- NEXTWEB: REQUIRED ANIMATION & SWIPER SCRIPTS                 -->
-<!-- ============================================================ -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <div class="popup-content flex-v">
+    <button class="form-close flex icon-close" data-popup-close aria-label="Закрити"></button>
+
+    <h2 class="title mulish-32" data-title>Залиште свої контактні дані</h2>
+    <p class="subtitle">Наш менеджер зв’яжеться з Вами.</p>
+
+    <div class="custom-form" data-cf7 >
+      
+<div class="wpcf7 no-js" id="wpcf7-f4-o2" lang="en-US" dir="ltr" data-wpcf7-id="4">
+<div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
+<form action="/#wpcf7-f4-o2" method="post" class="wpcf7-form init" aria-label="Хочете дізнатись більше?"   data-status="init">
+<fieldset class="hidden-fields-container"><input type="hidden" name="_wpcf7" value="4" /><input type="hidden" name="_wpcf7_version" value="6.1.6" /><input type="hidden" name="_wpcf7_locale" value="en_US" /><input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f4-o2" /><input type="hidden" name="_wpcf7_container_post" value="0" /><input type="hidden" name="_wpcf7_posted_data_hash" value="" />
+</fieldset>
+<label>
+  <span class="wpcf7-form-control-wrap" data-name="user_name"><input size="40" maxlength="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" required  aria-invalid="false" placeholder="Ім&#039;я*" value="" type="text" name="user_name" /></span>
+</label>
+
+<label>
+  <span class="wpcf7-form-control-wrap" data-name="user_tel"><input size="40" maxlength="40" class="wpcf7-form-control wpcf7-tel wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-tel" aria-required="true" required  aria-invalid="false" placeholder="XXX XXX" value="" type="tel" name="user_tel" /></span>
+</label>
+
+
+<button  class="btn btn-orange submit"
+  type="submit"  aria-label="Отримати консультацію"  >
+      <div class="btn-text" aria-hidden="true"><span style="--i: 0;">О</span><span style="--i: 1;">т</span><span style="--i: 2;">р</span><span style="--i: 3;">и</span><span style="--i: 4;">м</span><span style="--i: 5;">а</span><span style="--i: 6;">т</span><span style="--i: 7;">и</span><span>&nbsp;</span><span style="--i: 9;">к</span><span style="--i: 10;">о</span><span style="--i: 11;">н</span><span style="--i: 12;">с</span><span style="--i: 13;">у</span><span style="--i: 14;">л</span><span style="--i: 15;">ь</span><span style="--i: 16;">т</span><span style="--i: 17;">а</span><span style="--i: 18;">ц</span><span style="--i: 19;">і</span><span style="--i: 20;">ю</span></div>
+              <div class="btn-icon mask def" aria-hidden="true"></div>
+      </button><div class="wpcf7-response-output" aria-hidden="true"></div>
+</form>
+</div>
+    </div>
+  </div>
+</div><div class="popup popup-video" data-popup-video data-popup-name='video'>
+  <div class="back-close" data-popup-close='true'></div>
+  <div class="popup-content flex-v">
+    <button class="form-close flex icon-close" data-popup-close aria-label="Закрити"></button>
+    <div class="video-player" data-video-player></div>
+  </div>
+</div><div class="popup popup-success" data-popup-name='success' data-msgs='null'>
+  <div class="back-close" data-popup-close></div>
+
+  <div class="popup-content flex-v">
+    <button class="form-close flex icon-close" data-popup-close aria-label="Закрити"></button>
+    <div class="icon"></div>
+
+    <h2 class="title mulish-32" data-title>Запит успішно надісланий</h2>
+    
+<button  class="btn btn-orange cta"
+  type="button"  aria-label="Повернутись на головну"   data-popup-close>
+      <div class="btn-text" aria-hidden="true"><span style="--i: 0;">П</span><span style="--i: 1;">о</span><span style="--i: 2;">в</span><span style="--i: 3;">е</span><span style="--i: 4;">р</span><span style="--i: 5;">н</span><span style="--i: 6;">у</span><span style="--i: 7;">т</span><span style="--i: 8;">и</span><span style="--i: 9;">с</span><span style="--i: 10;">ь</span><span>&nbsp;</span><span style="--i: 12;">н</span><span style="--i: 13;">а</span><span>&nbsp;</span><span style="--i: 15;">г</span><span style="--i: 16;">о</span><span style="--i: 17;">л</span><span style="--i: 18;">о</span><span style="--i: 19;">в</span><span style="--i: 20;">н</span><span style="--i: 21;">у</span></div>
+              <div class="btn-icon mask def" aria-hidden="true"></div>
+      </button>  </div>
+</div><div class="popup popup-map" data-popup-name='location'>
+  <div class="back-close" data-popup-close></div>
+
+  <button class="form-close flex icon-close" data-popup-close aria-label="Закрити"></button>
+  <div class="popup-content flex-v">
+
+    <h2 class="mulish-64" data-title></h2>
+
+    <div class="g-map" data-map></div>
+    <div class="description">
+      <div class="description-info flex-v">
+        <p class="mulish-32" data-subtitle></p>
+        <div class="loc flex-h">
+          <div class="icon icon-location"></div>
+          <p data-location></p>
+        </div>
+      </div>
+
+      
+<a  class="btn btn-orange cta"
+  href="/" target="_self"  aria-label="Отримати консультацію"   data-cta="true">
+      <div class="btn-text" aria-hidden="true"><span style="--i: 0;">О</span><span style="--i: 1;">т</span><span style="--i: 2;">р</span><span style="--i: 3;">и</span><span style="--i: 4;">м</span><span style="--i: 5;">а</span><span style="--i: 6;">т</span><span style="--i: 7;">и</span><span>&nbsp;</span><span style="--i: 9;">к</span><span style="--i: 10;">о</span><span style="--i: 11;">н</span><span style="--i: 12;">с</span><span style="--i: 13;">у</span><span style="--i: 14;">л</span><span style="--i: 15;">ь</span><span style="--i: 16;">т</span><span style="--i: 17;">а</span><span style="--i: 18;">ц</span><span style="--i: 19;">і</span><span style="--i: 20;">ю</span></div>
+              <div class="btn-icon mask def" aria-hidden="true"></div>
+      </a>    </div>
+  </div>
+</div><div class="popup popup-plan" data-popup-name='plan'>
+  <div class="back-close" data-popup-close></div>
+  <button class="form-close flex icon-close" data-popup-close aria-label="Закрити"></button>
+  <div class="popup-content flex-v" data-inner-content></div>
+</div><div class="popup popup-cookies active">
+  <div class="popup-content flex-h">
+    <p class="inter-20-semi title">Наш вебсайт використовує файли cookie.</p>
+    
+<button  class="btn btn-orange cta"
+  type="button"  aria-label="Ok"   data-agree="1">
+      <div class="btn-text" aria-hidden="true"><span style="--i: 0;">O</span><span style="--i: 1;">k</span></div>
+    </button>    <button class="form-close flex icon-close" data-agree='0' aria-label="Закрити"></button>
+  </div>
+</div><script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/bamboo/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
 <script id="wp-hooks-js" src="/wp-includes/js/dist/hooks.min.js?ver=7496969728ca0f95732d"></script>
 <script id="wp-i18n-js" src="/wp-includes/js/dist/i18n.min.js?ver=781d11515ad3d91786ec"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+</script>
 <script id="swv-js" src="/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=6.1.6"></script>
+<script id="contact-form-7-js-translations">
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "contact-form-7", {"translation-revision-date":"2025-12-27 13:54:22+0000","generator":"GlotPress\/4.0.3","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural-forms":"nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);","lang":"uk_UA"},"This contact form is placed in the wrong place.":["\u0426\u044f \u043a\u043e\u043d\u0442\u0430\u043aт\u043d\u0430 \u0444\u043e\u0440\u043c\u0430 \u0440озміщен\u0430 \u0432 \u043dеправильному \u043cісці."],"Error:":["\u041f\u043eмилка:"]}},"comment":{"reference":"includes\/js\/index.js"}} );
+//# sourceURL=contact-form-7-js-translations
+</script>
+<script id="contact-form-7-js-before">
+var wpcf7 = {
+    "api": {
+        "root": "\/wp-json\/",
+        "namespace": "contact-form-7\/v1"
+    }
+};
+//# sourceURL=contact-form-7-js-before
+</script>
 <script id="contact-form-7-js" src="/wp-content/plugins/contact-form-7/includes/js/index.js?ver=6.1.6"></script>
+<script id="index-js-extra">
+var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-content/themes/bamboo","assets":"/wp-content/themes/bamboo/assets/","googleMapKey":"AIzaSyBhnLkD-g243L2n44Rvc3bLJFo0gVKDEmk","ringostat":""};
+//# sourceURL=index-js-extra
+</script>
 <script id="index-js" src="/wp-content/themes/bamboo/assets/js/index.js?ver=1784586053"></script>
 <script id="page-home-js" src="/wp-content/themes/bamboo/assets/js/page-home.js?ver=1784586053"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="/wp-content/themes/bamboo/assets/js/hero-nextweb.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1e55b13bed5028c',t:'MTc4NDU4NjA1Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 
-<!-- ============================================================ -->
-<!-- NEXTWEB: VIDEO & MAP MODALS (root level, z-index 9999999)    -->
-<!-- ============================================================ -->
+<!-- Custom Video Player Modal -->
+<div id="nw-video-modal" class="nw-modal" aria-hidden="true">
+  <div class="nw-modal__backdrop"></div>
+  <div class="nw-modal__container">
+    <button class="nw-modal__close" id="nw-video-close" aria-label="Закрити">✕</button>
+    <div class="nw-modal__header">
+      <h4 id="nw-video-title">3D-тур Готелем</h4>
+      <span class="nw-modal__tag">Інтерактивний перегляд</span>
+    </div>
+    <div class="nw-modal__video-wrapper">
+      <video id="nw-modal-video" playsinline preload="auto" loop></video>
+      <div class="nw-modal__controls">
+        <button id="nw-play-toggle" class="nw-control-btn">❚❚</button>
+        <div class="nw-progress-bar"><div id="nw-progress-fill" class="nw-progress-fill"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Catalog Pop-up Modal -->
+<div id="nw-catalog-modal" class="nw-modal" aria-hidden="true">
+  <div class="nw-modal__backdrop"></div>
+  <div class="nw-modal__container catalog-container">
+    <button class="nw-modal__close" id="nw-catalog-close" aria-label="Закрити">✕</button>
+    <div class="nw-modal__header" style="text-align: center;">
+      <h3 style="font-family: 'Unbounded', sans-serif; font-size: 26px;">Каталог об'єктів (5 проєктів)</h3>
+      <p style="color: #a0a0ab;">Оберіть готель для інтерактивного 3D-перегляду</p>
+    </div>
+    <div class="nw-catalog-grid">
+      <div class="nw-catalog-card nw-open-video-btn" data-video-src="/media/gen/cases/grand_royal/flythrough.mp4" data-title="Grand Royal Resort & SPA">
+        <div class="thumb">
+          <video autoplay muted loop playsinline poster="/media/gen/cases/grand_royal/photo1.png" src="/media/gen/cases/grand_royal/flythrough.mp4"></video>
+          <span class="badge">▶ 3D-тур</span>
+        </div>
+        <h5>Grand Royal Resort & SPA</h5>
+        <p>Presidential Suite & SPA • Славське</p>
+      </div>
+
+      <div class="nw-catalog-card nw-open-video-btn" data-video-src="/media/gen/cases/villas_riviera/flythrough.mp4" data-title="Villas Riviera & Marina">
+        <div class="thumb">
+          <video autoplay muted loop playsinline poster="/media/gen/cases/villas_riviera/photo1.png" src="/media/gen/cases/villas_riviera/flythrough.mp4"></video>
+          <span class="badge">▶ 3D-тур</span>
+        </div>
+        <h5>Villas Riviera & Marina</h5>
+        <p>Luxury Villa & Private Pool • Одеса</p>
+      </div>
+
+      <div class="nw-catalog-card nw-open-video-btn" data-video-src="/media/gen/cases/zenith_hotel/flythrough.mp4" data-title="Zenith Boutique Hotel">
+        <div class="thumb">
+          <video autoplay muted loop playsinline poster="/media/gen/cases/zenith_hotel/photo1.png" src="/media/gen/cases/zenith_hotel/flythrough.mp4"></video>
+          <span class="badge">▶ 3D-тур</span>
+        </div>
+        <h5>Zenith Boutique Hotel</h5>
+        <p>Penthouse & Rooftop Lounge • Львів</p>
+      </div>
+
+      <div class="nw-catalog-card nw-open-video-btn" data-video-src="/media/gen/cases/mountain_chalet/flythrough.mp4" data-title="Mountain Chalet & Suites">
+        <div class="thumb">
+          <video autoplay muted loop playsinline poster="/media/gen/cases/mountain_chalet/photo1.png" src="/media/gen/cases/mountain_chalet/flythrough.mp4"></video>
+          <span class="badge">▶ 3D-тур</span>
+        </div>
+        <h5>Mountain Chalet & Suites</h5>
+        <p>Alpine Chalet • Буковель</p>
+      </div>
+
+      <div class="nw-catalog-card nw-open-video-btn" data-video-src="/media/gen/cases/urban_skyline/flythrough.mp4" data-title="Urban Skyline Plaza">
+        <div class="thumb">
+          <video autoplay muted loop playsinline poster="/media/gen/cases/urban_skyline/photo1.png" src="/media/gen/cases/urban_skyline/flythrough.mp4"></video>
+          <span class="badge">▶ 3D-тур</span>
+        </div>
+        <h5>Urban Skyline Plaza</h5>
+        <p>Executive Lounge & Suites • Київ</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Interactive Projects Map Modal -->
+<div id="nw-map-modal" class="nw-modal" aria-hidden="true">
+  <div class="nw-modal__backdrop"></div>
+  <div class="nw-modal__container map-container" style="max-width: 1080px; width: 92%; padding: 24px; border-radius: 0px !important;">
+    <button class="nw-modal__close" id="nw-map-close" aria-label="Закрити" style="border-radius: 0px !important;">✕</button>
+    <div class="nw-modal__header" style="margin-bottom: 16px;">
+      <h3 style="font-family: 'Unbounded', sans-serif; font-size: 24px; margin: 0;">Карта об'єктів (5 проєктів)</h3>
+      <p style="color: #a0a0ab; margin: 4px 0 0 0; font-size: 13px;">Оберіть метку на карті для відкриття 3D-відеотура</p>
+    </div>
+    
+    <div class="nw-map-modal-wrapper" style="display: flex; gap: 20px; height: 480px;">
+      <!-- Sidebar with 5 Project Cards -->
+      <div class="nw-map-sidebar" style="width: 280px; flex-shrink: 0; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; padding-right: 6px;">
+        <!-- Card 1 -->
+        <div class="nw-map-item nw-open-map-item" data-id="grand_royal" data-lat="48.8475" data-lng="23.4475" data-video-src="/media/gen/cases/grand_royal/flythrough.mp4" data-title="Grand Royal Resort & SPA">
+          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative;">
+            <img src="/media/gen/cases/grand_royal/photo1.png" alt="Grand Royal" style="width: 100%; height: 100%; object-fit: cover;">
+            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px;">▶ 3D-тур</span>
+          </div>
+          <h5 style="margin: 6px 0 2px 0; font-size: 13px; color: #fff; font-family: 'Unbounded', sans-serif;">Grand Royal Resort & SPA</h5>
+          <p style="margin: 0; font-size: 11px; color: #a0a0ab;">смт. Славське, вул. Олімпійська, 12</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="nw-map-item nw-open-map-item" data-id="villas_riviera" data-lat="46.4825" data-lng="30.7233" data-video-src="/media/gen/cases/villas_riviera/flythrough.mp4" data-title="Villas Riviera & Marina">
+          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative;">
+            <img src="/media/gen/cases/villas_riviera/photo1.png" alt="Villas Riviera" style="width: 100%; height: 100%; object-fit: cover;">
+            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px;">▶ 3D-тур</span>
+          </div>
+          <h5 style="margin: 6px 0 2px 0; font-size: 13px; color: #fff; font-family: 'Unbounded', sans-serif;">Villas Riviera & Marina</h5>
+          <p style="margin: 0; font-size: 11px; color: #a0a0ab;">м. Одеса, Французький бульвар, 85</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="nw-map-item nw-open-map-item" data-id="zenith_hotel" data-lat="49.8397" data-lng="24.0297" data-video-src="/media/gen/cases/zenith_hotel/flythrough.mp4" data-title="Zenith Boutique Hotel">
+          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative;">
+            <img src="/media/gen/cases/zenith_hotel/photo1.png" alt="Zenith Hotel" style="width: 100%; height: 100%; object-fit: cover;">
+            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px;">▶ 3D-тур</span>
+          </div>
+          <h5 style="margin: 6px 0 2px 0; font-size: 13px; color: #fff; font-family: 'Unbounded', sans-serif;">Zenith Boutique Hotel</h5>
+          <p style="margin: 0; font-size: 11px; color: #a0a0ab;">м. Львів, вул. Паркова, 4</p>
+        </div>
+        <!-- Card 4 -->
+        <div class="nw-map-item nw-open-map-item" data-id="mountain_chalet" data-lat="48.3539" data-lng="24.4124" data-video-src="/media/gen/cases/mountain_chalet/flythrough.mp4" data-title="Mountain Chalet & Suites">
+          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative;">
+            <img src="/media/gen/cases/mountain_chalet/photo1.png" alt="Mountain Chalet" style="width: 100%; height: 100%; object-fit: cover;">
+            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px;">▶ 3D-тур</span>
+          </div>
+          <h5 style="margin: 6px 0 2px 0; font-size: 13px; color: #fff; font-family: 'Unbounded', sans-serif;">Mountain Chalet & Suites</h5>
+          <p style="margin: 0; font-size: 11px; color: #a0a0ab;">с. Поляниця, вул. Вишня, 18</p>
+        </div>
+        <!-- Card 5 -->
+        <div class="nw-map-item nw-open-map-item" data-id="urban_skyline" data-lat="50.4501" data-lng="30.5234" data-video-src="/media/gen/cases/urban_skyline/flythrough.mp4" data-title="Urban Skyline Plaza">
+          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative;">
+            <img src="/media/gen/cases/urban_skyline/photo1.png" alt="Urban Skyline" style="width: 100%; height: 100%; object-fit: cover;">
+            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px;">▶ 3D-тур</span>
+          </div>
+          <h5 style="margin: 6px 0 2px 0; font-size: 13px; color: #fff; font-family: 'Unbounded', sans-serif;">Urban Skyline Plaza</h5>
+          <p style="margin: 0; font-size: 11px; color: #a0a0ab;">м. Київ, вул. Хрещатик, 24</p>
+        </div>
+      </div>
+      
+      <!-- Interactive Leaflet Map Container -->
+      <div id="nw-leaflet-map" style="flex: 1; height: 100%; background: #16161c; border: 1px solid rgba(255,255,255,0.12);"></div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+(function initSmoothReviewSwitcher() {
+  const reviews = [
+    {
+      name: "Іван Демідов",
+      role: "Управляючий директор Grand Plaza Hotel",
+      quote: "«Після інтеграції 3D-туру від NextWeb час перебування гостей на сторінках номерного фонду зріс майже вдвічі. Гості бронюють номери преміум-сегменту значно впевненіше, оскільки бачать кожен куточок та краєвид з вікна у реальному часі.»",
+      avatar: "/media/gen/testimonials/avatar1.png",
+      poster: "/media/gen/case-pool.webp",
+      idx: "01 / VERIFIED"
+    },
+    {
+      name: "Олена Ковальчук",
+      role: "Маркетинг-директор Boutique Resort & Spa",
+      quote: "«Наші гості відзначили, що віртуальне занурення в інтер'єри перед бронюванням зняло всі сумніви. Прямі бронювання зросли на третину за перші 2 місяці роботи 3D-двигуна NextWeb!»",
+      avatar: "/media/gen/testimonials/avatar2.png",
+      poster: "/media/gen/case-spa.webp",
+      idx: "02 / VERIFIED"
+    },
+    {
+      name: "Олександр Кравченко",
+      role: "Генеральний менеджер City Premier Hotel",
+      quote: "«3D-візуалізація конференц-залів та номерів дозволила нам збільшити корпоративні бронювання на 45%. Клієнти бачать реальну розкіш та оснащення без виїзду на об'єкт.»",
+      avatar: "/media/gen/testimonials/avatar3.png",
+      poster: "/media/gen/case-presidential-suite.webp",
+      idx: "03 / VERIFIED"
+    },
+    {
+      name: "Вікторія Мельник",
+      role: "Керівник відділу продажів Luxury Suites",
+      quote: "«Впровадження 3D-двигуна NextWeb стало найкращим інвестиційним рішенням року. Окупність 100% за перші тижні завдяки зануренню VIP-гостей у 60 FPS.»",
+      avatar: "/media/gen/testimonials/avatar4.png",
+      poster: "/media/gen/case-rooftop-bar.webp",
+      idx: "04 / VERIFIED"
+    }
+  ];
+
+  let currentIdx = 0;
+  let autoplayTimer = null;
+  let isHovered = false;
+  let isTransitioning = false;
+
+  function activateTab(index) {
+    if (isTransitioning && index === currentIdx) return;
+    isTransitioning = true;
+    currentIdx = index;
+    const data = reviews[index];
+    if (!data) return;
+
+    // Update Tab Buttons immediately
+    const btns = document.querySelectorAll('.tp-tab-btn');
+    btns.forEach((b, i) => {
+      if (i === index) {
+        b.classList.add('active');
+        b.style.cssText = "width: 48px !important; height: 48px !important; border-radius: 4px !important; background: #0c0c10 !important; color: #ffffff !important; border: 1px solid #0c0c10 !important; font-family: 'Mulish', sans-serif !important; font-weight: 800 !important; font-size: 15px !important; cursor: pointer !important; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;";
+      } else {
+        b.classList.remove('active');
+        b.style.cssText = "width: 48px !important; height: 48px !important; border-radius: 4px !important; background: #ffffff !important; color: #666678 !important; border: 1px solid rgba(0, 0, 0, 0.14) !important; font-family: 'Mulish', sans-serif !important; font-weight: 800 !important; font-size: 15px !important; cursor: pointer !important; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;";
+      }
+    });
+
+    const nameEl = document.getElementById('tp-active-name');
+    const roleEl = document.getElementById('tp-active-role');
+    const quoteEl = document.getElementById('tp-active-quote') || document.querySelector('.tp-quote-text');
+    const idxEl = document.getElementById('tp-active-index');
+    const avatarEl = document.getElementById('tp-active-avatar');
+    const posterEl = document.getElementById('tp-active-poster');
+
+    // 1-st Phase: Smooth Fade Out
+    const textEls = [nameEl, roleEl, quoteEl, idxEl].filter(Boolean);
+    textEls.forEach(el => {
+      el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(6px)';
+    });
+
+    if (avatarEl) {
+      avatarEl.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      avatarEl.style.opacity = '0';
+      avatarEl.style.transform = 'scale(0.92)';
+    }
+
+    if (posterEl) {
+      posterEl.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+      posterEl.style.opacity = '0';
+      posterEl.style.transform = 'scale(1.05)';
+    }
+
+    // 2-nd Phase: Update sources & Smooth Fade In after 250ms
+    setTimeout(() => {
+      if (nameEl) nameEl.textContent = data.name;
+      if (roleEl) roleEl.textContent = data.role;
+      if (quoteEl) quoteEl.textContent = data.quote;
+      if (idxEl) idxEl.textContent = data.idx;
+
+      if (avatarEl && data.avatar) avatarEl.src = data.avatar;
+      if (posterEl && data.poster) posterEl.src = data.poster;
+
+      textEls.forEach(el => {
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0px)';
+      });
+
+      if (avatarEl) {
+        avatarEl.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        avatarEl.style.opacity = '1';
+        avatarEl.style.transform = 'scale(1.0)';
+      }
+
+      if (posterEl) {
+        posterEl.style.transition = 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)';
+        posterEl.style.opacity = '1';
+        posterEl.style.transform = 'scale(1.0)';
+      }
+
+      document.querySelectorAll('.tp-badge-slide').forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.add('active');
+          slide.style.transition = 'opacity 0.5s ease';
+          slide.style.opacity = '1';
+          slide.style.pointerEvents = 'auto';
+        } else {
+          slide.classList.remove('active');
+          slide.style.transition = 'opacity 0.5s ease';
+          slide.style.opacity = '0';
+          slide.style.pointerEvents = 'none';
+        }
+      });
+
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 500);
+    }, 280);
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayTimer = setInterval(() => {
+      if (!isHovered && !isTransitioning) {
+        const nextIdx = (currentIdx + 1) % reviews.length;
+        activateTab(nextIdx);
+      }
+    }, 8000); // 8 SECONDS AUTOPLAY
+  }
+
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function setupSwitcher() {
+    const sec = document.querySelector('.testimonials-partners');
+    if (sec) {
+      sec.addEventListener('mouseenter', () => { isHovered = true; });
+      sec.addEventListener('mouseleave', () => { isHovered = false; });
+    }
+
+    const btns = document.querySelectorAll('.tp-tab-btn');
+    btns.forEach((btn) => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const idx = parseInt(this.getAttribute('data-tab') || '0', 10);
+        activateTab(idx);
+        startAutoplay();
+      });
+    });
+
+    activateTab(0);
+    startAutoplay();
+  }
+
+  if (document.readyState === 'complete') setupSwitcher();
+  else window.addEventListener('load', setupSwitcher);
+  document.addEventListener('DOMContentLoaded', setupSwitcher);
+})();
+</script>
+
+
+
+
+<!-- NEXTWEB: VIDEO & MAP MODALS -->
 <style>
   .nw-modal { display: none; position: fixed; inset: 0; z-index: 99999; align-items: center; justify-content: center; }
   .nw-modal.is-open { display: flex; }
@@ -1001,7 +1441,7 @@
           <div style="font-family:Mulish,sans-serif; font-size:11px; color:rgba(255,255,255,0.5); margin-top:4px;">📍 с. Поляниця (Буковель), Україна</div>
         </div>
         <div class="nw-sidebar-item" data-project="redling" style="background:rgba(255,255,255,0.04); border-radius:8px; padding:12px; cursor:pointer; border:1px solid rgba(255,255,255,0.06);">
-          <div style="font-family:Mulish,sans-serif; font-size:13px; font-weight:700; color:#fff;">Redling Beach Hotel</div>
+          <div style="font-family:Mulish,sans-serif; font-weight:700; font-size:13px; color:#fff;">Redling Beach Hotel</div>
           <div style="font-family:Mulish,sans-serif; font-size:11px; color:rgba(255,255,255,0.5); margin-top:4px;">📍 м. Одеса, Україна</div>
         </div>
       </div>
@@ -1154,5 +1594,6 @@
   else setupLeafletMap();
 })();
 </script>
+
 </body>
 </html>
