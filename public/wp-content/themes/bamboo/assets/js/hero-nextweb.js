@@ -157,6 +157,84 @@ window.initHeroAnimation = function() {
 
     ScrollTrigger.refresh();
   }
+
+  // ============================================================
+  // SECTION 5: CTA FORM — SLIDE-OVER + SEQUENTIAL PARALLAX
+  // ============================================================
+  var ctaSection = document.querySelector('.nw-cta-section');
+  if (ctaSection) {
+    var ctaLeft  = ctaSection.querySelector('.nw-cta-left');
+    var ctaRight = ctaSection.querySelector('.nw-cta-right');
+    var ctaLabel = ctaSection.querySelector('div[style*="letter-spacing:0.18em"]');
+
+    // --- LAYER 1: Whole section slides up over section 4 ---
+    // Start slightly below natural position, slide to 0 as it enters viewport
+    gsap.fromTo(ctaSection,
+      { yPercent: 10 },
+      {
+        yPercent: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: ctaSection,
+          start: 'top bottom',   // when section bottom hits viewport bottom
+          end: 'top top',        // when section top reaches viewport top
+          scrub: 1.2,
+          invalidateOnRefresh: true,
+        }
+      }
+    );
+
+    // --- LAYER 2: Left column (heading + copy) reveals first ---
+    if (ctaLeft) {
+      gsap.fromTo(ctaLeft,
+        { y: 70, opacity: 0 },
+        {
+          y: 0, opacity: 1, ease: 'none',
+          scrollTrigger: {
+            trigger: ctaSection,
+            start: 'top 90%',
+            end: 'top 55%',
+            scrub: true,
+            invalidateOnRefresh: true,
+          }
+        }
+      );
+    }
+
+    // --- LAYER 3: Right column (form) reveals second, after left ---
+    if (ctaRight) {
+      gsap.fromTo(ctaRight,
+        { y: 110, opacity: 0 },
+        {
+          y: 0, opacity: 1, ease: 'none',
+          scrollTrigger: {
+            trigger: ctaSection,
+            start: 'top 75%',
+            end: 'top 40%',
+            scrub: true,
+            invalidateOnRefresh: true,
+          }
+        }
+      );
+    }
+
+    // --- LAYER 4: Section index label reveals first of all ---
+    if (ctaLabel) {
+      gsap.fromTo(ctaLabel,
+        { y: 40, opacity: 0 },
+        {
+          y: 0, opacity: 1, ease: 'none',
+          scrollTrigger: {
+            trigger: ctaSection,
+            start: 'top 95%',
+            end: 'top 70%',
+            scrub: true,
+            invalidateOnRefresh: true,
+          }
+        }
+      );
+    }
+  }
 };
 
 // Called EXACTLY ONCE after window.load + 80ms buffer so layout heights,
