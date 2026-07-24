@@ -583,8 +583,11 @@
 
     <!-- ASYMMETRICAL STAGGERED PARALLAX GRID: 1st Review -> 2nd Right Poster -> 3rd Left Card -->
     <script>
-(function initVanillaSec4Parallax() {
-  function updateParallax() {
+(function initLerpSec4Parallax() {
+  let currentProgress = 0;
+  let targetProgress = 0;
+
+  function updateTargetProgress() {
     const grid = document.querySelector('.tp-asymmetric-grid');
     if (!grid) return;
 
@@ -592,53 +595,81 @@
     const vh = window.innerHeight;
 
     // Progress from 0 (grid top at bottom of screen) to 1 (grid top centered near top)
-    const totalDist = vh * 0.65;
+    const totalDist = vh * 0.70;
     const currentDist = vh - rect.top;
-    let progress = currentDist / totalDist;
-    if (progress < 0) progress = 0;
-    if (progress > 1) progress = 1;
+    let p = currentDist / totalDist;
+    if (p < 0) p = 0;
+    if (p > 1) p = 1;
 
-    const centerCard = grid.querySelector('.nw-parallax-center');
-    const rightPoster = grid.querySelector('.nw-parallax-right');
-    const leftCard = grid.querySelector('.nw-parallax-left');
-
-    // 1-st: Center card (progress 0.0 -> 0.33)
-    let p1 = progress / 0.33;
-    if (p1 < 0) p1 = 0; if (p1 > 1) p1 = 1;
-    const y1 = (1 - p1) * 120;
-    if (centerCard) {
-      centerCard.style.transform = 'translate3d(0, ' + y1.toFixed(2) + 'px, 0)';
-      centerCard.style.opacity = p1.toFixed(3);
-    }
-
-    // 2-nd: Right photo card (progress 0.33 -> 0.66)
-    let p2 = (progress - 0.33) / 0.33;
-    if (p2 < 0) p2 = 0; if (p2 > 1) p2 = 1;
-    const y2 = (1 - p2) * 220;
-    if (rightPoster) {
-      rightPoster.style.transform = 'translate3d(0, ' + y2.toFixed(2) + 'px, 0)';
-      rightPoster.style.opacity = p2.toFixed(3);
-    }
-
-    // 3-rd: Left white card (progress 0.66 -> 1.0)
-    let p3 = (progress - 0.66) / 0.34;
-    if (p3 < 0) p3 = 0; if (p3 > 1) p3 = 1;
-    const y3 = (1 - p3) * 300;
-    if (leftCard) {
-      leftCard.style.transform = 'translate3d(0, ' + y3.toFixed(2) + 'px, 0)';
-      leftCard.style.opacity = p3.toFixed(3);
-    }
+    targetProgress = p;
   }
 
-  window.addEventListener('scroll', updateParallax, { passive: true });
-  window.addEventListener('resize', updateParallax, { passive: true });
-  if (document.readyState === 'complete') updateParallax();
-  else window.addEventListener('load', updateParallax);
-  document.addEventListener('DOMContentLoaded', updateParallax);
-  setTimeout(updateParallax, 100);
-  setTimeout(updateParallax, 500);
+  function renderLoop() {
+    // Butter smooth LERP interpolation with factor 0.08
+    currentProgress += (targetProgress - currentProgress) * 0.08;
+
+    if (Math.abs(targetProgress - currentProgress) < 0.0001) {
+      currentProgress = targetProgress;
+    }
+
+    const grid = document.querySelector('.tp-asymmetric-grid');
+    if (grid) {
+      const centerCard = grid.querySelector('.nw-parallax-center');
+      const rightPoster = grid.querySelector('.nw-parallax-right');
+      const leftCard = grid.querySelector('.nw-parallax-left');
+
+      const progress = currentProgress;
+
+      // 1-st: Center card (progress 0.0 -> 0.33)
+      let p1 = progress / 0.33;
+      if (p1 < 0) p1 = 0; if (p1 > 1) p1 = 1;
+      const y1 = (1 - p1) * 120;
+      if (centerCard) {
+        centerCard.style.transform = 'translate3d(0, ' + y1.toFixed(2) + 'px, 0)';
+        centerCard.style.opacity = p1.toFixed(3);
+      }
+
+      // 2-nd: Right photo card (progress 0.33 -> 0.66)
+      let p2 = (progress - 0.33) / 0.33;
+      if (p2 < 0) p2 = 0; if (p2 > 1) p2 = 1;
+      const y2 = (1 - p2) * 220;
+      if (rightPoster) {
+        rightPoster.style.transform = 'translate3d(0, ' + y2.toFixed(2) + 'px, 0)';
+        rightPoster.style.opacity = p2.toFixed(3);
+      }
+
+      // 3-rd: Left white card (progress 0.66 -> 1.0)
+      let p3 = (progress - 0.66) / 0.34;
+      if (p3 < 0) p3 = 0; if (p3 > 1) p3 = 1;
+      const y3 = (1 - p3) * 300;
+      if (leftCard) {
+        leftCard.style.transform = 'translate3d(0, ' + y3.toFixed(2) + 'px, 0)';
+        leftCard.style.opacity = p3.toFixed(3);
+      }
+    }
+
+    requestAnimationFrame(renderLoop);
+  }
+
+  window.addEventListener('scroll', updateTargetProgress, { passive: true });
+  window.addEventListener('resize', updateTargetProgress, { passive: true });
+
+  if (document.readyState === 'complete') {
+    updateTargetProgress();
+    requestAnimationFrame(renderLoop);
+  } else {
+    window.addEventListener('load', () => {
+      updateTargetProgress();
+      requestAnimationFrame(renderLoop);
+    });
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    updateTargetProgress();
+    requestAnimationFrame(renderLoop);
+  });
 })();
 </script>
+
 
 
 
