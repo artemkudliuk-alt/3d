@@ -53,7 +53,9 @@ window.initHeroAnimation = function() {
       }
     });
 
-    if (titleWrap) tl.to(titleWrap, { y: -160, opacity: 0, duration: 2.0, ease: 'power1.inOut' }, 0);
+    var badge = intro.querySelector('.hero-contact-badge');
+    if (title) tl.to(title, { y: -160, opacity: 0, duration: 2.0, ease: 'power1.inOut' }, 0);
+    if (badge) tl.to(badge, { y: -160, opacity: 0, duration: 2.0, ease: 'power1.inOut' }, 0);
     if (header)   tl.to(header,   { autoAlpha: 0, y: -24, duration: 1.5, ease: 'power1.inOut' }, 0);
     if (subtitle) tl.to(subtitle, { opacity: 1, y: 0, pointerEvents: 'auto', duration: 1.8, ease: 'power1.out' }, 1.5);
     if (cta)      tl.to(cta,      { opacity: 1, y: 0, pointerEvents: 'auto', duration: 1.8, ease: 'power1.out' }, 2.5);

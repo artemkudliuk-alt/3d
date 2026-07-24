@@ -65,6 +65,40 @@
     </style>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  .hero-contact-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 10px 24px !important;
+    border-radius: 100px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    color: #ffffff !important;
+    font-family: 'Mulish', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    margin-bottom: 24px !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    transition: background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
+    cursor: pointer !important;
+  }
+  .hero-contact-badge svg {
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+  .hero-contact-badge:hover {
+    background: rgba(255, 255, 255, 0.18) !important;
+    border-color: rgba(255, 255, 255, 0.38) !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3) !important;
+  }
+  .hero-contact-badge:hover svg {
+    transform: translateX(6px) !important;
+  }
+</style>
 </head>
 
 <body class="home wp-singular page-template page-template-front-page page-template-front-page-php page page-id-5 wp-theme-bamboo">
@@ -113,7 +147,7 @@
     
     <div class="container-content flex-v">
       <div class="hero-title-wrap">
-        <a href="#lead-capture" class="hero-contact-badge" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18); color: #ffffff; font-family: 'Mulish', sans-serif; font-size: 14px; font-weight: 600; text-decoration: none; margin-bottom: 24px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+        <a href="#lead-capture" class="hero-contact-badge">
           <span>Зв'язатися з нами</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
