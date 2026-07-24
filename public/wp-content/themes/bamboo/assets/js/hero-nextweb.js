@@ -196,28 +196,28 @@ window.initHeroAnimation = function() {
       });
     }
     if (centerCard) {
-      gsap.fromTo(centerCard, { y: 100, opacity: 0 }, {
+      gsap.fromTo(centerCard, { y: 90, opacity: 0 }, {
         y: 0, opacity: 1, ease: 'none',
         scrollTrigger: {
-          trigger: grid, start: 'top 90%', end: 'top 65%',
+          trigger: testimonialsSection, start: 'top 90%', end: 'top 65%',
           scrub: true, invalidateOnRefresh: true,
         }
       });
     }
     if (rightPoster) {
-      gsap.fromTo(rightPoster, { y: 240, opacity: 0 }, {
+      gsap.fromTo(rightPoster, { y: 140, opacity: 0 }, {
         y: 0, opacity: 1, ease: 'none',
         scrollTrigger: {
-          trigger: grid, start: 'top 80%', end: 'top 50%',
+          trigger: testimonialsSection, start: 'top 85%', end: 'top 55%',
           scrub: true, invalidateOnRefresh: true,
         }
       });
     }
     if (leftCard) {
-      gsap.fromTo(leftCard, { y: 360, opacity: 0 }, {
+      gsap.fromTo(leftCard, { y: 190, opacity: 0 }, {
         y: 0, opacity: 1, ease: 'none',
         scrollTrigger: {
-          trigger: grid, start: 'top 65%', end: 'top 35%',
+          trigger: testimonialsSection, start: 'top 80%', end: 'top 45%',
           scrub: true, invalidateOnRefresh: true,
         }
       });

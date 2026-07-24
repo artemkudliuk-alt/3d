@@ -501,28 +501,28 @@
 
       const progress = currentProgress;
 
-      // 1-st: Center card (progress 0.0 -> 0.33)
-      let p1 = progress / 0.33;
+      // 1-st: Center card (progress 0.0 -> 0.45)
+      let p1 = progress / 0.45;
       if (p1 < 0) p1 = 0; if (p1 > 1) p1 = 1;
-      const y1 = (1 - p1) * 130;
+      const y1 = (1 - p1) * 100;
       if (centerCard) {
         centerCard.style.transform = 'translate3d(0, ' + y1.toFixed(2) + 'px, 0)';
         centerCard.style.opacity = p1.toFixed(3);
       }
 
-      // 2-nd: Right photo card (progress 0.33 -> 0.66)
-      let p2 = (progress - 0.33) / 0.33;
+      // 2-nd: Right photo card (progress 0.12 -> 0.57)
+      let p2 = (progress - 0.12) / 0.45;
       if (p2 < 0) p2 = 0; if (p2 > 1) p2 = 1;
-      const y2 = (1 - p2) * 240;
+      const y2 = (1 - p2) * 160;
       if (rightPoster) {
         rightPoster.style.transform = 'translate3d(0, ' + y2.toFixed(2) + 'px, 0)';
         rightPoster.style.opacity = p2.toFixed(3);
       }
 
-      // 3-rd: Left white card (progress 0.66 -> 1.0)
-      let p3 = (progress - 0.66) / 0.34;
+      // 3-rd: Left white card (progress 0.24 -> 0.70)
+      let p3 = (progress - 0.24) / 0.46;
       if (p3 < 0) p3 = 0; if (p3 > 1) p3 = 1;
-      const y3 = (1 - p3) * 320;
+      const y3 = (1 - p3) * 200;
       if (leftCard) {
         leftCard.style.transform = 'translate3d(0, ' + y3.toFixed(2) + 'px, 0)';
         leftCard.style.opacity = p3.toFixed(3);
