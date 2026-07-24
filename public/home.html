@@ -594,8 +594,8 @@
     const rect = grid.getBoundingClientRect();
     const vh = window.innerHeight;
 
-    // Total distance = 0.65 * vh so all 3 cards finish arriving WELL BEFORE bottom marquee
-    const totalDist = vh * 0.65;
+    // Dist: vh * 1.15 for ultra-slow, smooth, unhurried progression
+    const totalDist = vh * 1.15;
     const currentDist = vh - rect.top;
     let p = currentDist / totalDist;
     if (p < 0) p = 0;
@@ -605,8 +605,8 @@
   }
 
   function renderLoop() {
-    // Ultra smooth lerp interpolation (0.045) for silk smooth, responsive motion
-    currentProgress += (targetProgress - currentProgress) * 0.045;
+    // Heavy liquid LERP interpolation with factor 0.035 for maximum smoothness
+    currentProgress += (targetProgress - currentProgress) * 0.035;
 
     if (Math.abs(targetProgress - currentProgress) < 0.00005) {
       currentProgress = targetProgress;
@@ -620,31 +620,31 @@
 
       const progress = currentProgress;
 
-      // 1-st: Center card (progress 0.0 -> 0.35)
-      let p1 = progress / 0.35;
+      // 1-st: Center card (progress 0.0 -> 0.33)
+      let p1 = progress / 0.33;
       if (p1 < 0) p1 = 0; if (p1 > 1) p1 = 1;
-      const y1 = (1 - p1) * 90;
+      const y1 = (1 - p1) * 130;
       if (centerCard) {
         centerCard.style.transform = 'translate3d(0, ' + y1.toFixed(2) + 'px, 0)';
-        centerCard.style.opacity = (p1 * 0.8 + 0.2).toFixed(3);
+        centerCard.style.opacity = p1.toFixed(3);
       }
 
-      // 2-nd: Right photo card (progress 0.20 -> 0.60)
-      let p2 = (progress - 0.20) / 0.40;
+      // 2-nd: Right photo card (progress 0.33 -> 0.66)
+      let p2 = (progress - 0.33) / 0.33;
       if (p2 < 0) p2 = 0; if (p2 > 1) p2 = 1;
-      const y2 = (1 - p2) * 160;
+      const y2 = (1 - p2) * 240;
       if (rightPoster) {
         rightPoster.style.transform = 'translate3d(0, ' + y2.toFixed(2) + 'px, 0)';
-        rightPoster.style.opacity = (p2 * 0.8 + 0.2).toFixed(3);
+        rightPoster.style.opacity = p2.toFixed(3);
       }
 
-      // 3-rd: Left white card (progress 0.40 -> 0.80) — FINISHES AT PROGRESS 0.80 WELL BEFORE MARQUEE!
-      let p3 = (progress - 0.40) / 0.40;
+      // 3-rd: Left white card (progress 0.66 -> 1.0)
+      let p3 = (progress - 0.66) / 0.34;
       if (p3 < 0) p3 = 0; if (p3 > 1) p3 = 1;
-      const y3 = (1 - p3) * 200;
+      const y3 = (1 - p3) * 320;
       if (leftCard) {
         leftCard.style.transform = 'translate3d(0, ' + y3.toFixed(2) + 'px, 0)';
-        leftCard.style.opacity = (p3 * 0.8 + 0.2).toFixed(3);
+        leftCard.style.opacity = p3.toFixed(3);
       }
     }
 
@@ -669,6 +669,7 @@
   });
 })();
 </script>
+
 
 
 
@@ -1137,7 +1138,7 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
 <script id="page-home-js" src="/wp-content/themes/bamboo/assets/js/page-home.js?ver=1784586053"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="/wp-content/themes/bamboo/assets/js/hero-nextweb.js" defer></script>
+<script src="/wp-content/themes/bamboo/assets/js/hero-nextweb.js"></script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1e55b13bed5028c',t:'MTc4NDU4NjA1Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 
 <!-- Custom Video Player Modal -->
@@ -1283,16 +1284,7 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
   </div>
 </div>
 
-<script>
-  window.addEventListener('load', function() {
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-      gsap.registerPlugin(ScrollTrigger);
-      setTimeout(function() {
-        ScrollTrigger.refresh();
-      }, 200);
-    }
-  });
-</script>
+
 <script>
 (function initSmoothReviewSwitcher() {
   const reviews = [
