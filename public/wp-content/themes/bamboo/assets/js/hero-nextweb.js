@@ -175,7 +175,7 @@ const initHeroAnimation = () => {
   }
 
   // ============================================================
-  // СЕКЦІЯ 4: КАСКАДНИЙ 1-2-3 ПАРАЛАКС (REVIEW -> СПРАВА -> СЛІВА)
+  // СЕКЦІЯ 4: ЯСКРАВИЙ ПООЧЕРЕДНИЙ 1-2-3 ПАРАЛАКС СТРУКТУРИ
   // ============================================================
   const testimonialsSection = document.querySelector(".testimonials-partners");
   if (testimonialsSection) {
@@ -184,55 +184,17 @@ const initHeroAnimation = () => {
     const rightPoster = testimonialsSection.querySelector(".nw-parallax-right");
     const leftCard = testimonialsSection.querySelector(".nw-parallax-left");
 
-    // 0. Заголовок (004 + Title)
+    // 0. Заголовок секції — Рух при переході
     if (headerGroup) {
       gsap.fromTo(headerGroup,
-        { y: -160 },
+        { y: -120 },
         {
-          y: 120,
+          y: 60,
           ease: "none",
           scrollTrigger: {
             trigger: testimonialsSection,
             start: "top 95%",
-            end: "bottom 5%",
-            scrub: 1.5,
-            invalidateOnRefresh: true,
-            refreshPriority: -1,
-          }
-        }
-      );
-    }
-
-    // 1-Й НА СЦЕНУ (Перша картка Review): Підтягується ПЕРШОЮ
-    if (centerCard) {
-      gsap.fromTo(centerCard,
-        { y: 220 },
-        {
-          y: -40,
-          ease: "power1.out",
-          scrollTrigger: {
-            trigger: testimonialsSection,
-            start: "top 95%",
-            end: "top 20%",
-            scrub: 0.9,
-            invalidateOnRefresh: true,
-            refreshPriority: -1,
-          }
-        }
-      );
-    }
-
-    // 2-Й НА СЦЕНУ (Друга картка Справа): Підтягується ДРУГОЮ одразу за Review
-    if (rightPoster) {
-      gsap.fromTo(rightPoster,
-        { y: 280 },
-        {
-          y: -60,
-          ease: "power1.out",
-          scrollTrigger: {
-            trigger: testimonialsSection,
-            start: "top 90%",
-            end: "top 15%",
+            end: "bottom 10%",
             scrub: 1.2,
             invalidateOnRefresh: true,
             refreshPriority: -1,
@@ -241,18 +203,59 @@ const initHeroAnimation = () => {
       );
     }
 
-    // 3-Й НА СЦЕНУ (Третя картка Сліва): Доганяє ТРЕТЬОЮ через декілька пікселів
-    if (leftCard) {
-      gsap.fromTo(leftCard,
-        { y: 340 },
+    // 1-Й ЕТАП: Спочатку з'являється та підтягується ТІЛЬКИ центральна картка Review
+    if (centerCard) {
+      gsap.fromTo(centerCard,
+        { y: 320, opacity: 0 },
         {
-          y: -80,
-          ease: "power1.out",
+          y: 0,
+          opacity: 1,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: testimonialsSection,
-            start: "top 85%",
-            end: "top 10%",
-            scrub: 1.5,
+            start: "top 95%",
+            end: "top 45%",
+            scrub: 1.0,
+            invalidateOnRefresh: true,
+            refreshPriority: -1,
+          }
+        }
+      );
+    }
+
+    // 2-Й ЕТАП: Тільки ПІСЛЯ подальшого скролу виринає ДРУГА картка (Справа)
+    if (rightPoster) {
+      gsap.fromTo(rightPoster,
+        { y: 380, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: testimonialsSection,
+            start: "top 65%",
+            end: "top 25%",
+            scrub: 1.2,
+            invalidateOnRefresh: true,
+            refreshPriority: -1,
+          }
+        }
+      );
+    }
+
+    // 3-Й ЕТАП: ОСТАННЬОЮ з великим проміжком скролу виринає ТРЕТЯ картка (Сліва)
+    if (leftCard) {
+      gsap.fromTo(leftCard,
+        { y: 440, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: testimonialsSection,
+            start: "top 45%",
+            end: "top 5%",
+            scrub: 1.4,
             invalidateOnRefresh: true,
             refreshPriority: -1,
           }
