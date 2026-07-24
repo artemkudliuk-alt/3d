@@ -1624,17 +1624,24 @@ footer.site-footer {
 }
 
 
-/* BRAND MARQUEE & ELEGANT FLOATING POPUP CARDS */
-@keyframes tpMarqueeInfinite {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* PERPETUAL INFINITE MARQUEE & SMOOTH EDGE BLUR DISSOLVE */
+@keyframes tpMarqueePerpetual {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-33.33333%, 0, 0); }
 }
 
 .tp-marquee-wrapper {
   overflow: visible !important;
   width: 100% !important;
   position: relative !important;
-  padding: 80px 0 20px 0 !important;
+  padding: 28px 0 !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.09) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09) !important;
+  background: rgba(0, 0, 0, 0.015) !important;
+  
+  /* Smooth edge fade out blur mask */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%) !important;
+  mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%) !important;
 }
 
 .tp-marquee-track {
@@ -1642,7 +1649,8 @@ footer.site-footer {
   gap: 72px !important;
   align-items: center !important;
   width: max-content !important;
-  animation: tpMarqueeInfinite 45s linear infinite !important;
+  will-change: transform !important;
+  animation: tpMarqueePerpetual 35s linear infinite !important;
 }
 
 .tp-marquee-wrapper:hover .tp-marquee-track {
@@ -1673,16 +1681,16 @@ footer.site-footer {
 /* FLOATING POPUP CARD HIGH ABOVE TEXT */
 .tp-brand-popover {
   position: absolute !important;
-  bottom: 50px !important;
+  bottom: 48px !important;
   left: 50% !important;
   transform: translateX(-50%) translateY(12px) !important;
-  width: 320px !important;
+  width: 300px !important;
   background: #0c0c10 !important;
   color: #ffffff !important;
-  padding: 22px 24px !important;
+  padding: 18px 22px !important;
   border-radius: 12px !important;
   border: 1px solid rgba(255, 255, 255, 0.22) !important;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.75) !important;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8) !important;
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
@@ -1695,18 +1703,18 @@ footer.site-footer {
 .tp-popover-header {
   display: flex !important;
   align-items: center !important;
-  gap: 12px !important;
-  margin-bottom: 10px !important;
+  gap: 10px !important;
+  margin-bottom: 8px !important;
 }
 
 .tp-popover-icon {
-  font-size: 22px !important;
+  font-size: 20px !important;
   line-height: 1 !important;
 }
 
 .tp-popover-title {
   font-family: 'Mulish', sans-serif !important;
-  font-size: 16px !important;
+  font-size: 15px !important;
   font-weight: 800 !important;
   color: #ffffff !important;
   letter-spacing: 0.03em !important;
@@ -1714,8 +1722,8 @@ footer.site-footer {
 
 .tp-popover-text {
   font-family: 'Inter', sans-serif !important;
-  font-size: 13.5px !important;
-  line-height: 1.6 !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
   color: #d0d0e8 !important;
   margin: 0 !important;
   font-weight: 400 !important;
@@ -1728,9 +1736,9 @@ footer.site-footer {
   transform: translateX(-50%) !important;
   width: 0 !important;
   height: 0 !important;
-  border-left: 9px solid transparent !important;
-  border-right: 9px solid transparent !important;
-  border-top: 9px solid #0c0c10 !important;
+  border-left: 8px solid transparent !important;
+  border-right: 8px solid transparent !important;
+  border-top: 8px solid #0c0c10 !important;
 }
 
 .tp-brand-item:hover .tp-brand-popover {
