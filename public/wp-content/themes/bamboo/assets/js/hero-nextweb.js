@@ -41,6 +41,7 @@ window.initHeroAnimation = function() {
 
     // Pinned scroll timeline
         // Pinned scroll timeline (200vh total scroll distance)
+        // Pinned scroll timeline (220vh total scroll distance)
     var tl = gsap.timeline({
       scrollTrigger: {
         trigger: intro,
@@ -48,7 +49,7 @@ window.initHeroAnimation = function() {
         end: '+=220%',
         pin: true,
         pinSpacing: true,
-        scrub: 0.8,
+        scrub: 1.2,
         anticipatePin: 1,
         refreshPriority: 10,
       }
@@ -56,21 +57,21 @@ window.initHeroAnimation = function() {
 
     var badge = intro.querySelector('.hero-contact-badge');
 
-    // Stage 1 (0 -> 0.7): Title & badge fade up; Header softly floats up translateY(-120%) & fades out
-    if (title)    tl.to(title,    { y: -80, opacity: 0, duration: 0.7, ease: 'power1.out' }, 0);
-    if (badge)    tl.to(badge,    { y: -80, opacity: 0, duration: 0.7, ease: 'power1.out' }, 0);
-    if (header)   tl.to(header,   { yPercent: -120, opacity: 0, duration: 0.6, ease: 'power2.inOut' }, 0.1);
+    // Stage 1 (0 -> 1.8): Title, badge, AND Header start TOGETHER at 0 and fade out 3x slower
+    if (title)    tl.to(title,    { y: -100, opacity: 0, duration: 1.8, ease: 'power1.out' }, 0);
+    if (badge)    tl.to(badge,    { y: -100, opacity: 0, duration: 1.8, ease: 'power1.out' }, 0);
+    if (header)   tl.to(header,   { y: -100, opacity: 0, pointerEvents: 'none', duration: 1.8, ease: 'power1.out' }, 0);
 
-    if (subtitle) tl.to(subtitle, { opacity: 1, y: 0, pointerEvents: 'auto', duration: 0.8, ease: 'power1.out' }, 0.3);
-    if (cta)      tl.to(cta,      { opacity: 1, y: 0, pointerEvents: 'auto', duration: 0.8, ease: 'power1.out' }, 0.5);
+    if (subtitle) tl.to(subtitle, { opacity: 1, y: 0, pointerEvents: 'auto', duration: 1.5, ease: 'power1.out' }, 0.6);
+    if (cta)      tl.to(cta,      { opacity: 1, y: 0, pointerEvents: 'auto', duration: 1.5, ease: 'power1.out' }, 0.9);
 
-    // Presentation Hold stage (0.7 -> 2.2): Header stays 100% invisible; Subtitle & CTA stay crystal clear
-    tl.to({}, { duration: 1.5 });
+    // Presentation Hold stage (1.8 -> 2.4): Pure clean video presentation view
+    tl.to({}, { duration: 0.6 });
 
-    // Stage 2 (2.2 -> 2.8): Subtitle & CTA fade out; Header softly floats back down (yPercent: 0, opacity: 1) for Section 2
-    if (subtitle) tl.to(subtitle, { y: -60, opacity: 0, duration: 0.6, ease: 'power1.in' }, 2.2);
-    if (cta)      tl.to(cta,      { y: -60, opacity: 0, duration: 0.6, ease: 'power1.in' }, 2.2);
-    if (header)   tl.to(header,   { y: 0, opacity: 1, pointerEvents: 'auto', duration: 0.5, ease: 'power2.out' }, 2.1);
+    // Stage 2 (2.4 -> 3.9): Subtitle & CTA fade up; Header returns 3x slower for Section 2
+    if (subtitle) tl.to(subtitle, { y: -60, opacity: 0, duration: 1.2, ease: 'power1.in' }, 2.4);
+    if (cta)      tl.to(cta,      { y: -60, opacity: 0, duration: 1.2, ease: 'power1.in' }, 2.4);
+    if (header)   tl.to(header,   { y: 0, opacity: 1, pointerEvents: 'auto', duration: 1.5, ease: 'power1.out' }, 2.2);
 
     // Video speed boost on scroll
     if (video) {
