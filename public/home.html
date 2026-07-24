@@ -687,216 +687,362 @@
 
     <!-- BLOCK 5: PARTNERS TRUST MARQUEE -->
     <!-- ARCHITECTURAL MARQUEE TUNNEL WITH BOUNDED LINES AND FADE-IN / FADE-OUT EDGE DISSOLVE -->
-    <div class="tp-partners-block" style="margin-top: 90px !important; margin-bottom: 90px !important; padding: 0 !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; position: relative !important; z-index: 5 !important; opacity: 1 !important; width: 100% !important;">
-      
-      <!-- CENTERED TITLE -->
-      <h3 style="font-family: 'Mulish', sans-serif !important; font-weight: 800 !important; font-size: 13px !important; letter-spacing: 0.18em !important; text-transform: uppercase !important; color: #888899 !important; margin: 0 0 36px 0 !important; text-align: center !important;">
-        НАШІ ПАРТНЕРИ ТА ГОТЕЛЬНІ МЕРЕЖІ
-      </h3>
-      
-      <!-- BOUNDED TUNNEL CONTAINER (1100px MAX WIDTH) -->
-      <div class="tp-marquee-tunnel-wrapper" style="width: 100% !important; max-width: 1100px !important; margin: 0 auto !important; position: relative !important; overflow: hidden !important; border-top: 1px solid rgba(0, 0, 0, 0.12) !important; border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important; padding: 26px 0 !important; background: rgba(0, 0, 0, 0.015) !important;">
-        
-        <div class="tp-marquee-track" style="display: flex !important; gap: 72px !important; align-items: center !important; width: max-content !important; animation: tpMarqueePerpetual 35s linear infinite !important;">
-          
-          <!-- LOOP 1 -->
-          <div class="tp-brand-item">
-            <span class="tp-brand-name">RADISSON BLU</span>
-            <div class="tp-brand-popover">
-              <div class="tp-popover-header">
-                <span class="tp-popover-icon">🏰</span>
-                <span class="tp-popover-title">RADISSON BLU</span>
-              </div>
-              <p class="tp-popover-text">Світова мережа готелів преміум-класу з повним 3D-моделюванням номерного фонду.</p>
-              <div class="tp-popover-arrow"></div>
-            </div>
-          </div>
+    <style>
+  @keyframes tpMarqueePerpetual {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-33.33333%, 0, 0); }
+  }
 
-          <div class="tp-brand-item">
-            <span class="tp-brand-name">GRAND HOTEL</span>
-            <div class="tp-brand-popover">
-              <div class="tp-popover-header">
-                <span class="tp-popover-icon">👑</span>
-                <span class="tp-popover-title">GRAND HOTEL</span>
-              </div>
-              <p class="tp-popover-text">Легендарний п'ятизірковий комплекс з інтегрованою системою віртуальних турів.</p>
-              <div class="tp-popover-arrow"></div>
-            </div>
-          </div>
+  .tp-partners-block {
+    margin-top: 90px !important;
+    margin-bottom: 90px !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    z-index: 5 !important;
+    opacity: 1 !important;
+    width: 100% !important;
+  }
 
-          <div class="tp-brand-item">
-            <span class="tp-brand-name">HILTON RESORTS</span>
-            <div class="tp-brand-popover">
-              <div class="tp-popover-header">
-                <span class="tp-popover-icon">⭐</span>
-                <span class="tp-popover-title">HILTON RESORTS</span>
-              </div>
-              <p class="tp-popover-text">Міжнародний курортний бренд із впровадженим 3D-візуалізатором апартаментів.</p>
-              <div class="tp-popover-arrow"></div>
-            </div>
-          </div>
+  .tp-partners-title {
+    font-family: 'Mulish', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 13px !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    color: #888899 !important;
+    margin: 0 0 36px 0 !important;
+    text-align: center !important;
+  }
 
-          <div class="tp-brand-item">
-            <span class="tp-brand-name">MARRIOTT INTERNATIONAL</span>
-            <div class="tp-brand-popover">
-              <div class="tp-popover-header">
-                <span class="tp-popover-icon">💎</span>
-                <span class="tp-popover-title">MARRIOTT INT.</span>
-              </div>
-              <p class="tp-popover-text">Лідер світової індустрії гостинності з підвищеною конверсією прямих бронювань.</p>
-              <div class="tp-popover-arrow"></div>
-            </div>
-          </div>
+  .tp-marquee-banner-strip {
+    width: 100% !important;
+    position: relative !important;
+    overflow: visible !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    padding: 28px 0 !important;
+    background: rgba(0, 0, 0, 0.015) !important;
+  }
 
-          <div class="tp-brand-item">
-            <span class="tp-brand-name">HYATT REGENCY</span>
-            <div class="tp-brand-popover">
-              <div class="tp-popover-header">
-                <span class="tp-popover-icon">🏛</span>
-                <span class="tp-popover-title">HYATT REGENCY</span>
-              </div>
-              <p class="tp-popover-text">Бізнес-готелі преміум-сегменту з панорамним зануренням у конгрес-холи.</p>
-              <div class="tp-popover-arrow"></div>
-            </div>
-          </div>
+  .tp-marquee-track {
+    display: flex !important;
+    gap: 72px !important;
+    align-items: center !important;
+    width: max-content !important;
+    will-change: transform !important;
+    animation: tpMarqueePerpetual 35s linear infinite !important;
+  }
 
-          <div class="tp-brand-item">
-            <span class="tp-brand-name">PREMIER HOTELS</span>
-            <div class="tp-brand-popover">
-              <div class="tp-popover-header">
-                <span class="tp-popover-icon">🎖</span>
-                <span class="tp-popover-title">PREMIER HOTELS</span>
-              </div>
-              <p class="tp-popover-text">Українська мережа розкішних готелів із візуалізацією найкращих сюїтів.</p>
-              <div class="tp-popover-arrow"></div>
-            </div>
-          </div>
+  .tp-marquee-banner-strip:hover .tp-marquee-track {
+    animation-play-state: paused !important;
+  }
 
-          <div class="tp-brand-item">
-            <span class="tp-brand-name">INTERCONTINENTAL</span>
-            <div class="tp-brand-popover">
-              <div class="tp-popover-header">
-                <span class="tp-popover-icon">🌐</span>
-                <span class="tp-popover-title">INTERCONTINENTAL</span>
-              </div>
-              <p class="tp-popover-text">Флагманський готельний бренд із віртуальними 3D-екскурсіями 60 FPS.</p>
-              <div class="tp-popover-arrow"></div>
-            </div>
-          </div>
+  .tp-brand-item {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    cursor: pointer !important;
+  }
 
-          <!-- LOOP 2 -->
-          <div class="tp-brand-item">
-            <span class="tp-brand-name">RADISSON BLU</span>
-            <div class="tp-brand-popover">
-              <div class="tp-popover-header">
-                <span class="tp-popover-icon">🏰</span>
-                <span class="tp-popover-title">RADISSON BLU</span>
-              </div>
-              <p class="tp-popover-text">Світова мережа готелів преміум-класу з повним 3D-моделюванням номерного фонду.</p>
-              <div class="tp-popover-arrow"></div>
-            </div>
-          </div>
+  .tp-brand-name {
+    font-family: 'Mulish', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 21px !important;
+    color: #0c0c10 !important;
+    letter-spacing: 0.05em !important;
+    white-space: nowrap !important;
+    transition: color 0.3s ease !important;
+  }
 
-          <div class="tp-brand-item">
-            <span class="tp-brand-name">GRAND HOTEL</span>
-            <div class="tp-brand-popover">
-              <div class="tp-popover-header">
-                <span class="tp-popover-icon">👑</span>
-                <span class="tp-popover-title">GRAND HOTEL</span>
-              </div>
-              <p class="tp-popover-text">Легендарний п'ятизірковий комплекс з інтегрованою системою віртуальних турів.</p>
-              <div class="tp-popover-arrow"></div>
-            </div>
-          </div>
+  .tp-brand-item:hover .tp-brand-name {
+    color: #ff5c2b !important;
+  }
 
-          <div class="tp-brand-item">
-            <span class="tp-brand-name">HILTON RESORTS</span>
-            <div class="tp-brand-popover">
-              <div class="tp-popover-header">
-                <span class="tp-popover-icon">⭐</span>
-                <span class="tp-popover-title">HILTON RESORTS</span>
-              </div>
-              <p class="tp-popover-text">Міжнародний курортний бренд із впровадженим 3D-візуалізатором апартаментів.</p>
-              <div class="tp-popover-arrow"></div>
-            </div>
-          </div>
+  /* FLOATING DARK POPOVER CARD - HIDDEN BY DEFAULT, SHOWN ONLY ON HOVER */
+  .tp-brand-popover {
+    position: absolute !important;
+    bottom: 55px !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(12px) !important;
+    width: 300px !important;
+    background: #0c0c10 !important;
+    color: #ffffff !important;
+    padding: 18px 22px !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease !important;
+    z-index: 999999 !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+    display: block !important;
+  }
 
-          <div class="tp-brand-item">
-            <span class="tp-brand-name">MARRIOTT INTERNATIONAL</span>
-            <div class="tp-brand-popover">
-              <div class="tp-popover-header">
-                <span class="tp-popover-icon">💎</span>
-                <span class="tp-popover-title">MARRIOTT INT.</span>
-              </div>
-              <p class="tp-popover-text">Лідер світової індустрії гостинності з підвищеною конверсією прямих бронювань.</p>
-              <div class="tp-popover-arrow"></div>
-            </div>
-          </div>
+  .tp-brand-item:hover .tp-brand-popover {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateX(-50%) translateY(0) !important;
+  }
 
-          <div class="tp-brand-item">
-            <span class="tp-brand-name">HYATT REGENCY</span>
-            <div class="tp-brand-popover">
-              <div class="tp-popover-header">
-                <span class="tp-popover-icon">🏛</span>
-                <span class="tp-popover-title">HYATT REGENCY</span>
-              </div>
-              <p class="tp-popover-text">Бізнес-готелі преміум-сегменту з панорамним зануренням у конгрес-холи.</p>
-              <div class="tp-popover-arrow"></div>
-            </div>
-          </div>
+  .tp-popover-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-bottom: 8px !important;
+  }
 
-          <div class="tp-brand-item">
-            <span class="tp-brand-name">PREMIER HOTELS</span>
-            <div class="tp-brand-popover">
-              <div class="tp-popover-header">
-                <span class="tp-popover-icon">🎖</span>
-                <span class="tp-popover-title">PREMIER HOTELS</span>
-              </div>
-              <p class="tp-popover-text">Українська мережа розкішних готелів із візуалізацією найкращих сюїтів.</p>
-              <div class="tp-popover-arrow"></div>
-            </div>
-          </div>
+  .tp-popover-icon {
+    font-size: 20px !important;
+    line-height: 1 !important;
+  }
 
-          <div class="tp-brand-item">
-            <span class="tp-brand-name">INTERCONTINENTAL</span>
-            <div class="tp-brand-popover">
-              <div class="tp-popover-header">
-                <span class="tp-popover-icon">🌐</span>
-                <span class="tp-popover-title">INTERCONTINENTAL</span>
-              </div>
-              <p class="tp-popover-text">Флагманський готельний бренд із віртуальними 3D-екскурсіями 60 FPS.</p>
-              <div class="tp-popover-arrow"></div>
-            </div>
-          </div>
+  .tp-popover-title {
+    font-family: 'Mulish', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    letter-spacing: 0.03em !important;
+  }
 
-          <!-- LOOP 3 -->
-          <div class="tp-brand-item">
-            <span class="tp-brand-name">RADISSON BLU</span>
-            <div class="tp-brand-popover">
-              <div class="tp-popover-header">
-                <span class="tp-popover-icon">🏰</span>
-                <span class="tp-popover-title">RADISSON BLU</span>
-              </div>
-              <p class="tp-popover-text">Світова мережа готелів преміум-класу з повним 3D-моделюванням номерного фонду.</p>
-              <div class="tp-popover-arrow"></div>
-            </div>
-          </div>
+  .tp-popover-text {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    color: #d0d0e8 !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+  }
 
-          <div class="tp-brand-item">
-            <span class="tp-brand-name">GRAND HOTEL</span>
-            <div class="tp-brand-popover">
-              <div class="tp-popover-header">
-                <span class="tp-popover-icon">👑</span>
-                <span class="tp-popover-title">GRAND HOTEL</span>
-              </div>
-              <p class="tp-popover-text">Легендарний п'ятизірковий комплекс з інтегрованою системою віртуальних турів.</p>
-              <div class="tp-popover-arrow"></div>
-            </div>
-          </div>
+  .tp-popover-arrow {
+    position: absolute !important;
+    top: 100% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 0 !important;
+    height: 0 !important;
+    border-left: 8px solid transparent !important;
+    border-right: 8px solid transparent !important;
+    border-top: 8px solid #0c0c10 !important;
+  }
+</style>
 
+<div class="tp-partners-block">
+  <h3 class="tp-partners-title">
+    НАШІ ПАРТНЕРИ ТА ГОТЕЛЬНІ МЕРЕЖІ
+  </h3>
+  
+  <div class="tp-marquee-banner-strip">
+    <!-- LEFT & RIGHT EDGE FADE GRADIENT OVERLAYS -->
+    <div style="position: absolute !important; top: 0 !important; left: 0 !important; width: 180px !important; height: 100% !important; background: linear-gradient(to right, #f4f4f7 25%, transparent 100%) !important; z-index: 10 !important; pointer-events: none !important;"></div>
+    <div style="position: absolute !important; top: 0 !important; right: 0 !important; width: 180px !important; height: 100% !important; background: linear-gradient(to left, #f4f4f7 25%, transparent 100%) !important; z-index: 10 !important; pointer-events: none !important;"></div>
+
+    <div class="tp-marquee-track">
+      <!-- LOOP 1 -->
+      <div class="tp-brand-item">
+        <span class="tp-brand-name">RADISSON BLU</span>
+        <div class="tp-brand-popover">
+          <div class="tp-popover-header">
+            <span class="tp-popover-icon">🏰</span>
+            <span class="tp-popover-title">RADISSON BLU</span>
+          </div>
+          <p class="tp-popover-text">Світова мережа готелів преміум-класу з повним 3D-моделюванням номерного фонду.</p>
+          <div class="tp-popover-arrow"></div>
         </div>
       </div>
+
+      <div class="tp-brand-item">
+        <span class="tp-brand-name">GRAND HOTEL</span>
+        <div class="tp-brand-popover">
+          <div class="tp-popover-header">
+            <span class="tp-popover-icon">👑</span>
+            <span class="tp-popover-title">GRAND HOTEL</span>
+          </div>
+          <p class="tp-popover-text">Легендарний п'ятизірковий комплекс з інтегрованою системою віртуальних турів.</p>
+          <div class="tp-popover-arrow"></div>
+        </div>
+      </div>
+
+      <div class="tp-brand-item">
+        <span class="tp-brand-name">HILTON RESORTS</span>
+        <div class="tp-brand-popover">
+          <div class="tp-popover-header">
+            <span class="tp-popover-icon">⭐</span>
+            <span class="tp-popover-title">HILTON RESORTS</span>
+          </div>
+          <p class="tp-popover-text">Міжнародний курортний бренд із впровадженим 3D-візуалізатором апартаментів.</p>
+          <div class="tp-popover-arrow"></div>
+        </div>
+      </div>
+
+      <div class="tp-brand-item">
+        <span class="tp-brand-name">MARRIOTT INTERNATIONAL</span>
+        <div class="tp-brand-popover">
+          <div class="tp-popover-header">
+            <span class="tp-popover-icon">💎</span>
+            <span class="tp-popover-title">MARRIOTT INT.</span>
+          </div>
+          <p class="tp-popover-text">Лідер світової індустрії гостинності з підвищеною конверсією прямих бронювань.</p>
+          <div class="tp-popover-arrow"></div>
+        </div>
+      </div>
+
+      <div class="tp-brand-item">
+        <span class="tp-brand-name">HYATT REGENCY</span>
+        <div class="tp-brand-popover">
+          <div class="tp-popover-header">
+            <span class="tp-popover-icon">🏛</span>
+            <span class="tp-popover-title">HYATT REGENCY</span>
+          </div>
+          <p class="tp-popover-text">Бізнес-готелі преміум-сегменту з панорамним зануренням у конгрес-холи.</p>
+          <div class="tp-popover-arrow"></div>
+        </div>
+      </div>
+
+      <div class="tp-brand-item">
+        <span class="tp-brand-name">PREMIER HOTELS</span>
+        <div class="tp-brand-popover">
+          <div class="tp-popover-header">
+            <span class="tp-popover-icon">🎖</span>
+            <span class="tp-popover-title">PREMIER HOTELS</span>
+          </div>
+          <p class="tp-popover-text">Українська мережа розкішних готелів із візуалізацією найкращих сюїтів.</p>
+          <div class="tp-popover-arrow"></div>
+        </div>
+      </div>
+
+      <div class="tp-brand-item">
+        <span class="tp-brand-name">INTERCONTINENTAL</span>
+        <div class="tp-brand-popover">
+          <div class="tp-popover-header">
+            <span class="tp-popover-icon">🌐</span>
+            <span class="tp-popover-title">INTERCONTINENTAL</span>
+          </div>
+          <p class="tp-popover-text">Флагманський готельний бренд із віртуальними 3D-екскурсіями 60 FPS.</p>
+          <div class="tp-popover-arrow"></div>
+        </div>
+      </div>
+
+      <!-- LOOP 2 -->
+      <div class="tp-brand-item">
+        <span class="tp-brand-name">RADISSON BLU</span>
+        <div class="tp-brand-popover">
+          <div class="tp-popover-header">
+            <span class="tp-popover-icon">🏰</span>
+            <span class="tp-popover-title">RADISSON BLU</span>
+          </div>
+          <p class="tp-popover-text">Світова мережа готелів преміум-класу з повним 3D-моделюванням номерного фонду.</p>
+          <div class="tp-popover-arrow"></div>
+        </div>
+      </div>
+
+      <div class="tp-brand-item">
+        <span class="tp-brand-name">GRAND HOTEL</span>
+        <div class="tp-brand-popover">
+          <div class="tp-popover-header">
+            <span class="tp-popover-icon">👑</span>
+            <span class="tp-popover-title">GRAND HOTEL</span>
+          </div>
+          <p class="tp-popover-text">Легендарний п'ятизірковий комплекс з інтегрованою системою віртуальних турів.</p>
+          <div class="tp-popover-arrow"></div>
+        </div>
+      </div>
+
+      <div class="tp-brand-item">
+        <span class="tp-brand-name">HILTON RESORTS</span>
+        <div class="tp-brand-popover">
+          <div class="tp-popover-header">
+            <span class="tp-popover-icon">⭐</span>
+            <span class="tp-popover-title">HILTON RESORTS</span>
+          </div>
+          <p class="tp-popover-text">Міжнародний курортний бренд із впровадженим 3D-візуалізатором апартаментів.</p>
+          <div class="tp-popover-arrow"></div>
+        </div>
+      </div>
+
+      <div class="tp-brand-item">
+        <span class="tp-brand-name">MARRIOTT INTERNATIONAL</span>
+        <div class="tp-brand-popover">
+          <div class="tp-popover-header">
+            <span class="tp-popover-icon">💎</span>
+            <span class="tp-popover-title">MARRIOTT INT.</span>
+          </div>
+          <p class="tp-popover-text">Лідер світової індустрії гостинності з підвищеною конверсією прямих бронювань.</p>
+          <div class="tp-popover-arrow"></div>
+        </div>
+      </div>
+
+      <div class="tp-brand-item">
+        <span class="tp-brand-name">HYATT REGENCY</span>
+        <div class="tp-brand-popover">
+          <div class="tp-popover-header">
+            <span class="tp-popover-icon">🏛</span>
+            <span class="tp-popover-title">HYATT REGENCY</span>
+          </div>
+          <p class="tp-popover-text">Бізнес-готелі преміум-сегменту з панорамним зануренням у конгрес-холи.</p>
+          <div class="tp-popover-arrow"></div>
+        </div>
+      </div>
+
+      <div class="tp-brand-item">
+        <span class="tp-brand-name">PREMIER HOTELS</span>
+        <div class="tp-brand-popover">
+          <div class="tp-popover-header">
+            <span class="tp-popover-icon">🎖</span>
+            <span class="tp-popover-title">PREMIER HOTELS</span>
+          </div>
+          <p class="tp-popover-text">Українська мережа розкішних готелів із візуалізацією найкращих сюїтів.</p>
+          <div class="tp-popover-arrow"></div>
+        </div>
+      </div>
+
+      <div class="tp-brand-item">
+        <span class="tp-brand-name">INTERCONTINENTAL</span>
+        <div class="tp-brand-popover">
+          <div class="tp-popover-header">
+            <span class="tp-popover-icon">🌐</span>
+            <span class="tp-popover-title">INTERCONTINENTAL</span>
+          </div>
+          <p class="tp-popover-text">Флагманський готельний бренд із віртуальними 3D-екскурсіями 60 FPS.</p>
+          <div class="tp-popover-arrow"></div>
+        </div>
+      </div>
+
+      <!-- LOOP 3 -->
+      <div class="tp-brand-item">
+        <span class="tp-brand-name">RADISSON BLU</span>
+        <div class="tp-brand-popover">
+          <div class="tp-popover-header">
+            <span class="tp-popover-icon">🏰</span>
+            <span class="tp-popover-title">RADISSON BLU</span>
+          </div>
+          <p class="tp-popover-text">Світова мережа готелів преміум-класу з повним 3D-моделюванням номерного фонду.</p>
+          <div class="tp-popover-arrow"></div>
+        </div>
+      </div>
+
+      <div class="tp-brand-item">
+        <span class="tp-brand-name">GRAND HOTEL</span>
+        <div class="tp-brand-popover">
+          <div class="tp-popover-header">
+            <span class="tp-popover-icon">👑</span>
+            <span class="tp-popover-title">GRAND HOTEL</span>
+          </div>
+          <p class="tp-popover-text">Легендарний п'ятизірковий комплекс з інтегрованою системою віртуальних турів.</p>
+          <div class="tp-popover-arrow"></div>
+        </div>
+      </div>
+
     </div>
+  </div>
+</div>
 </section>
 
 <!-- SECTION 6: LEAD CAPTURE FORM (LEAD GENERATION) -->
