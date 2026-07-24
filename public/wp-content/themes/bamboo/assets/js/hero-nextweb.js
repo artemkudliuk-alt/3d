@@ -40,6 +40,7 @@ window.initHeroAnimation = function() {
         // Pinned scroll timeline (260vh total scroll distance for zero-overlap 4-stage presentation)
         // Pinned scroll timeline (260vh total scroll distance for strict zero-overlap 4-stage presentation)
         // Pinned scroll timeline (260vh total scroll distance for strict zero-overlap presentation)
+        // Pinned scroll timeline (260vh total scroll distance for strict zero-overlap presentation)
     var tl = gsap.timeline({
       scrollTrigger: {
         trigger: intro,
@@ -89,11 +90,10 @@ window.initHeroAnimation = function() {
     tl.to({}, { duration: 1.0 });
 
     // ============================================================
-    // STAGE 4 (5.4 -> 6.6): Subtitle & CTA float up & fade out; Header softly returns for Section 2 (Cases)
+    // STAGE 4 (5.4 -> 6.6): Subtitle & CTA float up & fade out (Header STAYS INVISIBLE until Section 2!)
     // ============================================================
     if (subtitle) tl.to(subtitle, { y: -80, opacity: 0, duration: 1.2, ease: 'power2.in' }, 5.4);
     if (cta)      tl.to(cta,      { y: -80, opacity: 0, duration: 1.2, ease: 'power2.in' }, 5.4);
-    if (header)   tl.to(header,   { y: 0, opacity: 1, pointerEvents: 'auto', duration: 1.5, ease: 'power1.out' }, 5.2);
 
     // Video speed boost on scroll
     if (video) {
@@ -115,10 +115,30 @@ window.initHeroAnimation = function() {
   }
 
   // ============================================================
-  // SECTION 2: PROJECTS PARALLAX
+    // ============================================================
+  // SECTION 2: PROJECTS PARALLAX & HEADER RETURN
   // ============================================================
   var projectsSection = document.querySelector('.projects');
   if (projectsSection) {
+    // Header softly & slowly returns ONLY when Section 2 (.projects) comes into view!
+    if (header) {
+      ScrollTrigger.create({
+        trigger: projectsSection,
+        start: 'top 85%',
+        end: 'top 25%',
+        scrub: 1.2,
+        onUpdate: function(self) {
+          gsap.to(header, {
+            opacity: self.progress,
+            y: (1 - self.progress) * -50,
+            pointerEvents: self.progress > 0.4 ? 'auto' : 'none',
+            duration: 0.2,
+            overwrite: 'auto'
+          });
+        }
+      });
+    }
+
     var indexEl = projectsSection.querySelector('.container-index');
     var titleEl = projectsSection.querySelector('h2');
     var btnEl = projectsSection.querySelector('#open-catalog-btn');
