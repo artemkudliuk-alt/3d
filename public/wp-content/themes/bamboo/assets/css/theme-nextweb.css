@@ -1624,3 +1624,43 @@ footer.site-footer {
 }
 
 
+
+
+/* ENFORCE EXACT POPOVER POSITIONING OVER BRAND NAME */
+.tp-brand-item {
+  position: relative !important;
+  display: inline-block !important;
+  cursor: pointer !important;
+  overflow: visible !important;
+}
+
+.tp-brand-item:hover {
+  z-index: 99999999 !important;
+}
+
+  position: absolute !important;
+  bottom: 36px !important;
+  left: 50% !important;
+  transform: translateX(-50%) translateY(8px) !important;
+  width: 290px !important;
+  background: #0c0c10 !important;
+  color: #ffffff !important;
+  padding: 16px 20px !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease !important;
+  z-index: 99999999 !important;
+  box-sizing: border-box !important;
+  text-align: left !important;
+  display: block !important;
+}
+
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateX(-50%) translateY(0) !important;
+}
