@@ -1228,14 +1228,12 @@ section.testimonials-partners,
 }
 
 /* PARTNERS BLOCK 5 */
-.tp-partners-block {
   width: 100% !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
 }
 
-.tp-partners-title {
   color: #666678 !important;
   font-family: "Mulish", sans-serif !important;
   font-size: 13px !important;
@@ -1627,14 +1625,12 @@ footer.site-footer {
 
 
 /* ENFORCE EXACT POPOVER POSITIONING OVER BRAND NAME */
-.tp-brand-item {
   position: relative !important;
   display: inline-block !important;
   cursor: pointer !important;
   overflow: visible !important;
 }
 
-.tp-brand-item:hover {
   z-index: 99999999 !important;
 }
 
