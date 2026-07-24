@@ -594,8 +594,8 @@
     const rect = grid.getBoundingClientRect();
     const vh = window.innerHeight;
 
-    // Progress from 0 (grid top at bottom of screen) to 1 (grid top centered near top)
-    const totalDist = vh * 0.70;
+    // Dist: vh * 1.15 for ultra-slow, smooth, unhurried progression
+    const totalDist = vh * 1.15;
     const currentDist = vh - rect.top;
     let p = currentDist / totalDist;
     if (p < 0) p = 0;
@@ -605,10 +605,10 @@
   }
 
   function renderLoop() {
-    // Butter smooth LERP interpolation with factor 0.08
-    currentProgress += (targetProgress - currentProgress) * 0.08;
+    // Heavy liquid LERP interpolation with factor 0.035 for maximum smoothness
+    currentProgress += (targetProgress - currentProgress) * 0.035;
 
-    if (Math.abs(targetProgress - currentProgress) < 0.0001) {
+    if (Math.abs(targetProgress - currentProgress) < 0.00005) {
       currentProgress = targetProgress;
     }
 
@@ -623,7 +623,7 @@
       // 1-st: Center card (progress 0.0 -> 0.33)
       let p1 = progress / 0.33;
       if (p1 < 0) p1 = 0; if (p1 > 1) p1 = 1;
-      const y1 = (1 - p1) * 120;
+      const y1 = (1 - p1) * 130;
       if (centerCard) {
         centerCard.style.transform = 'translate3d(0, ' + y1.toFixed(2) + 'px, 0)';
         centerCard.style.opacity = p1.toFixed(3);
@@ -632,7 +632,7 @@
       // 2-nd: Right photo card (progress 0.33 -> 0.66)
       let p2 = (progress - 0.33) / 0.33;
       if (p2 < 0) p2 = 0; if (p2 > 1) p2 = 1;
-      const y2 = (1 - p2) * 220;
+      const y2 = (1 - p2) * 240;
       if (rightPoster) {
         rightPoster.style.transform = 'translate3d(0, ' + y2.toFixed(2) + 'px, 0)';
         rightPoster.style.opacity = p2.toFixed(3);
@@ -641,7 +641,7 @@
       // 3-rd: Left white card (progress 0.66 -> 1.0)
       let p3 = (progress - 0.66) / 0.34;
       if (p3 < 0) p3 = 0; if (p3 > 1) p3 = 1;
-      const y3 = (1 - p3) * 300;
+      const y3 = (1 - p3) * 320;
       if (leftCard) {
         leftCard.style.transform = 'translate3d(0, ' + y3.toFixed(2) + 'px, 0)';
         leftCard.style.opacity = p3.toFixed(3);
@@ -669,6 +669,7 @@
   });
 })();
 </script>
+
 
 
 
