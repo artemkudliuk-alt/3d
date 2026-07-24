@@ -1190,5 +1190,15 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
   </div>
 </div>
 
+<script>
+  window.addEventListener('load', function() {
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      setTimeout(function() {
+        ScrollTrigger.refresh();
+      }, 200);
+    }
+  });
+</script>
 </body>
 </html>

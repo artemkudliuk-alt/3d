@@ -180,86 +180,82 @@ const initHeroAnimation = () => {
   // ============================================================
   const testimonialsSection = document.querySelector(".testimonials-partners");
   if (testimonialsSection) {
+    const grid = testimonialsSection.querySelector(".tp-asymmetric-grid") || testimonialsSection;
     const headerGroup = testimonialsSection.querySelector(".nw-section4-header-group");
     const centerCard = testimonialsSection.querySelector(".nw-parallax-center");
     const rightPoster = testimonialsSection.querySelector(".nw-parallax-right");
     const leftCard = testimonialsSection.querySelector(".nw-parallax-left");
 
-    // Заголовок секції — Паралакс поява при наближенні (95% -> 75%)
+    // 1. ЗАГОЛОВОК СЕКЦІЇ
     if (headerGroup) {
       gsap.fromTo(headerGroup,
-        { y: 60, opacity: 0 },
+        { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          ease: "power2.out",
+          ease: "none",
           scrollTrigger: {
             trigger: testimonialsSection,
             start: "top 95%",
-            end: "top 75%",
-            scrub: 0.6,
+            end: "top 70%",
+            scrub: true,
             invalidateOnRefresh: true,
           }
         }
       );
     }
 
-    // Ховаємо початково картки до виходу їхніх тригерів
-    gsap.set(centerCard, { opacity: 0, y: 140 });
-    gsap.set(rightPoster, { opacity: 0, y: 300 });
-    gsap.set(leftCard, { opacity: 0, y: 400 });
-
-    // 1-Й ЕТАП: Спочатку підлітає та встає на місце центральна картка (80% -> 55%)
+    // 2. ЦЕНТРАЛЬНА КАРТКА REVIEW — Підлітає першою при вході в секцію (90% -> 60%)
     if (centerCard) {
       gsap.fromTo(centerCard,
-        { y: 140, opacity: 0 },
+        { y: 100, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          ease: "power2.out",
+          ease: "none",
           scrollTrigger: {
-            trigger: testimonialsSection,
-            start: "top 80%",
-            end: "top 55%",
-            scrub: 0.8,
+            trigger: grid,
+            start: "top 90%",
+            end: "top 60%",
+            scrub: true,
             invalidateOnRefresh: true,
           }
         }
       );
     }
 
-    // 2-Й ЕТАП: КОЛИ ЦЕНТРАЛЬНА КАРТКА ВСТАЛА, ПІДЇЖДЖАЄ ДРУГА КАРТКА СПРАВА (55% -> 30%)
+    // 3. ПРАВА КАРТКА (ФОТО) — М'яко підтягується при продовженні скроллу (70% -> 30%)
     if (rightPoster) {
       gsap.fromTo(rightPoster,
-        { y: 300, opacity: 0 },
+        { y: 240, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          ease: "power2.out",
+          ease: "none",
           scrollTrigger: {
-            trigger: testimonialsSection,
-            start: "top 55%",
+            trigger: grid,
+            start: "top 70%",
             end: "top 30%",
-            scrub: 1.0,
+            scrub: true,
             invalidateOnRefresh: true,
           }
         }
       );
     }
 
-    // 3-Й ЕТАП: ПІСЛЯ ПРАВОЇ КАРТКИ ОСТАННЬОЮ ПІДЇЖДЖАЄ ТРЕЦЯ КАРТКА СЛІВА (30% -> 5%)
+    // 4. ЛІВА КАРТКА (БІЛА) — Підтягується слідом за правою у 3-тю чергу (50% -> 10%)
     if (leftCard) {
       gsap.fromTo(leftCard,
-        { y: 400, opacity: 0 },
+        { y: 360, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          ease: "power2.out",
+          ease: "none",
           scrollTrigger: {
-            trigger: testimonialsSection,
-            start: "top 30%",
-            end: "top 5%",
-            scrub: 1.2,
+            trigger: grid,
+            start: "top 50%",
+            end: "top 10%",
+            scrub: true,
             invalidateOnRefresh: true,
           }
         }
