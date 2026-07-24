@@ -46,7 +46,7 @@ window.initHeroAnimation = function() {
       scrollTrigger: {
         trigger: intro,
         start: 'top top',
-        end: '+=260%',
+        end: '+=380%',
         pin: true,
         pinSpacing: true,
         scrub: 1.0,
@@ -127,12 +127,12 @@ window.initHeroAnimation = function() {
     var introEl = document.querySelector('.intro');
     if (introEl) {
       gsap.to(introEl, {
-        opacity: 0.2,
-        ease: 'power1.out',
+        opacity: 0.15,
+        ease: 'none',
         scrollTrigger: {
           trigger: projectsSection,
           start: 'top 100%',
-          end: 'top 15%',
+          end: 'top 0%',
           scrub: true,
           invalidateOnRefresh: true,
         }
