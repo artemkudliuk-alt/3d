@@ -681,185 +681,280 @@
     </div>
 
     <!-- BLOCK 5: PARTNERS TRUST MARQUEE -->
-    <div class="tp-partners-block" style="opacity: 1 !important;" style="margin-top: 64px !important; margin-bottom: 48px !important; padding: 40px 0 !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; position: relative !important; z-index: 5 !important;">
-      <h3 style="font-family: 'Mulish', sans-serif !important; font-weight: 800 !important; font-size: 13px !important; letter-spacing: 0.16em !important; text-transform: uppercase !important; color: #888899 !important; margin-bottom: 28px !important; text-align: center !important;">
+    <style>
+  .tp-marquee-wrapper {
+    overflow: visible !important;
+    width: 100% !important;
+    position: relative !important;
+    padding: 70px 0 20px 0 !important;
+  }
+
+  .tp-brand-item {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    cursor: pointer !important;
+  }
+
+  .tp-brand-name {
+    font-family: 'Mulish', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 21px !important;
+    color: #0c0c10 !important;
+    letter-spacing: 0.05em !important;
+    white-space: nowrap !important;
+    transition: color 0.3s ease !important;
+  }
+
+  .tp-brand-item:hover .tp-brand-name {
+    color: #ff5c2b !important;
+  }
+
+  .tp-brand-popover {
+    position: absolute !important;
+    bottom: 45px !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(10px) !important;
+    width: 300px !important;
+    background: #0c0c10 !important;
+    color: #ffffff !important;
+    padding: 16px 20px !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    z-index: 999999 !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+  }
+
+  .tp-popover-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .tp-popover-icon {
+    font-size: 20px !important;
+    line-height: 1 !important;
+  }
+
+  .tp-popover-title {
+    font-family: 'Mulish', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    letter-spacing: 0.03em !important;
+  }
+
+  .tp-popover-text {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    color: #d0d0e8 !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+  }
+
+  .tp-popover-arrow {
+    position: absolute !important;
+    top: 100% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 0 !important;
+    height: 0 !important;
+    border-left: 8px solid transparent !important;
+    border-right: 8px solid transparent !important;
+    border-top: 8px solid #0c0c10 !important;
+  }
+
+  .tp-brand-item:hover .tp-brand-popover {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateX(-50%) translateY(0) !important;
+  }
+</style>
+
+<div class="tp-partners-block" style="margin-top: 80px !important; margin-bottom: 60px !important; padding: 40px 0 !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; position: relative !important; z-index: 5 !important; opacity: 1 !important;">
+      <h3 style="font-family: 'Mulish', sans-serif !important; font-weight: 800 !important; font-size: 13px !important; letter-spacing: 0.16em !important; text-transform: uppercase !important; color: #888899 !important; margin-bottom: 40px !important; text-align: center !important;">
         НАШІ ПАРТНЕРИ ТА ГОТЕЛЬНІ МЕРЕЖІ
       </h3>
       
-      <div class="tp-marquee-wrapper" style="overflow: visible !important; width: 100% !important; position: relative !important; padding: 130px 0 30px 0 !important;">
+      <div class="tp-marquee-wrapper" style="overflow: visible !important; width: 100% !important; position: relative !important; padding: 70px 0 20px 0 !important;">
         
-        <!-- Fade edges for smooth marquee entrance/exit -->
-        <div style="position: absolute !important; top: 0 !important; left: 0 !important; width: 80px !important; height: 100% !important; background: linear-gradient(to right, #f4f4f7, transparent) !important; z-index: 3 !important; pointer-events: none !important;"></div>
-        <div style="position: absolute !important; top: 0 !important; right: 0 !important; width: 80px !important; height: 100% !important; background: linear-gradient(to left, #f4f4f7, transparent) !important; z-index: 3 !important; pointer-events: none !important;"></div>
-
-        <div class="tp-marquee-track" style="display: flex !important; gap: 64px !important; align-items: center !important; width: max-content !important; animation: tpMarqueeInfinite 45s linear infinite !important;">
+        <div class="tp-marquee-track" style="display: flex !important; gap: 72px !important; align-items: center !important; width: max-content !important; animation: tpMarqueeInfinite 45s linear infinite !important;">
           
           <!-- LOOP 1 -->
-          <div class="tp-brand-item" style="position: relative; cursor: pointer; display: inline-flex; align-items: center;">
-            <span class="tp-brand-name" style="font-family: 'Mulish', sans-serif; font-weight: 800; font-size: 21px; color: #0c0c10; letter-spacing: 0.05em; white-space: nowrap; transition: color 0.3s ease;">RADISSON BLU</span>
-            <div class="tp-brand-popover" style="background: #0c0c10 !important; color: #ffffff !important; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.85);">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                <span style="font-size: 18px;">🏰</span>
-                <strong style="font-family: 'Mulish', sans-serif; font-size: 15px; font-weight: 800; color: #ffffff;">RADISSON BLU</strong>
+          <div class="tp-brand-item">
+            <span class="tp-brand-name">RADISSON BLU</span>
+            <div class="tp-brand-popover">
+              <div class="tp-popover-header">
+                <span class="tp-popover-icon">🏰</span>
+                <span class="tp-popover-title">RADISSON BLU</span>
               </div>
-              <p style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; color: #d0d0e8; margin: 0; font-weight: 400;">Світова мережа готелів преміум-класу з повним 3D-моделюванням номерного фонду.</p>
+              <p class="tp-popover-text">Світова мережа готелів преміум-класу з повним 3D-моделюванням номерного фонду.</p>
               <div class="tp-popover-arrow"></div>
             </div>
           </div>
 
-          <div class="tp-brand-item" style="position: relative; cursor: pointer; display: inline-flex; align-items: center;">
-            <span class="tp-brand-name" style="font-family: 'Mulish', sans-serif; font-weight: 800; font-size: 21px; color: #0c0c10; letter-spacing: 0.05em; white-space: nowrap; transition: color 0.3s ease;">GRAND HOTEL</span>
-            <div class="tp-brand-popover" style="background: #0c0c10 !important; color: #ffffff !important; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.85);">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                <span style="font-size: 18px;">👑</span>
-                <strong style="font-family: 'Mulish', sans-serif; font-size: 15px; font-weight: 800; color: #ffffff;">GRAND HOTEL</strong>
+          <div class="tp-brand-item">
+            <span class="tp-brand-name">GRAND HOTEL</span>
+            <div class="tp-brand-popover">
+              <div class="tp-popover-header">
+                <span class="tp-popover-icon">👑</span>
+                <span class="tp-popover-title">GRAND HOTEL</span>
               </div>
-              <p style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; color: #d0d0e8; margin: 0; font-weight: 400;">Легендарний п'ятизірковий комплекс з інтегрованою системою віртуальних турів.</p>
+              <p class="tp-popover-text">Легендарний п'ятизірковий комплекс з інтегрованою системою віртуальних турів.</p>
               <div class="tp-popover-arrow"></div>
             </div>
           </div>
 
-          <div class="tp-brand-item" style="position: relative; cursor: pointer; display: inline-flex; align-items: center;">
-            <span class="tp-brand-name" style="font-family: 'Mulish', sans-serif; font-weight: 800; font-size: 21px; color: #0c0c10; letter-spacing: 0.05em; white-space: nowrap; transition: color 0.3s ease;">HILTON RESORTS</span>
-            <div class="tp-brand-popover" style="background: #0c0c10 !important; color: #ffffff !important; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.85);">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                <span style="font-size: 18px;">⭐</span>
-                <strong style="font-family: 'Mulish', sans-serif; font-size: 15px; font-weight: 800; color: #ffffff;">HILTON RESORTS</strong>
+          <div class="tp-brand-item">
+            <span class="tp-brand-name">HILTON RESORTS</span>
+            <div class="tp-brand-popover">
+              <div class="tp-popover-header">
+                <span class="tp-popover-icon">⭐</span>
+                <span class="tp-popover-title">HILTON RESORTS</span>
               </div>
-              <p style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; color: #d0d0e8; margin: 0; font-weight: 400;">Міжнародний курортний бренд із впровадженим 3D-візуалізатором апартаментів.</p>
+              <p class="tp-popover-text">Міжнародний курортний бренд із впровадженим 3D-візуалізатором апартаментів.</p>
               <div class="tp-popover-arrow"></div>
             </div>
           </div>
 
-          <div class="tp-brand-item" style="position: relative; cursor: pointer; display: inline-flex; align-items: center;">
-            <span class="tp-brand-name" style="font-family: 'Mulish', sans-serif; font-weight: 800; font-size: 21px; color: #0c0c10; letter-spacing: 0.05em; white-space: nowrap; transition: color 0.3s ease;">MARRIOTT INTERNATIONAL</span>
-            <div class="tp-brand-popover" style="background: #0c0c10 !important; color: #ffffff !important; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.85);">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                <span style="font-size: 18px;">💎</span>
-                <strong style="font-family: 'Mulish', sans-serif; font-size: 15px; font-weight: 800; color: #ffffff;">MARRIOTT INT.</strong>
+          <div class="tp-brand-item">
+            <span class="tp-brand-name">MARRIOTT INTERNATIONAL</span>
+            <div class="tp-brand-popover">
+              <div class="tp-popover-header">
+                <span class="tp-popover-icon">💎</span>
+                <span class="tp-popover-title">MARRIOTT INT.</span>
               </div>
-              <p style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; color: #d0d0e8; margin: 0; font-weight: 400;">Лідер світової індустрії гостинності з підвищеною конверсією прямих бронювань.</p>
+              <p class="tp-popover-text">Лідер світової індустрії гостинності з підвищеною конверсією прямих бронювань.</p>
               <div class="tp-popover-arrow"></div>
             </div>
           </div>
 
-          <div class="tp-brand-item" style="position: relative; cursor: pointer; display: inline-flex; align-items: center;">
-            <span class="tp-brand-name" style="font-family: 'Mulish', sans-serif; font-weight: 800; font-size: 21px; color: #0c0c10; letter-spacing: 0.05em; white-space: nowrap; transition: color 0.3s ease;">HYATT REGENCY</span>
-            <div class="tp-brand-popover" style="background: #0c0c10 !important; color: #ffffff !important; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.85);">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                <span style="font-size: 18px;">🏛</span>
-                <strong style="font-family: 'Mulish', sans-serif; font-size: 15px; font-weight: 800; color: #ffffff;">HYATT REGENCY</strong>
+          <div class="tp-brand-item">
+            <span class="tp-brand-name">HYATT REGENCY</span>
+            <div class="tp-brand-popover">
+              <div class="tp-popover-header">
+                <span class="tp-popover-icon">🏛</span>
+                <span class="tp-popover-title">HYATT REGENCY</span>
               </div>
-              <p style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; color: #d0d0e8; margin: 0; font-weight: 400;">Бізнес-готелі преміум-сегменту з панорамним зануренням у конгрес-холи.</p>
+              <p class="tp-popover-text">Бізнес-готелі преміум-сегменту з панорамним зануренням у конгрес-холи.</p>
               <div class="tp-popover-arrow"></div>
             </div>
           </div>
 
-          <div class="tp-brand-item" style="position: relative; cursor: pointer; display: inline-flex; align-items: center;">
-            <span class="tp-brand-name" style="font-family: 'Mulish', sans-serif; font-weight: 800; font-size: 21px; color: #0c0c10; letter-spacing: 0.05em; white-space: nowrap; transition: color 0.3s ease;">PREMIER HOTELS</span>
-            <div class="tp-brand-popover" style="background: #0c0c10 !important; color: #ffffff !important; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.85);">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                <span style="font-size: 18px;">🎖</span>
-                <strong style="font-family: 'Mulish', sans-serif; font-size: 15px; font-weight: 800; color: #ffffff;">PREMIER HOTELS</strong>
+          <div class="tp-brand-item">
+            <span class="tp-brand-name">PREMIER HOTELS</span>
+            <div class="tp-brand-popover">
+              <div class="tp-popover-header">
+                <span class="tp-popover-icon">🎖</span>
+                <span class="tp-popover-title">PREMIER HOTELS</span>
               </div>
-              <p style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; color: #d0d0e8; margin: 0; font-weight: 400;">Українська мережа розкішних готелів із візуалізацією найкращих сюїтів.</p>
+              <p class="tp-popover-text">Українська мережа розкішних готелів із візуалізацією найкращих сюїтів.</p>
               <div class="tp-popover-arrow"></div>
             </div>
           </div>
 
-          <div class="tp-brand-item" style="position: relative; cursor: pointer; display: inline-flex; align-items: center;">
-            <span class="tp-brand-name" style="font-family: 'Mulish', sans-serif; font-weight: 800; font-size: 21px; color: #0c0c10; letter-spacing: 0.05em; white-space: nowrap; transition: color 0.3s ease;">INTERCONTINENTAL</span>
-            <div class="tp-brand-popover" style="background: #0c0c10 !important; color: #ffffff !important; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.85);">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                <span style="font-size: 18px;">🌐</span>
-                <strong style="font-family: 'Mulish', sans-serif; font-size: 15px; font-weight: 800; color: #ffffff;">INTERCONTINENTAL</strong>
+          <div class="tp-brand-item">
+            <span class="tp-brand-name">INTERCONTINENTAL</span>
+            <div class="tp-brand-popover">
+              <div class="tp-popover-header">
+                <span class="tp-popover-icon">🌐</span>
+                <span class="tp-popover-title">INTERCONTINENTAL</span>
               </div>
-              <p style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; color: #d0d0e8; margin: 0; font-weight: 400;">Флагманський готельний бренд із віртуальними 3D-екскурсіями 60 FPS.</p>
+              <p class="tp-popover-text">Флагманський готельний бренд із віртуальними 3D-екскурсіями 60 FPS.</p>
               <div class="tp-popover-arrow"></div>
             </div>
           </div>
 
           <!-- LOOP 2 FOR SEAMLESS INFINITE MARQUEE -->
-          <div class="tp-brand-item" style="position: relative; cursor: pointer; display: inline-flex; align-items: center;">
-            <span class="tp-brand-name" style="font-family: 'Mulish', sans-serif; font-weight: 800; font-size: 21px; color: #0c0c10; letter-spacing: 0.05em; white-space: nowrap; transition: color 0.3s ease;">RADISSON BLU</span>
-            <div class="tp-brand-popover" style="background: #0c0c10 !important; color: #ffffff !important; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.85);">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                <span style="font-size: 18px;">🏰</span>
-                <strong style="font-family: 'Mulish', sans-serif; font-size: 15px; font-weight: 800; color: #ffffff;">RADISSON BLU</strong>
+          <div class="tp-brand-item">
+            <span class="tp-brand-name">RADISSON BLU</span>
+            <div class="tp-brand-popover">
+              <div class="tp-popover-header">
+                <span class="tp-popover-icon">🏰</span>
+                <span class="tp-popover-title">RADISSON BLU</span>
               </div>
-              <p style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; color: #d0d0e8; margin: 0; font-weight: 400;">Світова мережа готелів преміум-класу з повним 3D-моделюванням номерного фонду.</p>
+              <p class="tp-popover-text">Світова мережа готелів преміум-класу з повним 3D-моделюванням номерного фонду.</p>
               <div class="tp-popover-arrow"></div>
             </div>
           </div>
 
-          <div class="tp-brand-item" style="position: relative; cursor: pointer; display: inline-flex; align-items: center;">
-            <span class="tp-brand-name" style="font-family: 'Mulish', sans-serif; font-weight: 800; font-size: 21px; color: #0c0c10; letter-spacing: 0.05em; white-space: nowrap; transition: color 0.3s ease;">GRAND HOTEL</span>
-            <div class="tp-brand-popover" style="background: #0c0c10 !important; color: #ffffff !important; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.85);">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                <span style="font-size: 18px;">👑</span>
-                <strong style="font-family: 'Mulish', sans-serif; font-size: 15px; font-weight: 800; color: #ffffff;">GRAND HOTEL</strong>
+          <div class="tp-brand-item">
+            <span class="tp-brand-name">GRAND HOTEL</span>
+            <div class="tp-brand-popover">
+              <div class="tp-popover-header">
+                <span class="tp-popover-icon">👑</span>
+                <span class="tp-popover-title">GRAND HOTEL</span>
               </div>
-              <p style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; color: #d0d0e8; margin: 0; font-weight: 400;">Легендарний п'ятизірковий комплекс з інтегрованою системою віртуальних турів.</p>
+              <p class="tp-popover-text">Легендарний п'ятизірковий комплекс з інтегрованою системою віртуальних турів.</p>
               <div class="tp-popover-arrow"></div>
             </div>
           </div>
 
-          <div class="tp-brand-item" style="position: relative; cursor: pointer; display: inline-flex; align-items: center;">
-            <span class="tp-brand-name" style="font-family: 'Mulish', sans-serif; font-weight: 800; font-size: 21px; color: #0c0c10; letter-spacing: 0.05em; white-space: nowrap; transition: color 0.3s ease;">HILTON RESORTS</span>
-            <div class="tp-brand-popover" style="background: #0c0c10 !important; color: #ffffff !important; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.85);">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                <span style="font-size: 18px;">⭐</span>
-                <strong style="font-family: 'Mulish', sans-serif; font-size: 15px; font-weight: 800; color: #ffffff;">HILTON RESORTS</strong>
+          <div class="tp-brand-item">
+            <span class="tp-brand-name">HILTON RESORTS</span>
+            <div class="tp-brand-popover">
+              <div class="tp-popover-header">
+                <span class="tp-popover-icon">⭐</span>
+                <span class="tp-popover-title">HILTON RESORTS</span>
               </div>
-              <p style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; color: #d0d0e8; margin: 0; font-weight: 400;">Міжнародний курортний бренд із впровадженим 3D-візуалізатором апартаментів.</p>
+              <p class="tp-popover-text">Міжнародний курортний бренд із впровадженим 3D-візуалізатором апартаментів.</p>
               <div class="tp-popover-arrow"></div>
             </div>
           </div>
 
-          <div class="tp-brand-item" style="position: relative; cursor: pointer; display: inline-flex; align-items: center;">
-            <span class="tp-brand-name" style="font-family: 'Mulish', sans-serif; font-weight: 800; font-size: 21px; color: #0c0c10; letter-spacing: 0.05em; white-space: nowrap; transition: color 0.3s ease;">MARRIOTT INTERNATIONAL</span>
-            <div class="tp-brand-popover" style="background: #0c0c10 !important; color: #ffffff !important; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.85);">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                <span style="font-size: 18px;">💎</span>
-                <strong style="font-family: 'Mulish', sans-serif; font-size: 15px; font-weight: 800; color: #ffffff;">MARRIOTT INT.</strong>
+          <div class="tp-brand-item">
+            <span class="tp-brand-name">MARRIOTT INTERNATIONAL</span>
+            <div class="tp-brand-popover">
+              <div class="tp-popover-header">
+                <span class="tp-popover-icon">💎</span>
+                <span class="tp-popover-title">MARRIOTT INT.</span>
               </div>
-              <p style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; color: #d0d0e8; margin: 0; font-weight: 400;">Лідер світової індустрії гостинності з підвищеною конверсією прямих бронювань.</p>
+              <p class="tp-popover-text">Лідер світової індустрії гостинності з підвищеною конверсією прямих бронювань.</p>
               <div class="tp-popover-arrow"></div>
             </div>
           </div>
 
-          <div class="tp-brand-item" style="position: relative; cursor: pointer; display: inline-flex; align-items: center;">
-            <span class="tp-brand-name" style="font-family: 'Mulish', sans-serif; font-weight: 800; font-size: 21px; color: #0c0c10; letter-spacing: 0.05em; white-space: nowrap; transition: color 0.3s ease;">HYATT REGENCY</span>
-            <div class="tp-brand-popover" style="background: #0c0c10 !important; color: #ffffff !important; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.85);">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                <span style="font-size: 18px;">🏛</span>
-                <strong style="font-family: 'Mulish', sans-serif; font-size: 15px; font-weight: 800; color: #ffffff;">HYATT REGENCY</strong>
+          <div class="tp-brand-item">
+            <span class="tp-brand-name">HYATT REGENCY</span>
+            <div class="tp-brand-popover">
+              <div class="tp-popover-header">
+                <span class="tp-popover-icon">🏛</span>
+                <span class="tp-popover-title">HYATT REGENCY</span>
               </div>
-              <p style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; color: #d0d0e8; margin: 0; font-weight: 400;">Бізнес-готелі преміум-сегменту з панорамним зануренням у конгрес-холи.</p>
+              <p class="tp-popover-text">Бізнес-готелі преміум-сегменту з панорамним зануренням у конгрес-холи.</p>
               <div class="tp-popover-arrow"></div>
             </div>
           </div>
 
-          <div class="tp-brand-item" style="position: relative; cursor: pointer; display: inline-flex; align-items: center;">
-            <span class="tp-brand-name" style="font-family: 'Mulish', sans-serif; font-weight: 800; font-size: 21px; color: #0c0c10; letter-spacing: 0.05em; white-space: nowrap; transition: color 0.3s ease;">PREMIER HOTELS</span>
-            <div class="tp-brand-popover" style="background: #0c0c10 !important; color: #ffffff !important; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.85);">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                <span style="font-size: 18px;">🎖</span>
-                <strong style="font-family: 'Mulish', sans-serif; font-size: 15px; font-weight: 800; color: #ffffff;">PREMIER HOTELS</strong>
+          <div class="tp-brand-item">
+            <span class="tp-brand-name">PREMIER HOTELS</span>
+            <div class="tp-brand-popover">
+              <div class="tp-popover-header">
+                <span class="tp-popover-icon">🎖</span>
+                <span class="tp-popover-title">PREMIER HOTELS</span>
               </div>
-              <p style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; color: #d0d0e8; margin: 0; font-weight: 400;">Українська мережа розкішних готелів із візуалізацією найкращих сюїтів.</p>
+              <p class="tp-popover-text">Українська мережа розкішних готелів із візуалізацією найкращих сюїтів.</p>
               <div class="tp-popover-arrow"></div>
             </div>
           </div>
 
-          <div class="tp-brand-item" style="position: relative; cursor: pointer; display: inline-flex; align-items: center;">
-            <span class="tp-brand-name" style="font-family: 'Mulish', sans-serif; font-weight: 800; font-size: 21px; color: #0c0c10; letter-spacing: 0.05em; white-space: nowrap; transition: color 0.3s ease;">INTERCONTINENTAL</span>
-            <div class="tp-brand-popover" style="background: #0c0c10 !important; color: #ffffff !important; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.85);">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                <span style="font-size: 18px;">🌐</span>
-                <strong style="font-family: 'Mulish', sans-serif; font-size: 15px; font-weight: 800; color: #ffffff;">INTERCONTINENTAL</strong>
+          <div class="tp-brand-item">
+            <span class="tp-brand-name">INTERCONTINENTAL</span>
+            <div class="tp-brand-popover">
+              <div class="tp-popover-header">
+                <span class="tp-popover-icon">🌐</span>
+                <span class="tp-popover-title">INTERCONTINENTAL</span>
               </div>
-              <p style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; color: #d0d0e8; margin: 0; font-weight: 400;">Флагманський готельний бренд із віртуальними 3D-екскурсіями 60 FPS.</p>
+              <p class="tp-popover-text">Флагманський готельний бренд із віртуальними 3D-екскурсіями 60 FPS.</p>
               <div class="tp-popover-arrow"></div>
             </div>
           </div>

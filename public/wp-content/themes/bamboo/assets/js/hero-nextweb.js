@@ -479,3 +479,35 @@ if (document.readyState === "loading") {
     });
   }
 })();
+
+// 100% НАДІЙНІ ІНТЕРАКТИВНІ ВІДНОШЕННЯ ДЛЯ ПОПОВЕРІВ БРЕНДІВ
+(() => {
+  document.addEventListener("DOMContentLoaded", () => {
+    const brandItems = document.querySelectorAll(".tp-brand-item");
+    const track = document.querySelector(".tp-marquee-track");
+
+    brandItems.forEach((item) => {
+      const popover = item.querySelector(".tp-brand-popover");
+      const name = item.querySelector(".tp-brand-name");
+      if (!popover) return;
+
+      item.addEventListener("mouseenter", () => {
+        if (track) track.style.animationPlayState = "paused";
+        if (name) name.style.color = "#ff5c2b";
+        popover.style.opacity = "1";
+        popover.style.visibility = "visible";
+        popover.style.pointerEvents = "auto";
+        popover.style.transform = "translateX(-50%) translateY(0)";
+      });
+
+      item.addEventListener("mouseleave", () => {
+        if (track) track.style.animationPlayState = "running";
+        if (name) name.style.color = "#0c0c10";
+        popover.style.opacity = "0";
+        popover.style.visibility = "hidden";
+        popover.style.pointerEvents = "none";
+        popover.style.transform = "translateX(-50%) translateY(10px)";
+      });
+    });
+  });
+})();
