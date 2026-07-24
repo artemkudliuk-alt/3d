@@ -45,7 +45,7 @@ window.initHeroAnimation = function() {
         // Pinned scroll timeline (260vh total scroll distance for strict zero-overlap presentation)
     var tl = gsap.timeline({
       scrollTrigger: {
-        trigger: intro,
+        trigger: document.querySelector('.nw-hero-pinned-wrapper') || intro,
         start: 'top top',
         end: '+=160%',
         pin: false,
@@ -102,7 +102,7 @@ window.initHeroAnimation = function() {
     if (video) {
       var idle;
       ScrollTrigger.create({
-        trigger: intro,
+        trigger: document.querySelector('.nw-hero-pinned-wrapper') || intro,
         start: 'top bottom',
         end: 'bottom top',
         onUpdate: function(self) {
