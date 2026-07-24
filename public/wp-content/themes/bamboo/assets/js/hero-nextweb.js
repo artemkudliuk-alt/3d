@@ -204,12 +204,12 @@ const initHeroAnimation = () => {
       );
     }
 
-    // Явно ховаємо карточки 2 та 3 до старту їхніх власні тригерів!
+    // Явно ховаємо бічні карточки до старту їхнього тригеру
     gsap.set(centerCard, { opacity: 0, y: 140 });
-    gsap.set(rightPoster, { opacity: 0, y: 450 });
-    gsap.set(leftCard, { opacity: 0, y: 650 });
+    gsap.set(rightPoster, { opacity: 0, y: 380 });
+    gsap.set(leftCard, { opacity: 0, y: 380 });
 
-    // 1-Й ЕТАП: Спочатку підлітає та встає на місце ТІЛЬКИ центральна картка Review
+    // 1-Й ЕТАП: Спочатку підлітає та встає на місце центральна картка Review
     if (centerCard) {
       gsap.fromTo(centerCard,
         { y: 140, opacity: 0 },
@@ -228,18 +228,18 @@ const initHeroAnimation = () => {
       );
     }
 
-    // 2-Й ЕТАП: ДРУГА КАРТКА СПРАВА вилітає з глибокого низу (y: 450px -> 0px) ТІЛЬКИ з top 50%
+    // 2-Й ЕТАП: БІЧНІ КАРТКИ (ЛІВА І ПРАВА) ПІДТИРАЮТЬСЯ ОДНОЧАСНО ТА СИМЕТРИЧНО!
     if (rightPoster) {
       gsap.fromTo(rightPoster,
-        { y: 450, opacity: 0 },
+        { y: 380, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           ease: "power2.out",
           scrollTrigger: {
             trigger: testimonialsSection,
-            start: "top 50%",
-            end: "top 20%",
+            start: "top 55%",
+            end: "top 25%",
             scrub: 1.0,
             invalidateOnRefresh: true,
           }
@@ -247,19 +247,18 @@ const initHeroAnimation = () => {
       );
     }
 
-    // 3-Й ЕТАП: ТРЕЦЯ КАРТКА СЛІВА вилітає з ще більшої глибини (y: 650px -> 0px) ТІЛЬКИ з top 20%
     if (leftCard) {
       gsap.fromTo(leftCard,
-        { y: 650, opacity: 0 },
+        { y: 380, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           ease: "power2.out",
           scrollTrigger: {
             trigger: testimonialsSection,
-            start: "top 20%",
-            end: "bottom 80%",
-            scrub: 1.2,
+            start: "top 55%",
+            end: "top 25%",
+            scrub: 1.0,
             invalidateOnRefresh: true,
           }
         }
