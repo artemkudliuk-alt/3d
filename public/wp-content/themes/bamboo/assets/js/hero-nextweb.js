@@ -1,4 +1,4 @@
-/* Перший екран, 1-2-3 каскадний паралакс та 4 інтерактивні відгуки NextWeb Hotels. */
+/* Перший екран, 3-етапний плавний скролл та 4 відгуки з м'якими переходами NextWeb Hotels. */
 
 const initHeroAnimation = () => {
   const intro = document.querySelector(".intro");
@@ -175,7 +175,7 @@ const initHeroAnimation = () => {
   }
 
   // ============================================================
-  // СЕКЦІЯ 4: ЗАКРІПЛЕНИЙ (PINNED) 3-ЕТАПНИЙ ПООЧЕРЕДНИЙ ТАЙМЛАЙН
+  // СЕКЦІЯ 4: М'ЯКИЙ УЛЬТРА-ПЛАВНИЙ 3-ЕТАПНИЙ ЗАКРІПЛЕНИЙ СКРОЛЛ
   // ============================================================
   const testimonialsSection = document.querySelector(".testimonials-partners");
   if (testimonialsSection) {
@@ -190,31 +190,31 @@ const initHeroAnimation = () => {
     if (leftCard) gsap.set(leftCard, { y: 260, opacity: 0 });
     if (headerGroup) gsap.set(headerGroup, { y: 40, opacity: 0 });
 
-    // Створюємо фіксований PIN-таймлайн на 3 етапи скролу
+    // Створюємо фіксований PIN-таймлайн з м'яким scrub 1.8
     const sectionTl = gsap.timeline({
       scrollTrigger: {
         trigger: testimonialsSection,
         start: "top top",
-        end: "+=280%",
+        end: "+=320%",
         pin: true,
         pinSpacing: true,
-        scrub: 1.2,
+        scrub: 1.8,
         anticipatePin: 1,
         refreshPriority: 5,
       }
     });
 
     // 0. Заголовок показується спочатку
-    sectionTl.to(headerGroup, { y: 0, opacity: 1, duration: 1.0, ease: "power2.out" }, 0);
+    sectionTl.to(headerGroup, { y: 0, opacity: 1, duration: 1.2, ease: "power2.out" }, 0);
 
-    // 1-Й ЕТАП: Повністю з'являється ТІЛЬКИ картка Review
-    sectionTl.to(centerCard, { y: 0, opacity: 1, duration: 2.2, ease: "power2.out" }, 0.5);
+    // 1-Й ЕТАП: Спочатку виринає ТІЛЬКИ картка Review
+    sectionTl.to(centerCard, { y: 0, opacity: 1, duration: 2.5, ease: "power2.out" }, 0.6);
 
     // 2-Й ЕТАП: Окремим наступним скролом з'являється картка Справа
-    sectionTl.to(rightPoster, { y: 0, opacity: 1, duration: 2.2, ease: "power2.out" }, 2.8);
+    sectionTl.to(rightPoster, { y: 0, opacity: 1, duration: 2.5, ease: "power2.out" }, 3.2);
 
     // 3-Й ЕТАП: Останнім окремим скролом підлітає картка Сліва
-    sectionTl.to(leftCard, { y: 0, opacity: 1, duration: 2.2, ease: "power2.out" }, 5.2);
+    sectionTl.to(leftCard, { y: 0, opacity: 1, duration: 2.5, ease: "power2.out" }, 5.8);
 
     // Пауза перед розблокуванням скролу
     sectionTl.to({}, { duration: 1.5 });
@@ -228,7 +228,7 @@ if (document.readyState === "loading") {
 }
 
 // ============================================================
-// 4 ИНТЕРАКТИВНЫХ ОТЗЫВА С ПЕРЕКЛЮЧЕНИЕМ И СИНХРОНИЗАЦИЕЙ
+// 4 ІНТЕРАКТИВНИХ ВІДГУКИ З М'ЯКИМ FADE-ПЕРЕКЛЮЧЕННЯМ ТА ВАЛІДНИМИ ФОТО
 // ============================================================
 (() => {
   const testimonialsData = [
@@ -244,9 +244,9 @@ if (document.readyState === "loading") {
       name: "Олена Ковальчук",
       role: "Маркетинг-директор Boutique Resort & Spa",
       badge: "+3.2x переглядів",
-      quote: "«Наші гості відзначили, що віртуальне занурення в інтер'єри перед бронюванням зняло всі сумніви. Прямі бронювання зросли на третину за перші 2 місяці роботи 3D-двигуна!»",
+      quote: "«Наші гості відзначити, що віртуальне занурення в інтер'єри перед бронюванням зняло всі сумніви. Прямі бронювання зросли на третину за перші 2 місяці роботи 3D-двигуна!»",
       avatar: "/media/gen/testimonials/avatar2.png",
-      poster: "/media/gen/case-ocean.webp"
+      poster: "/media/gen/case-presidential-suite.webp"
     },
     {
       name: "Марк Березовський",
@@ -254,7 +254,7 @@ if (document.readyState === "loading") {
       badge: "+80% WOW-ефект",
       quote: "«Інтерактивний 3D-контент дозволив показати ексклюзивні панорамні види з пентхаусів. Гості замовляють найдорожчі номери без вагань, оскільки візуалізація виглядає на 100% реалістично.»",
       avatar: "/media/gen/testimonials/avatar3.png",
-      poster: "/media/gen/case-interior.webp"
+      poster: "/media/gen/case-rooftop-bar.webp"
     },
     {
       name: "Вікторія Громова",
@@ -262,12 +262,14 @@ if (document.readyState === "loading") {
       badge: "60 FPS потік",
       quote: "«Впровадження 3D-технології від NextWeb вивело наш веб-сайт на світовий рівень Awwwards. Це найкраща інвестиція в бренд готелю та довіру преміум-клієнтів.»",
       avatar: "/media/gen/testimonials/avatar4.png",
-      poster: "/media/gen/case-spa.webp"
+      poster: "/media/gen/case-lobby-lounge.webp"
     }
   ];
 
   const tabBtns = document.querySelectorAll(".tp-tab-btn");
   const slides = document.querySelectorAll(".tp-badge-slide");
+  const cardInner = document.querySelector(".tp-card-inner");
+  const rightPoster = document.querySelector(".tp-card-right");
   const activeAvatar = document.getElementById("tp-active-avatar");
   const activeName = document.getElementById("tp-active-name");
   const activeRole = document.getElementById("tp-active-role");
@@ -276,55 +278,81 @@ if (document.readyState === "loading") {
   const activePoster = document.getElementById("tp-active-poster");
 
   let currentIdx = 0;
+  let isTransitioning = false;
 
   const switchToIndex = (idx) => {
+    if (isTransitioning || idx === currentIdx) return;
+    isTransitioning = true;
     currentIdx = idx;
     const data = testimonialsData[idx];
     if (!data) return;
 
-    // 1. Оновлення кнопок табів 01-04
-    tabBtns.forEach((btn, bIdx) => {
-      if (bIdx === idx) {
-        btn.classList.add("active");
-        btn.style.background = "#0c0c10";
-        btn.style.color = "#ffffff";
-        btn.style.border = "1px solid #0c0c10";
-      } else {
-        btn.classList.remove("active");
-        btn.style.background = "#ffffff";
-        btn.style.color = "#666678";
-        btn.style.border = "1px solid rgba(0, 0, 0, 0.14)";
-      }
-    });
+    // 1. М'яке згасання вмісту карточки та постера (opacity: 0)
+    const targetsToFade = [cardInner, rightPoster].filter(Boolean);
+    if (window.gsap && targetsToFade.length) {
+      window.gsap.to(targetsToFade, {
+        opacity: 0.25,
+        duration: 0.35,
+        ease: "power2.inOut",
+        onComplete: () => {
+          // 2. Оновлення даних
+          if (activeName) activeName.textContent = data.name;
+          if (activeRole) activeRole.textContent = data.role;
+          if (activeBadge) activeBadge.textContent = data.badge;
+          if (activeQuote) activeQuote.textContent = data.quote;
+          if (activeAvatar) activeAvatar.src = data.avatar;
+          if (activePoster) activePoster.src = data.poster;
 
-    // 2. Оновлення лівої плашки слайдів
-    slides.forEach((slide, sIdx) => {
-      if (sIdx === idx) {
-        slide.style.opacity = "1";
-        slide.style.pointerEvents = "auto";
-      } else {
-        slide.style.opacity = "0";
-        slide.style.pointerEvents = "none";
-      }
-    });
+          // Оновлення табів 01-04
+          tabBtns.forEach((btn, bIdx) => {
+            if (bIdx === idx) {
+              btn.classList.add("active");
+              btn.style.background = "#0c0c10";
+              btn.style.color = "#ffffff";
+              btn.style.border = "1px solid #0c0c10";
+            } else {
+              btn.classList.remove("active");
+              btn.style.background = "#ffffff";
+              btn.style.color = "#666678";
+              btn.style.border = "1px solid rgba(0, 0, 0, 0.14)";
+            }
+          });
 
-    // 3. Плавне оновлення центральної картки відгуку
-    if (activeName) activeName.textContent = data.name;
-    if (activeRole) activeRole.textContent = data.role;
-    if (activeBadge) activeBadge.textContent = data.badge;
-    if (activeQuote) activeQuote.textContent = data.quote;
-    if (activeAvatar) activeAvatar.src = data.avatar;
-    if (activePoster) activePoster.src = data.poster;
+          // Оновлення лівих слайдів
+          slides.forEach((slide, sIdx) => {
+            if (sIdx === idx) {
+              slide.style.opacity = "1";
+              slide.style.pointerEvents = "auto";
+            } else {
+              slide.style.opacity = "0";
+              slide.style.pointerEvents = "none";
+            }
+          });
+
+          // 3. М'яка поява оновленого вмісту (opacity: 1)
+          window.gsap.to(targetsToFade, {
+            opacity: 1,
+            duration: 0.45,
+            ease: "power2.out",
+            onComplete: () => {
+              isTransitioning = false;
+            }
+          });
+        }
+      });
+    } else {
+      isTransitioning = false;
+    }
   };
 
-  // Ручне переключення при кліку на таби 01, 02, 03, 04
+  // Ручне переключення при кліку на таби 01-04
   tabBtns.forEach((btn, idx) => {
     btn.addEventListener("click", () => {
       switchToIndex(idx);
     });
   });
 
-  // Автоматичне переключення кожні 4 секунди
+  // Автоматичне м'яке переключення кожні 4 секунди
   setInterval(() => {
     const nextIdx = (currentIdx + 1) % testimonialsData.length;
     switchToIndex(nextIdx);
