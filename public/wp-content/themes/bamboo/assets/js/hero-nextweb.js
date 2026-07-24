@@ -131,7 +131,7 @@ window.initHeroAnimation = function() {
       gsap.fromTo(centerCard, { y: 100, opacity: 0 }, {
         y: 0, opacity: 1, ease: 'none',
         scrollTrigger: {
-          trigger: grid, start: 'top 90%', end: 'top 60%',
+          trigger: grid, start: 'top 90%', end: 'top 65%',
           scrub: true, invalidateOnRefresh: true,
         }
       });
@@ -140,7 +140,7 @@ window.initHeroAnimation = function() {
       gsap.fromTo(rightPoster, { y: 240, opacity: 0 }, {
         y: 0, opacity: 1, ease: 'none',
         scrollTrigger: {
-          trigger: grid, start: 'top 70%', end: 'top 30%',
+          trigger: grid, start: 'top 80%', end: 'top 50%',
           scrub: true, invalidateOnRefresh: true,
         }
       });
@@ -149,7 +149,7 @@ window.initHeroAnimation = function() {
       gsap.fromTo(leftCard, { y: 360, opacity: 0 }, {
         y: 0, opacity: 1, ease: 'none',
         scrollTrigger: {
-          trigger: grid, start: 'top 50%', end: 'top 10%',
+          trigger: grid, start: 'top 65%', end: 'top 35%',
           scrub: true, invalidateOnRefresh: true,
         }
       });
