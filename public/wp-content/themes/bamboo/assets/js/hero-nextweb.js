@@ -320,7 +320,7 @@ if (document.readyState === "loading") {
   const activeAvatar = document.getElementById("tp-active-avatar");
   const activeName = document.getElementById("tp-active-name");
   const activeRole = document.getElementById("tp-active-role");
-  const activeBadge = document.getElementById("tp-active-badge");
+  const activeIndex = document.getElementById("tp-active-index");
   const activeQuote = document.getElementById("tp-active-quote");
   const activePoster = document.getElementById("tp-active-poster");
 
@@ -345,7 +345,7 @@ if (document.readyState === "loading") {
           // 2. Оновлення даних
           if (activeName) activeName.textContent = data.name;
           if (activeRole) activeRole.textContent = data.role;
-          if (activeBadge) activeBadge.textContent = data.badge;
+          if (activeIndex) activeIndex.textContent = `0${idx + 1} / VERIFIED`;
           if (activeQuote) activeQuote.textContent = data.quote;
           if (activeAvatar) activeAvatar.src = data.avatar;
           if (activePoster) activePoster.src = data.poster;
