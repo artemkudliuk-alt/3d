@@ -28,13 +28,8 @@ window.initHeroAnimation = function() {
     play();
     document.addEventListener('pointerdown', play, { once: true });
 
-    // Appearance of title on load
-    if (titleWrap) {
-      gsap.fromTo(titleWrap,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 1.4, ease: 'power3.out', delay: 0.1 }
-      );
-    }
+    // TitleWrap initial state
+    if (titleWrap) gsap.set(titleWrap, { opacity: 1, y: 0 });
 
     if (subtitle) gsap.set(subtitle, { opacity: 0, y: 50 });
     if (cta) gsap.set(cta, { opacity: 0, y: 40 });
@@ -44,6 +39,7 @@ window.initHeroAnimation = function() {
         // Pinned scroll timeline (220vh total scroll distance)
         // Pinned scroll timeline (260vh total scroll distance for zero-overlap 4-stage presentation)
         // Pinned scroll timeline (260vh total scroll distance for strict zero-overlap 4-stage presentation)
+        // Pinned scroll timeline (260vh total scroll distance for strict zero-overlap presentation)
     var tl = gsap.timeline({
       scrollTrigger: {
         trigger: intro,
@@ -57,41 +53,47 @@ window.initHeroAnimation = function() {
       }
     });
 
-    var badge = intro.querySelector('.hero-contact-badge');
+    // ============================================================
+    // STAGE 1 (0.0 -> 2.0): TitleWrap (Badge + Title locked together) floats HIGH UP (y: -260) and fades out 100%!
+    // Header stays visible on 1st scroll, then after 2-3 scroll impulses (0.5) slowly & ultra-softly fades out!
+    // ============================================================
+    if (titleWrap) {
+      tl.to(titleWrap, { y: -260, opacity: 0, duration: 2.0, ease: 'power2.inOut' }, 0);
+    } else {
+      if (title) tl.to(title, { y: -260, opacity: 0, duration: 2.0, ease: 'power2.inOut' }, 0);
+      if (badge) tl.to(badge, { y: -260, opacity: 0, duration: 2.0, ease: 'power2.inOut' }, 0);
+    }
+
+    if (header) {
+      tl.to(header, { y: -100, opacity: 0, pointerEvents: 'none', duration: 2.0, ease: 'power1.out' }, 0.5);
+    }
 
     // ============================================================
-    // STAGE 1 (0.0 -> 2.0): Title, badge, & header float HIGH UP (y: -260) and fade out 100% COMPLETELY FIRST!
-    // ============================================================
-    if (title)    tl.to(title,  { y: -260, opacity: 0, duration: 2.0, ease: 'power2.inOut' }, 0);
-    if (badge)    tl.to(badge,  { y: -260, opacity: 0, duration: 2.0, ease: 'power2.inOut' }, 0);
-    if (header)   tl.to(header, { y: -120, opacity: 0, pointerEvents: 'none', duration: 1.8, ease: 'power2.inOut' }, 0);
-
-    // ============================================================
-    // STAGE 2 (2.2 -> 4.2): ONLY AFTER title is 100% GONE (at 2.2), Subtitle & CTA float up & fade in!
+    // STAGE 2 (2.4 -> 4.4): ONLY AFTER titleWrap is 100% GONE (at 2.4), Subtitle & CTA float up & fade in!
     // ============================================================
     if (subtitle) tl.fromTo(subtitle,
       { opacity: 0, y: 80 },
       { opacity: 1, y: 0, pointerEvents: 'auto', duration: 2.0, ease: 'power2.out' },
-      2.2
+      2.4
     );
 
     if (cta) tl.fromTo(cta,
       { opacity: 0, y: 70 },
       { opacity: 1, y: 0, pointerEvents: 'auto', duration: 2.0, ease: 'power2.out' },
-      2.5
+      2.7
     );
 
     // ============================================================
-    // STAGE 3 (4.2 -> 5.2): Presentation hold
+    // STAGE 3 (4.4 -> 5.4): Presentation hold
     // ============================================================
     tl.to({}, { duration: 1.0 });
 
     // ============================================================
-    // STAGE 4 (5.2 -> 6.2): Subtitle & CTA float up & fade out; Header returns for Section 2 (Cases)
+    // STAGE 4 (5.4 -> 6.6): Subtitle & CTA float up & fade out; Header softly returns for Section 2 (Cases)
     // ============================================================
-    if (subtitle) tl.to(subtitle, { y: -80, opacity: 0, duration: 1.0, ease: 'power2.in' }, 5.2);
-    if (cta)      tl.to(cta,      { y: -80, opacity: 0, duration: 1.0, ease: 'power2.in' }, 5.2);
-    if (header)   tl.to(header,   { y: 0, opacity: 1, pointerEvents: 'auto', duration: 1.0, ease: 'power2.out' }, 5.2);
+    if (subtitle) tl.to(subtitle, { y: -80, opacity: 0, duration: 1.2, ease: 'power2.in' }, 5.4);
+    if (cta)      tl.to(cta,      { y: -80, opacity: 0, duration: 1.2, ease: 'power2.in' }, 5.4);
+    if (header)   tl.to(header,   { y: 0, opacity: 1, pointerEvents: 'auto', duration: 1.5, ease: 'power1.out' }, 5.2);
 
     // Video speed boost on scroll
     if (video) {
