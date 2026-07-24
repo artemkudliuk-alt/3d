@@ -167,22 +167,9 @@ window.initHeroAnimation = function() {
     var ctaRight = ctaSection.querySelector('.nw-cta-right');
     var ctaLabel = ctaSection.querySelector('div[style*="letter-spacing:0.18em"]');
 
-    // --- LAYER 1: Whole section slides up over section 4 ---
-    // Start slightly below natural position, slide to 0 as it enters viewport
-    gsap.fromTo(ctaSection,
-      { yPercent: 10 },
-      {
-        yPercent: 0,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: ctaSection,
-          start: 'top bottom',   // when section bottom hits viewport bottom
-          end: 'top top',        // when section top reaches viewport top
-          scrub: 1.2,
-          invalidateOnRefresh: true,
-        }
-      }
-    );
+    // NOTE: No section-level yPercent — that created a black gap.
+    // The dark section naturally sliding over the light section 4 via scroll IS the slide effect.
+    // The sequential column parallax below provides the internal "reveal" animation.
 
     // --- LAYER 2: Left column (heading + copy) reveals first ---
     if (ctaLeft) {
