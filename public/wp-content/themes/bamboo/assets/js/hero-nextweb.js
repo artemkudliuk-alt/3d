@@ -167,24 +167,8 @@ window.initHeroAnimation = function() {
     var ctaRight = ctaSection.querySelector('.nw-cta-right');
     var ctaLabel = ctaSection.querySelector('div[style*="letter-spacing:0.18em"]');
 
-    // --- LAYER 1: Section 4 recedes (parallax push-away) as section 5 slides over ---
-    // This creates the "card slides over card" depth effect, same as sec3→sec4 transition
-    var tpSection = document.querySelector('.testimonials-partners');
-    if (tpSection) {
-      gsap.to(tpSection, {
-        scale: 0.96,
-        y: -40,
-        opacity: 0.7,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: ctaSection,
-          start: 'top bottom',  // as soon as section 5 enters from bottom
-          end: 'top 30%',       // fully covered by the time section 5 top reaches 30%
-          scrub: 1.2,
-          invalidateOnRefresh: true,
-        }
-      });
-    }
+    // Section 5 (z-index:15) naturally slides over section 4 (z-index:10) via scroll.
+    // No transforms on section 4 — those caused a black gap below it.
 
 
     // --- LAYER 2: Left column (heading + copy) reveals first ---
