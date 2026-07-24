@@ -5647,62 +5647,7 @@ html lang="uk" prefix="og: https://ogp.me/ns#">
 
 </div>
 
-<script>
-(function bindProjectButtonsDirectly() {
-  function attachListeners() {
-    // 3D-Video Tour Buttons
-    document.querySelectorAll('.nw-open-video-btn, [data-video-src]').forEach(btn => {
-      btn.style.cursor = 'pointer';
-      btn.onclick = function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const src = this.getAttribute('data-video-src');
-        const title = this.getAttribute('data-title') || '3D-тур Готелем';
-        if (src) {
-          const videoModal = document.getElementById('nw-video-modal');
-          const videoEl = document.getElementById('nw-modal-video');
-          const videoTitle = document.getElementById('nw-video-title');
-          if (videoModal && videoEl) {
-            if (videoTitle && title) videoTitle.textContent = title;
-            videoEl.src = src;
-            videoModal.style.display = 'flex';
-            videoModal.classList.add('is-open', 'active'); videoModal.style.opacity = '1'; videoModal.style.pointerEvents = 'auto';
-            videoModal.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-            videoEl.play().catch(() => {});
-          }
-        }
-      };
-    });
 
-    // Map Buttons
-    document.querySelectorAll('.project .map, .nw-open-map-trigger, [data-map-id]').forEach(btn => {
-      btn.style.cursor = 'pointer';
-      btn.onclick = function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const id = this.getAttribute('data-map-id') || 'ribas';
-        const mapModal = document.getElementById('nw-map-modal');
-        if (mapModal) {
-          mapModal.style.display = 'flex';
-          mapModal.classList.add('active');
-          mapModal.setAttribute('aria-hidden', 'false');
-          document.body.style.overflow = 'hidden';
-          
-          if (window.initProjectsWorldMapModalOpen) {
-            window.initProjectsWorldMapModalOpen(id);
-          }
-        }
-      };
-    });
-  }
-
-  if (document.readyState === 'complete') attachListeners();
-  else window.addEventListener('load', attachListeners);
-  document.addEventListener('DOMContentLoaded', attachListeners);
-  setTimeout(attachListeners, 1000);
-})();
-</script>
 <script>
 (function overrideMapButtonsToLeaflet() {
   function setupMapTriggers() {
@@ -5749,79 +5694,12 @@ html lang="uk" prefix="og: https://ogp.me/ns#">
 
 
 <!-- SINGLE ROOT INSTANCE OF NEXTWEB MODALS -->
-<div id="nw-video-modal" class="nw-modal" aria-hidden="true" style="display:none; position:fixed; inset:0; z-index:9999999; align-items:center; justify-content:center;">
-  <div class="nw-modal__backdrop" style="position:absolute; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);"></div>
-  <div class="nw-modal__container" style="position:relative; z-index:10; max-width: 900px; width: 92%; background: #0d0d12; border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 16px; padding: 24px; box-shadow: 0 30px 90px rgba(0,0,0,0.95);">
-    <button class="nw-modal__close" id="nw-video-close" aria-label="Закрити" style="position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 100;">✕</button>
-    <div class="nw-modal__header" style="margin-bottom: 16px;">
-      <h4 id="nw-video-title" style="font-family: 'Mulish', sans-serif; font-size: 22px; font-weight: 700; color: #fff; margin: 0;">3D-тур Готелем</h4>
-      <span class="nw-modal__tag" style="display: inline-block; font-size: 12px; color: #ff6b00; margin-top: 4px; font-weight: 600;">Інтерактивний перегляд • 60 FPS</span>
-    </div>
-    <div class="nw-modal__video-wrapper" style="position: relative; width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 10px; overflow: hidden;">
-      <video id="nw-modal-video" playsinline preload="auto" loop style="width: 100%; height: 100%; object-fit: contain;"></video>
-      <div class="nw-modal__controls" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 16px; background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%); display: flex; align-items: center; gap: 14px;">
-        <button id="nw-play-toggle" class="nw-control-btn" style="background: none; border: none; color: #fff; font-size: 16px; cursor: pointer;">❚❚</button>
-        <div class="nw-progress-bar" style="flex: 1; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; overflow: hidden; cursor: pointer;"><div id="nw-progress-fill" class="nw-progress-fill" style="height: 100%; width: 0%; background: #ff6b00; transition: width 0.1s linear;"></div></div>
-      </div>
+
     </div>
   </div>
 </div>
 
-<div id="nw-map-modal" class="nw-modal" aria-hidden="true" style="display:none; position:fixed; inset:0; z-index:9999999; align-items:center; justify-content:center;">
-  <div class="nw-modal__backdrop" style="position:absolute; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);"></div>
-  <div class="nw-modal__container map-container" style="position:relative; z-index:10; max-width: 1100px; width: 94%; padding: 24px; border-radius: 16px; background: #0d0d12; border: 1px solid rgba(255,255,255,0.16); box-shadow: 0 30px 90px rgba(0,0,0,0.95);">
-    <button class="nw-modal__close" id="nw-map-close" aria-label="Закрити" style="position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; width: 36px; height: 36px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 100;">✕</button>
-    
-    <div class="nw-modal__header" style="margin-bottom: 16px; display: flex; justify-content: space-between; align-items: flex-end;">
-      <div>
-        <h3 style="font-family: 'Mulish', sans-serif; font-size: 22px; font-weight: 800; color: #fff; margin: 0;">Інтерактивна карта проєктів (3 гео-локації)</h3>
-        <p style="color: #a0a0ab; margin: 4px 0 0 0; font-size: 13px;">Оберіть готель або зсувайте карту для перегляду метки на Балі та в Україні</p>
-      </div>
-      <button id="nw-fit-all-btn" class="btn" type="button" style="padding: 8px 18px; font-size: 12px; font-family:'Mulish',sans-serif; font-weight:700; border-radius: 100px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; transition: all 0.3s ease;">
-        🌍 Всі проєкти на карті
-      </button>
-    </div>
-    
-    <div class="nw-map-modal-wrapper" style="display: flex; gap: 20px; height: 500px;">
-      <!-- Sidebar with 3 Real Project Cards -->
-      <div class="nw-map-sidebar" style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; padding-right: 6px;">
-        
-        <!-- Project 1: Ribas -->
-        <div class="nw-map-item" data-id="ribas" data-lat="48.3539" data-lng="24.4124" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px; cursor: pointer; transition: all 0.3s ease;">
-          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative; border-radius: 6px;">
-            <img src="/cases/ribas 1.webp" alt="Ribas Karpaty Hotel" style="width: 100%; height: 100%; object-fit: cover;">
-            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px;">▶ 3D-тур</span>
-          </div>
-          <h5 style="margin: 8px 0 2px 0; font-size: 14px; color: #fff; font-family: 'Mulish', sans-serif; font-weight: 700;">Ribas Karpaty Hotel</h5>
-          <p style="margin: 0; font-size: 12px; color: #a0a0ab;">с. Поляниця, урочище Вишня, 154</p>
-        </div>
 
-        <!-- Project 2: Redling -->
-        <div class="nw-map-item" data-id="redling" data-lat="46.3768" data-lng="30.7431" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px; cursor: pointer; transition: all 0.3s ease;">
-          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative; border-radius: 6px;">
-            <img src="/cases/redling 1.webp" alt="Redling Beach Hotel" style="width: 100%; height: 100%; object-fit: cover;">
-            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px;">▶ 3D-тур</span>
-          </div>
-          <h5 style="margin: 8px 0 2px 0; font-size: 14px; color: #fff; font-family: 'Mulish', sans-serif; font-weight: 700;">Redling Beach Hotel</h5>
-          <p style="margin: 0; font-size: 12px; color: #a0a0ab;">м. Одеса, вул. Дача Ковалевського, 71</p>
-        </div>
-
-        <!-- Project 3: Moonrock -->
-        <div class="nw-map-item" data-id="moonrock" data-lat="-8.5435" data-lng="115.3262" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px; cursor: pointer; transition: all 0.3s ease;">
-          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative; border-radius: 6px;">
-            <img src="/cases/moonrock 1.webp" alt="Moonrock Hotel & Chalet" style="width: 100%; height: 100%; object-fit: cover;">
-            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px;">▶ 3D-тур</span>
-          </div>
-          <h5 style="margin: 8px 0 2px 0; font-size: 14px; color: #fff; font-family: 'Mulish', sans-serif; font-weight: 700;">Moonrock Hotel &amp; Chalet</h5>
-          <p style="margin: 0; font-size: 12px; color: #a0a0ab;">Gianyar, Bali, Indonesia</p>
-        </div>
-
-      </div>
-      
-      <!-- Interactive Leaflet Map Container -->
-      <div id="nw-leaflet-map" style="flex: 1; height: 100%; background: #16161c; border-radius: 8px; border: 1px solid rgba(255,255,255,0.12); overflow: hidden;"></div>
-    </div>
-  </div>
 </div>
 
 
@@ -5829,80 +5707,191 @@ html lang="uk" prefix="og: https://ogp.me/ns#">
 <!-- ============================================================ -->
 <!-- NEXTWEB GLOBAL MODALS (3D VIDEO & INTERACTIVE WORLD MAP)    -->
 <!-- ============================================================ -->
+
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+
+<!-- ============================================================ -->
+<!-- UNIVERSAL NEXTWEB MODALS (3D VIDEO PLAYER & WORLD MAP)      -->
+<!-- ============================================================ -->
 <div id="nw-video-modal" class="nw-modal" aria-hidden="true" style="display:none; position:fixed; inset:0; z-index:9999999; align-items:center; justify-content:center;">
-  <div class="nw-modal__backdrop" style="position:absolute; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);"></div>
-  <div class="nw-modal__container" style="position:relative; z-index:10; max-width: 900px; width: 92%; background: #0d0d12; border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 16px; padding: 24px; box-shadow: 0 30px 90px rgba(0,0,0,0.95);">
-    <button class="nw-modal__close" id="nw-video-close" aria-label="Закрити" style="position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 100;">✕</button>
+  <div class="nw-modal__backdrop" style="position:absolute; inset:0; background:rgba(0,0,0,0.88); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); cursor:pointer;"></div>
+  <div class="nw-modal__container" style="position:relative; z-index:10; max-width: 920px; width: 92%; background: #0d0d12; border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 16px; padding: 24px; box-shadow: 0 30px 90px rgba(0,0,0,0.95);">
+    <button class="nw-modal__close" id="nw-video-close" data-popup-close aria-label="Закрити" style="position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); color: #ffffff; font-size: 20px; font-weight: 300; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 100; transition: all 0.2s ease; pointer-events: auto !important;">✕</button>
     <div class="nw-modal__header" style="margin-bottom: 16px;">
-      <h4 id="nw-video-title" style="font-family: 'Mulish', sans-serif; font-size: 22px; font-weight: 700; color: #fff; margin: 0;">3D-тур Готелем</h4>
-      <span class="nw-modal__tag" style="display: inline-block; font-size: 12px; color: #ff6b00; margin-top: 4px; font-weight: 600;">Інтерактивний перегляд • 60 FPS</span>
+      <h3 id="nw-video-title" style="margin:0; font-family:'Unbounded', sans-serif; font-size: 18px; color:#fff; font-weight:700;">3D-тур Готелем</h3>
+      <span class="nw-modal__tag" style="display: inline-block; font-size: 12px; color: #ff6b00; margin-top: 4px; font-weight: 600;">NextWeb 3D Interactive Tour</span>
     </div>
     <div class="nw-modal__video-wrapper" style="position: relative; width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 10px; overflow: hidden;">
       <video id="nw-modal-video" playsinline preload="auto" loop style="width: 100%; height: 100%; object-fit: contain;"></video>
       <div class="nw-modal__controls" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 16px; background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%); display: flex; align-items: center; gap: 14px;">
-        <button id="nw-play-toggle" class="nw-control-btn" style="background: none; border: none; color: #fff; font-size: 16px; cursor: pointer;">❚❚</button>
-        <div class="nw-progress-bar" style="flex: 1; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; overflow: hidden; cursor: pointer;"><div id="nw-progress-fill" class="nw-progress-fill" style="height: 100%; width: 0%; background: #ff6b00; transition: width 0.1s linear;"></div></div>
+        <button id="nw-play-toggle" style="background: none; border: none; color: #fff; font-size: 16px; cursor: pointer; padding: 4px; display: flex; align-items: center; justify-content: center;">⏸</button>
+        <div class="nw-progress-bar" style="flex: 1; height: 6px; background: rgba(255,255,255,0.2); border-radius: 3px; cursor: pointer; position: relative;">
+          <div id="nw-progress-fill" style="width: 0%; height: 100%; background: #ff6b00; border-radius: 3px;"></div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <div id="nw-map-modal" class="nw-modal" aria-hidden="true" style="display:none; position:fixed; inset:0; z-index:9999999; align-items:center; justify-content:center;">
-  <div class="nw-modal__backdrop" style="position:absolute; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);"></div>
-  <div class="nw-modal__container map-container" style="position:relative; z-index:10; max-width: 1100px; width: 94%; padding: 24px; border-radius: 16px; background: #0d0d12; border: 1px solid rgba(255,255,255,0.16); box-shadow: 0 30px 90px rgba(0,0,0,0.95);">
-    <button class="nw-modal__close" id="nw-map-close" aria-label="Закрити" style="position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; width: 36px; height: 36px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 100;">✕</button>
-    
+  <div class="nw-modal__backdrop" style="position:absolute; inset:0; background:rgba(0,0,0,0.88); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); cursor:pointer;"></div>
+  <div class="nw-modal__container map-container" style="position:relative; z-index:10; max-width: 1100px; width: 94%; padding: 24px; border-radius: 16px; background: #0d0d12; border: 1px solid rgba(255,255,255,0.18); box-shadow: 0 30px 90px rgba(0,0,0,0.95);">
+    <button class="nw-modal__close" id="nw-map-close" data-popup-close aria-label="Закрити" style="position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: #ffffff; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; font-weight: 300; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 100; transition: all 0.2s ease; pointer-events: auto !important;">✕</button>
     <div class="nw-modal__header" style="margin-bottom: 16px; display: flex; justify-content: space-between; align-items: flex-end;">
       <div>
-        <h3 style="font-family: 'Mulish', sans-serif; font-size: 22px; font-weight: 800; color: #fff; margin: 0;">Інтерактивна карта проєктів (3 гео-локації)</h3>
-        <p style="color: #a0a0ab; margin: 4px 0 0 0; font-size: 13px;">Оберіть готель або зсувайте карту для перегляду метки на Балі та в Україні</p>
+        <h3 id="nw-map-modal-title" style="margin:0; font-family:'Unbounded', sans-serif; font-size: 20px; color:#fff; font-weight:700;">Інтерактивна Карта Проєктів</h3>
+        <span id="nw-map-modal-sub" style="display: inline-block; font-size: 13px; color: #a0a0b0; margin-top: 4px;">Розташування та статус готельних комплексів</span>
       </div>
-      <button id="nw-fit-all-btn" class="btn" type="button" style="padding: 8px 18px; font-size: 12px; font-family:'Mulish',sans-serif; font-weight:700; border-radius: 100px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; transition: all 0.3s ease;">
-        🌍 Всі проєкти на карті
-      </button>
+      <button id="nw-fit-all-btn" style="background: rgba(255,107,0,0.15); border: 1px solid #ff6b00; color: #ff6b00; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">🌍 Всі проєкти на карті</button>
     </div>
-    
     <div class="nw-map-modal-wrapper" style="display: flex; gap: 20px; height: 500px;">
-      <!-- Sidebar with 3 Real Project Cards -->
-      <div class="nw-map-sidebar" style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; padding-right: 6px;">
-        
-        <!-- Project 1: Ribas -->
-        <div class="nw-map-item" data-id="ribas" data-lat="48.3539" data-lng="24.4124" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px; cursor: pointer; transition: all 0.3s ease;">
-          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative; border-radius: 6px;">
-            <img src="/cases/ribas 1.webp" alt="Ribas Karpaty Hotel" style="width: 100%; height: 100%; object-fit: cover;">
-            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px;">▶ 3D-тур</span>
-          </div>
-          <h5 style="margin: 8px 0 2px 0; font-size: 14px; color: #fff; font-family: 'Mulish', sans-serif; font-weight: 700;">Ribas Karpaty Hotel</h5>
-          <p style="margin: 0; font-size: 12px; color: #a0a0ab;">с. Поляниця, урочище Вишня, 154</p>
+      <div id="nw-leaflet-map" style="flex: 1; height: 100%; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);"></div>
+      <div class="nw-map-sidebar" style="width: 320px; background: #121218; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; border: 1px solid rgba(255,255,255,0.06);">
+        <h4 style="margin:0 0 4px 0; color:#fff; font-size:14px; font-weight:600;">Список локацій</h4>
+        <div class="nw-sidebar-item active" data-project="moonrock" style="padding:12px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; cursor:pointer; transition:all 0.2s;">
+          <div style="font-weight:700; color:#fff; font-size:13px;">Moonrock Resort & Spa</div>
+          <div style="font-size:11px; color:#ff6b00; margin-top:2px;">📍 Gianyar, Bali, Indonesia</div>
         </div>
-
-        <!-- Project 2: Redling -->
-        <div class="nw-map-item" data-id="redling" data-lat="46.3768" data-lng="30.7431" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px; cursor: pointer; transition: all 0.3s ease;">
-          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative; border-radius: 6px;">
-            <img src="/cases/redling 1.webp" alt="Redling Beach Hotel" style="width: 100%; height: 100%; object-fit: cover;">
-            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px;">▶ 3D-тур</span>
-          </div>
-          <h5 style="margin: 8px 0 2px 0; font-size: 14px; color: #fff; font-family: 'Mulish', sans-serif; font-weight: 700;">Redling Beach Hotel</h5>
-          <p style="margin: 0; font-size: 12px; color: #a0a0ab;">м. Одеса, вул. Дача Ковалевського, 71</p>
+        <div class="nw-sidebar-item" data-project="ribas" style="padding:12px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; cursor:pointer; transition:all 0.2s;">
+          <div style="font-weight:700; color:#fff; font-size:13px;">Ribas Karpaty Hotel</div>
+          <div style="font-size:11px; color:#a0a0b0; margin-top:2px;">📍 с. Поляниця (Буковель), Україна</div>
         </div>
-
-        <!-- Project 3: Moonrock -->
-        <div class="nw-map-item" data-id="moonrock" data-lat="-8.5435" data-lng="115.3262" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px; cursor: pointer; transition: all 0.3s ease;">
-          <div class="thumb" style="aspect-ratio: 16/9; overflow: hidden; position: relative; border-radius: 6px;">
-            <img src="/cases/moonrock 1.webp" alt="Moonrock Hotel & Chalet" style="width: 100%; height: 100%; object-fit: cover;">
-            <span class="badge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(8,8,10,0.85); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px;">▶ 3D-тур</span>
-          </div>
-          <h5 style="margin: 8px 0 2px 0; font-size: 14px; color: #fff; font-family: 'Mulish', sans-serif; font-weight: 700;">Moonrock Hotel &amp; Chalet</h5>
-          <p style="margin: 0; font-size: 12px; color: #a0a0ab;">Gianyar, Bali, Indonesia</p>
+        <div class="nw-sidebar-item" data-project="redling" style="padding:12px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; cursor:pointer; transition:all 0.2s;">
+          <div style="font-weight:700; color:#fff; font-size:13px;">Redling Beach Hotel</div>
+          <div style="font-size:11px; color:#a0a0b0; margin-top:2px;">📍 м. Одеса, Україна</div>
         </div>
-
       </div>
-      
-      <!-- Interactive Leaflet Map Container -->
-      <div id="nw-leaflet-map" style="flex: 1; height: 100%; background: #16161c; border-radius: 8px; border: 1px solid rgba(255,255,255,0.12); overflow: hidden;"></div>
     </div>
   </div>
 </div>
+
+
+<!-- ============================================================ -->
+<!-- UNIVERSAL MASTER MODAL & CLOSE CONTROLLER                    -->
+<!-- ============================================================ -->
+<script>
+(function initMasterModalController() {
+  function closeAllModals() {
+    // 1. Close Video Modal
+    var videoModal = document.getElementById('nw-video-modal');
+    var videoEl = document.getElementById('nw-modal-video');
+    if (videoModal) {
+      videoModal.style.display = 'none';
+      videoModal.style.opacity = '0';
+      videoModal.style.pointerEvents = 'none';
+      videoModal.classList.remove('is-open', 'active');
+      videoModal.setAttribute('aria-hidden', 'true');
+    }
+    if (videoEl) {
+      try { videoEl.pause(); videoEl.src = ''; } catch(e) {}
+    }
+
+    // 2. Close Map Modal
+    var mapModal = document.getElementById('nw-map-modal');
+    if (mapModal) {
+      mapModal.style.display = 'none';
+      mapModal.style.opacity = '0';
+      mapModal.style.pointerEvents = 'none';
+      mapModal.classList.remove('is-open', 'active');
+      mapModal.setAttribute('aria-hidden', 'true');
+    }
+
+    // 3. Close ALL Theme Popups & Modals (.popup, .nw-modal, .drawer)
+    var allPopups = document.querySelectorAll('.popup, .nw-modal, .modal-container, .drawer');
+    allPopups.forEach(function(popup) {
+      popup.style.display = 'none';
+      popup.style.opacity = '0';
+      popup.style.pointerEvents = 'none';
+      popup.classList.remove('active', 'is-open');
+      popup.setAttribute('aria-hidden', 'true');
+    });
+
+    // 4. Restore page scrolling
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+  }
+
+  window.closeAllModals = closeAllModals;
+
+  // Master Global Click Listener for Close Buttons & Backdrops
+  document.addEventListener('click', function(e) {
+    var closeTarget = e.target.closest('#nw-video-close, #nw-map-close, [data-popup-close], .back-close, .form-close, .nw-modal__close, .icon-close, .close-btn, .modal-close, .close');
+    if (closeTarget) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeAllModals();
+      return;
+    }
+
+    var backdropTarget = e.target.closest('.nw-modal__backdrop, .popup-content-wrapper');
+    if (backdropTarget && !e.target.closest('.nw-modal__container, .popup-content')) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeAllModals();
+      return;
+    }
+  }, true);
+
+  // Master Global ESC Key Handler
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' || e.key === 'Esc') {
+      closeAllModals();
+    }
+  });
+
+  // Attach direct onclick handlers to all close buttons on DOMReady and dynamically
+  function bindCloseButtons() {
+    var btns = document.querySelectorAll('#nw-video-close, #nw-map-close, [data-popup-close], .back-close, .form-close, .nw-modal__close, .icon-close');
+    btns.forEach(function(btn) {
+      btn.style.pointerEvents = 'auto';
+      btn.style.cursor = 'pointer';
+      btn.onclick = function(ev) {
+        if (ev) { ev.preventDefault(); ev.stopPropagation(); }
+        closeAllModals();
+      };
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindCloseButtons);
+  } else {
+    bindCloseButtons();
+  }
+  setInterval(bindCloseButtons, 1500);
+})();
+</script>
+
+
+<script>
+(function setupUniversalMapTriggers() {
+  document.addEventListener('click', function(e) {
+    var mapBtn = e.target.closest('.map, .nw-open-map-trigger, [data-map-id], #open-catalog-btn');
+    if (mapBtn && !e.target.closest('#nw-map-modal, #nw-video-modal')) {
+      e.preventDefault();
+      e.stopPropagation();
+      var mapModal = document.getElementById('nw-map-modal');
+      if (mapModal) {
+        mapModal.style.display = 'flex';
+        mapModal.style.opacity = '1';
+        mapModal.style.pointerEvents = 'auto';
+        mapModal.classList.add('is-open', 'active');
+        mapModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (window.initProjectsWorldMapModalOpen) {
+          var targetId = mapBtn.getAttribute('data-map-id') || 'ribas';
+          window.initProjectsWorldMapModalOpen(targetId);
+        }
+      }
+    }
+  }, true);
+})();
+</script>
 
 </body>
 </html>
