@@ -242,13 +242,13 @@ window.initHeroAnimation = function() {
     // --- LAYER 2: Left column (heading + copy) reveals first ---
     if (ctaLeft) {
       gsap.fromTo(ctaLeft,
-        { y: 70, opacity: 0 },
+        { y: 60, opacity: 0 },
         {
           y: 0, opacity: 1, ease: 'none',
           scrollTrigger: {
             trigger: ctaSection,
-            start: 'top 90%',
-            end: 'top 55%',
+            start: 'top 85%',
+            end: 'top 40%',
             scrub: true,
             invalidateOnRefresh: true,
           }
@@ -259,13 +259,13 @@ window.initHeroAnimation = function() {
     // --- LAYER 3: Right column (form) reveals second, after left ---
     if (ctaRight) {
       gsap.fromTo(ctaRight,
-        { y: 110, opacity: 0 },
+        { y: 90, opacity: 0 },
         {
           y: 0, opacity: 1, ease: 'none',
           scrollTrigger: {
             trigger: ctaSection,
             start: 'top 75%',
-            end: 'top 40%',
+            end: 'top 30%',
             scrub: true,
             invalidateOnRefresh: true,
           }
@@ -276,19 +276,23 @@ window.initHeroAnimation = function() {
     // --- LAYER 4: Section index label reveals first of all ---
     if (ctaLabel) {
       gsap.fromTo(ctaLabel,
-        { y: 40, opacity: 0 },
+        { y: 30, opacity: 0 },
         {
           y: 0, opacity: 1, ease: 'none',
           scrollTrigger: {
             trigger: ctaSection,
             start: 'top 95%',
-            end: 'top 70%',
+            end: 'top 60%',
             scrub: true,
             invalidateOnRefresh: true,
           }
         }
       );
     }
+  }
+
+  if (typeof ScrollTrigger !== 'undefined') {
+    ScrollTrigger.refresh();
   }
 };
 
