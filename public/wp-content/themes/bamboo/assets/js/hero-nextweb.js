@@ -205,11 +205,12 @@ const initHeroAnimation = () => {
     }
 
     // Явно ховаємо бічні карточки до старту їхнього тригеру
+        // Явно ховаємо бічні карточки до старту їхніх власні тригерів!
     gsap.set(centerCard, { opacity: 0, y: 140 });
-    gsap.set(rightPoster, { opacity: 0, y: 380 });
-    gsap.set(leftCard, { opacity: 0, y: 380 });
+    gsap.set(rightPoster, { opacity: 0, y: 400 });
+    gsap.set(leftCard, { opacity: 0, y: 550 });
 
-    // 1-Й ЕТАП: Спочатку підлітає та встає на місце центральна картка Review
+    // 1-Й ЕТАП: Спочатку з'являється ТІЛЬКИ центральна картка з відгуком
     if (centerCard) {
       gsap.fromTo(centerCard,
         { y: 140, opacity: 0 },
@@ -228,18 +229,18 @@ const initHeroAnimation = () => {
       );
     }
 
-    // 2-Й ЕТАП: БІЧНІ КАРТКИ (ЛІВА І ПРАВА) ПІДТИРАЮТЬСЯ ОДНОЧАСНО ТА СИМЕТРИЧНО!
+    // 2-Й ЕТАП: КОЛИ ЦЕНТРАЛЬНА КАРТКА МАЙЖЕ ПОВНІСТЮ НА ЕКРАНІ, М'ЯКО ПІДЇЖДЖАЄ ДРУГА КАРТКА СПРАВА
     if (rightPoster) {
       gsap.fromTo(rightPoster,
-        { y: 380, opacity: 0 },
+        { y: 400, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           ease: "power2.out",
           scrollTrigger: {
             trigger: testimonialsSection,
-            start: "top 55%",
-            end: "top 25%",
+            start: "top 45%",
+            end: "top 20%",
             scrub: 1.0,
             invalidateOnRefresh: true,
           }
@@ -247,33 +248,25 @@ const initHeroAnimation = () => {
       );
     }
 
+    // 3-Й ЕТАП: СРАЗУ ЗА НЕЮ М'ЯКО В САМОМУ КІНЦІ ПІДЇЖДЖАЄ ТРЕЦЯ КАРТКА СЛІВА
     if (leftCard) {
       gsap.fromTo(leftCard,
-        { y: 380, opacity: 0 },
+        { y: 550, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           ease: "power2.out",
           scrollTrigger: {
             trigger: testimonialsSection,
-            start: "top 55%",
-            end: "top 25%",
-            scrub: 1.0,
+            start: "top 20%",
+            end: "bottom 85%",
+            scrub: 1.2,
             invalidateOnRefresh: true,
           }
         }
       );
     }
-  }
-};
-
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initHeroAnimation);
-} else {
-  initHeroAnimation();
-}
-
-// ============================================================
+  // ============================================================
 // 4 ІНТЕРАКТИВНИХ ВІДГУКИ З М'ЯКИМ FADE-ПЕРЕКЛЮЧЕННЯМ ТА ВАЛІДНИМИ ФОТО
 // ============================================================
 (() => {
