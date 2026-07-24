@@ -582,7 +582,92 @@
     </div>
 
     <!-- ASYMMETRICAL STAGGERED PARALLAX GRID: 1st Review -> 2nd Right Poster -> 3rd Left Card -->
-    <div class="tp-asymmetric-grid" style="display: grid !important; grid-template-columns: minmax(0, 1.1fr) minmax(0, 2.8fr) minmax(0, 1.1fr) !important; gap: 36px !important; align-items: center !important; width: 100% !important;">
+    <script>
+(function initSection4Parallax() {
+  function run() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+      setTimeout(run, 50);
+      return;
+    }
+    gsap.registerPlugin(ScrollTrigger);
+
+    const grid = document.querySelector('.tp-asymmetric-grid');
+    if (!grid) return;
+
+    const centerCard = grid.querySelector('.nw-parallax-center');
+    const rightPoster = grid.querySelector('.nw-parallax-right');
+    const leftCard = grid.querySelector('.nw-parallax-left');
+
+    const sec = document.querySelector('.testimonials-partners') || grid;
+
+    // 1. ЦЕНТРАЛЬНА КАРТКА REVIEW (Всплывает при начале скролла секции 4: top 30% -> top 10%)
+    if (centerCard) {
+      gsap.fromTo(centerCard,
+        { y: 140, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sec,
+            start: "top 30%",
+            end: "top 5%",
+            scrub: 0.8,
+            invalidateOnRefresh: true,
+          }
+        }
+      );
+    }
+
+    // 2. ПРАВА КАРТКА ФОТО (Подтягивается следом: top 10% -> bottom 85%)
+    if (rightPoster) {
+      gsap.fromTo(rightPoster,
+        { y: 280, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sec,
+            start: "top 10%",
+            end: "bottom 85%",
+            scrub: 1.0,
+            invalidateOnRefresh: true,
+          }
+        }
+      );
+    }
+
+    // 3. ЛІВА КАРТКА БІЛА (Подтягивается третьей: bottom 85% -> bottom 60%)
+    if (leftCard) {
+      gsap.fromTo(leftCard,
+        { y: 400, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sec,
+            start: "bottom 85%",
+            end: "bottom 60%",
+            scrub: 1.2,
+            invalidateOnRefresh: true,
+          }
+        }
+      );
+    }
+
+    ScrollTrigger.refresh();
+  }
+
+  if (document.readyState === 'complete') run();
+  else window.addEventListener('load', run);
+  document.addEventListener('DOMContentLoaded', run);
+  setTimeout(run, 300);
+})();
+</script>
+
+<div class="tp-asymmetric-grid" style="display: grid !important; grid-template-columns: minmax(0, 1.1fr) minmax(0, 2.8fr) minmax(0, 1.1fr) !important; gap: 36px !important; align-items: center !important; width: 100% !important;">
       
       <!-- 3RD TO ARRIVE: LEFT 3D RESULT CARD (nw-parallax-left) -->
       <div class="tp-card-left nw-parallax-left" style="background: #ffffff !important; border: 1px solid rgba(0, 0, 0, 0.12) !important; border-radius: 4px !important; padding: 36px 28px !important; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08) !important; display: flex !important; flex-direction: column !important; justify-content: space-between !important; height: 380px !important; box-sizing: border-box !important; position: relative !important; overflow: hidden !important; will-change: transform !important;">
