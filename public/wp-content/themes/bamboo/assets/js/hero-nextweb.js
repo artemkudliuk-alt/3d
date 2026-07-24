@@ -167,9 +167,25 @@ window.initHeroAnimation = function() {
     var ctaRight = ctaSection.querySelector('.nw-cta-right');
     var ctaLabel = ctaSection.querySelector('div[style*="letter-spacing:0.18em"]');
 
-    // NOTE: No section-level yPercent — that created a black gap.
-    // The dark section naturally sliding over the light section 4 via scroll IS the slide effect.
-    // The sequential column parallax below provides the internal "reveal" animation.
+    // --- LAYER 1: Section 4 recedes (parallax push-away) as section 5 slides over ---
+    // This creates the "card slides over card" depth effect, same as sec3→sec4 transition
+    var tpSection = document.querySelector('.testimonials-partners');
+    if (tpSection) {
+      gsap.to(tpSection, {
+        scale: 0.96,
+        y: -40,
+        opacity: 0.7,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: ctaSection,
+          start: 'top bottom',  // as soon as section 5 enters from bottom
+          end: 'top 30%',       // fully covered by the time section 5 top reaches 30%
+          scrub: 1.2,
+          invalidateOnRefresh: true,
+        }
+      });
+    }
+
 
     // --- LAYER 2: Left column (heading + copy) reveals first ---
     if (ctaLeft) {
