@@ -2645,6 +2645,21 @@ section.testimonials-partners,
 }
 
 /* ---------------------------------------------------------------
+   MOBILE HERO CTA: hide icon decorations, text-only buttons
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  /* Remove corner arrow icons from CTA buttons in hero — text only */
+  .intro .container-content .hero-cta .btn-icon {
+    display: none !important;
+  }
+  /* Reset right padding that was added to make room for the icon */
+  .intro .container-content .hero-cta .btn:has(.def),
+  .intro .container-content .hero-cta .btn:has(.line) {
+    padding-right: 22px !important;
+  }
+}
+
+/* ---------------------------------------------------------------
    EXTRA-SMALL PHONES: max-width 390px
    --------------------------------------------------------------- */
 @media (max-width: 390px) {
