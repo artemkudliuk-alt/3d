@@ -1133,7 +1133,7 @@ section.testimonials-partners,
 
 
 /* ============================================================ */
-/* NEXTWEB: Section 3 benefit cards - fluid scale + corner fix  */
+/* NEXTWEB: Section 3 benefit cards                             */
 /* ============================================================ */
 
 /* Card info column stays within bounds */
@@ -1142,30 +1142,25 @@ section.testimonials-partners,
   overflow: hidden !important;
 }
 
-/* Corner icon — visible only on COLLAPSED cards */
-.benefits .card-corner-icon {
-  opacity: 1 !important;
-  transition: opacity 0.35s ease !important;
-  flex-shrink: 0 !important;
-}
-.benefits .swiper-slide.active .card-corner-icon {
-  opacity: 0 !important;
-  pointer-events: none !important;
+/* Corner icon — DELETED entirely */
+.benefits .card-corner-icon,
+.card-corner-icon {
+  display: none !important;
 }
 
-/* COLLAPSED card stat number — small, fits narrow width */
+/* COLLAPSED card stat number — BIG (no photo visible, number fills space) */
 .benefits .swiper-slide .swiper-item .count {
-  font-size: clamp(20px, 2.2vw, 36px) !important;
-  line-height: 1.05 !important;
+  font-size: clamp(48px, 6vw, 96px) !important;
+  line-height: 1.0 !important;
   overflow: hidden !important;
   white-space: nowrap !important;
   text-overflow: clip !important;
   transition: font-size 0.4s ease-in-out !important;
 }
 
-/* ACTIVE (wide) card stat number — large */
+/* ACTIVE (open) card stat number — smaller to fit text column beside photo */
 .benefits .swiper-slide.active .swiper-item .count {
-  font-size: clamp(48px, 6vw, 96px) !important;
+  font-size: clamp(28px, 2.8vw, 48px) !important;
 }
 
 /* Image wrapper */
