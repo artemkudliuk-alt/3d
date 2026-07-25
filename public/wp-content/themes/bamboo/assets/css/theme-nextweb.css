@@ -2547,42 +2547,72 @@ section.testimonials-partners,
     font-weight: 600 !important;
   }
 
-  /* TASK 2 FIX: HERO SECTION — REMOVE TOP BLACK BAR, VIDEO FILLS 100SVH FROM Y=0 */
-  .intro {
+  /* MOBILE HERO: video stays fixed behind content, content scrolls over it */
+
+  /* Override the global 'section { display:flex }' so block layout works */
+  section.intro {
+    display: block !important;
     position: relative !important;
     width: 100% !important;
-    min-height: 100svh !important;
-    height: 100svh !important;
+    /* 300svh = 3 screens of scroll space for 3 animation stages */
+    height: 300svh !important;
+    min-height: 300svh !important;
     margin: 0 !important;
     padding: 0 !important;
-    overflow: hidden !important;
+    overflow: visible !important;
   }
 
-  .intro .container {
-    padding-top: 70px !important; /* Space for centered logo */
-    padding-bottom: 24px !important;
-    padding-inline: 18px !important;
-    min-height: 100svh !important;
-    height: 100svh !important;
-    justify-content: flex-end !important; /* Title & CTA stay nicely at bottom */
-    box-sizing: border-box !important;
-  }
-
+  /* Video layer: truly fixed to viewport — never moves */
   .intro .container-kivi {
-    position: absolute !important;
+    position: fixed !important;
     top: 0 !important;
     left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
+    width: 100vw !important;
+    height: 100svh !important;
     z-index: 1 !important;
+    pointer-events: none !important;
   }
 
   .intro .container-kivi video {
     object-fit: cover !important;
     width: 100% !important;
     height: 100% !important;
+  }
+
+  /* Content wrapper: fixed so it always stays in view during hero scroll */
+  .intro .container.md-space {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    padding-top: 70px !important;
+    padding-bottom: 24px !important;
+    padding-inline: 18px !important;
+    box-sizing: border-box !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+    grid-template-columns: unset !important;
+  }
+
+  /* Re-enable pointer events on actual content */
+  .intro .container.md-space > * {
+    pointer-events: auto !important;
+  }
+
+  /* Hide the arrow element on mobile */
+  .intro .container-arrow {
+    display: none !important;
+  }
+
+  /* Projects section slides over the fixed video naturally */
+  .projects {
+    position: relative !important;
+    z-index: 3 !important;
   }
 }
 

@@ -36,44 +36,85 @@ window.initHeroAnimation = function() {
 
     var isMobile = (window.innerWidth <= 1024);
 
-    // Pinned scroll timeline (pinned on mobile for 140% scroll to allow text reveal & smooth slide-over)
-    var tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: intro,
-        start: 'top top',
-        end: isMobile ? '+=140%' : '+=340%',
-        pin: true,
-        pinSpacing: true,
-        scrub: 0.8,
-        anticipatePin: 1,
-        refreshPriority: 10,
-      }
-    });
-
     if (isMobile) {
-      // MOBILE SCROLL TIMELINE:
-      // Stage 1 (0 -> 1.5): TitleWrap floats UP and fades out
-      if (titleWrap) tl.to(titleWrap, { y: -160, opacity: 0, duration: 1.5, ease: 'power2.inOut' }, 0);
-      if (header) tl.to(header, { opacity: 0, y: -40, duration: 1.0 }, 0);
+      // MOBILE: Video is CSS position:fixed (never moves).
+      // .intro is 300svh tall. .container.md-space is position:fixed at top:0.
+      // We animate text elements based on raw window.scrollY through the intro zone.
 
-      // Stage 2 (0.8 -> 2.3): HeroReveal (subtitle + buttons) appears on static video
-      if (heroReveal) {
-        tl.fromTo(heroReveal,
-          { opacity: 0, y: 60 },
-          { opacity: 1, y: 0, pointerEvents: 'auto', duration: 1.5, ease: 'power2.out' },
-          0.8
-        );
+      var mobileContainer = intro.querySelector('.container.md-space');
+
+      function onScroll() {
+        var scrollY = window.scrollY;
+        var introTop = intro.offsetTop;
+        var introH = intro.offsetHeight;
+        var vh = window.innerHeight;
+
+        // Hide the fixed content layer when projects section enters viewport
+        var projectsEl = document.querySelector('.projects');
+        var projectsTop = projectsEl ? projectsEl.offsetTop : Infinity;
+        var introPastEnd = scrollY + vh >= projectsTop;
+        if (mobileContainer) {
+          mobileContainer.style.visibility = introPastEnd ? 'hidden' : '';
+          mobileContainer.style.pointerEvents = introPastEnd ? 'none' : '';
+        }
+        // Also hide the fixed video layer when projects fully cover viewport
+        var kiviEl = intro.querySelector('.container-kivi');
+        if (kiviEl) {
+          kiviEl.style.visibility = introPastEnd ? 'hidden' : '';
+        }
+
+        if (introPastEnd) return; // no need to animate if hidden
+
+        // Scroll progress through intro: 0 at intro top, 1 when intro bottom hits viewport bottom
+        var scrollableRange = introH - vh;
+        if (scrollableRange <= 0) return;
+        var relativeScroll = scrollY - introTop;
+        var progress = Math.min(Math.max(relativeScroll / scrollableRange, 0), 1);
+
+        // Stage 1 (0→0.4): Title fades up and out
+        if (titleWrap) {
+          var tp = Math.min(progress / 0.40, 1);
+          gsap.set(titleWrap, { opacity: 1 - tp, y: -tp * 120, force3D: true });
+        }
+
+        // Stage 2 (0.30→0.65): HeroReveal fades in
+        // Stage 3 (0.80→1.00): HeroReveal fades out as projects slide over
+        if (heroReveal) {
+          var rin = Math.min(Math.max((progress - 0.30) / 0.35, 0), 1);
+          var rout = Math.min(Math.max((progress - 0.80) / 0.20, 0), 1);
+          var rop = rin * (1 - rout);
+          var ry = (1 - rin) * 50 - rout * 30;
+          gsap.set(heroReveal, {
+            opacity: rop,
+            y: ry,
+            force3D: true,
+            pointerEvents: (rin > 0.5 && rout < 0.5) ? 'auto' : 'none'
+          });
+        }
       }
 
-      // Stage 3 (2.3 -> 3.0): Hold reveal so user can view & interact with buttons
-      tl.to({}, { duration: 0.7 });
+      // Set initial states
+      if (titleWrap) gsap.set(titleWrap, { opacity: 1, y: 0 });
+      if (heroReveal) gsap.set(heroReveal, { opacity: 0, y: 50, pointerEvents: 'none' });
 
-      // Stage 4 (3.0 -> 4.0): Subtitle gently fades as Section 2 slides UP over the intro
-      if (heroReveal) tl.to(heroReveal, { opacity: 0, y: -40, duration: 1.0, ease: 'power1.in' }, 3.0);
-      if (fadeOverlay) tl.to(fadeOverlay, { opacity: 0.8, duration: 1.0 }, 3.0);
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll(); // run once on load
 
     } else {
-      // DESKTOP SCROLL TIMELINE (100% untouched)
+      // DESKTOP: full pinned parallax (100% untouched)
+      var tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: intro,
+          start: 'top top',
+          end: '+=340%',
+          pin: true,
+          pinSpacing: true,
+          scrub: 1.0,
+          anticipatePin: 1,
+          refreshPriority: 10,
+        }
+      });
+
       if (titleWrap) {
         tl.to(titleWrap, { y: -260, opacity: 0, duration: 2.0, ease: 'power2.inOut' }, 0);
       } else {
