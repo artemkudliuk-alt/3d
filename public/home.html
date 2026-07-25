@@ -1619,5 +1619,58 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
 })();
 </script>
 
+<script id="nw-fade-nav-script">
+(function setupFadeNavigation() {
+  var overlay = document.getElementById('nw-fade-nav-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'nw-fade-nav-overlay';
+    overlay.style.cssText = 'position:fixed; inset:0; z-index:999999; background:#07070a; opacity:0; pointer-events:none; transition:opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);';
+    document.body.appendChild(overlay);
+  }
+
+  function handleFadeNav(targetId) {
+    var targetSec = document.querySelector(targetId);
+    if (!targetSec) return;
+
+    overlay.style.pointerEvents = 'auto';
+    overlay.style.opacity = '1';
+
+    setTimeout(function() {
+      var targetY = targetSec.getBoundingClientRect().top + window.scrollY;
+
+      if (targetId === '#cases') {
+        targetY = targetSec.offsetTop;
+      }
+
+      window.scrollTo({ top: targetY, behavior: 'instant' });
+
+      if (window.ScrollTrigger) {
+        window.ScrollTrigger.update();
+      }
+
+      setTimeout(function() {
+        overlay.style.opacity = '0';
+        setTimeout(function() {
+          overlay.style.pointerEvents = 'none';
+        }, 300);
+      }, 60);
+    }, 280);
+  }
+
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+
+    var href = link.getAttribute('href');
+    if (href === '#cases' || href === '#benefits' || href === '#testimonials-partners') {
+      e.preventDefault();
+      e.stopPropagation();
+      handleFadeNav(href);
+    }
+  }, true);
+})();
+</script>
+
 </body>
 </html>
