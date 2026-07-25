@@ -61,13 +61,14 @@ window.initHeroAnimation = function() {
 
         // FIX 1: Header (logo) smooth fade out in stage 1 (0→0.25)
         // Burger stays visible until much later (0→0.50)
+        // When scrolled above intro (relativeScroll < 0), always show at full opacity
         if (headerEl) {
-          var hp = Math.min(progress / 0.25, 1);
+          var hp = relativeScroll < 0 ? 0 : Math.min(progress / 0.25, 1);
           gsap.set(headerEl, { opacity: 1 - hp, force3D: true,
             pointerEvents: hp >= 1 ? 'none' : 'auto' });
         }
         if (headerCta) {
-          var bp = Math.min(progress / 0.50, 1);
+          var bp = relativeScroll < 0 ? 0 : Math.min(progress / 0.50, 1);
           gsap.set(headerCta, { opacity: 1 - bp, force3D: true,
             pointerEvents: bp >= 1 ? 'none' : 'auto' });
         }
@@ -209,7 +210,8 @@ window.initHeroAnimation = function() {
     }
 
     // 2. Top Header softly & slowly returns ONLY when Section 2 (.projects) comes into view!
-    if (header) {
+    // Only run this on DESKTOP — mobile handles header visibility via onScroll()
+    if (header && !isMobile) {
       ScrollTrigger.create({
         trigger: projectsSection,
         start: 'top 85%',
