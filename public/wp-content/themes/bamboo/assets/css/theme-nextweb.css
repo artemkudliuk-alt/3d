@@ -2407,15 +2407,13 @@ section.testimonials-partners,
     display: none !important;
   }
 
-  /* Burger button: FIXED on top right corner of screen so it's always accessible */
-  .header-cta {
+  /* Burger button: FIXED on top LEFT corner of screen */
+  .header-burger {
     position: fixed !important;
-    right: 16px !important;
+    left: 16px !important;
+    right: auto !important;
     top: 14px !important;
     z-index: 99999 !important;
-  }
-
-  .header-burger {
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
@@ -2429,10 +2427,8 @@ section.testimonials-partners,
     -webkit-backdrop-filter: blur(12px) !important;
     border-radius: 50% !important;
     cursor: pointer !important;
-    z-index: 99999 !important;
     padding: 6px !important;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
-    /* smooth hide when menu is open */
     transition: opacity 0.25s ease, visibility 0.25s ease !important;
   }
 
@@ -2661,24 +2657,28 @@ section.testimonials-partners,
     z-index: 3 !important;
   }
 
-  /* FIX 2: Hero CTA buttons — pill shape, centered, auto-width (not full-screen stretch) */
+  /* FIX 2: Hero CTA buttons — pill shape, centered, 1-row side-by-side on all screens */
   .intro .container-content .hero-cta {
     display: flex !important;
     flex-direction: row !important;
-    flex-wrap: wrap !important;
+    flex-wrap: nowrap !important;
     justify-content: center !important;
     align-items: center !important;
-    gap: 10px !important;
+    gap: 8px !important;
     width: 100% !important;
+    max-width: 100% !important;
   }
 
   .intro .container-content .hero-cta .btn {
+    flex: 1 1 0% !important;
     width: auto !important;
-    min-width: 130px !important;
-    max-width: 210px !important;
+    min-width: 0 !important;
+    max-width: none !important;
     border-radius: 100px !important;
     justify-content: center !important;
-    padding: 12px 22px !important;
+    padding: 12px 8px !important;
+    font-size: clamp(10px, 3.2vw, 13px) !important;
+    white-space: nowrap !important;
   }
 }
 
@@ -2733,22 +2733,28 @@ section.testimonials-partners,
     font-size: clamp(22px, 7vw, 30px) !important;
   }
 
-  /* Pill buttons centered — override the 640px rule for very small phones */
+  /* Pill buttons side-by-side — STRICT 1 ROW ON ALL PHONES */
   .intro .container-content .hero-cta {
+    display: flex !important;
     flex-direction: row !important;
-    flex-wrap: wrap !important;
+    flex-wrap: nowrap !important;
     justify-content: center !important;
-    gap: 10px !important;
+    align-items: center !important;
+    gap: 8px !important;
     width: 100% !important;
+    max-width: 100% !important;
   }
 
   .intro .container-content .hero-cta .btn {
+    flex: 1 1 0% !important;
     width: auto !important;
-    min-width: 130px !important;
-    max-width: 200px !important;
+    min-width: 0 !important;
+    max-width: none !important;
     border-radius: 100px !important;
     justify-content: center !important;
-    padding: 11px 18px !important;
+    padding: 12px 8px !important;
+    font-size: clamp(10px, 3.2vw, 13px) !important;
+    white-space: nowrap !important;
   }
 
   .benefits .swiper-slide {
@@ -2875,3 +2881,111 @@ section.testimonials-partners,
   border-radius: 4px !important;
   box-shadow: 0 0 12px rgba(200, 169, 106, 0.5) !important;
 }
+
+/* ---------------------------------------------------------------
+   MOBILE PULSING "ЗАЯВКА" BUTTON (TOP RIGHT)
+   --------------------------------------------------------------- */
+.nw-mobile-cta-btn {
+  display: none !important;
+}
+
+@media (max-width: 1024px) {
+  .nw-mobile-cta-btn {
+    position: fixed !important;
+    right: 16px !important;
+    top: 14px !important;
+    z-index: 99999 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 8px 16px !important;
+    background: rgba(18, 18, 26, 0.85) !important;
+    border: 1.5px solid rgba(200, 169, 106, 0.8) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-radius: 100px !important;
+    font-family: 'Unbounded', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    letter-spacing: 0.05em !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+    animation: nwGlowPulse 2.2s infinite ease-in-out !important;
+    transition: transform 0.2s ease, opacity 0.25s ease !important;
+  }
+
+  .header.opened .nw-mobile-cta-btn {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+}
+
+@keyframes nwGlowPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(200, 169, 106, 0.6), 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(200, 169, 106, 0), 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(200, 169, 106, 0), 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* ---------------------------------------------------------------
+   FLOATING "BACK TO TOP" (ВГОРУ) BUTTON
+   --------------------------------------------------------------- */
+.nw-back-to-top {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 20px !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: rgba(18, 18, 26, 0.88) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  z-index: 99995 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(16px) !important;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background 0.2s ease !important;
+}
+
+.nw-back-to-top.is-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+.nw-back-to-top:hover {
+  background: rgba(200, 169, 106, 0.35) !important;
+  border-color: #C8A96A !important;
+}
+
+/* ---------------------------------------------------------------
+   BRAND LOGOS IN SECTION 4 (MONOCHROME DARK STYLING)
+   --------------------------------------------------------------- */
+.tp-brand-logo-img {
+  height: clamp(30px, 4vw, 42px) !important;
+  width: auto !important;
+  max-width: 170px !important;
+  object-fit: contain !important;
+  filter: brightness(0) opacity(0.8) !important;
+  transition: filter 0.3s ease, transform 0.3s ease !important;
+}
+
+.tp-brand-item:hover .tp-brand-logo-img {
+  filter: brightness(0) opacity(1) !important;
+  transform: scale(1.06) !important;
+}
+
