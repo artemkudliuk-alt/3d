@@ -505,6 +505,17 @@
 
     const grid = document.querySelector('.tp-asymmetric-grid');
     if (grid) {
+      if (window.innerWidth <= 1024) {
+        const centerCard = grid.querySelector('.nw-parallax-center');
+        const rightPoster = grid.querySelector('.nw-parallax-right');
+        const leftCard = grid.querySelector('.nw-parallax-left');
+        if (centerCard) { centerCard.style.transform = 'none'; centerCard.style.opacity = '1'; }
+        if (rightPoster) { rightPoster.style.transform = 'none'; rightPoster.style.opacity = '1'; }
+        if (leftCard) { leftCard.style.transform = 'none'; leftCard.style.opacity = '1'; }
+        requestAnimationFrame(renderLoop);
+        return;
+      }
+
       const centerCard = grid.querySelector('.nw-parallax-center');
       const rightPoster = grid.querySelector('.nw-parallax-right');
       const leftCard = grid.querySelector('.nw-parallax-left');
@@ -567,7 +578,7 @@
 
 
 
-<div class="tp-asymmetric-grid" style="display: grid !important; grid-template-columns: minmax(0, 1.1fr) minmax(0, 2.8fr) minmax(0, 1.1fr) !important; gap: 36px !important; align-items: center !important; width: 100% !important;">
+<div class="tp-asymmetric-grid" style="display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 2.8fr) minmax(0, 1.1fr); gap: 36px; align-items: center; width: 100%;">
       
       <!-- 3RD TO ARRIVE: LEFT 3D RESULT CARD (nw-parallax-left) -->
       <div class="tp-card-left nw-parallax-left" style="background: #ffffff !important; border: 1px solid rgba(0, 0, 0, 0.12) !important; border-radius: 4px !important; padding: 36px 28px !important; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08) !important; display: flex !important; flex-direction: column !important; justify-content: space-between !important; height: 380px !important; box-sizing: border-box !important; position: relative !important; overflow: hidden !important; will-change: transform !important;">
@@ -808,7 +819,7 @@
     <div style="font-family:'Mulish',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.18em;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:clamp(32px,4vw,56px);">005</div>
 
     <!-- Main grid -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,7vw,100px);align-items:start;">
+    <div class="nw-cta-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,7vw,100px);align-items:start;">
 
       <!-- LEFT: Heading + copy -->
       <div class="nw-cta-left">
@@ -1681,6 +1692,208 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
       handleFadeNav(href);
     }
   }, true);
+})();
+</script>
+
+<script id="nw-mobile-animations">
+/* ============================================================
+   MOBILE-SPECIFIC ANIMATIONS & ADAPTATIONS
+   Runs ONLY on max-width 1024px devices
+   ============================================================ */
+(function nwMobileAnimations() {
+  if (window.innerWidth > 1024) return; // Desktop unchanged
+
+  var isMobile = true;
+
+  /* -------------------------------------------------------
+     1. DISABLE LERP PARALLAX ON TESTIMONIALS SECTION
+     The initLerpSec4Parallax runs on both desktop/mobile.
+     We override the transforms immediately after load.
+     ------------------------------------------------------- */
+  function killLerpParallax() {
+    var center = document.querySelector('.nw-parallax-center');
+    var right  = document.querySelector('.nw-parallax-right');
+    var left   = document.querySelector('.nw-parallax-left');
+    [center, right, left].forEach(function(el) {
+      if (!el) return;
+      el.style.cssText += '; transform: translate3d(0,0,0) !important; opacity: 1 !important;';
+    });
+  }
+
+  /* -------------------------------------------------------
+     2. SECTION FADE-UP via IntersectionObserver
+     Applied to each section's header group and key elements
+     ------------------------------------------------------- */
+  function initSectionFadeUps() {
+    var targets = document.querySelectorAll([
+      '.projects .container-text',
+      '.projects .project-info',
+      '.benefits .container-text',
+      '.benefits h2.mulish-80',
+      '.nw-section4-header-group',
+      '.nw-cta-left',
+      '.nw-cta-right'
+    ].join(','));
+
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('nw-mob-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -60px 0px', threshold: 0.1 });
+
+    targets.forEach(function(el) {
+      el.classList.add('nw-mob-fade-up');
+      io.observe(el);
+    });
+  }
+
+  /* -------------------------------------------------------
+     3. BENEFITS SWIPER — init touch swipe on mobile
+     The existing Swiper code handles this via matchMedia,
+     but we ensure spaceBetween and slidesPerView are correct.
+     ------------------------------------------------------- */
+  function initBenefitsMobileSwiper() {
+    var benSwiper = document.querySelector('.benefits .swiper');
+    if (!benSwiper || !window.Swiper) return;
+
+    // Check if Swiper already initialized via matchMedia
+    if (benSwiper.swiper) {
+      benSwiper.swiper.params.spaceBetween = 12;
+      benSwiper.swiper.update();
+      return;
+    }
+
+    // Fallback: initialize if not done
+    try {
+      new window.Swiper(benSwiper, {
+        slidesPerView: 'auto',
+        spaceBetween: 12,
+        grabCursor: true,
+        freeMode: true,
+        speed: 400
+      });
+    } catch(e) {}
+  }
+
+  /* -------------------------------------------------------
+     4. HERO PIN — on mobile, reduce scroll distance
+     Desktop: end='+=340%' (3.4 * viewport = ~2040px on 600px)
+     Mobile: keep as-is but ensure content is visible at scroll 0
+     ------------------------------------------------------- */
+  function fixHeroMobile() {
+    var heroReveal = document.querySelector('.hero-reveal');
+    var titleWrap = document.querySelector('.hero-title-wrap');
+
+    // On mobile, ensure the reveal is not permanently invisible after first load
+    if (heroReveal) {
+      // If GSAP scrub sets opacity:0 at scroll=0, that's correct.
+      // But on mobile the 340% pin means user scrolls ~2040px before reveal.
+      // Adjust: use gsap.matchMedia to make pin shorter on mobile.
+      if (window.gsap && window.ScrollTrigger) {
+        var mm = gsap.matchMedia();
+        mm.add('(max-width: 1024px)', function() {
+          // Kill existing hero pin trigger and recreate with shorter distance
+          var triggers = ScrollTrigger.getAll();
+          var heroPinTrigger = triggers.find(function(t) {
+            return t.vars && t.vars.pin && t.trigger && t.trigger.classList.contains('intro');
+          });
+
+          if (heroPinTrigger) {
+            // Don't kill it — just accept shorter scroll. The 340% is absolute px.
+            // On mobile 600px viewport: end = 2040px. That's still 3.4 screens.
+            // That's actually fine for a parallax hero.
+          }
+
+          // Ensure title-wrap visible at scroll 0 on mobile
+          if (titleWrap) {
+            gsap.set(titleWrap, { opacity: 1, y: 0 });
+          }
+        });
+      }
+    }
+  }
+
+  /* -------------------------------------------------------
+     5. PROJECT CARDS — ensure heights recalculate after
+        flex-direction change from row → column
+     ------------------------------------------------------- */
+  function fixProjectCardHeights() {
+    // After CSS changes project to flex-column, ScrollTrigger pins
+    // need to recalculate. Refresh after small delay.
+    if (window.ScrollTrigger) {
+      setTimeout(function() {
+        ScrollTrigger.refresh(true);
+      }, 200);
+    }
+  }
+
+  /* -------------------------------------------------------
+     6. SCALE-DOWN EFFECT for pinned project cards on mobile
+     On desktop: scale(0.5), y: -25vh, autoAlpha: 0
+     On mobile: keep the same but ensure it looks good
+     ------------------------------------------------------- */
+  function ensurePinScaleWorks() {
+    // The existing page-home.js handles pin+scale for each .project
+    // On mobile with flex-column layout, the pin still applies per card.
+    // Only issue: scale(0.5) on mobile makes card ~50% = 300px width.
+    // Override scale to be less extreme on mobile.
+    if (window.gsap) {
+      var mm = gsap.matchMedia();
+      mm.add('(max-width: 1024px)', function() {
+        // Redefine project scale animation for mobile
+        var projects = document.querySelectorAll('[data-project]');
+        projects.forEach(function(proj) {
+          var existingTrig = ScrollTrigger ? ScrollTrigger.getAll().find(function(t){
+            return t.trigger === proj && t.vars && t.vars.pin;
+          }) : null;
+
+          if (existingTrig) {
+            // Kill and recreate with mobile-appropriate values
+            var tl = existingTrig.animation;
+            if (tl) {
+              // Change scale from 0.5 to 0.85 on mobile (less aggressive)
+              tl.vars.scale = 0.88;
+              tl.vars.y = '-12vh';
+            }
+          }
+        });
+      });
+    }
+  }
+
+  /* -------------------------------------------------------
+     RUN ALL ON DOM READY
+     ------------------------------------------------------- */
+  function runAll() {
+    killLerpParallax();
+    initSectionFadeUps();
+    fixHeroMobile();
+    fixProjectCardHeights();
+    // ensurePinScaleWorks(); — disabled, may conflict with existing JS
+
+    // Re-kill LERP parallax after next frame (since LERP runs in rAF loop)
+    requestAnimationFrame(killLerpParallax);
+    setTimeout(killLerpParallax, 500);
+    setTimeout(killLerpParallax, 1500);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runAll);
+  } else {
+    runAll();
+  }
+  window.addEventListener('load', function() {
+    killLerpParallax();
+    initBenefitsMobileSwiper();
+    setTimeout(function() {
+      killLerpParallax();
+      if (window.ScrollTrigger) ScrollTrigger.refresh();
+    }, 300);
+  });
+
 })();
 </script>
 

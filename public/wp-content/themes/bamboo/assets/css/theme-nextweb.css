@@ -1735,3 +1735,639 @@ section.testimonials-partners,
   }
 }
 
+
+/* ==============================================================
+   ПОВНА МОБІЛЬНА АДАПТАЦІЯ — ВСІ ЕКРАНИ + ПЕРЕХОДИ
+   Версія 2.0: Кожен екран як на десктопі, але адаптований
+   ============================================================== */
+
+
+/* ---------------------------------------------------------------
+   SCREEN 2: PROJECTS / CASES — MOBILE VERTICAL LAYOUT
+   На десктопі: slider ЗЛІВА, info СПРАВА (flex-row)
+   На мобільному: slider ЗВЕРХУ на всю ширину, info ЗНИЗУ
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+
+  /* Section header: номер + кнопка — стовпець, вирівняно */
+  .projects #cases > .container > *:first-child,
+  .projects .container-text {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    margin-bottom: 20px !important;
+    padding-inline: 16px !important;
+  }
+
+  /* Section title on mobile */
+  .projects .container-text h2,
+  .projects h2.mulish-64 {
+    font-size: clamp(28px, 7vw, 40px) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.025em !important;
+  }
+
+  /* "Дивитись всі" button — full width on mobile */
+  #open-catalog-btn {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+
+  /* CRITICAL: Each project card — vertical layout on mobile */
+  .projects .project {
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Project slider — full viewport width, 16:9 aspect */
+  .projects .project-slider {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    height: 56vw !important;
+    min-height: 220px !important;
+    max-height: 380px !important;
+  }
+
+  /* Swiper inside project slider */
+  .projects .project-slider .swiper {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .projects .project-slider .swiper-slide {
+    height: 100% !important;
+  }
+
+  /* Project info — full width, padding, below slider */
+  .projects .project-info {
+    flex: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 24px 16px 32px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Project number + title */
+  .projects .project .num {
+    font-size: 11px !important;
+    letter-spacing: 0.1em !important;
+  }
+
+  .projects .project h3 {
+    font-size: clamp(22px, 5.5vw, 30px) !important;
+    line-height: 1.15 !important;
+    margin: 4px 0 8px !important;
+  }
+
+  .projects .project p {
+    font-size: clamp(13px, 3.5vw, 16px) !important;
+  }
+
+  /* Location row */
+  .projects .project .location {
+    margin-top: 8px !important;
+    gap: 6px !important;
+  }
+
+  /* Action buttons — row, wrap */
+  .projects .project .navs {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin-top: 16px !important;
+  }
+
+  .projects .project .navs .btn {
+    flex: 1 1 auto !important;
+    min-width: 120px !important;
+    justify-content: center !important;
+    font-size: 13px !important;
+    padding: 10px 16px !important;
+  }
+
+  /* Scale-down stack effect: project cards still pin and shrink — good on mobile */
+  /* Pin spacer shrinks appropriately since height is auto */
+}
+
+/* ---------------------------------------------------------------
+   SCREEN 3: BENEFITS — MOBILE SWIPE CARDS
+   На десктопі: активна картка розкривається, hover-ефект
+   На мобільному: Swiper горизонтальний скрол, peek-ефект
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+
+  /* Section background and layout */
+  .benefits {
+    padding-top: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Top container — decorative images hidden on mobile */
+  .benefits .container.top {
+    display: none !important;
+  }
+
+  /* Section header — centered, full width */
+  .benefits > .container-text,
+  .benefits .container-text {
+    padding: 60px 16px 32px !important;
+    text-align: center !important;
+  }
+
+  .benefits h2.mulish-80 {
+    font-size: clamp(26px, 7vw, 40px) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.025em !important;
+    text-align: center !important;
+  }
+
+  /* Demo video button — hidden on mobile (decorative only) */
+  .benefits .container-video {
+    display: none !important;
+  }
+
+  /* Bottom swiper container — show edge of next slide */
+  .benefits .container.bottom {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Swiper: show peek of next card */
+  .benefits .swiper {
+    overflow: visible !important;
+    padding-left: 16px !important;
+    padding-right: 0 !important;
+  }
+
+  /* Swiper-wrapper clip */
+  .benefits .container.bottom {
+    overflow: hidden !important;
+    padding-bottom: 32px !important;
+  }
+
+  /* Each slide card */
+  .benefits .swiper-slide {
+    width: calc(100vw - 56px) !important;
+    max-width: 360px !important;
+    height: auto !important;
+    min-height: 260px !important;
+    padding: 28px 20px 24px !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Active slide — expanded visible */
+  .benefits .swiper-slide.active {
+    border-color: rgba(255,255,255,0.2) !important;
+  }
+
+  /* Card item — column layout on mobile */
+  .benefits .swiper-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+    height: 100% !important;
+  }
+
+  /* Card info */
+  .benefits .swiper-item-info {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+  }
+
+  /* Title text */
+  .benefits .swiper-item .title {
+    font-size: clamp(13px, 3.5vw, 16px) !important;
+    color: rgba(255,255,255,0.55) !important;
+    margin-bottom: 6px !important;
+  }
+
+  /* Stat number — big and bold */
+  .benefits .swiper-slide .count {
+    font-size: clamp(48px, 12vw, 72px) !important;
+    line-height: 1.0 !important;
+    font-weight: 900 !important;
+  }
+
+  /* Description text */
+  .benefits .swiper-item .description {
+    font-size: clamp(13px, 3.5vw, 15px) !important;
+    line-height: 1.55 !important;
+    color: rgba(255,255,255,0.5) !important;
+    margin-top: 10px !important;
+  }
+
+  /* Thumb image — below info, full width card bottom */
+  .benefits .swiper-item-thumb {
+    display: none !important;
+  }
+
+  /* Swiper pagination dots on mobile */
+  .benefits .swiper-pagination {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    margin-top: 20px !important;
+    padding-inline: 16px !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   SCREEN 4: TESTIMONIALS & PARTNERS — MOBILE SINGLE COLUMN
+   На десктопі: 3-колонковий стаггерований паралакс-грід
+   На мобільному: 1 колонка, картки зверху вниз, легкий fade-in
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+
+  /* Section padding */
+  .testimonials-partners {
+    padding-top: 60px !important;
+    padding-bottom: 48px !important;
+    overflow: hidden !important;
+  }
+
+  /* Container spacing */
+  .testimonials-partners .container {
+    gap: 32px !important;
+    padding-inline: 16px !important;
+  }
+
+  /* Header group */
+  .nw-section4-header-group {
+    padding-inline: 0 !important;
+    gap: 10px !important;
+  }
+
+  /* Section number */
+  .nw-section4-header-group .container-index,
+  .testimonials-partners [style*="letter-spacing: 0.12em"] {
+    font-size: 12px !important;
+    letter-spacing: 0.1em !important;
+  }
+
+  /* Section title */
+  .testimonials-partners h2.section-title,
+  .testimonials-partners h2 {
+    font-size: clamp(26px, 6.5vw, 36px) !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  /* Subtitle */
+  .testimonials-partners .section-subtitle,
+  .testimonials-partners p {
+    font-size: clamp(14px, 3.8vw, 17px) !important;
+    line-height: 1.55 !important;
+  }
+
+  /* CRITICAL: Testimonials asymmetric grid → single column on mobile */
+  .tp-asymmetric-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+
+  /* Disable LERP parallax transforms on mobile — reset all transform/opacity */
+  .nw-parallax-center,
+  .nw-parallax-right,
+  .nw-parallax-left {
+    transform: translate3d(0, 0, 0) !important;
+    opacity: 1 !important;
+    will-change: auto !important;
+  }
+
+  /* Center card — first, full width */
+  .nw-parallax-center {
+    order: 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 12px !important;
+  }
+
+  /* Right poster card — second */
+  .nw-parallax-right {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 12px !important;
+    height: auto !important;
+    min-height: 280px !important;
+    max-height: 420px !important;
+  }
+
+  /* Left badge card — third, full width */
+  .nw-parallax-left {
+    order: 3 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 200px !important;
+    border-radius: 12px !important;
+  }
+
+  /* Left card internal padding */
+  .tp-card-left {
+    padding: 28px 24px !important;
+  }
+
+  /* Marquee / partners row */
+  .tp-marquee-track {
+    /* Marquee stays as-is — it's meant to scroll infinitely */
+  }
+
+  /* Partners section heading */
+  .testimonials-partners [style*="font-size: clamp(28px"] {
+    font-size: clamp(20px, 5.5vw, 28px) !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   SCREEN 5: LEAD CAPTURE FORM — MOBILE SINGLE COLUMN
+   На десктопі: grid 1fr 1fr (heading ліворуч, форма праворуч)
+   На мобільному: heading зверху, форма знизу
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+
+  /* Section itself */
+  .nw-cta-section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* Outer container */
+  .nw-cta-section > div {
+    padding-inline: 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* CRITICAL: Switch from 1fr 1fr grid → single column */
+  .nw-cta-grid,
+  .nw-cta-section > div > div[style*="grid-template-columns"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 36px !important;
+    width: 100% !important;
+  }
+
+  /* Left — heading + contacts */
+  .nw-cta-left {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Left heading */
+  .nw-cta-left h2 {
+    font-size: clamp(28px, 7vw, 40px) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.025em !important;
+    margin-bottom: 16px !important;
+  }
+
+  /* Left paragraph */
+  .nw-cta-left p {
+    font-size: clamp(14px, 3.8vw, 17px) !important;
+    max-width: 100% !important;
+  }
+
+  /* Contact pills — row, wrap on mobile */
+  .nw-cta-left > div[style*="flex-wrap"] {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .nw-cta-left a[href^="tel"],
+  .nw-cta-left a[href^="https://t.me"] {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 14px 20px !important;
+    font-size: 15px !important;
+  }
+
+  /* Right — form */
+  .nw-cta-right {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Form inputs — no iOS zoom (font-size >= 16px) */
+  .nw-cta-right input,
+  .nw-cta-right textarea,
+  .nw-cta-section input,
+  .nw-cta-section textarea {
+    font-size: 16px !important;
+    padding: 14px 0 !important;
+  }
+
+  /* Submit button — full width */
+  .nw-cta-right .btn,
+  .nw-cta-section .btn[type="submit"] {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 16px 24px !important;
+    font-size: 16px !important;
+    margin-top: 8px !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   GLOBAL: SECTION TRANSITION — SCREEN-TO-SCREEN FEEL
+   На десктопі: staggered parallax reveal (GSAP ScrollTrigger)
+   На мобільному: intersection observer fade-up замість паралакс
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+
+  /* Section index numbers (002, 003, 004, 005) */
+  .container-index,
+  [style*="letter-spacing:0.12em"],
+  [style*="letter-spacing: 0.12em"] {
+    font-size: 11px !important;
+    letter-spacing: 0.12em !important;
+    color: rgba(255,255,255,0.35) !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* Every section h2 — adaptive sizing */
+  section h2 {
+    font-size: clamp(24px, 6vw, 38px) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  /* Every section p subtitle */
+  section > div > p,
+  section .section-subtitle {
+    font-size: clamp(14px, 3.8vw, 17px) !important;
+    line-height: 1.55 !important;
+  }
+
+  /* Pin spacer — ensure no extra background color */
+  .pin-spacer {
+    background: transparent !important;
+  }
+
+  /* Prevent any section from overflowing viewport width */
+  section,
+  .projects,
+  .benefits,
+  .testimonials-partners,
+  .nw-cta-section {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Smooth scrolling for fade nav transitions */
+  html {
+    scroll-behavior: auto !important; /* Handled by GSAP/JS */
+  }
+
+  /* Parallax data-speed elements — disable on mobile for performance */
+  [data-speed]:not(video) {
+    transform: none !important;
+    will-change: auto !important;
+  }
+
+  [data-parallax] {
+    transform: none !important;
+    will-change: auto !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   MOBILE ANIMATION: SIMPLE FADE-UP ENTRANCE PER SECTION
+   Replaces heavy GSAP scrub parallax on mobile with light CSS
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  /* These classes are added via IntersectionObserver in mobile-animations.js */
+  .nw-mob-fade-up {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .nw-mob-fade-up.nw-mob-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered delays for children */
+  .nw-mob-fade-up:nth-child(2) { transition-delay: 0.1s; }
+  .nw-mob-fade-up:nth-child(3) { transition-delay: 0.2s; }
+  .nw-mob-fade-up:nth-child(4) { transition-delay: 0.3s; }
+}
+
+/* ---------------------------------------------------------------
+   FOOTER — MOBILE
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .site-footer {
+    padding-bottom: 12px !important;
+  }
+
+  .nw-slim-footer {
+    width: calc(100% - 24px) !important;
+    max-width: 480px !important;
+    margin: 0 auto 12px !important;
+    padding: 10px 16px !important;
+    border-radius: 22px !important;
+    height: auto !important;
+  }
+
+  .nw-slim-footer-inner {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 4px 10px !important;
+    font-size: 11px !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   HEADER — MOBILE  
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .header {
+    height: 56px !important;
+    padding-inline: 16px !important;
+  }
+
+  /* Logo */
+  .header .site-header__logo,
+  .header-logo {
+    font-size: 13px !important;
+    letter-spacing: 0.05em !important;
+  }
+
+  /* CTA button in header */
+  .header .btn-orange {
+    padding: 9px 14px !important;
+    font-size: 13px !important;
+  }
+
+  /* Hamburger icon */
+  .header .nw-hamburger {
+    width: 36px !important;
+    height: 36px !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   EXTRA-SMALL PHONES: max-width 390px
+   --------------------------------------------------------------- */
+@media (max-width: 390px) {
+  /* Hero title */
+  .intro .container-content .hero-title {
+    font-size: clamp(20px, 7.5vw, 26px) !important;
+  }
+
+  /* Project slider height */
+  .projects .project-slider {
+    height: 52vw !important;
+    min-height: 200px !important;
+  }
+
+  /* Benefits card */
+  .benefits .swiper-slide {
+    width: calc(100vw - 40px) !important;
+  }
+
+  /* Benefits stat number */
+  .benefits .swiper-slide .count {
+    font-size: clamp(42px, 11vw, 58px) !important;
+  }
+
+  /* CTA heading */
+  .nw-cta-left h2 {
+    font-size: clamp(24px, 8vw, 32px) !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .intro .container-content .hero-title {
+    font-size: clamp(22px, 7vw, 30px) !important;
+  }
+
+  .intro .container-content .hero-cta {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .intro .container-content .hero-cta .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .benefits .swiper-slide {
+    width: clamp(220px, 78vw, 280px) !important;
+  }
+}
+
