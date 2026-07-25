@@ -33,7 +33,8 @@ window.initHeroAnimation = function() {
     if (titleWrap) gsap.set(titleWrap, { opacity: 1, y: 0 });
 
     if (subtitle) gsap.set(subtitle, { opacity: 0, y: 50 });
-    if (cta) gsap.set(cta, { opacity: 0, y: 40 });
+    // CTA visible immediately — scroll away & back reveals it
+    if (cta) gsap.set(cta, { opacity: 1, y: 0, pointerEvents: 'auto' });
 
     // Pinned scroll timeline
         // Pinned scroll timeline (200vh total scroll distance)
@@ -66,12 +67,36 @@ window.initHeroAnimation = function() {
       if (badge) tl.to(badge, { y: -260, opacity: 0, duration: 2.0, ease: 'power2.inOut' }, 0);
     }
 
+    // CTA also scrolls away in stage 1 with the title
+    // (Only fade, no scrub — so it doesn't get stuck at opacity:0)
+    if (cta) {
+      gsap.set(cta, { opacity: 1, y: 0, pointerEvents: 'auto' });
+      // Fade out with scroll non-scrubbed
+      ScrollTrigger.create({
+        trigger: intro,
+        start: 'top top',
+        end: '25% top',
+        onUpdate: function(self) {
+          var p = self.progress;
+          if (cta) {
+            gsap.set(cta, { opacity: Math.max(0, 1 - p * 4), y: -p * 60, pointerEvents: p > 0.9 ? 'none' : 'auto' });
+          }
+        },
+        onLeave: function() {
+          if (cta) gsap.set(cta, { opacity: 0, pointerEvents: 'none' });
+        },
+        onEnterBack: function() {
+          if (cta) gsap.set(cta, { opacity: 1, y: 0, pointerEvents: 'auto' });
+        }
+      });
+    }
+
     if (header) {
       tl.to(header, { y: -100, opacity: 0, pointerEvents: 'none', duration: 2.0, ease: 'power1.out' }, 0.5);
     }
 
     // ============================================================
-    // STAGE 2 (2.4 -> 4.4): ONLY AFTER titleWrap is 100% GONE (at 2.4), Subtitle & CTA float up & fade in!
+    // STAGE 2 (2.4 -> 4.4): Subtitle appears
     // ============================================================
     if (subtitle) tl.fromTo(subtitle,
       { opacity: 0, y: 80 },
@@ -79,11 +104,7 @@ window.initHeroAnimation = function() {
       2.4
     );
 
-    if (cta) tl.fromTo(cta,
-      { opacity: 0, y: 70 },
-      { opacity: 1, y: 0, pointerEvents: 'auto', duration: 2.0, ease: 'power2.out' },
-      2.7
-    );
+
 
     // ============================================================
     // STAGE 3 (4.4 -> 5.4): Presentation hold

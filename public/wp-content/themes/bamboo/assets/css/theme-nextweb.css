@@ -502,12 +502,19 @@ textarea:focus {
 .intro .container-content .hero-cta {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Центруємо кнопки дії */
+  justify-content: flex-start;
   gap: clamp(12px, 1vw, 18px);
-  opacity: 0;
-  pointer-events: none;
+  opacity: 1;
+  pointer-events: all;
   will-change: transform, opacity;
+  animation: heroCtaReveal 0.8s ease-out 1.2s both;
 }
+
+@keyframes heroCtaReveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 
 @media (max-width: 640px) {
   .intro .container-content .hero-cta {
@@ -1126,7 +1133,7 @@ section.testimonials-partners,
 
 
 /* ============================================================ */
-/* NEXTWEB: Section 3 benefit cards - smooth scaling, no dots  */
+/* NEXTWEB: Section 3 benefit cards - fluid scale + corner fix  */
 /* ============================================================ */
 
 /* Card info column stays within bounds */
@@ -1135,23 +1142,33 @@ section.testimonials-partners,
   overflow: hidden !important;
 }
 
-/* Stat number scales down smoothly to fit - NO ellipsis */
-/* Collapsed card (narrow): small font */
+/* Corner icon — visible only on COLLAPSED cards */
+.benefits .card-corner-icon {
+  opacity: 1 !important;
+  transition: opacity 0.35s ease !important;
+  flex-shrink: 0 !important;
+}
+.benefits .swiper-slide.active .card-corner-icon {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* COLLAPSED card stat number — small, fits narrow width */
 .benefits .swiper-slide .swiper-item .count {
-  font-size: clamp(28px, 3.5vw, 52px) !important;
+  font-size: clamp(20px, 2.2vw, 36px) !important;
   line-height: 1.05 !important;
   overflow: hidden !important;
   white-space: nowrap !important;
   text-overflow: clip !important;
-  transition: font-size 0.45s ease-in-out !important;
+  transition: font-size 0.4s ease-in-out !important;
 }
 
-/* Active (wide) card: full large font */
+/* ACTIVE (wide) card stat number — large */
 .benefits .swiper-slide.active .swiper-item .count {
-  font-size: clamp(52px, 6.5vw, 100px) !important;
+  font-size: clamp(48px, 6vw, 96px) !important;
 }
 
-/* Image wrapper stays put, doesn't overflow text */
+/* Image wrapper */
 .benefits .swiper-item-thumb {
   flex-shrink: 0 !important;
   min-width: 0 !important;
@@ -1164,15 +1181,16 @@ section.testimonials-partners,
   overflow: hidden !important;
 }
 
-/* Active card info column */
+/* Active card info column constraints */
 @media (min-width: 1025px) {
   .benefits .swiper-slide.active .swiper-item-info {
     flex: 1 1 auto !important;
     min-width: 0 !important;
-    max-width: 56% !important;
+    max-width: 52% !important;
   }
   .benefits .swiper-slide.active .swiper-item-thumb {
     flex: 0 0 auto !important;
     min-width: 0 !important;
   }
 }
+
