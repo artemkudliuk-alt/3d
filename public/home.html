@@ -1610,26 +1610,39 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
 (function initMasterModalController() {
   function closeModal(modal) {
     if (!modal) return;
-    modal.style.display = 'none';
-    modal.classList.remove('is-open', 'active');
-    modal.setAttribute('aria-hidden', 'true');
+    var targetModal = modal.closest('.popup-callback, .popup-video, .popup-success, .popup-map, .popup-plan, .popup, .nw-modal') || modal;
+    targetModal.style.display = 'none';
+    targetModal.classList.remove('is-open', 'active');
+    targetModal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    var video = modal.querySelector('video');
+    var innerContent = targetModal.querySelector('.popup-content');
+    if (innerContent) innerContent.style.display = '';
+    var video = targetModal.querySelector('video');
     if (video) { video.pause(); video.src = ''; }
   }
 
   document.addEventListener('click', function(e) {
-    if (e.target.closest('#nw-video-close, #nw-map-close, [data-popup-close], .form-close, .back-close, .nw-modal__close')) {
-      var modal = e.target.closest('.nw-modal, .popup-callback, .popup-success, [class*="popup"]');
-      if (!modal) { document.querySelectorAll('.nw-modal.is-open, .popup-callback.active, .popup-success.active').forEach(closeModal); }
-      else closeModal(modal);
+    var closeBtn = e.target.closest('#nw-video-close, #nw-map-close, [data-popup-close], .form-close, .back-close, .nw-modal__close');
+    if (closeBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      var modal = closeBtn.closest('.popup-callback, .popup-video, .popup-success, .popup-map, .popup-plan, .popup, .nw-modal');
+      if (modal) {
+        closeModal(modal);
+      } else {
+        document.querySelectorAll('.popup, .nw-modal').forEach(closeModal);
+      }
     }
-    if (e.target.id === 'nw-video-modal' || e.target.id === 'nw-map-modal') closeModal(e.target);
-  });
+    if (e.target.classList.contains('popup') || e.target.id === 'nw-video-modal' || e.target.id === 'nw-map-modal') {
+      closeModal(e.target);
+    }
+  }, true);
 
   function openCallbackPopup() {
     var popup = document.querySelector('.popup-callback') || document.querySelector('[data-popup-name="callback"]');
     if (!popup) return;
+    var innerContent = popup.querySelector('.popup-content');
+    if (innerContent) innerContent.style.display = '';
     popup.style.display = 'flex';
     popup.classList.add('active', 'is-open');
     popup.setAttribute('aria-hidden', 'false');
