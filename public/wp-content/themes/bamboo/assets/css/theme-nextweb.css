@@ -1351,3 +1351,387 @@ section.testimonials-partners,
 }
 
 
+/* ==============================================================
+   COMPREHENSIVE MOBILE RESPONSIVE OPTIMIZATION — ALL 5 SCREENS
+   Target: max-width 1024px (tablet + phone), max-width 768px (phone only)
+   CRITICAL: Does NOT affect desktop (min-width: 1025px+)
+   ============================================================== */
+
+/* ---------------------------------------------------------------
+   SCREEN 1: HERO / INTRO — Mobile
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  /* Hero video — disable preload on mobile via JS flag, use poster */
+  #hero-video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Intro container fits viewport exactly */
+  .intro {
+    min-height: 100svh;
+    overflow: hidden;
+  }
+
+  /* Container-kivi fills whole screen */
+  .intro .container-kivi {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  /* Container-content at bottom of screen */
+  .intro .container-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 0 16px 40px !important;
+    gap: 0 !important;
+  }
+
+  /* Hero title wrap */
+  .hero-title-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+  }
+
+  /* Badge */
+  .hero-contact-badge {
+    font-size: 13px !important;
+    padding: 8px 16px !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Title */
+  .intro .container-content .hero-title {
+    font-size: clamp(26px, 6vw, 40px) !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.02em !important;
+    max-width: 100% !important;
+  }
+
+  /* Second stage reveal — centered */
+  .intro .container-content .hero-reveal {
+    padding-inline: 0 !important;
+    margin-bottom: clamp(30px, 6vh, 60px) !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  /* Sub */
+  .intro .container-content .hero-sub {
+    font-size: clamp(15px, 3.8vw, 18px) !important;
+    line-height: 1.55 !important;
+  }
+
+  /* CTA buttons */
+  .intro .container-content .hero-cta {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+
+  /* Scroll arrow hidden on mobile */
+  .intro .container-arrow {
+    display: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   SCREEN 2: CASES / PROJECTS — Mobile
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  /* Container spacing */
+  #cases .container {
+    padding-inline: 12px !important;
+  }
+
+  /* Section header row on mobile */
+  #cases .container-text {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    padding-inline: 0 !important;
+    margin-bottom: 28px !important;
+  }
+
+  /* Project card padding */
+  .projects .project .container {
+    padding-inline: 0 !important;
+    gap: 16px !important;
+  }
+
+  /* Case video fit */
+  .projects .project .swiper-slide video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Info section spacing */
+  .projects .project-info {
+    padding-inline: 0 !important;
+  }
+
+  /* 3D badge positioning */
+  .nw-3d-badge {
+    top: 10px !important;
+    left: 10px !important;
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   SCREEN 3: BENEFITS — Mobile
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  /* Benefits section */
+  .benefits {
+    padding-bottom: 60px !important;
+    overflow: hidden !important;
+  }
+
+  /* Top container */
+  .benefits .container.top {
+    padding-bottom: 0 !important;
+  }
+
+  /* Benefits title */
+  .benefits .container-text {
+    font-size: clamp(20px, 5.5vw, 32px) !important;
+    line-height: 1.2 !important;
+    padding-inline: 8px !important;
+    margin-top: 40px !important;
+    text-align: center !important;
+  }
+
+  /* Mobile card number sizing */
+  .benefits .swiper-slide .count {
+    font-size: clamp(40px, 10vw, 64px) !important;
+    line-height: 1.0 !important;
+  }
+
+  /* Swiper cards — hide overflow but allow left-right swipe */
+  .benefits .swiper {
+    padding-inline: 12px !important;
+    overflow: visible !important;
+  }
+
+  /* Each card */
+  .benefits .swiper-slide {
+    min-height: 200px !important;
+    padding: 40px 14px 14px !important;
+  }
+
+  /* Image inside card */
+  .benefits .swiper-item .image-wrapper {
+    aspect-ratio: 16/9 !important;
+    width: 100% !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   SCREEN 4: TESTIMONIALS & PARTNERS — Mobile
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  #testimonials-partners {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* Header group */
+  .nw-section4-header-group {
+    padding-inline: 12px !important;
+  }
+
+  /* Section number badge */
+  .nw-section4-header-group .nw-section-num {
+    font-size: 12px !important;
+  }
+
+  /* Section title */
+  #testimonials-partners h2 {
+    font-size: clamp(24px, 6vw, 36px) !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Section subtitle */
+  #testimonials-partners .nw-section-subtitle {
+    font-size: clamp(14px, 3.8vw, 17px) !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Testimonial cards */
+  .nw-testimonials-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding-inline: 12px !important;
+  }
+
+  /* Partners logo grid */
+  .nw-partners-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px 16px !important;
+    padding-inline: 16px !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   SCREEN 5: LEAD CAPTURE FORM — Mobile
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  #lead-capture {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  .nw-cta-section {
+    padding-inline: 12px !important;
+  }
+
+  /* Form layout — single column on mobile */
+  .nw-cta-section > div,
+  .nw-cta-section .nw-cta-inner {
+    flex-direction: column !important;
+    gap: 40px !important;
+  }
+
+  /* Form title */
+  .nw-cta-section h2 {
+    font-size: clamp(26px, 6.5vw, 36px) !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Form inputs */
+  .nw-cta-section input,
+  .nw-cta-section textarea {
+    font-size: 16px !important; /* Prevents iOS zoom on input focus */
+  }
+
+  /* Form submit button */
+  .nw-cta-section button[type="submit"],
+  .nw-cta-section .btn-submit {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   FOOTER — Mobile
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .site-footer,
+  footer.site-footer {
+    padding-bottom: 16px !important;
+  }
+
+  .nw-slim-footer {
+    width: calc(100% - 24px) !important;
+    max-width: 500px !important;
+    margin: 0 auto 16px !important;
+    padding: 10px 16px !important;
+    border-radius: 24px !important;
+    height: auto !important;
+  }
+
+  .nw-slim-footer-inner {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 4px 12px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   NAVIGATION — Mobile fade nav overlay
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  #nw-fade-nav-overlay {
+    z-index: 9999 !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   HEADER — Mobile
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  /* Header height consistent */
+  header,
+  .nw-header {
+    height: 56px !important;
+  }
+
+  /* Logo size on mobile */
+  .site-header__logo,
+  .nw-header-logo {
+    font-size: 14px !important;
+  }
+
+  /* CTA button in header */
+  header .btn-orange,
+  .nw-header .btn-orange {
+    padding: 8px 14px !important;
+    font-size: 13px !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   GLOBAL MOBILE PERFORMANCE OPTIMIZATIONS
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  /* Reduce parallax intensity on mobile — smoother experience */
+  [data-parallax],
+  [data-speed] {
+    will-change: auto !important;
+  }
+
+  /* Reduce animation scale on mobile for performance */
+  .pin-spacer {
+    background: transparent !important;
+  }
+
+  /* Ensure no horizontal overflow on any screen */
+  body {
+    overflow-x: hidden !important;
+  }
+
+  /* All sections avoid horizontal overflow */
+  section {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   PHONE-ONLY (max 430px) — Extra small screen tweaks
+   --------------------------------------------------------------- */
+@media (max-width: 430px) {
+  .intro .container-content .hero-title {
+    font-size: clamp(22px, 7vw, 30px) !important;
+  }
+
+  .intro .container-content .hero-cta {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .intro .container-content .hero-cta .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .benefits .swiper-slide {
+    width: clamp(220px, 78vw, 280px) !important;
+  }
+}
+
