@@ -1142,11 +1142,21 @@ section.testimonials-partners,
   overflow: hidden !important;
 }
 
-/* Corner icon — DELETED entirely */
+/* Corner icon — DELETED entirely (SVG element) */
 .benefits .card-corner-icon,
 .card-corner-icon {
   display: none !important;
 }
+
+/* Corner bracket pseudo-element — DELETED from swiper-item-info::before and mobile slide::before */
+.benefits .swiper-item-info::before,
+.benefits .swiper-item-info:before,
+.benefits .swiper-slide::before,
+.benefits .swiper-slide:before {
+  display: none !important;
+  content: none !important;
+}
+
 
 /* COLLAPSED card stat number — BIG (no photo visible, number fills space) */
 .benefits .swiper-slide .swiper-item .count {
