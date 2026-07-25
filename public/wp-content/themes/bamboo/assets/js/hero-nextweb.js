@@ -42,6 +42,11 @@ window.initHeroAnimation = function() {
       // We animate text elements based on raw window.scrollY through the intro zone.
 
       var mobileContainer = intro.querySelector('.container.md-space');
+      var kiviEl = intro.querySelector('.container-kivi');
+
+      // FIX 1: Get header elements for smooth fade
+      var headerEl = document.querySelector('.header');
+      var headerCta = document.querySelector('.header-cta'); // fixed burger
 
       function onScroll() {
         var scrollY = window.scrollY;
@@ -49,29 +54,25 @@ window.initHeroAnimation = function() {
         var introH = intro.offsetHeight;
         var vh = window.innerHeight;
 
-        // Hide the fixed content layer when projects section enters viewport
-        var projectsEl = document.querySelector('.projects');
-        var projectsTop = projectsEl ? projectsEl.offsetTop : Infinity;
-        var introPastEnd = scrollY + vh >= projectsTop;
-        if (mobileContainer) {
-          mobileContainer.style.visibility = introPastEnd ? 'hidden' : '';
-          mobileContainer.style.pointerEvents = introPastEnd ? 'none' : '';
-        }
-        // Also hide the fixed video layer when projects fully cover viewport
-        var kiviEl = intro.querySelector('.container-kivi');
-        if (kiviEl) {
-          kiviEl.style.visibility = introPastEnd ? 'hidden' : '';
-        }
-
-        if (introPastEnd) return; // no need to animate if hidden
-
-        // Scroll progress through intro: 0 at intro top, 1 when intro bottom hits viewport bottom
         var scrollableRange = introH - vh;
         if (scrollableRange <= 0) return;
         var relativeScroll = scrollY - introTop;
         var progress = Math.min(Math.max(relativeScroll / scrollableRange, 0), 1);
 
-        // Stage 1 (0→0.4): Title fades up and out
+        // FIX 1: Header (logo) smooth fade out in stage 1 (0→0.25)
+        // Burger stays visible until much later (0→0.50)
+        if (headerEl) {
+          var hp = Math.min(progress / 0.25, 1);
+          gsap.set(headerEl, { opacity: 1 - hp, force3D: true,
+            pointerEvents: hp >= 1 ? 'none' : 'auto' });
+        }
+        if (headerCta) {
+          var bp = Math.min(progress / 0.50, 1);
+          gsap.set(headerCta, { opacity: 1 - bp, force3D: true,
+            pointerEvents: bp >= 1 ? 'none' : 'auto' });
+        }
+
+        // Stage 1 (0→0.40): Title fades up and out
         if (titleWrap) {
           var tp = Math.min(progress / 0.40, 1);
           gsap.set(titleWrap, { opacity: 1 - tp, y: -tp * 120, force3D: true });
@@ -91,11 +92,32 @@ window.initHeroAnimation = function() {
             pointerEvents: (rin > 0.5 && rout < 0.5) ? 'auto' : 'none'
           });
         }
+
+        // FIX 3: Gradual darkening of video as projects slide over.
+        // Instead of instant hide → smoothly fade kivi + container to 0
+        // from progress 0.85 → 1.0 (last 15% of intro scroll)
+        var projectsEl = document.querySelector('.projects');
+        var projectsTop = projectsEl ? projectsEl.offsetTop : Infinity;
+        var projectsProgress = Math.min(Math.max((scrollY + vh - projectsTop) / vh, 0), 1);
+
+        // Fade hero layers as projects cover them
+        var heroFade = Math.max(1 - projectsProgress * 1.8, 0);
+        if (kiviEl) {
+          kiviEl.style.opacity = heroFade;
+          kiviEl.style.visibility = heroFade < 0.01 ? 'hidden' : '';
+        }
+        if (mobileContainer) {
+          var isPastHero = heroFade < 0.01;
+          mobileContainer.style.visibility = isPastHero ? 'hidden' : '';
+          mobileContainer.style.pointerEvents = isPastHero ? 'none' : '';
+        }
       }
 
       // Set initial states
       if (titleWrap) gsap.set(titleWrap, { opacity: 1, y: 0 });
       if (heroReveal) gsap.set(heroReveal, { opacity: 0, y: 50, pointerEvents: 'none' });
+      if (headerEl) gsap.set(headerEl, { opacity: 1 });
+      if (headerCta) gsap.set(headerCta, { opacity: 1 });
 
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll(); // run once on load

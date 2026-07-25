@@ -512,13 +512,21 @@ textarea:focus {
 
 @media (max-width: 640px) {
   .intro .container-content .hero-cta {
-    width: 100%;
-    flex-direction: column;
-    gap: 12px;
+    /* Center the buttons row, auto width — do NOT stretch to full screen */
+    justify-content: center !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    width: 100% !important;
   }
   .intro .container-content .hero-cta .btn {
-    width: 100%;
-    justify-content: center;
+    /* Pill shape, centered, auto width based on content */
+    width: auto !important;
+    min-width: 140px !important;
+    max-width: 220px !important;
+    border-radius: 100px !important;
+    justify-content: center !important;
+    padding: 12px 22px !important;
   }
 }
 
@@ -2614,6 +2622,26 @@ section.testimonials-partners,
     position: relative !important;
     z-index: 3 !important;
   }
+
+  /* FIX 2: Hero CTA buttons — pill shape, centered, auto-width (not full-screen stretch) */
+  .intro .container-content .hero-cta {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .intro .container-content .hero-cta .btn {
+    width: auto !important;
+    min-width: 130px !important;
+    max-width: 210px !important;
+    border-radius: 100px !important;
+    justify-content: center !important;
+    padding: 12px 22px !important;
+  }
 }
 
 /* ---------------------------------------------------------------
@@ -2652,14 +2680,22 @@ section.testimonials-partners,
     font-size: clamp(22px, 7vw, 30px) !important;
   }
 
+  /* Pill buttons centered — override the 640px rule for very small phones */
   .intro .container-content .hero-cta {
-    flex-direction: column !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 10px !important;
     width: 100% !important;
   }
 
   .intro .container-content .hero-cta .btn {
-    width: 100% !important;
+    width: auto !important;
+    min-width: 130px !important;
+    max-width: 200px !important;
+    border-radius: 100px !important;
     justify-content: center !important;
+    padding: 11px 18px !important;
   }
 
   .benefits .swiper-slide {
