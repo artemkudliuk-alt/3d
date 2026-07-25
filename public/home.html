@@ -1813,32 +1813,24 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
     var heroReveal = document.querySelector('.hero-reveal');
     var titleWrap = document.querySelector('.hero-title-wrap');
 
-    // On mobile, ensure the reveal is not permanently invisible after first load
-    if (heroReveal) {
-      // If GSAP scrub sets opacity:0 at scroll=0, that's correct.
-      // But on mobile the 340% pin means user scrolls ~2040px before reveal.
-      // Adjust: use gsap.matchMedia to make pin shorter on mobile.
-      if (window.gsap && window.ScrollTrigger) {
-        var mm = gsap.matchMedia();
-        mm.add('(max-width: 1024px)', function() {
-          // Kill existing hero pin trigger and recreate with shorter distance
-          var triggers = ScrollTrigger.getAll();
-          var heroPinTrigger = triggers.find(function(t) {
-            return t.vars && t.vars.pin && t.trigger && t.trigger.classList.contains('intro');
-          });
-
-          if (heroPinTrigger) {
-            // Don't kill it — just accept shorter scroll. The 340% is absolute px.
-            // On mobile 600px viewport: end = 2040px. That's still 3.4 screens.
-            // That's actually fine for a parallax hero.
-          }
-
-          // Ensure title-wrap visible at scroll 0 on mobile
-          if (titleWrap) {
-            gsap.set(titleWrap, { opacity: 1, y: 0 });
-          }
+    if (window.gsap && window.ScrollTrigger) {
+      var mm = gsap.matchMedia();
+      mm.add('(max-width: 1024px)', function() {
+        // Kill intro pin trigger on mobile so there's no 2040px empty dark spacer
+        var triggers = ScrollTrigger.getAll();
+        var heroPinTrigger = triggers.find(function(t) {
+          return t.vars && t.vars.pin && t.trigger && t.trigger.classList.contains('intro');
         });
-      }
+
+        if (heroPinTrigger) {
+          heroPinTrigger.kill();
+          ScrollTrigger.refresh();
+        }
+
+        if (titleWrap) {
+          gsap.set(titleWrap, { opacity: 1, y: 0 });
+        }
+      });
     }
   }
 

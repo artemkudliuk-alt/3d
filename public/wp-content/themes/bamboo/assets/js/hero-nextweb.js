@@ -34,14 +34,16 @@ window.initHeroAnimation = function() {
     if (heroReveal) gsap.set(heroReveal, { opacity: 0, y: 50 });
     else if (subtitle) gsap.set(subtitle, { opacity: 0, y: 50 });
 
-    // Pinned scroll timeline
+    var isMobile = (window.innerWidth <= 1024);
+
+    // Pinned scroll timeline (desktop only for pin, unpinned on mobile to avoid 2040px empty dark spacer)
     var tl = gsap.timeline({
       scrollTrigger: {
         trigger: intro,
         start: 'top top',
-        end: '+=340%',
-        pin: true,
-        pinSpacing: true,
+        end: isMobile ? 'bottom top' : '+=340%',
+        pin: !isMobile,
+        pinSpacing: !isMobile,
         scrub: 1.0,
         anticipatePin: 1,
         refreshPriority: 10,
