@@ -1810,27 +1810,9 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
      Mobile: keep as-is but ensure content is visible at scroll 0
      ------------------------------------------------------- */
   function fixHeroMobile() {
-    var heroReveal = document.querySelector('.hero-reveal');
     var titleWrap = document.querySelector('.hero-title-wrap');
-
-    if (window.gsap && window.ScrollTrigger) {
-      var mm = gsap.matchMedia();
-      mm.add('(max-width: 1024px)', function() {
-        // Kill intro pin trigger on mobile so there's no 2040px empty dark spacer
-        var triggers = ScrollTrigger.getAll();
-        var heroPinTrigger = triggers.find(function(t) {
-          return t.vars && t.vars.pin && t.trigger && t.trigger.classList.contains('intro');
-        });
-
-        if (heroPinTrigger) {
-          heroPinTrigger.kill();
-          ScrollTrigger.refresh();
-        }
-
-        if (titleWrap) {
-          gsap.set(titleWrap, { opacity: 1, y: 0 });
-        }
-      });
+    if (window.innerWidth <= 1024 && titleWrap && window.scrollY === 0) {
+      gsap.set(titleWrap, { opacity: 1, y: 0 });
     }
   }
 

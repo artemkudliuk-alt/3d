@@ -36,61 +36,74 @@ window.initHeroAnimation = function() {
 
     var isMobile = (window.innerWidth <= 1024);
 
-    // Pinned scroll timeline (desktop only for pin, unpinned on mobile to avoid 2040px empty dark spacer)
+    // Pinned scroll timeline (pinned on mobile for 140% scroll to allow text reveal & smooth slide-over)
     var tl = gsap.timeline({
       scrollTrigger: {
         trigger: intro,
         start: 'top top',
-        end: isMobile ? 'bottom top' : '+=340%',
-        pin: !isMobile,
-        pinSpacing: !isMobile,
-        scrub: 1.0,
+        end: isMobile ? '+=140%' : '+=340%',
+        pin: true,
+        pinSpacing: true,
+        scrub: 0.8,
         anticipatePin: 1,
         refreshPriority: 10,
       }
     });
 
-    // ============================================================
-    // STAGE 1 (0.0 -> 2.0): TitleWrap floats HIGH UP (y: -260) and fades out 100%!
-    // ============================================================
-    if (titleWrap) {
-      tl.to(titleWrap, { y: -260, opacity: 0, duration: 2.0, ease: 'power2.inOut' }, 0);
+    if (isMobile) {
+      // MOBILE SCROLL TIMELINE:
+      // Stage 1 (0 -> 1.5): TitleWrap floats UP and fades out
+      if (titleWrap) tl.to(titleWrap, { y: -160, opacity: 0, duration: 1.5, ease: 'power2.inOut' }, 0);
+      if (header) tl.to(header, { opacity: 0, y: -40, duration: 1.0 }, 0);
+
+      // Stage 2 (0.8 -> 2.3): HeroReveal (subtitle + buttons) appears on static video
+      if (heroReveal) {
+        tl.fromTo(heroReveal,
+          { opacity: 0, y: 60 },
+          { opacity: 1, y: 0, pointerEvents: 'auto', duration: 1.5, ease: 'power2.out' },
+          0.8
+        );
+      }
+
+      // Stage 3 (2.3 -> 3.0): Hold reveal so user can view & interact with buttons
+      tl.to({}, { duration: 0.7 });
+
+      // Stage 4 (3.0 -> 4.0): Subtitle gently fades as Section 2 slides UP over the intro
+      if (heroReveal) tl.to(heroReveal, { opacity: 0, y: -40, duration: 1.0, ease: 'power1.in' }, 3.0);
+      if (fadeOverlay) tl.to(fadeOverlay, { opacity: 0.8, duration: 1.0 }, 3.0);
+
     } else {
-      if (title) tl.to(title, { y: -260, opacity: 0, duration: 2.0, ease: 'power2.inOut' }, 0);
+      // DESKTOP SCROLL TIMELINE (100% untouched)
+      if (titleWrap) {
+        tl.to(titleWrap, { y: -260, opacity: 0, duration: 2.0, ease: 'power2.inOut' }, 0);
+      } else {
+        if (title) tl.to(title, { y: -260, opacity: 0, duration: 2.0, ease: 'power2.inOut' }, 0);
+      }
+
+      if (header) {
+        tl.to(header, { y: -100, opacity: 0, pointerEvents: 'none', duration: 2.0, ease: 'power1.out' }, 0.5);
+      }
+
+      if (heroReveal) {
+        tl.fromTo(heroReveal,
+          { opacity: 0, y: 80 },
+          { opacity: 1, y: 0, pointerEvents: 'auto', duration: 2.0, ease: 'power2.out' },
+          2.4
+        );
+      } else if (subtitle) {
+        tl.fromTo(subtitle,
+          { opacity: 0, y: 80 },
+          { opacity: 1, y: 0, pointerEvents: 'auto', duration: 2.0, ease: 'power2.out' },
+          2.4
+        );
+      }
+
+      tl.to({}, { duration: 1.0 });
+
+      if (heroReveal) tl.to(heroReveal, { y: -80, opacity: 0, duration: 1.4, ease: 'power2.in' }, 4.4);
+      else if (subtitle) tl.to(subtitle, { y: -80, opacity: 0, duration: 1.4, ease: 'power2.in' }, 4.4);
+      if (fadeOverlay) tl.to(fadeOverlay, { opacity: 1, duration: 1.8, ease: 'power1.inOut' }, 4.2);
     }
-
-    if (header) {
-      tl.to(header, { y: -100, opacity: 0, pointerEvents: 'none', duration: 2.0, ease: 'power1.out' }, 0.5);
-    }
-
-    // ============================================================
-    // STAGE 2 (2.4 -> 4.4): Hero Reveal (Badge + Subtitle) appears
-    // ============================================================
-    if (heroReveal) {
-      tl.fromTo(heroReveal,
-        { opacity: 0, y: 80 },
-        { opacity: 1, y: 0, pointerEvents: 'auto', duration: 2.0, ease: 'power2.out' },
-        2.4
-      );
-    } else if (subtitle) {
-      tl.fromTo(subtitle,
-        { opacity: 0, y: 80 },
-        { opacity: 1, y: 0, pointerEvents: 'auto', duration: 2.0, ease: 'power2.out' },
-        2.4
-      );
-    }
-
-    // ============================================================
-    // STAGE 3 (4.4 -> 5.4): Presentation hold
-    // ============================================================
-    tl.to({}, { duration: 1.0 });
-
-    // ============================================================
-    // STAGE 4 (5.4 -> 6.6): Subtitle & Badge float up & fade out
-    // ============================================================
-    if (heroReveal) tl.to(heroReveal, { y: -80, opacity: 0, duration: 1.4, ease: 'power2.in' }, 4.4);
-    else if (subtitle) tl.to(subtitle, { y: -80, opacity: 0, duration: 1.4, ease: 'power2.in' }, 4.4);
-    if (fadeOverlay) tl.to(fadeOverlay, { opacity: 1, duration: 1.8, ease: 'power1.inOut' }, 4.2);
 
     // Video speed boost on scroll
     if (video) {
