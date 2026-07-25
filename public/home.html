@@ -176,7 +176,7 @@
         <div class="header-logo">
           <a class="main-logo" href="/" aria-current="page" aria-label="NextWeb Hotels"><span class="nw-logo"><span class="nw-logo__top">NEXTWEB</span><span class="nw-logo__sub">HOTELS</span></span></a>
         </div>
-        <a href="#lead-capture" class="nw-mobile-cta-btn" aria-label="Заявка">Заявка</a>
+        <a href="#callback" class="nw-mobile-cta-btn" aria-label="Заявка">Заявка</a>
       </div>
 
   <div class="header-wrapper">
@@ -1627,13 +1627,25 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
     if (e.target.id === 'nw-video-modal' || e.target.id === 'nw-map-modal') closeModal(e.target);
   });
 
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('#nw-video-modal, #nw-map-modal').forEach(function(m) {
-        if (m.style.display !== 'none') closeModal(m);
-      });
+  function openCallbackPopup() {
+    var popup = document.querySelector('.popup-callback') || document.querySelector('[data-popup-name="callback"]');
+    if (!popup) return;
+    popup.style.display = 'flex';
+    popup.classList.add('active', 'is-open');
+    popup.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  window.openCallbackPopupModal = openCallbackPopup;
+
+  document.addEventListener('click', function(e) {
+    var cbTrigger = e.target.closest('a[href="#callback"], .nw-mobile-cta-btn, [data-open-callback]');
+    if (cbTrigger) {
+      e.preventDefault();
+      e.stopPropagation();
+      openCallbackPopup();
     }
-  });
+  }, true);
 })();
 
 (function bindEverySingleButton() {
