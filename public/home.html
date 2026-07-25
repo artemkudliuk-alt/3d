@@ -1573,14 +1573,14 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
   <div style="width:90%; max-width:1100px; position:relative;">
     <div style="font-family:Mulish,sans-serif; font-size:18px; font-weight:700; color:#fff; margin-bottom:4px;">Інтерактивна Карта Проєктів</div>
     <div style="font-family:Mulish,sans-serif; font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:16px;">Розташування та статус готельних комплексів</div>
-    <button id="nw-fit-all-btn" style="position:absolute; top:0; right:0; background: rgba(255,107,0,0.15); border: 1px solid #ff6b00; color: #ff6b00; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer;">🌍 Всі проєкти на карті</button>
+    <button id="nw-fit-all-btn" style="position:absolute; top:0; right:0; background: rgba(200,169,106,0.15); border: 1px solid #C8A96A; color: #C8A96A; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer;">🌍 Всі проєкти на карті</button>
     <div style="display:flex; gap: 20px; height: 500px;">
       <div id="nw-leaflet-map" style="flex: 1; height: 100%; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);"></div>
       <div class="nw-map-sidebar" style="width: 280px; background: #121218; border-radius: 12px; padding: 16px; display:flex; flex-direction:column; gap:10px; overflow-y:auto;">
         <div style="font-family:Mulish,sans-serif; font-size:12px; font-weight:700; color:rgba(255,255,255,0.4); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px;">Список локацій</div>
         <div class="nw-sidebar-item active" data-project="moonrock" style="background:rgba(255,255,255,0.07); border-radius:8px; padding:12px; cursor:pointer; border:1px solid rgba(255,255,255,0.1);">
           <div style="font-family:Mulish,sans-serif; font-weight:700; font-size:13px; color:#fff;">Moonrock Resort &amp; Spa</div>
-          <div style="font-family:Mulish,sans-serif; font-size:11px; color:#ff6b00; margin-top:4px;">📍 Gianyar, Bali, Indonesia</div>
+          <div style="font-family:Mulish,sans-serif; font-size:11px; color:#C8A96A; margin-top:4px;">📍 Gianyar, Bali, Indonesia</div>
         </div>
         <div class="nw-sidebar-item" data-project="ribas" style="background:rgba(255,255,255,0.04); border-radius:8px; padding:12px; cursor:pointer; border:1px solid rgba(255,255,255,0.06);">
           <div style="font-family:Mulish,sans-serif; font-weight:700; font-size:13px; color:#fff;">Ribas Karpaty Hotel</div>
@@ -1704,12 +1704,12 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
       var item = casesData[key];
       var icon = L.divIcon({
         className: '',
-        html: '<div style="position:relative;width:28px;height:36px;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.5));"><svg viewBox="0 0 28 36" xmlns="http://www.w3.org/2000/svg" width="28" height="36"><path d="M14 0C6.268 0 0 6.268 0 14c0 9.333 14 22 14 22S28 23.333 28 14C28 6.268 21.732 0 14 0z" fill="#ff6b00"/><circle cx="14" cy="14" r="5" fill="#fff"/></svg></div>',
+        html: '<div style="position:relative;width:28px;height:36px;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.5));"><svg viewBox="0 0 28 36" xmlns="http://www.w3.org/2000/svg" width="28" height="36"><path d="M14 0C6.268 0 0 6.268 0 14c0 9.333 14 22 14 22S28 23.333 28 14C28 6.268 21.732 0 14 0z" fill="#C8A96A"/><circle cx="14" cy="14" r="5" fill="#fff"/></svg></div>',
         iconSize: [28, 36],
         iconAnchor: [14, 36]
       });
       var marker = L.marker(item.coords, { icon: icon }).addTo(map);
-      marker.bindPopup('<div style="min-width:160px;padding:4px"><b style="color:#fff;font-size:13px;">' + item.title + '</b><br><span style="font-size:11px;color:#a0a0b0;">📍 ' + item.location + '</span><br><button class="nw-open-video-btn" data-video-src="' + item.video + '" data-title="' + item.title + '" style="margin-top:8px;width:100%;padding:6px;background:#ff6b00;border:none;color:#fff;border-radius:4px;font-weight:600;font-size:11px;cursor:pointer;">▶ 3D-тур</button></div>');
+      marker.bindPopup('<div style="min-width:160px;padding:4px"><b style="color:#fff;font-size:13px;">' + item.title + '</b><br><span style="font-size:11px;color:#a0a0b0;">📍 ' + item.location + '</span><br><button class="nw-open-video-btn" data-video-src="' + item.video + '" data-title="' + item.title + '" style="margin-top:8px;width:100%;padding:6px;background:#C8A96A;border:none;color:#fff;border-radius:4px;font-weight:600;font-size:11px;cursor:pointer;">▶ 3D-тур</button></div>');
       markers[key] = marker;
     });
     window._nwLeafletMap = map;

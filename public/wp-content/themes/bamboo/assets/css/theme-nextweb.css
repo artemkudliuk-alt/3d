@@ -2530,7 +2530,7 @@ section.testimonials-partners,
   }
 
   .header-menu ul a:hover {
-    color: #ff6b00 !important;
+    color: #C8A96A !important;
   }
 
   /* Bottom Drawer Footer (CTA button + contacts) */
@@ -2835,7 +2835,7 @@ section.testimonials-partners,
   font-family: 'Mulish', sans-serif !important;
   font-size: 10px !important;
   font-weight: 700 !important;
-  color: #ff6b00 !important;
+  color: #C8A96A !important;
   letter-spacing: 0.35em !important;
   line-height: 1 !important;
   margin-right: -0.35em !important;
@@ -2855,7 +2855,7 @@ section.testimonials-partners,
 
 .nw-preloader__percent {
   font-size: 0.55em !important;
-  color: #ff6b00 !important;
+  color: #C8A96A !important;
   margin-left: 2px !important;
 }
 
@@ -2871,7 +2871,7 @@ section.testimonials-partners,
 .nw-preloader__bar-fill {
   width: 0% !important;
   height: 100% !important;
-  background: linear-gradient(90deg, #ff6b00 0%, #ffa000 100%) !important;
+  background: linear-gradient(90deg, #C8A96A 0%, #E5C887 100%) !important;
   border-radius: 4px !important;
-  box-shadow: 0 0 12px rgba(255, 107, 0, 0.7) !important;
+  box-shadow: 0 0 12px rgba(200, 169, 106, 0.5) !important;
 }
