@@ -2434,6 +2434,12 @@ section.testimonials-partners,
     pointer-events: none !important;
   }
 
+  /* FIX: when drawer open, disable pointer-events on the whole header-cta container
+     so it doesn't block clicks on the X button underneath */
+  .header.opened .header-cta {
+    pointer-events: none !important;
+  }
+
   .header-burger span {
     background: #ffffff !important;
     width: 16px !important;
