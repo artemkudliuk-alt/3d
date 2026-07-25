@@ -2345,6 +2345,15 @@ section.testimonials-partners,
 }
 
 /* ---------------------------------------------------------------
+   MOBILE-ONLY DRAWER ELEMENTS — STRICTLY HIDE ON DESKTOP (> 1024px)
+   --------------------------------------------------------------- */
+.nw-menu-close-btn,
+.nw-drawer-footer,
+.header-burger {
+  display: none !important;
+}
+
+/* ---------------------------------------------------------------
    HEADER & HERO — MOBILE (TASKS 1 & 2: NO TOP BLACK BAR, LOGO SCROLLS, FIXED BURGER, DRAWER WITH CLOSE BTN & FOOTER)
    --------------------------------------------------------------- */
 @media (max-width: 1024px) {
