@@ -68,6 +68,103 @@
 </head>
 
 <body class="home wp-singular page-template page-template-front-page page-template-front-page-php page page-id-5 wp-theme-bamboo">
+  <!-- PRELOADER OVERLAY -->
+  <div id="nw-preloader" aria-label="Loading NextWeb Hotels">
+    <div class="nw-preloader__content">
+      <div class="nw-preloader__logo">
+        <span class="nw-preloader__logo-top">NEXTWEB</span>
+        <span class="nw-preloader__logo-sub">HOTELS</span>
+      </div>
+      <div class="nw-preloader__counter-wrap">
+        <span id="nw-preloader-count" class="nw-preloader__count">0</span><span class="nw-preloader__percent">%</span>
+      </div>
+      <div class="nw-preloader__bar-bg">
+        <div id="nw-preloader-bar" class="nw-preloader__bar-fill"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function() {
+      var preloader = document.getElementById('nw-preloader');
+      var countEl = document.getElementById('nw-preloader-count');
+      var barEl = document.getElementById('nw-preloader-bar');
+      if (!preloader || !countEl || !barEl) return;
+
+      var heroVideo = document.getElementById('hero-video');
+      var targetPercent = 15;
+      var currentPercent = 0;
+      var isDone = false;
+
+      function checkProgress() {
+        if (isDone) return;
+        var p = 25;
+        if (document.readyState === 'interactive') p = 50;
+        if (document.readyState === 'complete') p = 75;
+
+        if (heroVideo) {
+          if (heroVideo.readyState >= 3) {
+            p = 100;
+          } else if (heroVideo.readyState >= 1) {
+            p = Math.max(p, 65);
+          }
+        }
+        targetPercent = Math.max(targetPercent, p);
+      }
+
+      checkProgress();
+
+      if (heroVideo) {
+        heroVideo.addEventListener('loadeddata', function() { targetPercent = Math.max(targetPercent, 80); checkProgress(); });
+        heroVideo.addEventListener('canplay', function() { targetPercent = 100; });
+        heroVideo.addEventListener('canplaythrough', function() { targetPercent = 100; });
+      }
+
+      window.addEventListener('load', function() {
+        targetPercent = 100;
+      });
+
+      var timer = setInterval(function() {
+        checkProgress();
+        if (currentPercent < targetPercent) {
+          var diff = targetPercent - currentPercent;
+          var step = Math.ceil(diff * 0.15) || 1;
+          currentPercent += step;
+          if (currentPercent > 100) currentPercent = 100;
+        }
+
+        countEl.textContent = currentPercent;
+        barEl.style.width = currentPercent + '%';
+
+        if (currentPercent >= 100 && !isDone) {
+          isDone = true;
+          clearInterval(timer);
+          finishPreloader();
+        }
+      }, 25);
+
+      // Fallback timer: max 3.2s
+      setTimeout(function() {
+        targetPercent = 100;
+      }, 3200);
+
+      function finishPreloader() {
+        countEl.textContent = '100';
+        barEl.style.width = '100%';
+        setTimeout(function() {
+          preloader.classList.add('is-loaded');
+          if (heroVideo && heroVideo.play) {
+            heroVideo.play().catch(function(){});
+          }
+          setTimeout(function() {
+            if (preloader && preloader.parentNode) {
+              preloader.parentNode.removeChild(preloader);
+            }
+          }, 650);
+        }, 120);
+      }
+    })();
+  </script>
+
     <header class="header">
   <div class="header-wrapper">
     <div class="container" style="display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100% !important;">
@@ -129,7 +226,7 @@
 <section class="intro">
   <div class="container md-space">
     <div class="container-kivi fit-cover">
-      <video id="hero-video" autoplay muted loop playsinline preload="metadata" poster="/media/gen/hero/kf-a.webp">
+      <video id="hero-video" autoplay muted loop playsinline preload="auto" poster="/media/gen/hero/kf-a.webp">
         <source src="/media/video/hero-loop-mobile.mp4" type="video/mp4" media="(max-width: 1024px)">
         <source src="/media/video/hero-loop.mp4" type="video/mp4">
       </video>
@@ -1118,7 +1215,7 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
     <div class="nw-catalog-grid">
       <div class="nw-catalog-card nw-open-video-btn" data-video-src="/media/gen/cases/grand_royal/flythrough.mp4" data-title="Grand Royal Resort & SPA">
         <div class="thumb">
-          <video autoplay muted loop playsinline poster="/media/gen/cases/grand_royal/photo1.png" src="/media/gen/cases/grand_royal/flythrough.mp4"></video>
+          <video muted loop playsinline preload="none" poster="/media/gen/cases/grand_royal/photo1.png" src="/media/gen/cases/grand_royal/flythrough.mp4"></video>
           <span class="badge">▶ 3D-тур</span>
         </div>
         <h5>Grand Royal Resort & SPA</h5>
@@ -1127,7 +1224,7 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
 
       <div class="nw-catalog-card nw-open-video-btn" data-video-src="/media/gen/cases/villas_riviera/flythrough.mp4" data-title="Villas Riviera & Marina">
         <div class="thumb">
-          <video autoplay muted loop playsinline poster="/media/gen/cases/villas_riviera/photo1.png" src="/media/gen/cases/villas_riviera/flythrough.mp4"></video>
+          <video muted loop playsinline preload="none" poster="/media/gen/cases/villas_riviera/photo1.png" src="/media/gen/cases/villas_riviera/flythrough.mp4"></video>
           <span class="badge">▶ 3D-тур</span>
         </div>
         <h5>Villas Riviera & Marina</h5>
@@ -1136,7 +1233,7 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
 
       <div class="nw-catalog-card nw-open-video-btn" data-video-src="/media/gen/cases/zenith_hotel/flythrough.mp4" data-title="Zenith Boutique Hotel">
         <div class="thumb">
-          <video autoplay muted loop playsinline poster="/media/gen/cases/zenith_hotel/photo1.png" src="/media/gen/cases/zenith_hotel/flythrough.mp4"></video>
+          <video muted loop playsinline preload="none" poster="/media/gen/cases/zenith_hotel/photo1.png" src="/media/gen/cases/zenith_hotel/flythrough.mp4"></video>
           <span class="badge">▶ 3D-тур</span>
         </div>
         <h5>Zenith Boutique Hotel</h5>
@@ -1145,7 +1242,7 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
 
       <div class="nw-catalog-card nw-open-video-btn" data-video-src="/media/gen/cases/mountain_chalet/flythrough.mp4" data-title="Mountain Chalet & Suites">
         <div class="thumb">
-          <video autoplay muted loop playsinline poster="/media/gen/cases/mountain_chalet/photo1.png" src="/media/gen/cases/mountain_chalet/flythrough.mp4"></video>
+          <video muted loop playsinline preload="none" poster="/media/gen/cases/mountain_chalet/photo1.png" src="/media/gen/cases/mountain_chalet/flythrough.mp4"></video>
           <span class="badge">▶ 3D-тур</span>
         </div>
         <h5>Mountain Chalet & Suites</h5>
@@ -1154,7 +1251,7 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
 
       <div class="nw-catalog-card nw-open-video-btn" data-video-src="/media/gen/cases/urban_skyline/flythrough.mp4" data-title="Urban Skyline Plaza">
         <div class="thumb">
-          <video autoplay muted loop playsinline poster="/media/gen/cases/urban_skyline/photo1.png" src="/media/gen/cases/urban_skyline/flythrough.mp4"></video>
+          <video muted loop playsinline preload="none" poster="/media/gen/cases/urban_skyline/photo1.png" src="/media/gen/cases/urban_skyline/flythrough.mp4"></video>
           <span class="badge">▶ 3D-тур</span>
         </div>
         <h5>Urban Skyline Plaza</h5>

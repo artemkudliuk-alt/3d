@@ -2776,3 +2776,102 @@ section.testimonials-partners,
   opacity: 0.75 !important;
   background: var(--base-100) !important;
 }
+
+/* ---------------------------------------------------------------
+   PREMIUM PRELOADER OVERLAY
+   --------------------------------------------------------------- */
+#nw-preloader {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  background: #08080c !important;
+  z-index: 999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s ease !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+#nw-preloader.is-loaded {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.nw-preloader__content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 28px !important;
+  text-align: center !important;
+}
+
+.nw-preloader__logo {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 2px !important;
+}
+
+.nw-preloader__logo-top {
+  font-family: 'Unbounded', sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  letter-spacing: 0.22em !important;
+  line-height: 1 !important;
+}
+
+.nw-preloader__logo-sub {
+  font-family: 'Mulish', sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  color: #ff6b00 !important;
+  letter-spacing: 0.35em !important;
+  line-height: 1 !important;
+  margin-right: -0.35em !important;
+}
+
+.nw-preloader__counter-wrap {
+  font-family: 'Unbounded', sans-serif !important;
+  font-size: clamp(40px, 9vw, 64px) !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1 !important;
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: center !important;
+}
+
+.nw-preloader__percent {
+  font-size: 0.55em !important;
+  color: #ff6b00 !important;
+  margin-left: 2px !important;
+}
+
+.nw-preloader__bar-bg {
+  width: 160px !important;
+  height: 3px !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.nw-preloader__bar-fill {
+  width: 0% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, #ff6b00 0%, #ffa000 100%) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 0 12px rgba(255, 107, 0, 0.7) !important;
+}
