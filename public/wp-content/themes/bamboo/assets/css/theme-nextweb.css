@@ -2401,8 +2401,10 @@ section.testimonials-partners,
     align-items: center !important;
   }
 
-  /* Hide CTA "Отримати розрахунок" button on top header bar on mobile */
+  /* Hide CTA "Отримати розрахунок" button AND its gold circle icon on mobile */
   .header-cta .btn-orange,
+  .header-cta .btn-orange *,
+  .header-cta .btn-icon,
   .header-cta .link {
     display: none !important;
   }
@@ -2973,15 +2975,56 @@ section.testimonials-partners,
 }
 
 /* ---------------------------------------------------------------
-   BRAND LOGOS IN SECTION 4 (MONOCHROME DARK STYLING)
+   BRAND LOGOS IN SECTION 4 (MONOCHROME DARK STYLING & ENLARGED)
    --------------------------------------------------------------- */
+.tp-marquee-tunnel-strip {
+  height: 110px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+@media (max-width: 768px) {
+  .tp-marquee-tunnel-strip > div[style*="linear-gradient"] {
+    width: 36px !important;
+  }
+}
+
+.tp-marquee-track {
+  display: flex !important;
+  align-items: center !important;
+  gap: 54px !important;
+  flex-shrink: 0 !important;
+}
+
+.tp-brand-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  height: 70px !important;
+  padding: 0 10px !important;
+}
+
 .tp-brand-logo-img {
-  height: clamp(30px, 4vw, 42px) !important;
+  height: 52px !important;
+  max-height: 56px !important;
   width: auto !important;
-  max-width: 170px !important;
+  max-width: 220px !important;
   object-fit: contain !important;
-  filter: brightness(0) opacity(0.8) !important;
+  flex-shrink: 0 !important;
+  filter: brightness(0) opacity(0.9) !important;
   transition: filter 0.3s ease, transform 0.3s ease !important;
+}
+
+@media (max-width: 640px) {
+  .tp-marquee-track {
+    gap: 36px !important;
+  }
+  .tp-brand-logo-img {
+    height: 42px !important;
+    max-height: 46px !important;
+    max-width: 170px !important;
+  }
 }
 
 .tp-brand-item:hover .tp-brand-logo-img {
