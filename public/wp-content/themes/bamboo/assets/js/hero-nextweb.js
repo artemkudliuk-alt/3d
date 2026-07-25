@@ -20,8 +20,8 @@ window.initHeroAnimation = function() {
     var video = document.getElementById('hero-video');
     var titleWrap = intro.querySelector('.hero-title-wrap');
     var title = intro.querySelector('.hero-title');
+    var heroReveal = intro.querySelector('.hero-reveal');
     var subtitle = intro.querySelector('.hero-sub');
-    var cta = intro.querySelector('.hero-cta');
     var header = document.querySelector('.header');
     var fadeOverlay = intro.querySelector('.nw-hero__fade-overlay');
     
@@ -29,20 +29,12 @@ window.initHeroAnimation = function() {
     play();
     document.addEventListener('pointerdown', play, { once: true });
 
-    // TitleWrap initial state
+    // TitleWrap & heroReveal initial state
     if (titleWrap) gsap.set(titleWrap, { opacity: 1, y: 0 });
-
-    if (subtitle) gsap.set(subtitle, { opacity: 0, y: 50 });
-    // CTA visible immediately — scroll away & back reveals it
-    if (cta) gsap.set(cta, { opacity: 1, y: 0, pointerEvents: 'auto' });
+    if (heroReveal) gsap.set(heroReveal, { opacity: 0, y: 50 });
+    else if (subtitle) gsap.set(subtitle, { opacity: 0, y: 50 });
 
     // Pinned scroll timeline
-        // Pinned scroll timeline (200vh total scroll distance)
-        // Pinned scroll timeline (220vh total scroll distance)
-        // Pinned scroll timeline (260vh total scroll distance for zero-overlap 4-stage presentation)
-        // Pinned scroll timeline (260vh total scroll distance for strict zero-overlap 4-stage presentation)
-        // Pinned scroll timeline (260vh total scroll distance for strict zero-overlap presentation)
-        // Pinned scroll timeline (260vh total scroll distance for strict zero-overlap presentation)
     var tl = gsap.timeline({
       scrollTrigger: {
         trigger: intro,
@@ -57,38 +49,12 @@ window.initHeroAnimation = function() {
     });
 
     // ============================================================
-    // STAGE 1 (0.0 -> 2.0): TitleWrap (Badge + Title locked together) floats HIGH UP (y: -260) and fades out 100%!
-    // Header stays visible on 1st scroll, then after 2-3 scroll impulses (0.5) slowly & ultra-softly fades out!
+    // STAGE 1 (0.0 -> 2.0): TitleWrap floats HIGH UP (y: -260) and fades out 100%!
     // ============================================================
     if (titleWrap) {
       tl.to(titleWrap, { y: -260, opacity: 0, duration: 2.0, ease: 'power2.inOut' }, 0);
     } else {
       if (title) tl.to(title, { y: -260, opacity: 0, duration: 2.0, ease: 'power2.inOut' }, 0);
-      if (badge) tl.to(badge, { y: -260, opacity: 0, duration: 2.0, ease: 'power2.inOut' }, 0);
-    }
-
-    // CTA also scrolls away in stage 1 with the title
-    // (Only fade, no scrub — so it doesn't get stuck at opacity:0)
-    if (cta) {
-      gsap.set(cta, { opacity: 1, y: 0, pointerEvents: 'auto' });
-      // Fade out with scroll non-scrubbed
-      ScrollTrigger.create({
-        trigger: intro,
-        start: 'top top',
-        end: '25% top',
-        onUpdate: function(self) {
-          var p = self.progress;
-          if (cta) {
-            gsap.set(cta, { opacity: Math.max(0, 1 - p * 4), y: -p * 60, pointerEvents: p > 0.9 ? 'none' : 'auto' });
-          }
-        },
-        onLeave: function() {
-          if (cta) gsap.set(cta, { opacity: 0, pointerEvents: 'none' });
-        },
-        onEnterBack: function() {
-          if (cta) gsap.set(cta, { opacity: 1, y: 0, pointerEvents: 'auto' });
-        }
-      });
     }
 
     if (header) {
@@ -96,15 +62,21 @@ window.initHeroAnimation = function() {
     }
 
     // ============================================================
-    // STAGE 2 (2.4 -> 4.4): Subtitle appears
+    // STAGE 2 (2.4 -> 4.4): Hero Reveal (Badge + Subtitle) appears
     // ============================================================
-    if (subtitle) tl.fromTo(subtitle,
-      { opacity: 0, y: 80 },
-      { opacity: 1, y: 0, pointerEvents: 'auto', duration: 2.0, ease: 'power2.out' },
-      2.4
-    );
-
-
+    if (heroReveal) {
+      tl.fromTo(heroReveal,
+        { opacity: 0, y: 80 },
+        { opacity: 1, y: 0, pointerEvents: 'auto', duration: 2.0, ease: 'power2.out' },
+        2.4
+      );
+    } else if (subtitle) {
+      tl.fromTo(subtitle,
+        { opacity: 0, y: 80 },
+        { opacity: 1, y: 0, pointerEvents: 'auto', duration: 2.0, ease: 'power2.out' },
+        2.4
+      );
+    }
 
     // ============================================================
     // STAGE 3 (4.4 -> 5.4): Presentation hold
@@ -112,10 +84,10 @@ window.initHeroAnimation = function() {
     tl.to({}, { duration: 1.0 });
 
     // ============================================================
-    // STAGE 4 (5.4 -> 6.6): Subtitle & CTA float up & fade out (Header STAYS INVISIBLE until Section 2!)
+    // STAGE 4 (5.4 -> 6.6): Subtitle & Badge float up & fade out
     // ============================================================
-    if (subtitle) tl.to(subtitle, { y: -80, opacity: 0, duration: 1.4, ease: 'power2.in' }, 4.4);
-    if (cta)      tl.to(cta,      { y: -80, opacity: 0, duration: 1.4, ease: 'power2.in' }, 4.4);
+    if (heroReveal) tl.to(heroReveal, { y: -80, opacity: 0, duration: 1.4, ease: 'power2.in' }, 4.4);
+    else if (subtitle) tl.to(subtitle, { y: -80, opacity: 0, duration: 1.4, ease: 'power2.in' }, 4.4);
     if (fadeOverlay) tl.to(fadeOverlay, { opacity: 1, duration: 1.8, ease: 'power1.inOut' }, 4.2);
 
     // Video speed boost on scroll

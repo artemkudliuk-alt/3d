@@ -1199,3 +1199,41 @@ section.testimonials-partners,
   }
 }
 
+/* ============================================================ */
+/* HERO CONTACT BADGE ("Зв'язатися з нами →")                   */
+/* ============================================================ */
+.hero-contact-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 10px 24px !important;
+  border-radius: 100px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  color: #ffffff !important;
+  font-family: 'Mulish', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  margin-bottom: 16px !important;
+  cursor: pointer !important;
+  width: fit-content !important;
+  pointer-events: auto !important;
+}
+
+.hero-contact-badge:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  color: #ffffff !important;
+}
+
+.hero-contact-badge svg {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.hero-contact-badge:hover svg {
+  transform: translateX(5px) !important;
+}
+
+
