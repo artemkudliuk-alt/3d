@@ -76,12 +76,38 @@
       </div>
       
       <menu class="header-menu" style="display: flex !important; align-items: center !important; margin: 0 !important; padding: 0 !important;">
+        <!-- Close button inside mobile menu drawer -->
+        <button class="nw-menu-close-btn" aria-label="Закрити меню" type="button">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+
         <ul class="inter-16-semi" style="display: flex !important; gap: 32px !important; margin: 0 !important; padding: 0 !important; list-style: none !important;">
           <li class="menu-item"><a href="#cases" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Проєкти</a></li>
           <li class="menu-item"><a href="#benefits" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Переваги</a></li>
           <li class="menu-item"><a href="#testimonials-partners" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Відгуки</a></li>
-          <li class="menu-item"><a href="#callback" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Контакти</a></li>
+          <li class="menu-item"><a href="#lead-capture" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Контакти</a></li>
         </ul>
+
+        <!-- Bottom Drawer CTA & Contacts for Mobile -->
+        <div class="nw-drawer-footer">
+          <a class="btn btn-orange link nw-drawer-btn" href="#lead-capture" aria-label="Отримати розрахунок">
+            <span>Отримати розрахунок</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+
+          <div class="nw-drawer-contacts">
+            <a href="tel:+380000000000" class="nw-drawer-phone">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.72 16z"/></svg>
+              +38 000 00 00 000
+            </a>
+            <a href="https://t.me/nextweb_hotels" target="_blank" rel="noopener" class="nw-drawer-tg">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.829.941z"/></svg>
+              Telegram: @nextweb_hotels
+            </a>
+          </div>
+        </div>
       </menu>
 
       <div class="header-cta" style="display: flex !important; align-items: center !important; gap: 16px !important;">
@@ -1865,7 +1891,7 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
   }
 
   /* -------------------------------------------------------
-     7. MOBILE HEADER BURGER DRAWER TOGGLE & CLOSE ON NAV LINK
+     7. MOBILE HEADER BURGER DRAWER TOGGLE & CLOSE ON NAV LINK / CLOSE BTN
      ------------------------------------------------------- */
   function setupMobileHeaderBurger() {
     var header = document.querySelector('.header');
@@ -1878,6 +1904,15 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
         var isOpened = header.classList.contains('opened');
         header.classList.toggle('opened', !isOpened);
         burger.classList.toggle('active', !isOpened);
+        return;
+      }
+      var closeBtn = e.target.closest('.nw-menu-close-btn');
+      if (closeBtn && header) {
+        e.preventDefault();
+        e.stopPropagation();
+        header.classList.remove('opened');
+        var burgerEl = document.querySelector('.header-burger');
+        if (burgerEl) burgerEl.classList.remove('active');
         return;
       }
       var link = e.target.closest('.header-menu a');
