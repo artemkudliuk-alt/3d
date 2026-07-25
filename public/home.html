@@ -1640,7 +1640,8 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
       var targetY = targetSec.getBoundingClientRect().top + window.scrollY;
 
       if (targetId === '#cases') {
-        targetY = targetSec.offsetTop;
+        var casesTrig = window.ScrollTrigger ? window.ScrollTrigger.getAll().find(function(t){ return t.trigger === targetSec; }) : null;
+        targetY = casesTrig ? (casesTrig.start + 380) : 2420;
       }
 
       window.scrollTo({ top: targetY, behavior: 'instant' });
