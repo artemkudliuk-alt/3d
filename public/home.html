@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk" prefix="og: https://ogp.me/ns#">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 
 <head>
   <meta charset="UTF-8">
@@ -2128,7 +2128,19 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
       'section.seeAll': 'Дивитись всі (5 проєктів)',
       'section.benefits': 'Наші переваги',
       'section.testimonial': 'Що кажуть наші клієнти',
-      'section.partners': 'Наші партнери та готельні мережі'
+      'section.partners': 'Наші партнери та готельні мережі',
+      'cta.title': 'Готові перевести<br>ваш готель у<br>3D-формат?',
+      'cta.desc': 'Залиште заявку на безкоштовний аудит вашого сайту. Ми розрахуємо потенціал зростання конверсії та підберемо краще рішення для вашого готельного комплексу.',
+      'cta.tag': 'Безкоштовний аудит',
+      'cta.nameLabel': "Ім'я",
+      'cta.namePh': 'Олександр Петренко',
+      'cta.companyLabel': 'Назва готелю / компанія',
+      'cta.companyPh': 'Grand Resort & SPA',
+      'cta.phoneLabel': 'Телефон / Telegram',
+      'cta.phonePh': '+380 (50) 000-00-00 або @username',
+      'cta.emailLabel': 'Email',
+      'cta.emailPh': 'hotel@example.com',
+      'cta.submit': 'Обговорити проєкт'
     },
     en: {
       'nav.projects': 'Projects',
@@ -2148,7 +2160,19 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
       'section.seeAll': 'See all (5 projects)',
       'section.benefits': 'Our Advantages',
       'section.testimonial': 'What our clients say',
-      'section.partners': 'Our Partners & Hotel Networks'
+      'section.partners': 'Our Partners & Hotel Networks',
+      'cta.title': 'Ready to bring<br>your hotel into<br>3D format?',
+      'cta.desc': 'Leave a request for a free audit of your website. We will calculate the conversion growth potential and select the best solution for your hotel complex.',
+      'cta.tag': 'Free Audit',
+      'cta.nameLabel': 'Name',
+      'cta.namePh': 'Alexander Smith',
+      'cta.companyLabel': 'Hotel Name / Company',
+      'cta.companyPh': 'Grand Resort & SPA',
+      'cta.phoneLabel': 'Phone / Telegram',
+      'cta.phonePh': '+1 (555) 000-0000 or @username',
+      'cta.emailLabel': 'Email',
+      'cta.emailPh': 'hotel@example.com',
+      'cta.submit': 'Discuss Project'
     },
     ru: {
       'nav.projects': 'Проекты',
@@ -2168,7 +2192,19 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
       'section.seeAll': 'Смотреть все (5 проектов)',
       'section.benefits': 'Наши преимущества',
       'section.testimonial': 'Что говорят наши клиенты',
-      'section.partners': 'Наши партнёры и гостиничные сети'
+      'section.partners': 'Наши партнёры и гостиничные сети',
+      'cta.title': 'Готовы перевести<br>ваш отель в<br>3D-формат?',
+      'cta.desc': 'Оставьте заявку на бесплатный аудит вашего сайта. Мы рассчитаем потенциал роста конверсии и подберём лучшее решение для вашего гостиничного комплекса.',
+      'cta.tag': 'Бесплатный аудит',
+      'cta.nameLabel': 'Имя',
+      'cta.namePh': 'Александр Петренко',
+      'cta.companyLabel': 'Название отеля / компания',
+      'cta.companyPh': 'Grand Resort & SPA',
+      'cta.phoneLabel': 'Телефон / Telegram',
+      'cta.phonePh': '+7 (900) 000-00-00 или @username',
+      'cta.emailLabel': 'Email',
+      'cta.emailPh': 'hotel@example.com',
+      'cta.submit': 'Обсудить проект'
     }
   };
 
@@ -2178,6 +2214,7 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
     if (!translations[lang]) return;
     currentLang = lang;
     localStorage.setItem('nw-lang', lang);
+    document.documentElement.lang = lang;
     var t = translations[lang];
 
     // Update all data-i18n elements
@@ -2217,6 +2254,37 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
     if (testimonialH && t['section.testimonial']) testimonialH.textContent = t['section.testimonial'];
     var partnersH = document.querySelector('.nw-partners-strip h2, .nw-brands-section h2');
     if (partnersH && t['section.partners']) partnersH.textContent = t['section.partners'];
+
+    // CTA Lead capture section
+    var ctaH2 = document.querySelector('#lead-capture h2');
+    if (ctaH2 && t['cta.title']) ctaH2.innerHTML = t['cta.title'];
+    var ctaP = document.querySelector('#lead-capture .nw-cta-left p');
+    if (ctaP && t['cta.desc']) ctaP.textContent = t['cta.desc'];
+    var ctaTag = document.querySelector('#lead-capture .nw-cta-right p');
+    if (ctaTag && t['cta.tag']) ctaTag.textContent = t['cta.tag'];
+    
+    var nameLabel = document.querySelector('label[for="nw-name"]');
+    if (nameLabel && t['cta.nameLabel']) nameLabel.textContent = t['cta.nameLabel'];
+    var nameInput = document.getElementById('nw-name');
+    if (nameInput && t['cta.namePh']) nameInput.placeholder = t['cta.namePh'];
+
+    var companyLabel = document.querySelector('label[for="nw-company"]');
+    if (companyLabel && t['cta.companyLabel']) companyLabel.textContent = t['cta.companyLabel'];
+    var companyInput = document.getElementById('nw-company');
+    if (companyInput && t['cta.companyPh']) companyInput.placeholder = t['cta.companyPh'];
+
+    var phoneLabel = document.querySelector('label[for="nw-phone"]');
+    if (phoneLabel && t['cta.phoneLabel']) phoneLabel.textContent = t['cta.phoneLabel'];
+    var phoneInput = document.getElementById('nw-phone');
+    if (phoneInput && t['cta.phonePh']) phoneInput.placeholder = t['cta.phonePh'];
+
+    var emailLabel = document.querySelector('label[for="nw-email"]');
+    if (emailLabel && t['cta.emailLabel']) emailLabel.textContent = t['cta.emailLabel'];
+    var emailInput = document.getElementById('nw-email');
+    if (emailInput && t['cta.emailPh']) emailInput.placeholder = t['cta.emailPh'];
+
+    var submitBtnText = document.querySelector('#lead-audit-form .nw-submit-btn .btn-text');
+    if (submitBtnText && t['cta.submit']) submitBtnText.textContent = t['cta.submit'];
 
     // Update active state of all lang buttons
     document.querySelectorAll('.nw-lang-btn').forEach(function(btn) {
