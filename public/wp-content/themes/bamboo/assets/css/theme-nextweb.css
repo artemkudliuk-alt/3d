@@ -3290,3 +3290,9 @@ section.testimonials-partners,
   }
 }
 
+/* Hide slider pagination dots in projects section as cards now feature single looping 3D video */
+.projects .swiper-pagination {
+  display: none !important;
+}
+
+
