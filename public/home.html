@@ -194,16 +194,23 @@
         </button>
 
         <ul class="inter-16-semi" style="display: flex !important; gap: 32px !important; margin: 0 !important; padding: 0 !important; list-style: none !important;">
-          <li class="menu-item"><a href="#cases" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Проєкти</a></li>
-          <li class="menu-item"><a href="#benefits" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Переваги</a></li>
-          <li class="menu-item"><a href="#testimonials-partners" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Відгуки</a></li>
-          <li class="menu-item"><a href="#lead-capture" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Контакти</a></li>
+          <li class="menu-item"><a href="#cases" data-i18n="nav.projects" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Проєкти</a></li>
+          <li class="menu-item"><a href="#benefits" data-i18n="nav.benefits" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Переваги</a></li>
+          <li class="menu-item"><a href="#testimonials-partners" data-i18n="nav.reviews" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Відгуки</a></li>
+          <li class="menu-item"><a href="#lead-capture" data-i18n="nav.contacts" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Контакти</a></li>
         </ul>
+
+        <!-- Language switcher in mobile drawer -->
+        <div class="nw-drawer-lang">
+          <button class="nw-lang-btn" data-lang="uk" aria-label="Українська">UA</button>
+          <button class="nw-lang-btn" data-lang="en" aria-label="English">EN</button>
+          <button class="nw-lang-btn" data-lang="ru" aria-label="Русский">RU</button>
+        </div>
 
         <!-- Bottom Drawer CTA & Contacts for Mobile -->
         <div class="nw-drawer-footer">
           <a class="btn btn-orange link nw-drawer-btn" href="#lead-capture" aria-label="Отримати розрахунок">
-            <span>Отримати розрахунок</span>
+            <span data-i18n="cta.calculate">Отримати розрахунок</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
 
@@ -220,11 +227,13 @@
         </div>
       </menu>
 
-      <div class="header-cta">
-        <a class="btn btn-orange link" href="#callback" aria-label="Отримати розрахунок">
-          <div class="btn-text" aria-hidden="true"><span style="--i: 0;">О</span><span style="--i: 1;">т</span><span style="--i: 2;">р</span><span style="--i: 3;">и</span><span style="--i: 4;">м</span><span style="--i: 5;">а</span><span style="--i: 6;">т</span><span style="--i: 7;">и</span><span>&nbsp;</span><span style="--i: 9;">р</span><span style="--i: 10;">о</span><span style="--i: 11;">з</span><span style="--i: 12;">р</span><span style="--i: 13;">а</span><span style="--i: 14;">х</span><span style="--i: 15;">у</span><span style="--i: 16;">н</span><span style="--i: 17;">о</span><span style="--i: 18;">к</span></div>
-          <div class="btn-icon mask line" aria-hidden="true"></div>
-        </a>
+      <!-- Desktop: Language switcher replaces CTA button -->
+      <div class="header-cta nw-lang-switcher-wrap">
+        <div class="nw-lang-switcher" role="group" aria-label="Language">
+          <button class="nw-lang-btn" data-lang="uk" aria-label="Українська">UA</button>
+          <button class="nw-lang-btn" data-lang="en" aria-label="English">EN</button>
+          <button class="nw-lang-btn" data-lang="ru" aria-label="Русский">RU</button>
+        </div>
       </div>
     </div>
   </div>
@@ -245,25 +254,21 @@
     
     <div class="container-content flex-v">
       <div class="hero-title-wrap">
-        <a href="#lead-audit-form" class="hero-contact-badge">
-          <span>Зв'язатися з нами</span>
+        <a href="#callback" class="hero-contact-badge nw-hero-cta-pill">
+          <span data-i18n="cta.calculate">Отримати розрахунок</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
           </svg>
         </a>
-        <h1 class="mulish-50 hero-title">Гість обирає готель очима.<br><span class="accent-title">Покажіть йому все — до бронювання.</span></h1>
+        <h1 class="mulish-50 hero-title" data-i18n-html="hero.title">Гість обирає готель очима.<br><span class="accent-title">Покажіть йому все — до бронювання.</span></h1>
       </div>
       <div class="hero-reveal flex-v">
         <p class="hero-sub inter-20">Інтерактивні 3D-відеотури головними зонами готелю з ефектом присутності. Гість «проходить» лобі, номер і SPA — і бронює напряму, а не в агрегаторі.</p>
         <div class="hero-cta">
           <button class="btn btn-orange nw-open-video-btn" type="button" data-video-src="/media/gen/cases/grand_royal/flythrough.mp4" data-title="3D-відеотур готелем (Демо-показ)" aria-label="Дивитись демо">
-            <div class="btn-text" aria-hidden="true"><span style="--i: 0;">Д</span><span style="--i: 1;">и</span><span style="--i: 2;">в</span><span style="--i: 3;">и</span><span style="--i: 4;">т</span><span style="--i: 5;">и</span><span style="--i: 6;">с</span><span style="--i: 7;">ь</span><span>&nbsp;</span><span style="--i: 9;">д</span><span style="--i: 10;">е</span><span style="--i: 11;">м</span><span style="--i: 12;">о</span></div>
+            <div class="btn-text" aria-hidden="true" data-i18n="hero.watchDemo">Дивитись демо</div>
             <div class="btn-icon mask def" aria-hidden="true"></div>
           </button>
-          <a class="btn btn-outline" href="#callback" aria-label="Отримати розрахунок">
-            <div class="btn-text" aria-hidden="true"><span style="--i: 0;">О</span><span style="--i: 1;">т</span><span style="--i: 2;">р</span><span style="--i: 3;">и</span><span style="--i: 4;">м</span><span style="--i: 5;">а</span><span style="--i: 6;">т</span><span style="--i: 7;">и</span><span>&nbsp;</span><span style="--i: 9;">р</span><span style="--i: 10;">о</span><span style="--i: 11;">з</span><span style="--i: 12;">р</span><span style="--i: 13;">а</span><span style="--i: 14;">х</span><span style="--i: 15;">у</span><span style="--i: 16;">н</span><span style="--i: 17;">о</span><span style="--i: 18;">к</span></div>
-            <div class="btn-icon mask line" aria-hidden="true"></div>
-          </a>
         </div>
       </div>
     </div>
@@ -1056,8 +1061,11 @@
 </section>
 
 <!-- SECTION 7: COMPACT THIN FOOTER -->
-<footer class="site-footer" style="background: transparent !important; padding-block: 18px !important; width: 100% !important; z-index: 20 !important; position: relative !important; display: flex !important; justify-content: center !important; align-items: center !important;">
-  <span style="color: rgba(255,255,255,0.4) !important; font-family: 'Inter', sans-serif !important; font-size: 12px !important; font-weight: 400 !important; letter-spacing: 0.02em !important; line-height: 1 !important; text-align: center !important; white-space: nowrap !important;">© 2026 NextWeb Hotels</span>
+<footer class="site-footer nw-site-footer">
+  <div class="nw-footer-inner">
+    <span class="nw-footer-copy">© 2026 NextWeb Hotels</span>
+    <a href="#callback" class="nw-footer-cta" data-i18n="footer.contact">Зв'язатися з нами</a>
+  </div>
 </footer>
 </main>
 </div>
@@ -2075,6 +2083,142 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
   btn.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+})();
+</script>
+
+<!-- ==================== i18n Language Switcher ==================== -->
+<script>
+(function initI18n() {
+  var translations = {
+    uk: {
+      'nav.projects': 'Проєкти',
+      'nav.benefits': 'Переваги',
+      'nav.reviews': 'Відгуки',
+      'nav.contacts': 'Контакти',
+      'cta.calculate': 'Отримати розрахунок',
+      'hero.title': 'Гість обирає готель очима.<br><span class="accent-title">Покажіть йому все — до бронювання.</span>',
+      'hero.watchDemo': 'Дивитись демо',
+      'hero.sub': 'Інтерактивні 3D-відеотури головними зонами готелю з ефектом присутності. Гість «проходить» лобі, номер і SPA — і бронює напряму, а не в агрегаторі.',
+      'footer.contact': "Зв'язатися з нами",
+      'modal.title': 'Залиште свої контактні дані',
+      'modal.sub': 'Наш менеджер зв\'яжеться з Вами.',
+      'modal.name': "Ім'я*",
+      'modal.btn': 'Отримати консультацію',
+      'section.cases': 'Наші проєкти',
+      'section.seeAll': 'Дивитись всі (5 проєктів)',
+      'section.benefits': 'Наші переваги',
+      'section.testimonial': 'Що кажуть наші клієнти',
+      'section.partners': 'Наші партнери та готельні мережі'
+    },
+    en: {
+      'nav.projects': 'Projects',
+      'nav.benefits': 'Benefits',
+      'nav.reviews': 'Reviews',
+      'nav.contacts': 'Contacts',
+      'cta.calculate': 'Get a Quote',
+      'hero.title': 'Guests choose a hotel with their eyes.<br><span class="accent-title">Show them everything — before booking.</span>',
+      'hero.watchDemo': 'Watch Demo',
+      'hero.sub': 'Interactive 3D video tours of the hotel\'s key areas with an immersive presence effect. Guests "walk through" the lobby, room and SPA — and book directly, not via aggregators.',
+      'footer.contact': 'Contact Us',
+      'modal.title': 'Leave your contact details',
+      'modal.sub': 'Our manager will contact you.',
+      'modal.name': 'Name*',
+      'modal.btn': 'Get Consultation',
+      'section.cases': 'Our Projects',
+      'section.seeAll': 'See all (5 projects)',
+      'section.benefits': 'Our Advantages',
+      'section.testimonial': 'What our clients say',
+      'section.partners': 'Our Partners & Hotel Networks'
+    },
+    ru: {
+      'nav.projects': 'Проекты',
+      'nav.benefits': 'Преимущества',
+      'nav.reviews': 'Отзывы',
+      'nav.contacts': 'Контакты',
+      'cta.calculate': 'Получить расчёт',
+      'hero.title': 'Гость выбирает отель глазами.<br><span class="accent-title">Покажите ему всё — до бронирования.</span>',
+      'hero.watchDemo': 'Смотреть демо',
+      'hero.sub': 'Интерактивные 3D-видеотуры по ключевым зонам отеля с эффектом присутствия. Гость «проходит» лобби, номер и SPA — и бронирует напрямую, а не через агрегатор.',
+      'footer.contact': 'Связаться с нами',
+      'modal.title': 'Оставьте свои контактные данные',
+      'modal.sub': 'Наш менеджер свяжется с Вами.',
+      'modal.name': 'Имя*',
+      'modal.btn': 'Получить консультацию',
+      'section.cases': 'Наши проекты',
+      'section.seeAll': 'Смотреть все (5 проектов)',
+      'section.benefits': 'Наши преимущества',
+      'section.testimonial': 'Что говорят наши клиенты',
+      'section.partners': 'Наши партнёры и гостиничные сети'
+    }
+  };
+
+  var currentLang = localStorage.getItem('nw-lang') || 'uk';
+
+  function applyLang(lang) {
+    if (!translations[lang]) return;
+    currentLang = lang;
+    localStorage.setItem('nw-lang', lang);
+    var t = translations[lang];
+
+    // Update all data-i18n elements
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.textContent = t[key];
+    });
+
+    // Update all data-i18n-html elements (allow inner HTML)
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-html');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+
+    // Hero subtitle
+    var heroSub = document.querySelector('.hero-sub');
+    if (heroSub && t['hero.sub']) heroSub.textContent = t['hero.sub'];
+
+    // Modal form elements
+    var modalTitle = document.querySelector('.popup-callback .title');
+    if (modalTitle && t['modal.title']) modalTitle.textContent = t['modal.title'];
+    var modalSub = document.querySelector('.popup-callback .subtitle');
+    if (modalSub && t['modal.sub']) modalSub.textContent = t['modal.sub'];
+    var modalNameInput = document.querySelector('.popup-callback input[name="your-name"], .popup-callback input[name="name"]');
+    if (modalNameInput && t['modal.name']) modalNameInput.setAttribute('placeholder', t['modal.name']);
+    var modalBtn = document.querySelector('.popup-callback .submit span, .popup-callback .submit .btn-text');
+    if (modalBtn && t['modal.btn']) modalBtn.textContent = t['modal.btn'];
+
+    // Sections headings
+    var casesH = document.querySelector('#cases h2, .projects h2');
+    if (casesH && t['section.cases']) casesH.textContent = t['section.cases'];
+    var seeAllBtn = document.querySelector('.nw-all-cases-btn .btn-text');
+    if (seeAllBtn && t['section.seeAll']) seeAllBtn.textContent = t['section.seeAll'];
+    var benefitsH = document.querySelector('#benefits h2');
+    if (benefitsH && t['section.benefits']) benefitsH.textContent = t['section.benefits'];
+    var testimonialH = document.querySelector('#testimonials-partners h2');
+    if (testimonialH && t['section.testimonial']) testimonialH.textContent = t['section.testimonial'];
+    var partnersH = document.querySelector('.nw-partners-strip h2, .nw-brands-section h2');
+    if (partnersH && t['section.partners']) partnersH.textContent = t['section.partners'];
+
+    // Update active state of all lang buttons
+    document.querySelectorAll('.nw-lang-btn').forEach(function(btn) {
+      btn.classList.toggle('is-active', btn.getAttribute('data-lang') === lang);
+    });
+  }
+
+  // Delegate all lang button clicks
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.nw-lang-btn');
+    if (btn) {
+      var lang = btn.getAttribute('data-lang');
+      if (lang) applyLang(lang);
+    }
+  });
+
+  // Init on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { applyLang(currentLang); });
+  } else {
+    applyLang(currentLang);
+  }
 })();
 </script>
 

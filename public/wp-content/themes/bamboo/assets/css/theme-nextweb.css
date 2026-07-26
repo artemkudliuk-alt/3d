@@ -3109,3 +3109,184 @@ section.testimonials-partners,
   filter: brightness(0) opacity(1) !important;
 }
 
+/* ---------------------------------------------------------------
+   DESKTOP: LANGUAGE SWITCHER (replaces CTA in header)
+   --------------------------------------------------------------- */
+.nw-lang-switcher-wrap {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.nw-lang-switcher {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 100px !important;
+  padding: 4px 6px !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+.nw-lang-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 5px 12px !important;
+  border-radius: 100px !important;
+  border: none !important;
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  cursor: pointer !important;
+  transition: all 0.22s ease !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.nw-lang-btn:hover {
+  color: rgba(255, 255, 255, 0.85) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.nw-lang-btn.is-active {
+  color: #0d0d0d !important;
+  background: #f2f1ed !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* ---------------------------------------------------------------
+   HERO: "Отримати розрахунок" pill badge (replaces "Зв'язатися з нами")
+   --------------------------------------------------------------- */
+.nw-hero-cta-pill {
+  background: rgba(242, 241, 237, 0.12) !important;
+  border: 1px solid rgba(242, 241, 237, 0.28) !important;
+  backdrop-filter: blur(12px) !important;
+  color: rgba(242, 241, 237, 0.9) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+  transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease !important;
+}
+
+.nw-hero-cta-pill:hover {
+  background: rgba(242, 241, 237, 0.22) !important;
+  border-color: rgba(242, 241, 237, 0.5) !important;
+  color: #ffffff !important;
+}
+
+.nw-hero-cta-pill svg {
+  transition: transform 0.22s ease !important;
+}
+
+.nw-hero-cta-pill:hover svg {
+  transform: translateX(3px) !important;
+}
+
+/* ---------------------------------------------------------------
+   FOOTER: "Зв'язатися з нами" button in footer
+   --------------------------------------------------------------- */
+.nw-site-footer {
+  background: transparent !important;
+  padding-block: 18px !important;
+  width: 100% !important;
+  z-index: 20 !important;
+  position: relative !important;
+}
+
+.nw-footer-inner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 24px !important;
+  flex-wrap: wrap !important;
+}
+
+.nw-footer-copy {
+  color: rgba(255, 255, 255, 0.4) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+.nw-footer-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  padding: 7px 18px !important;
+  border-radius: 100px !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  transition: all 0.22s ease !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.nw-footer-cta:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* ---------------------------------------------------------------
+   MOBILE DRAWER: Language switcher inside burger menu
+   --------------------------------------------------------------- */
+.nw-drawer-lang {
+  display: none !important;
+}
+
+@media (width <= 1024px) {
+  .nw-drawer-lang {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 16px 24px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    margin-top: auto !important;
+  }
+
+  .nw-drawer-lang .nw-lang-btn {
+    padding: 8px 18px !important;
+    font-size: 13px !important;
+    flex: 1 !important;
+    max-width: 80px !important;
+    text-align: center !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+    border-radius: 100px !important;
+  }
+
+  .nw-drawer-lang .nw-lang-btn.is-active {
+    color: #0d0d0d !important;
+    background: #f2f1ed !important;
+    border-color: transparent !important;
+  }
+
+  /* Hide desktop lang switcher on mobile */
+  .nw-lang-switcher-wrap .nw-lang-switcher {
+    display: none !important;
+  }
+}
+
+@media (width > 1024px) {
+  /* Hide mobile drawer lang on desktop */
+  .nw-drawer-lang {
+    display: none !important;
+  }
+}
+
