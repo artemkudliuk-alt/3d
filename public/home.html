@@ -115,6 +115,32 @@
       var currentPercent = 0;
       var isDone = false;
 
+      function playAllVideos() {
+        var isMobile = window.innerWidth <= 1024;
+        document.querySelectorAll('video[data-desktop-src]').forEach(function(v) {
+          var targetSrc = isMobile ? (v.getAttribute('data-mobile-src') || v.getAttribute('data-desktop-src')) : v.getAttribute('data-desktop-src');
+          if (v.getAttribute('src') !== targetSrc) {
+            v.setAttribute('src', targetSrc);
+          }
+          v.muted = true;
+          v.playsInline = true;
+          var p = v.play();
+          if (p && p.catch) {
+            p.catch(function() {
+              var retry = function() {
+                v.play();
+              };
+              window.addEventListener('click', retry, { once: true });
+              window.addEventListener('touchstart', retry, { once: true });
+              window.addEventListener('scroll', retry, { once: true });
+            });
+          }
+        });
+      }
+
+      // Initial video setup & play
+      playAllVideos();
+
       function checkProgress() {
         if (isDone) return;
         var p = 25;
@@ -141,6 +167,7 @@
 
       window.addEventListener('load', function() {
         targetPercent = 100;
+        playAllVideos();
       });
 
       var timer = setInterval(function() {
@@ -172,15 +199,34 @@
         barEl.style.width = '100%';
         setTimeout(function() {
           preloader.classList.add('is-loaded');
-          if (heroVideo && heroVideo.play) {
-            heroVideo.play().catch(function(){});
-          }
+          playAllVideos();
           setTimeout(function() {
             if (preloader && preloader.parentNode) {
               preloader.parentNode.removeChild(preloader);
             }
           }, 650);
         }, 120);
+      }
+
+      // IntersectionObserver to trigger video play when scrolled into view
+      if ('IntersectionObserver' in window) {
+        var videoObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              var vid = entry.target.tagName === 'VIDEO' ? entry.target : entry.target.querySelector('video');
+              if (vid && vid.play) {
+                vid.muted = true;
+                vid.playsInline = true;
+                var p = vid.play();
+                if (p && p.catch) p.catch(function(){});
+              }
+            }
+          });
+        }, { threshold: 0.05 });
+
+        document.querySelectorAll('.nw-video-slide, .intro, video[data-desktop-src]').forEach(function(el) {
+          videoObserver.observe(el);
+        });
       }
     })();
   </script>
@@ -263,10 +309,7 @@
 <section class="intro">
   <div class="container md-space">
     <div class="container-kivi fit-cover">
-      <video id="hero-video" autoplay muted loop playsinline preload="auto" poster="/media/gen/hero/kf-a.webp">
-        <source src="/media/video/hero-loop-mobile.mp4" type="video/mp4" media="(max-width: 1024px)">
-        <source src="/media/video/hero-loop.mp4" type="video/mp4">
-      </video>
+      <video id="hero-video" autoplay muted loop playsinline preload="auto" poster="/media/gen/hero/kf-a.webp" src="/media/video/hero-loop.mp4" data-desktop-src="/media/video/hero-loop.mp4" data-mobile-src="/media/video/hero-loop-mobile.mp4"></video>
       <span class="nw-hero__scrim" aria-hidden="true"></span>
     </div>
     
@@ -339,10 +382,7 @@
               <div class="swiper-wrapper">
                 <!-- 3D Tour Video -->
                 <div class="swiper-slide fit-cover nw-video-slide nw-open-video-btn" data-video-src="/cases/moonrock.mp4" data-title="Moonrock Hotel &amp; Chalet">
-                  <video autoplay muted loop playsinline preload="auto" poster="/cases/moonrock_poster.webp">
-                    <source src="/cases/moonrock-mobile.mp4" type="video/mp4" media="(max-width: 1024px)">
-                    <source src="/cases/moonrock.mp4" type="video/mp4">
-                  </video>
+                  <video autoplay muted loop playsinline preload="auto" poster="/cases/moonrock_poster.webp" src="/cases/moonrock.mp4" data-desktop-src="/cases/moonrock.mp4" data-mobile-src="/cases/moonrock-mobile.mp4"></video>
                   <div class="nw-3d-badge"><span class="play-icon">&#9654;</span> 3D-тур готелем</div>
                 </div>
               </div>
@@ -386,10 +426,7 @@
               <div class="swiper-wrapper">
                 <!-- 3D Tour Video -->
                 <div class="swiper-slide fit-cover nw-video-slide nw-open-video-btn" data-video-src="/cases/ribas.mp4" data-title="Ribas Karpaty Hotel">
-                  <video autoplay muted loop playsinline preload="auto" poster="/cases/ribas_poster.webp">
-                    <source src="/cases/ribas-mobile.mp4" type="video/mp4" media="(max-width: 1024px)">
-                    <source src="/cases/ribas.mp4" type="video/mp4">
-                  </video>
+                  <video autoplay muted loop playsinline preload="auto" poster="/cases/ribas_poster.webp" src="/cases/ribas.mp4" data-desktop-src="/cases/ribas.mp4" data-mobile-src="/cases/ribas-mobile.mp4"></video>
                   <div class="nw-3d-badge"><span class="play-icon">&#9654;</span> 3D-тур готелем</div>
                 </div>
               </div>
@@ -433,10 +470,7 @@
               <div class="swiper-wrapper">
                 <!-- 3D Tour Video -->
                 <div class="swiper-slide fit-cover nw-video-slide nw-open-video-btn" data-video-src="/cases/redling.mp4" data-title="Redling Beach Hotel">
-                  <video autoplay muted loop playsinline preload="auto" poster="/cases/redling_poster.webp">
-                    <source src="/cases/redling-mobile.mp4" type="video/mp4" media="(max-width: 1024px)">
-                    <source src="/cases/redling.mp4" type="video/mp4">
-                  </video>
+                  <video autoplay muted loop playsinline preload="auto" poster="/cases/redling_poster.webp" src="/cases/redling.mp4" data-desktop-src="/cases/redling.mp4" data-mobile-src="/cases/redling-mobile.mp4"></video>
                   <div class="nw-3d-badge"><span class="play-icon">&#9654;</span> 3D-тур готелем</div>
                 </div>
               </div>
