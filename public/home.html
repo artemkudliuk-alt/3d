@@ -242,7 +242,7 @@
         <div class="header-logo">
           <a class="main-logo" href="/" aria-current="page" aria-label="NextWeb Hotels"><span class="nw-logo"><span class="nw-logo__top">NEXTWEB</span><span class="nw-logo__sub">HOTELS</span></span></a>
         </div>
-        <a href="#callback" class="nw-mobile-cta-btn" aria-label="Заявка">Заявка</a>
+        <a href="#callback" class="nw-mobile-cta-btn" data-i18n="cta.calculate" aria-label="Get a Quote">Get a Quote</a>
       </div>
 
   <div class="header-wrapper">
@@ -260,15 +260,15 @@
         </button>
 
         <ul class="inter-16-semi" style="display: flex !important; gap: 32px !important; margin: 0 !important; padding: 0 !important; list-style: none !important;">
-          <li class="menu-item"><a href="#cases" data-i18n="nav.projects" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Проєкти</a></li>
-          <li class="menu-item"><a href="#benefits" data-i18n="nav.benefits" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Переваги</a></li>
-          <li class="menu-item"><a href="#testimonials-partners" data-i18n="nav.reviews" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Відгуки</a></li>
-          <li class="menu-item"><a href="#lead-capture" data-i18n="nav.contacts" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Контакти</a></li>
+          <li class="menu-item"><a href="#cases" data-i18n="nav.projects" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Projects</a></li>
+          <li class="menu-item"><a href="#benefits" data-i18n="nav.benefits" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Benefits</a></li>
+          <li class="menu-item"><a href="#testimonials-partners" data-i18n="nav.reviews" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Reviews</a></li>
+          <li class="menu-item"><a href="#lead-capture" data-i18n="nav.contacts" style="color: #ffffff !important; text-decoration: none !important; font-family: 'Mulish', sans-serif !important; font-weight: 700 !important; font-size: 15px !important; transition: opacity 0.3s ease !important;">Contacts</a></li>
         </ul>
 
         <!-- Language switcher in mobile drawer -->
         <div class="nw-drawer-lang">
-          <button class="nw-lang-btn" data-lang="uk" aria-label="Українська">UA</button>
+          <button class="nw-lang-btn" data-lang="ua" aria-label="Українська">UA</button>
           <button class="nw-lang-btn" data-lang="en" aria-label="English">EN</button>
           <button class="nw-lang-btn" data-lang="ru" aria-label="Русский">RU</button>
         </div>
@@ -276,7 +276,7 @@
         <!-- Bottom Drawer CTA & Contacts for Mobile -->
         <div class="nw-drawer-footer">
           <a class="btn btn-orange link nw-drawer-btn" href="#lead-capture" aria-label="Отримати розрахунок">
-            <span data-i18n="cta.calculate">Отримати розрахунок</span>
+            <span data-i18n="cta.calculate">Get a Quote</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
 
@@ -296,13 +296,362 @@
       <!-- Desktop: Language switcher replaces CTA button -->
       <div class="header-cta nw-lang-switcher-wrap">
         <div class="nw-lang-switcher" role="group" aria-label="Language">
-          <button class="nw-lang-btn" data-lang="uk" aria-label="Українська">UA</button>
+          <button class="nw-lang-btn" data-lang="ua" aria-label="Українська">UA</button>
           <button class="nw-lang-btn" data-lang="en" aria-label="English">EN</button>
           <button class="nw-lang-btn" data-lang="ru" aria-label="Русский">RU</button>
         </div>
       </div>
     </div>
   </div>
+<!-- ==================== i18n Language Switcher ==================== -->
+<script>
+(function initI18n() {
+  var ukDict = {
+    "nav.projects": "Проєкти",
+    "nav.benefits": "Переваги",
+    "nav.reviews": "Відгуки",
+    "nav.contacts": "Контакти",
+    "cta.calculate": "Отримати розрахунок",
+    "hero.badge": "Отримати розрахунок",
+    "hero.title": "Гість обирає готель очима.<br><span class=\"accent-title\">Покажіть йому все — до бронювання.</span>",
+    "hero.watchDemo": "Дивитись демо",
+    "hero.sub": "Інтерактивні 3D-відеотури головними зонами готелю з ефектом присутності. Гість «проходить» лобі, номер і SPA — і бронює напряму, а не в агрегаторі.",
+    "hero.apply": "Заявка",
+    "case.watchTour": "Дивитись 3D-тур",
+    "case.badge": "3D-тур готелем",
+    "case.m.sub": "Exclusive Mountain Retreat • Яремче",
+    "case.m.addr": "смт. Яремче, присілок Ямна, 45",
+    "case.r.sub": "Luxury Resort & SPA • Буковель",
+    "case.r.addr": "с. Поляниця, урочище Вишня, 154",
+    "case.rd.sub": "Family Beach Resort • Одеса",
+    "case.rd.addr": "м. Одеса, вул. Дача Ковалевського, 71",
+    "benefits.title": "Переваги у цифрах та технологіях",
+    "benefits.c1.title": "Тривалість сесії",
+    "benefits.c1.desc": "Зростання середнього часу сесії на сайті готелю завдяки інтерактивному 3D-контенту.",
+    "benefits.c2.title": "Глибина перегляду",
+    "benefits.c2.desc": "Збільшення глибини перегляду сторінок бронювання та номерного фонду.",
+    "benefits.c3.title": "WOW-ефект",
+    "benefits.c3.desc": "Запам'ятовуваність бренду вища на 80% порівняно зі звичайними статичними фото.",
+    "benefits.c4.title": "Modern Tech",
+    "benefits.c4.desc": "Легка інтеграція на будь-який сайт (Tilda, WordPress, Next.js) без втрати швидкості завантаження.",
+    "reviews.title": "Відгуки партнерів та довіра ринку",
+    "reviews.subtitle": "Результати впровадження 3D-технологій NextWeb у реальних готельних комплексах",
+    "reviews.s0.tag": "3D РЕЗУЛЬТАТ",
+    "reviews.s0.title": "Підтверджена довіра",
+    "reviews.s0.desc": "Ефективність у 40+ готельних мережах",
+    "reviews.s1.tag": "ШВИДКІСТЬ",
+    "reviews.s1.title": "Миттєвий потік",
+    "reviews.s1.desc": "Оптимізований 3D-двигун 60 FPS",
+    "reviews.s2.tag": "КОНВЕРСІЯ",
+    "reviews.s2.title": "+45% Прямих броней",
+    "reviews.s2.desc": "Збільшення виторгу без комісій OTA",
+    "reviews.s3.tag": "ПРЕМІУМ ЯКІСТЬ",
+    "reviews.s3.title": "WOW-ефект для гостей",
+    "reviews.s3.desc": "Максимальна залученість та довіра",
+    "partners.title": "НАШІ ПАРТНЕРИ ТА ГОТЕЛЬНІ МЕРЕЖІ",
+    "footer.contact": "Зв'язатися з нами",
+    "modal.title": "Залиште свої контактні дані",
+    "modal.sub": "Наш менеджер зв'яжеться з Вами.",
+    "modal.name": "Ім'я*",
+    "modal.btn": "Отримати консультацію",
+    "success.title": "Запит успішно надісланий",
+    "success.btn": "Повернутись на головну",
+    "widget.cta": "Консультація",
+    "section.cases": "Наші проєкти",
+    "section.seeAll": "Дивитись всі (5 проєктів)",
+    "section.benefits": "Переваги у цифрах та технологіях",
+    "section.testimonial": "Відгуки партнерів та довіра ринку",
+    "section.partners": "Наші партнери та готельні мережі",
+    "cta.title": "Готові перевести<br>ваш готель у<br>3D-формат?",
+    "cta.desc": "Залиште заявку на безкоштовний аудит вашого сайту. Ми розрахуємо потенціал зростання конверсії та підберемо краще рішення для вашого готельного комплексу.",
+    "cta.tag": "Безкоштовний аудит",
+    "cta.nameLabel": "Ім'я",
+    "cta.namePh": "Олександр Петренко",
+    "cta.companyLabel": "Назва готелю / компанія",
+    "cta.companyPh": "Grand Resort & SPA",
+    "cta.phoneLabel": "Телефон / Telegram",
+    "cta.phonePh": "+380 (50) 000-00-00 або @username",
+    "cta.emailLabel": "Email",
+    "cta.emailPh": "hotel@example.com",
+    "cta.submit": "Обговорити проєкт"
+  };
+
+  var enDict = {
+    "nav.projects": "Projects",
+    "nav.benefits": "Benefits",
+    "nav.reviews": "Reviews",
+    "nav.contacts": "Contacts",
+    "cta.calculate": "Get a Quote",
+    "hero.badge": "Get a Quote",
+    "hero.title": "Guests choose a hotel with their eyes.<br><span class=\"accent-title\">Show them everything — before booking.</span>",
+    "hero.watchDemo": "Watch Demo",
+    "hero.sub": "Interactive 3D video tours of the hotel's key areas with an immersive presence effect. Guests \"walk through\" the lobby, room and SPA — and book directly, not via aggregators.",
+    "hero.apply": "Application",
+    "case.watchTour": "Watch 3D Tour",
+    "case.badge": "3D Hotel Tour",
+    "case.m.sub": "Exclusive Mountain Retreat • Yaremche",
+    "case.m.addr": "45 Yamna District, Yaremche",
+    "case.r.sub": "Luxury Resort & SPA • Bukovel",
+    "case.r.addr": "154 Vyshnya Area, Polyanytsya",
+    "case.rd.sub": "Family Beach Resort • Odesa",
+    "case.rd.addr": "71 Dacha Kovalevskoho St, Odesa",
+    "benefits.title": "Advantages in Numbers & Technology",
+    "benefits.c1.title": "Session Duration",
+    "benefits.c1.desc": "Growth in average session duration on the hotel website thanks to interactive 3D content.",
+    "benefits.c2.title": "Page View Depth",
+    "benefits.c2.desc": "Increased view depth of booking pages and room choices.",
+    "benefits.c3.title": "WOW Effect",
+    "benefits.c3.desc": "Brand recall is 80% higher compared to standard static photos.",
+    "benefits.c4.title": "Modern Tech",
+    "benefits.c4.desc": "Easy integration into any website (Tilda, WordPress, Next.js) without speed loss.",
+    "reviews.title": "Partner Reviews & Market Trust",
+    "reviews.subtitle": "Results of NextWeb 3D technology implementation in real hotel complexes",
+    "reviews.s0.tag": "3D RESULT",
+    "reviews.s0.title": "Verified Trust",
+    "reviews.s0.desc": "Proven effectiveness in 40+ hotel chains",
+    "reviews.s1.tag": "SPEED",
+    "reviews.s1.title": "Instant Stream",
+    "reviews.s1.desc": "Optimized 60 FPS 3D engine",
+    "reviews.s2.tag": "CONVERSION",
+    "reviews.s2.title": "+45% Direct Bookings",
+    "reviews.s2.desc": "Revenue growth without OTA commissions",
+    "reviews.s3.tag": "PREMIUM QUALITY",
+    "reviews.s3.title": "WOW Effect for Guests",
+    "reviews.s3.desc": "Maximum engagement & trust",
+    "partners.title": "OUR PARTNERS & HOTEL NETWORKS",
+    "footer.contact": "Contact Us",
+    "modal.title": "Leave your contact details",
+    "modal.sub": "Our manager will contact you.",
+    "modal.name": "Name*",
+    "modal.btn": "Get Consultation",
+    "success.title": "Request Successfully Sent",
+    "success.btn": "Return to Homepage",
+    "widget.cta": "Consultation",
+    "section.cases": "Our Projects",
+    "section.seeAll": "See all (5 projects)",
+    "section.benefits": "Advantages in Numbers & Technology",
+    "section.testimonial": "Partner Reviews & Market Trust",
+    "section.partners": "Our Partners & Hotel Networks",
+    "cta.title": "Ready to bring<br>your hotel into<br>3D format?",
+    "cta.desc": "Leave a request for a free audit of your website. We will calculate the conversion growth potential and select the best solution for your hotel complex.",
+    "cta.tag": "Free Audit",
+    "cta.nameLabel": "Name",
+    "cta.namePh": "Alexander Smith",
+    "cta.companyLabel": "Hotel Name / Company",
+    "cta.companyPh": "Grand Resort & SPA",
+    "cta.phoneLabel": "Phone / Telegram",
+    "cta.phonePh": "+1 (555) 000-0000 or @username",
+    "cta.emailLabel": "Email",
+    "cta.emailPh": "hotel@example.com",
+    "cta.submit": "Discuss Project"
+  };
+
+  var ruDict = {
+    "nav.projects": "Проекты",
+    "nav.benefits": "Преимущества",
+    "nav.reviews": "Отзывы",
+    "nav.contacts": "Контакты",
+    "cta.calculate": "Получить расчёт",
+    "hero.badge": "Получить расчёт",
+    "hero.title": "Гость выбирает отель глазами.<br><span class=\"accent-title\">Покажите ему всё — до бронирования.</span>",
+    "hero.watchDemo": "Смотреть демо",
+    "hero.sub": "Интерактивные 3D-видеотуры по ключевым зонам отеля с эффектом присутствия. Гость «проходит» лобби, номер и SPA — и бронирует напрямую, а не через агрегатор.",
+    "hero.apply": "Заявка",
+    "case.watchTour": "Смотреть 3D-тур",
+    "case.badge": "3D-тур по отелю",
+    "case.m.sub": "Exclusive Mountain Retreat • Яремче",
+    "case.m.addr": "пгт. Яремче, приселок Ямна, 45",
+    "case.r.sub": "Luxury Resort & SPA • Буковель",
+    "case.r.addr": "с. Поляница, урочище Вишня, 154",
+    "case.rd.sub": "Family Beach Resort • Одесса",
+    "case.rd.addr": "г. Одесса, ул. Дача Ковалевского, 71",
+    "benefits.title": "Преимущества в цифрах и технологиях",
+    "benefits.c1.title": "Длительность сессии",
+    "benefits.c1.desc": "Рост среднего времени сессии на сайте отеля благодаря интерактивному 3D-контенту.",
+    "benefits.c2.title": "Глубина просмотра",
+    "benefits.c2.desc": "Увеличение глубины просмотра страниц бронирования и номерного фонда.",
+    "benefits.c3.title": "WOW-эффект",
+    "benefits.c3.desc": "Запоминаемость бренда выше на 80% по сравнению с обычными статичными фото.",
+    "benefits.c4.title": "Modern Tech",
+    "benefits.c4.desc": "Лёгкая интеграция на любой сайт (Tilda, WordPress, Next.js) без потери скорости загрузки.",
+    "reviews.title": "Отзывы партнёров и доверие рынка",
+    "reviews.subtitle": "Результаты внедрения 3D-технологий NextWeb в реальных гостиничных комплексах",
+    "reviews.s0.tag": "3D РЕЗУЛЬТАТ",
+    "reviews.s0.title": "Подтверждённое доверие",
+    "reviews.s0.desc": "Эффективность в 40+ гостиничных сетях",
+    "reviews.s1.tag": "СКОРОСТЬ",
+    "reviews.s1.title": "Мгновенный поток",
+    "reviews.s1.desc": "Оптимизированный 3D-движок 60 FPS",
+    "reviews.s2.tag": "КОНВЕРСИЯ",
+    "reviews.s2.title": "+45% Прямых броней",
+    "reviews.s2.desc": "Увеличение выручки без комиссий OTA",
+    "reviews.s3.tag": "ПРЕМИУМ КАЧЕСТВО",
+    "reviews.s3.title": "WOW-эффект для гостей",
+    "reviews.s3.desc": "Максимальная вовлечённость и доверие",
+    "partners.title": "НАШИ ПАРТНЁРЫ И ГОСТИНИЧНЫЕ СЕТИ",
+    "footer.contact": "Связаться с нами",
+    "modal.title": "Оставьте свои контактные данные",
+    "modal.sub": "Наш менеджер свяжется с Вами.",
+    "modal.name": "Имя*",
+    "modal.btn": "Получить консультацию",
+    "success.title": "Запрос успешно отправлен",
+    "success.btn": "Вернуться на главную",
+    "widget.cta": "Консультация",
+    "section.cases": "Наши проекты",
+    "section.seeAll": "Смотреть все (5 проектов)",
+    "section.benefits": "Преимущества в цифрах и технологиях",
+    "section.testimonial": "Отзывы партнёров и доверие рынка",
+    "section.partners": "Наши партнёры и гостиничные сети",
+    "cta.title": "Готовы перевести<br>ваш отель в<br>3D-формат?",
+    "cta.desc": "Оставьте заявку на бесплатный аудит вашего сайта. Мы рассчитаем потенциал роста конверсии и подберём лучшее решение для вашего гостиничного комплекса.",
+    "cta.tag": "Бесплатный аудит",
+    "cta.nameLabel": "Имя",
+    "cta.namePh": "Александр Петренко",
+    "cta.companyLabel": "Название отеля / компания",
+    "cta.companyPh": "Grand Resort & SPA",
+    "cta.phoneLabel": "Телефон / Telegram",
+    "cta.phonePh": "+7 (900) 000-00-00 или @username",
+    "cta.emailLabel": "Email",
+    "cta.emailPh": "hotel@example.com",
+    "cta.submit": "Обсудить проект"
+  };
+
+  var translations = {
+    en: enDict,
+    uk: ukDict,
+    ua: ukDict,
+    ru: ruDict
+  };
+
+  var currentLang = localStorage.getItem('nw-lang') || 'en';
+
+  window.nwApplyLang = function applyLang(lang) {
+    if (!lang) return;
+    lang = lang.toLowerCase();
+    if (lang === 'ua') lang = 'uk';
+    if (!translations[lang]) return;
+
+    currentLang = lang;
+    localStorage.setItem('nw-lang', lang);
+    document.documentElement.lang = lang;
+    var t = translations[lang];
+
+    // Update all data-i18n elements
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+
+    // Update all data-i18n-html elements
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-html');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+
+    // Hero subtitle
+    var heroSub = document.querySelector('.hero-sub');
+    if (heroSub && t['hero.sub']) heroSub.textContent = t['hero.sub'];
+
+    // Modal form elements
+    var modalTitle = document.querySelector('.popup-callback .title');
+    if (modalTitle && t['modal.title']) modalTitle.textContent = t['modal.title'];
+    var modalSub = document.querySelector('.popup-callback .subtitle');
+    if (modalSub && t['modal.sub']) modalSub.textContent = t['modal.sub'];
+    var modalNameInput = document.querySelector('.popup-callback input[name="your-name"], .popup-callback input[name="name"]');
+    if (modalNameInput && t['modal.name']) modalNameInput.setAttribute('placeholder', t['modal.name']);
+    var modalBtn = document.querySelector('.popup-callback .submit span, .popup-callback .submit .btn-text');
+    if (modalBtn && t['modal.btn']) modalBtn.textContent = t['modal.btn'];
+
+    // Sections headings
+    var casesH = document.querySelector('#cases h2, .projects h2');
+    if (casesH && t['section.cases']) casesH.textContent = t['section.cases'];
+    var seeAllBtn = document.querySelector('.nw-all-cases-btn .btn-text');
+    if (seeAllBtn && t['section.seeAll']) seeAllBtn.textContent = t['section.seeAll'];
+    var benefitsH = document.querySelector('#benefits h2');
+    if (benefitsH && t['section.benefits']) benefitsH.textContent = t['section.benefits'];
+    var testimonialH = document.querySelector('#testimonials-partners h2');
+    if (testimonialH && t['section.testimonial']) testimonialH.textContent = t['section.testimonial'];
+    var partnersH = document.querySelector('.nw-partners-strip h2, .nw-brands-section h2');
+    if (partnersH && t['section.partners']) partnersH.textContent = t['section.partners'];
+
+    // CTA Lead capture section
+    var ctaH2 = document.querySelector('#lead-capture h2');
+    if (ctaH2 && t['cta.title']) ctaH2.innerHTML = t['cta.title'];
+    var ctaP = document.querySelector('#lead-capture .nw-cta-left p');
+    if (ctaP && t['cta.desc']) ctaP.textContent = t['cta.desc'];
+    var ctaTag = document.querySelector('#lead-capture .nw-cta-right p');
+    if (ctaTag && t['cta.tag']) ctaTag.textContent = t['cta.tag'];
+    
+    var nameLabel = document.querySelector('label[for="nw-name"]');
+    if (nameLabel && t['cta.nameLabel']) nameLabel.textContent = t['cta.nameLabel'];
+    var nameInput = document.getElementById('nw-name');
+    if (nameInput && t['cta.namePh']) nameInput.placeholder = t['cta.namePh'];
+
+    var companyLabel = document.querySelector('label[for="nw-company"]');
+    if (companyLabel && t['cta.companyLabel']) companyLabel.textContent = t['cta.companyLabel'];
+    var companyInput = document.getElementById('nw-company');
+    if (companyInput && t['cta.companyPh']) companyInput.placeholder = t['cta.companyPh'];
+
+    var phoneLabel = document.querySelector('label[for="nw-phone"]');
+    if (phoneLabel && t['cta.phoneLabel']) phoneLabel.textContent = t['cta.phoneLabel'];
+    var phoneInput = document.getElementById('nw-phone');
+    if (phoneInput && t['cta.phonePh']) phoneInput.placeholder = t['cta.phonePh'];
+
+    var emailLabel = document.querySelector('label[for="nw-email"]');
+    if (emailLabel && t['cta.emailLabel']) emailLabel.textContent = t['cta.emailLabel'];
+    var emailInput = document.getElementById('nw-email');
+    if (emailInput && t['cta.emailPh']) emailInput.placeholder = t['cta.emailPh'];
+
+    var submitBtnText = document.querySelector('#lead-audit-form .nw-submit-btn .btn-text');
+    if (submitBtnText && t['cta.submit']) submitBtnText.textContent = t['cta.submit'];
+
+    var widgetCta = document.getElementById('nw-widget-video-btn');
+    if (widgetCta && t['widget.cta']) widgetCta.textContent = t['widget.cta'];
+
+    // Update reviews quotes language
+    if (typeof window.updateReviewLang === 'function') {
+      window.updateReviewLang(lang);
+    }
+
+    // Update active state of all lang buttons
+    document.querySelectorAll('.nw-lang-btn').forEach(function(btn) {
+      var btnLang = (btn.getAttribute('data-lang') || '').toLowerCase();
+      var isActive = (btnLang === lang) || (btnLang === 'ua' && lang === 'uk') || (btnLang === 'uk' && lang === 'ua');
+      btn.classList.toggle('is-active', isActive);
+      btn.classList.toggle('active', isActive);
+    });
+  };
+
+  function bindButtons() {
+    document.querySelectorAll('.nw-lang-btn').forEach(function(btn) {
+      btn.onclick = function(e) {
+        if (e && e.preventDefault) e.preventDefault();
+        var lang = this.getAttribute('data-lang');
+        if (lang) window.nwApplyLang(lang);
+        return false;
+      };
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.nw-lang-btn');
+    if (btn) {
+      var lang = btn.getAttribute('data-lang');
+      if (lang) window.nwApplyLang(lang);
+    }
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      bindButtons();
+      window.nwApplyLang(currentLang);
+    });
+  } else {
+    bindButtons();
+    window.nwApplyLang(currentLang);
+  }
+})();
+</script>
 </header>  <div class="smooth-wrapper" id="smooth-wrapper">
     <div class="smooth-content" id="smooth-content">
       <main>
@@ -318,18 +667,18 @@
     <div class="container-content flex-v">
       <div class="hero-title-wrap">
         <a href="#callback" class="hero-contact-badge nw-hero-cta-pill">
-          <span data-i18n="cta.calculate">Отримати розрахунок</span>
+          <span data-i18n="cta.calculate">Get a Quote</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
           </svg>
         </a>
-        <h1 class="mulish-50 hero-title" data-i18n-html="hero.title">Гість обирає готель очима.<br><span class="accent-title">Покажіть йому все — до бронювання.</span></h1>
+        <h1 class="mulish-50 hero-title" data-i18n-html="hero.title">Guests choose a hotel with their eyes.<br><span class="accent-title">Show them everything — before booking.</span></h1>
       </div>
       <div class="hero-reveal flex-v">
-        <p class="hero-sub inter-20">Інтерактивні 3D-відеотури головними зонами готелю з ефектом присутності. Гість «проходить» лобі, номер і SPA — і бронює напряму, а не в агрегаторі.</p>
+        <p class="hero-sub inter-20" data-i18n="hero.sub">Interactive 3D video tours of the hotel's key areas with an immersive presence effect. Guests "walk through" the lobby, room and SPA — and book directly, not via aggregators.</p>
         <div class="hero-cta">
           <button class="btn btn-orange nw-open-video-btn" type="button" data-video-src="/media/gen/cases/grand_royal/flythrough.mp4" data-title="3D-відеотур готелем (Демо-показ)" aria-label="Дивитись демо">
-            <div class="btn-text" aria-hidden="true" data-i18n="hero.watchDemo">Дивитись демо</div>
+            <div class="btn-text" aria-hidden="true" data-i18n="hero.watchDemo">Watch Demo</div>
             <div class="btn-icon mask def" aria-hidden="true"></div>
           </button>
         </div>
@@ -342,10 +691,10 @@
 
     <div class="container-text" style="display: flex; justify-content: space-between; align-items: center; width: 100%; position: relative; margin-bottom: clamp(40px, 5vh, 60px);">
       <div style="flex: 1; text-align: center;">
-        <h2 class="mulish-64" data-reveal-text style="display: inline-block; margin: 0;">Наші проєкти</h2>
+        <h2 class="mulish-64" data-reveal-text data-i18n="section.cases" style="display: inline-block; margin: 0;">Our Projects</h2>
       </div>
       <button class="btn btn-outline nw-all-cases-btn" id="open-catalog-btn" type="button" aria-label="Дивитись всі проєкти" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%);">
-        <div class="btn-text">Дивитись всі (5 проєктів)</div>
+        <div class="btn-text" data-i18n="section.seeAll">See all (5 projects)</div>
         <div class="btn-icon mask def" aria-hidden="true"></div>
       </button>
     </div>
@@ -360,17 +709,17 @@
               <div class="title flex-v">
                 <p class="num"><span class="mulish-24">01</span>/03</p>
                 <h3 class="mulish-50">Moonrock Hotel &amp; Chalet</h3>
-                <p>Exclusive Mountain Retreat &bull; Яремче</p>
+                <p data-i18n="case.m.sub">Exclusive Mountain Retreat &bull; Yaremche</p>
               </div>
 
               <div class="location flex-h" style="margin-top: 14px;">
                 <div class="icon icon-location"></div>
-                <p class="inter-16-semi">смт. Яремче, присілок Ямна, 45</p>
+                <p class="inter-16-semi" data-i18n="case.m.addr">45 Yamna District, Yaremche</p>
               </div>
 
               <div class="navs" style="margin-top: 24px;">
                 <button class="btn btn-orange info nw-open-video-btn" type="button" data-video-src="/cases/moonrock.mp4" data-title="Moonrock Hotel &amp; Chalet (3D-Тур)">
-                  <div class="btn-text">Дивитись 3D-тур</div>
+                  <div class="btn-text" data-i18n="case.watchTour">Watch 3D Tour</div>
                   <div class="btn-icon mask def" aria-hidden="true"></div>
                 </button>
               </div>
@@ -383,7 +732,7 @@
                 <!-- 3D Tour Video -->
                 <div class="swiper-slide fit-cover nw-video-slide nw-open-video-btn" data-video-src="/cases/moonrock.mp4" data-title="Moonrock Hotel &amp; Chalet">
                   <video autoplay muted loop playsinline preload="auto" poster="/cases/moonrock_poster.webp" src="/cases/moonrock.mp4" data-desktop-src="/cases/moonrock.mp4" data-mobile-src="/cases/moonrock-mobile.mp4"></video>
-                  <div class="nw-3d-badge"><span class="play-icon">&#9654;</span> 3D-тур готелем</div>
+                  <div class="nw-3d-badge"><span class="play-icon">&#9654;</span> <span data-i18n="case.badge">3D Hotel Tour</span></div>
                 </div>
               </div>
               <div class="swiper-pagination"></div>
@@ -404,17 +753,17 @@
               <div class="title flex-v">
                 <p class="num"><span class="mulish-24">02</span>/03</p>
                 <h3 class="mulish-50">Ribas Karpaty Hotel</h3>
-                <p>Luxury Resort &amp; SPA &bull; Буковель</p>
+                <p data-i18n="case.r.sub">Luxury Resort &amp; SPA &bull; Bukovel</p>
               </div>
 
               <div class="location flex-h" style="margin-top: 14px;">
                 <div class="icon icon-location"></div>
-                <p class="inter-16-semi">с. Поляниця, урочище Вишня, 154</p>
+                <p class="inter-16-semi" data-i18n="case.r.addr">154 Vyshnya Area, Polyanytsya</p>
               </div>
 
               <div class="navs" style="margin-top: 24px;">
                 <button class="btn btn-orange info nw-open-video-btn" type="button" data-video-src="/cases/ribas.mp4" data-title="Ribas Karpaty Hotel (3D-Тур)">
-                  <div class="btn-text">Дивитись 3D-тур</div>
+                  <div class="btn-text" data-i18n="case.watchTour">Watch 3D Tour</div>
                   <div class="btn-icon mask def" aria-hidden="true"></div>
                 </button>
               </div>
@@ -427,7 +776,7 @@
                 <!-- 3D Tour Video -->
                 <div class="swiper-slide fit-cover nw-video-slide nw-open-video-btn" data-video-src="/cases/ribas.mp4" data-title="Ribas Karpaty Hotel">
                   <video autoplay muted loop playsinline preload="auto" poster="/cases/ribas_poster.webp" src="/cases/ribas.mp4" data-desktop-src="/cases/ribas.mp4" data-mobile-src="/cases/ribas-mobile.mp4"></video>
-                  <div class="nw-3d-badge"><span class="play-icon">&#9654;</span> 3D-тур готелем</div>
+                  <div class="nw-3d-badge"><span class="play-icon">&#9654;</span> <span data-i18n="case.badge">3D Hotel Tour</span></div>
                 </div>
               </div>
               <div class="swiper-pagination"></div>
@@ -448,17 +797,17 @@
               <div class="title flex-v">
                 <p class="num"><span class="mulish-24">03</span>/03</p>
                 <h3 class="mulish-50">Redling Beach Hotel</h3>
-                <p>Family Beach Resort &bull; Одеса</p>
+                <p data-i18n="case.rd.sub">Family Beach Resort &bull; Odesa</p>
               </div>
 
               <div class="location flex-h" style="margin-top: 14px;">
                 <div class="icon icon-location"></div>
-                <p class="inter-16-semi">м. Одеса, вул. Дача Ковалевського, 71</p>
+                <p class="inter-16-semi" data-i18n="case.rd.addr">71 Dacha Kovalevskoho St, Odesa</p>
               </div>
 
               <div class="navs" style="margin-top: 24px;">
                 <button class="btn btn-orange info nw-open-video-btn" type="button" data-video-src="/cases/redling.mp4" data-title="Redling Beach Hotel (3D-Тур)">
-                  <div class="btn-text">Дивитись 3D-тур</div>
+                  <div class="btn-text" data-i18n="case.watchTour">Watch 3D Tour</div>
                   <div class="btn-icon mask def" aria-hidden="true"></div>
                 </button>
               </div>
@@ -471,7 +820,7 @@
                 <!-- 3D Tour Video -->
                 <div class="swiper-slide fit-cover nw-video-slide nw-open-video-btn" data-video-src="/cases/redling.mp4" data-title="Redling Beach Hotel">
                   <video autoplay muted loop playsinline preload="auto" poster="/cases/redling_poster.webp" src="/cases/redling.mp4" data-desktop-src="/cases/redling.mp4" data-mobile-src="/cases/redling-mobile.mp4"></video>
-                  <div class="nw-3d-badge"><span class="play-icon">&#9654;</span> 3D-тур готелем</div>
+                  <div class="nw-3d-badge"><span class="play-icon">&#9654;</span> <span data-i18n="case.badge">3D Hotel Tour</span></div>
                 </div>
               </div>
               <div class="swiper-pagination"></div>
@@ -499,8 +848,8 @@
     
     <!-- Center Scrolling Title -->
     <div class="container-text" data-speed="1.1">
-      <h2 class="mulish-80" data-reveal-text>
-        Переваги у цифрах та технологіях
+      <h2 class="mulish-80" data-reveal-text data-i18n="benefits.title">
+        Advantages in Numbers & Technology
       </h2>
     </div>
     
@@ -518,11 +867,11 @@
           <div class="swiper-item">
             <svg class="card-corner-icon" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M7 5h12v12h-2.5V7.5H7V5z"/></svg>
             <div class="swiper-item-info">
-              <p class="title mulish-24-regular">Тривалість сесії</p>
+              <p class="title mulish-24-regular" data-i18n="benefits.c1.title">Session Duration</p>
               <p class="count mulish-100">+45%</p>
               <div class="line"></div>
               <p class="description inter-20" data-description>
-                Зростання середнього часу сесії на сайті готелю завдяки інтерактивному 3D-контенту.
+                <span data-i18n="benefits.c1.desc">Growth in average session duration on the hotel website thanks to interactive 3D content.</span>
               </p>
             </div>
             <div class="swiper-item-thumb">
@@ -540,11 +889,11 @@
           <div class="swiper-item">
             <svg class="card-corner-icon active-icon" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M7 5h12v12h-2.5V7.5H7V5z"/></svg>
             <div class="swiper-item-info">
-              <p class="title mulish-24-regular">Глибина перегляду</p>
+              <p class="title mulish-24-regular" data-i18n="benefits.c2.title">Page View Depth</p>
               <p class="count mulish-100">3.2x</p>
               <div class="line"></div>
               <p class="description inter-20" data-description>
-                Збільшення глибини перегляду сторінок бронювання та номерного фонду.
+                <span data-i18n="benefits.c2.desc">Increased view depth of booking pages and room choices.</span>
               </p>
             </div>
             <div class="swiper-item-thumb">
@@ -562,11 +911,11 @@
           <div class="swiper-item">
             <svg class="card-corner-icon" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M7 5h12v12h-2.5V7.5H7V5z"/></svg>
             <div class="swiper-item-info">
-              <p class="title mulish-24-regular">WOW-ефект</p>
+              <p class="title mulish-24-regular" data-i18n="benefits.c3.title">WOW Effect</p>
               <p class="count mulish-100">+80%</p>
               <div class="line"></div>
               <p class="description inter-20" data-description>
-                Запам'ятовуваність бренду вища на 80% порівняно зі звичайними статичними фото.
+                <span data-i18n="benefits.c3.desc">Brand recall is 80% higher compared to standard static photos.</span>
               </p>
             </div>
             <div class="swiper-item-thumb">
@@ -584,11 +933,11 @@
           <div class="swiper-item">
             <svg class="card-corner-icon" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M7 5h12v12h-2.5V7.5H7V5z"/></svg>
             <div class="swiper-item-info">
-              <p class="title mulish-24-regular">Modern Tech</p>
+              <p class="title mulish-24-regular" data-i18n="benefits.c4.title">Modern Tech</p>
               <p class="count mulish-100">Fast</p>
               <div class="line"></div>
               <p class="description inter-20" data-description>
-                Легка інтеграція на будь-який сайт (Tilda, WordPress, Next.js) без втрати швидкості завантаження.
+                <span data-i18n="benefits.c4.desc">Easy integration into any website (Tilda, WordPress, Next.js) without speed loss.</span>
               </p>
             </div>
             <div class="swiper-item-thumb">
@@ -613,10 +962,10 @@
     <div class="nw-section4-header-group" style="display: flex !important; flex-direction: column !important; gap: 16px !important; width: 100% !important; max-width: 900px !important; text-align: left !important; will-change: transform !important;">
       <div class="container-index" style="position: relative !important; display: block !important; color: #666678 !important; font-family: 'Mulish', sans-serif !important; font-size: 16px !important; font-weight: 700 !important; letter-spacing: 0.12em !important;">004</div>
       <h2 class="mulish-50 section-title" style="display: block !important; width: 100% !important; color: #0c0c10 !important; margin: 0 !important; font-size: clamp(38px, 4.5vw, 62px) !important; line-height: 1.15 !important; font-family: 'Mulish', sans-serif !important; font-weight: 800 !important;">
-        Відгуки партнерів та довіра ринку
+        <span data-i18n="reviews.title">Partner Reviews & Market Trust</span>
       </h2>
       <p class="inter-20 section-subtitle" style="display: block !important; width: 100% !important; color: #666678 !important; margin: 0 !important; max-width: 760px !important; font-size: clamp(17px, 1.5vw, 21px) !important; line-height: 1.55 !important; font-family: 'Inter', sans-serif !important;">
-        Результати впровадження 3D-технологій NextWeb у реальних готельних комплексах
+        <span data-i18n="reviews.subtitle">Results of NextWeb 3D technology implementation in real hotel complexes</span>
       </p>
     </div>
 
@@ -737,9 +1086,9 @@
           <div class="tp-badge-slide active" data-slide="0" style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; transition: opacity 0.5s ease;">
             <div style="width: 52px; height: 52px; border-radius: 4px; background: #0c0c10; color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 24px;">★</div>
             <div>
-              <span style="font-family: 'Mulish', sans-serif; font-size: 13px; font-weight: 800; color: #666678; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 8px;">3D РЕЗУЛЬТАТ</span>
-              <h4 style="font-family: 'Mulish', sans-serif; font-size: 21px; font-weight: 800; color: #0c0c10; margin: 0 0 8px 0; line-height: 1.3;">Підтверджена довіра</h4>
-              <p style="font-family: 'Inter', sans-serif; font-size: 14px; color: #666678; margin: 0; line-height: 1.5;">Ефективність у 40+ готельних мережах</p>
+              <span data-i18n="reviews.s0.tag" style="font-family: 'Mulish', sans-serif; font-size: 13px; font-weight: 800; color: #666678; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 8px;">3D RESULT</span>
+              <h4 data-i18n="reviews.s0.title" style="font-family: 'Mulish', sans-serif; font-size: 21px; font-weight: 800; color: #0c0c10; margin: 0 0 8px 0; line-height: 1.3;">Verified Trust</h4>
+              <p data-i18n="reviews.s0.desc" style="font-family: 'Inter', sans-serif; font-size: 14px; color: #666678; margin: 0; line-height: 1.5;">Proven effectiveness in 40+ hotel chains</p>
             </div>
           </div>
 
@@ -747,9 +1096,9 @@
           <div class="tp-badge-slide" data-slide="1" style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; opacity: 0; transition: opacity 0.5s ease; pointer-events: none;">
             <div style="width: 52px; height: 52px; border-radius: 4px; background: #0c0c10; color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 24px;">⚡</div>
             <div>
-              <span style="font-family: 'Mulish', sans-serif; font-size: 13px; font-weight: 800; color: #666678; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 8px;">ШВИДКІСТЬ</span>
-              <h4 style="font-family: 'Mulish', sans-serif; font-size: 21px; font-weight: 800; color: #0c0c10; margin: 0 0 8px 0; line-height: 1.3;">Миттєвий потік</h4>
-              <p style="font-family: 'Inter', sans-serif; font-size: 14px; color: #666678; margin: 0; line-height: 1.5;">Оптимізований 3D-двигун 60 FPS</p>
+              <span data-i18n="reviews.s1.tag" style="font-family: 'Mulish', sans-serif; font-size: 13px; font-weight: 800; color: #666678; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 8px;">SPEED</span>
+              <h4 data-i18n="reviews.s1.title" style="font-family: 'Mulish', sans-serif; font-size: 21px; font-weight: 800; color: #0c0c10; margin: 0 0 8px 0; line-height: 1.3;">Instant Stream</h4>
+              <p data-i18n="reviews.s1.desc" style="font-family: 'Inter', sans-serif; font-size: 14px; color: #666678; margin: 0; line-height: 1.5;">Optimized 60 FPS 3D engine</p>
             </div>
           </div>
 
@@ -757,9 +1106,9 @@
           <div class="tp-badge-slide" data-slide="2" style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; opacity: 0; transition: opacity 0.5s ease; pointer-events: none;">
             <div style="width: 52px; height: 52px; border-radius: 4px; background: #0c0c10; color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 24px;">📈</div>
             <div>
-              <span style="font-family: 'Mulish', sans-serif; font-size: 13px; font-weight: 800; color: #666678; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 8px;">КОНВЕРСІЯ</span>
-              <h4 style="font-family: 'Mulish', sans-serif; font-size: 21px; font-weight: 800; color: #0c0c10; margin: 0 0 8px 0; line-height: 1.3;">+45% Прямих броней</h4>
-              <p style="font-family: 'Inter', sans-serif; font-size: 14px; color: #666678; margin: 0; line-height: 1.5;">Збільшення виторгу без комісій OTA</p>
+              <span data-i18n="reviews.s2.tag" style="font-family: 'Mulish', sans-serif; font-size: 13px; font-weight: 800; color: #666678; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 8px;">CONVERSION</span>
+              <h4 data-i18n="reviews.s2.title" style="font-family: 'Mulish', sans-serif; font-size: 21px; font-weight: 800; color: #0c0c10; margin: 0 0 8px 0; line-height: 1.3;">+45% Direct Bookings</h4>
+              <p data-i18n="reviews.s2.desc" style="font-family: 'Inter', sans-serif; font-size: 14px; color: #666678; margin: 0; line-height: 1.5;">Revenue growth without OTA commissions</p>
             </div>
           </div>
 
@@ -767,9 +1116,9 @@
           <div class="tp-badge-slide" data-slide="3" style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; opacity: 0; transition: opacity 0.5s ease; pointer-events: none;">
             <div style="width: 52px; height: 52px; border-radius: 4px; background: #0c0c10; color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 24px;">🏆</div>
             <div>
-              <span style="font-family: 'Mulish', sans-serif; font-size: 13px; font-weight: 800; color: #666678; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 8px;">ПРЕМІУМ ЯКІСТЬ</span>
-              <h4 style="font-family: 'Mulish', sans-serif; font-size: 21px; font-weight: 800; color: #0c0c10; margin: 0 0 8px 0; line-height: 1.3;">WOW-ефект для гостей</h4>
-              <p style="font-family: 'Inter', sans-serif; font-size: 14px; color: #666678; margin: 0; line-height: 1.5;">Максимальна залученість та довіра</p>
+              <span data-i18n="reviews.s3.tag" style="font-family: 'Mulish', sans-serif; font-size: 13px; font-weight: 800; color: #666678; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 8px;">PREMIUM QUALITY</span>
+              <h4 data-i18n="reviews.s3.title" style="font-family: 'Mulish', sans-serif; font-size: 21px; font-weight: 800; color: #0c0c10; margin: 0 0 8px 0; line-height: 1.3;">WOW Effect for Guests</h4>
+              <p data-i18n="reviews.s3.desc" style="font-family: 'Inter', sans-serif; font-size: 14px; color: #666678; margin: 0; line-height: 1.5;">Maximum engagement & trust</p>
             </div>
           </div>
 
@@ -796,11 +1145,11 @@
           <!-- FULL-WIDTH AUTHOR HEADER -->
           <div class="tp-card-header" style="display: flex; align-items: center; gap: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(255, 255, 255, 0.12); position: relative; z-index: 2; width: 100%;">
             <div class="tp-avatar-box" style="width: 72px; height: 72px; min-width: 72px; min-height: 72px; flex: 0 0 72px; border-radius: 4px; overflow: hidden; border: 2px solid rgba(255, 255, 255, 0.25); box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);">
-              <img id="tp-active-avatar" src="/media/gen/testimonials/avatar1.png" class="tp-avatar-img" alt="Іван Демідов" loading="lazy" style="width: 72px; height: 72px; object-fit: cover; border-radius: 4px; display: block;">
+              <img id="tp-active-avatar" src="/media/gen/testimonials/avatar1.png" class="tp-avatar-img" alt="Ivan Demidov" loading="lazy" style="width: 72px; height: 72px; object-fit: cover; border-radius: 4px; display: block;">
             </div>
             <div class="tp-user-info" style="flex: 1;">
-              <h3 id="tp-active-name" class="tp-user-name" style="font-family: 'Mulish', sans-serif; font-size: 26px; font-weight: 800; color: #ffffff; margin: 0 0 6px 0; line-height: 1.2; letter-spacing: -0.01em;">Іван Демідов</h3>
-              <p id="tp-active-role" class="tp-user-role" style="font-family: 'Inter', sans-serif; font-size: 15px; color: #a0a0c0; margin: 0; font-weight: 500; letter-spacing: 0.01em;">Управляючий директор Grand Plaza Hotel</p>
+              <h3 id="tp-active-name" class="tp-user-name" style="font-family: 'Mulish', sans-serif; font-size: 26px; font-weight: 800; color: #ffffff; margin: 0 0 6px 0; line-height: 1.2; letter-spacing: -0.01em;">Ivan Demidov</h3>
+              <p id="tp-active-role" class="tp-user-role" style="font-family: 'Inter', sans-serif; font-size: 15px; color: #a0a0c0; margin: 0; font-weight: 500; letter-spacing: 0.01em;">Managing Director, Grand Plaza Hotel</p>
             </div>
             <!-- Accent Line Indicator over Divider -->
             <div style="position: absolute; bottom: -1px; left: 0; width: 60px; height: 2px; background: #ffffff;"></div>
@@ -809,7 +1158,7 @@
           <!-- MIDDLE QUOTE TEXT -->
           <div style="padding: 28px 0 24px 0; position: relative; z-index: 2; flex: 1; display: flex; align-items: center;">
             <p id="tp-active-quote" class="tp-quote-text" style="font-family: 'Inter', sans-serif; font-size: clamp(16.5px, 1.5vw, 19px); line-height: 1.75; color: #f0f0f8; margin: 0; font-weight: 400; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
-              «Після інтеграції 3D-туру від NextWeb час перебування гостей на сторінках номерного фонду зріс майже вдвічі. Гості бронюють номери преміум-сегменту значно впевненіше, оскільки бачать кожен куточок та краєвид з вікна у реальному часі.»
+              «After integrating the NextWeb 3D tour, guest stay time on room category pages nearly doubled. Guests book premium rooms with much higher confidence because they can see every detail and window view in real time.»
             </p>
           </div>
 
@@ -910,8 +1259,8 @@
 </style>
 
 <div class="tp-partners-block">
-  <h3 class="tp-partners-title">
-    НАШІ ПАРТНЕРИ ТА ГОТЕЛЬНІ МЕРЕЖІ
+  <h3 class="tp-partners-title" data-i18n="partners.title">
+    OUR PARTNERS & HOTEL NETWORKS
   </h3>
 
   <div class="tp-marquee-tunnel-strip">
@@ -975,16 +1324,16 @@
       <!-- LEFT: Heading + copy -->
       <div class="nw-cta-left">
         <h2 style="font-family:'Mulish',sans-serif;font-size:clamp(36px,4.5vw,68px);font-weight:900;line-height:1.05;letter-spacing:-0.02em;margin:0 0 clamp(20px,2.5vw,36px) 0;">
-          Готові перевести<br>
-          ваш готель у<br>
-          3D-формат?
+          Ready to bring<br>
+          your hotel into<br>
+          3D format?
         </h2>
 
         <!-- Horizontal divider — same as other sections -->
         <div style="width:48px;height:2px;background:rgba(255,255,255,0.25);margin-bottom:clamp(20px,2.5vw,32px);"></div>
 
         <p style="font-family:'Inter',sans-serif;font-size:clamp(15px,1.2vw,18px);line-height:1.7;color:rgba(255,255,255,0.5);margin:0 0 clamp(28px,3vw,44px) 0;max-width:460px;">
-          Залиште заявку на безкоштовний аудит вашого сайту.&nbsp;Ми розрахуємо потенціал зростання конверсії та підберемо краще рішення для вашого готельного комплексу.
+          Leave a request for a free audit of your website.&nbsp;We will calculate the conversion growth potential and select the best solution for your hotel complex.
         </p>
 
         <!-- Contact pills — same pill style as other sections -->
@@ -1003,7 +1352,7 @@
       <!-- RIGHT: Premium editorial form -->
       <div class="nw-cta-right">
         <!-- Small overline label -->
-        <p style="font-family:'Mulish',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;color:rgba(255,255,255,0.35);text-transform:uppercase;margin:0 0 clamp(24px,3vw,40px) 0;">Безкоштовний аудит</p>
+        <p style="font-family:'Mulish',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;color:rgba(255,255,255,0.35);text-transform:uppercase;margin:0 0 clamp(24px,3vw,40px) 0;" data-i18n="cta.tag">Free Audit</p>
 
         <form id="lead-audit-form" novalidate style="display:flex;flex-direction:column;">
 
@@ -1044,18 +1393,18 @@
           <div style="border-top:1px solid rgba(255,255,255,0.08);"></div>
 
           <div class="nw-field">
-            <label for="nw-name">Ім'я</label>
-            <input id="nw-name" type="text" name="name" placeholder="Олександр Петренко" required>
+            <label for="nw-name" data-i18n="cta.nameLabel">Name</label>
+            <input id="nw-name" type="text" name="name" placeholder="Alexander Smith" required>
           </div>
 
           <div class="nw-field">
-            <label for="nw-company">Назва готелю / компанія</label>
+            <label for="nw-company" data-i18n="cta.companyLabel">Hotel Name / Company</label>
             <input id="nw-company" type="text" name="company" placeholder="Grand Resort &amp; SPA" required>
           </div>
 
           <div class="nw-field">
-            <label for="nw-phone">Телефон / Telegram</label>
-            <input id="nw-phone" type="text" name="phone" placeholder="+380 (50) 000-00-00 або @username" required>
+            <label for="nw-phone" data-i18n="cta.phoneLabel">Phone / Telegram</label>
+            <input id="nw-phone" type="text" name="phone" placeholder="+1 (555) 000-0000 or @username" required>
           </div>
 
           <div class="nw-field">
@@ -1070,7 +1419,7 @@
 
           <!-- Submit button: centered text, arrow on right that moves on hover -->
           <button type="submit" class="nw-submit-btn lc-submit-btn">
-            <span class="btn-text">Обговорити проєкт</span>
+            <span class="btn-text" data-i18n="cta.submit">Discuss Project</span>
             <span class="btn-spinner"></span>
             <span class="btn-arrow" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -1088,13 +1437,19 @@
 <footer class="site-footer nw-site-footer">
   <div class="nw-footer-inner">
     <span class="nw-footer-copy">© 2026 NextWeb Hotels</span>
-    <a href="#callback" class="nw-footer-cta" data-i18n="footer.contact">Зв'язатися з нами</a>
+    <a href="#callback" class="nw-footer-cta" data-i18n="footer.contact">Contact Us</a>
   </div>
 </footer>
 </main>
 </div>
 </div>
 
+<!-- FLOATING VIDEO WIDGET (DTPARTNERS CLONED MECHANIC) -->
+<div class="widget_video _hidden" id="nw-widget-video-wrap">
+  <div class="widget_video_close" id="nw-widget-video-close" title="Закрити"></div>
+  <video id="widget_video" data-src="/media/video/dtpartners_widget.mp4" src="/media/video/dtpartners_widget.mp4" loop muted playsinline preload="auto"></video>
+  <div class="widget_video_btn" id="nw-widget-video-btn" data-i18n="widget.cta">Consultation</div>
+</div>
 
 <div class="popup popup-callback" data-popup-name='callback' data-msgs='null'>
   <div class="back-close" data-popup-close></div>
@@ -1102,8 +1457,8 @@
   <div class="popup-content flex-v">
     <button class="form-close flex icon-close" data-popup-close aria-label="Закрити"></button>
 
-    <h2 class="title mulish-32" data-title>Залиште свої контактні дані</h2>
-    <p class="subtitle">Наш менеджер зв’яжеться з Вами.</p>
+    <h2 class="title mulish-32" data-title data-i18n="modal.title">Leave your contact details</h2>
+    <p class="subtitle" data-i18n="modal.sub">Our manager will contact you.</p>
 
     <div class="custom-form" data-cf7 >
       
@@ -1113,7 +1468,7 @@
 <fieldset class="hidden-fields-container"><input type="hidden" name="_wpcf7" value="4" /><input type="hidden" name="_wpcf7_version" value="6.1.6" /><input type="hidden" name="_wpcf7_locale" value="en_US" /><input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f4-o2" /><input type="hidden" name="_wpcf7_container_post" value="0" /><input type="hidden" name="_wpcf7_posted_data_hash" value="" />
 </fieldset>
 <label>
-  <span class="wpcf7-form-control-wrap" data-name="user_name"><input size="40" maxlength="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" required  aria-invalid="false" placeholder="Ім&#039;я*" value="" type="text" name="user_name" /></span>
+  <span class="wpcf7-form-control-wrap" data-name="user_name"><input size="40" maxlength="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" required  aria-invalid="false" placeholder="Name*" value="" type="text" name="user_name" /></span>
 </label>
 
 <label>
@@ -1122,8 +1477,8 @@
 
 
 <button  class="btn btn-orange submit"
-  type="submit"  aria-label="Отримати консультацію"  >
-      <div class="btn-text" aria-hidden="true"><span style="--i: 0;">О</span><span style="--i: 1;">т</span><span style="--i: 2;">р</span><span style="--i: 3;">и</span><span style="--i: 4;">м</span><span style="--i: 5;">а</span><span style="--i: 6;">т</span><span style="--i: 7;">и</span><span>&nbsp;</span><span style="--i: 9;">к</span><span style="--i: 10;">о</span><span style="--i: 11;">н</span><span style="--i: 12;">с</span><span style="--i: 13;">у</span><span style="--i: 14;">л</span><span style="--i: 15;">ь</span><span style="--i: 16;">т</span><span style="--i: 17;">а</span><span style="--i: 18;">ц</span><span style="--i: 19;">і</span><span style="--i: 20;">ю</span></div>
+  type="submit"  aria-label="Get Consultation"  >
+      <div class="btn-text" aria-hidden="true" data-i18n="modal.btn">Get Consultation</div>
               <div class="btn-icon mask def" aria-hidden="true"></div>
       </button><div class="wpcf7-response-output" aria-hidden="true"></div>
 </form>
@@ -1143,11 +1498,11 @@
     <button class="form-close flex icon-close" data-popup-close aria-label="Закрити"></button>
     <div class="icon"></div>
 
-    <h2 class="title mulish-32" data-title>Запит успішно надісланий</h2>
+    <h2 class="title mulish-32" data-title data-i18n="success.title">Request Successfully Sent</h2>
     
 <button  class="btn btn-orange cta"
-  type="button"  aria-label="Повернутись на головну"   data-popup-close>
-      <div class="btn-text" aria-hidden="true"><span style="--i: 0;">П</span><span style="--i: 1;">о</span><span style="--i: 2;">в</span><span style="--i: 3;">е</span><span style="--i: 4;">р</span><span style="--i: 5;">н</span><span style="--i: 6;">у</span><span style="--i: 7;">т</span><span style="--i: 8;">и</span><span style="--i: 9;">с</span><span style="--i: 10;">ь</span><span>&nbsp;</span><span style="--i: 12;">н</span><span style="--i: 13;">а</span><span>&nbsp;</span><span style="--i: 15;">г</span><span style="--i: 16;">о</span><span style="--i: 17;">л</span><span style="--i: 18;">о</span><span style="--i: 19;">в</span><span style="--i: 20;">н</span><span style="--i: 21;">у</span></div>
+  type="button"  aria-label="Return to Homepage"   data-popup-close>
+      <div class="btn-text" aria-hidden="true" data-i18n="success.btn">Return to Homepage</div>
               <div class="btn-icon mask def" aria-hidden="true"></div>
       </button>  </div>
 </div><div class="popup popup-map" data-popup-name='location'>
@@ -1170,8 +1525,8 @@
 
       
 <a  class="btn btn-orange cta"
-  href="/" target="_self"  aria-label="Отримати консультацію"   data-cta="true">
-      <div class="btn-text" aria-hidden="true"><span style="--i: 0;">О</span><span style="--i: 1;">т</span><span style="--i: 2;">р</span><span style="--i: 3;">и</span><span style="--i: 4;">м</span><span style="--i: 5;">а</span><span style="--i: 6;">т</span><span style="--i: 7;">и</span><span>&nbsp;</span><span style="--i: 9;">к</span><span style="--i: 10;">о</span><span style="--i: 11;">н</span><span style="--i: 12;">с</span><span style="--i: 13;">у</span><span style="--i: 14;">л</span><span style="--i: 15;">ь</span><span style="--i: 16;">т</span><span style="--i: 17;">а</span><span style="--i: 18;">ц</span><span style="--i: 19;">і</span><span style="--i: 20;">ю</span></div>
+  href="/" target="_self"  aria-label="Get Consultation"   data-cta="true">
+      <div class="btn-text" aria-hidden="true" data-i18n="modal.btn">Get Consultation</div>
               <div class="btn-icon mask def" aria-hidden="true"></div>
       </a>    </div>
   </div>
@@ -1399,54 +1754,131 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
 
 <script>
 (function initSmoothReviewSwitcher() {
-  const reviews = [
-    {
-      name: "Іван Демідов",
-      role: "Управляючий директор Grand Plaza Hotel",
-      quote: "«Після інтеграції 3D-туру від NextWeb час перебування гостей на сторінках номерного фонду зріс майже вдвічі. Гості бронюють номери преміум-сегменту значно впевненіше, оскільки бачать кожен куточок та краєвид з вікна у реальному часі.»",
-      avatar: "/media/gen/testimonials/avatar1.png",
-      poster: "/media/gen/case-pool.webp",
-      idx: "01 / VERIFIED"
-    },
-    {
-      name: "Олена Ковальчук",
-      role: "Маркетинг-директор Boutique Resort & Spa",
-      quote: "«Наші гості відзначили, що віртуальне занурення в інтер'єри перед бронюванням зняло всі сумніви. Прямі бронювання зросли на третину за перші 2 місяці роботи 3D-двигуна NextWeb!»",
-      avatar: "/media/gen/testimonials/avatar2.png",
-      poster: "/media/gen/case-spa.webp",
-      idx: "02 / VERIFIED"
-    },
-    {
-      name: "Олександр Кравченко",
-      role: "Генеральний менеджер City Premier Hotel",
-      quote: "«3D-візуалізація конференц-залів та номерів дозволила нам збільшити корпоративні бронювання на 45%. Клієнти бачать реальну розкіш та оснащення без виїзду на об'єкт.»",
-      avatar: "/media/gen/testimonials/avatar3.png",
-      poster: "/media/gen/case-presidential-suite.webp",
-      idx: "03 / VERIFIED"
-    },
-    {
-      name: "Вікторія Мельник",
-      role: "Керівник відділу продажів Luxury Suites",
-      quote: "«Впровадження 3D-двигуна NextWeb стало найкращим інвестиційним рішенням року. Окупність 100% за перші тижні завдяки зануренню VIP-гостей у 60 FPS.»",
-      avatar: "/media/gen/testimonials/avatar4.png",
-      poster: "/media/gen/case-rooftop-bar.webp",
-      idx: "04 / VERIFIED"
-    }
-  ];
+  const defaultReviews = {
+    uk: [
+      {
+        name: "Іван Демідов",
+        role: "Управляючий директор Grand Plaza Hotel",
+        quote: "«After integrating the NextWeb 3D tour, guest stay time on room category pages nearly doubled. Guests book premium rooms with much higher confidence because they can see every detail and window view in real time.»",
+        avatar: "/media/gen/testimonials/avatar1.png",
+        poster: "/media/gen/case-pool.webp",
+        idx: "01 / VERIFIED"
+      },
+      {
+        name: "Олена Ковальчук",
+        role: "Маркетинг-директор Boutique Resort & Spa",
+        quote: "«Наші гості відзначили, що віртуальне занурення в інтер'єри перед бронюванням зняло всі сумніви. Прямі бронювання зросли на третину за перші 2 місяці роботи 3D-двигуна NextWeb!»",
+        avatar: "/media/gen/testimonials/avatar2.png",
+        poster: "/media/gen/case-spa.webp",
+        idx: "02 / VERIFIED"
+      },
+      {
+        name: "Олександр Кравченко",
+        role: "Генеральний менеджер City Premier Hotel",
+        quote: "«3D-візуалізація конференц-залів та номерів дозволила нам збільшити корпоративні бронювання на 45%. Клієнти бачать реальну розкіш та оснащення без виїзду на об'єкт.»",
+        avatar: "/media/gen/testimonials/avatar3.png",
+        poster: "/media/gen/case-presidential-suite.webp",
+        idx: "03 / VERIFIED"
+      },
+      {
+        name: "Вікторія Мельник",
+        role: "Керівник відділу продажів Luxury Suites",
+        quote: "«Впровадження 3D-двигуна NextWeb стало найкращим інвестиційним рішенням року. Окупність 100% за перші тижні завдяки зануренню VIP-гостей у 60 FPS.»",
+        avatar: "/media/gen/testimonials/avatar4.png",
+        poster: "/media/gen/case-rooftop-bar.webp",
+        idx: "04 / VERIFIED"
+      }
+    ],
+    en: [
+      {
+        name: "Ivan Demidov",
+        role: "Managing Director, Grand Plaza Hotel",
+        quote: "«After integrating the NextWeb 3D tour, guest stay time on room category pages nearly doubled. Guests book premium rooms with much higher confidence because they can see every detail and window view in real time.»",
+        avatar: "/media/gen/testimonials/avatar1.png",
+        poster: "/media/gen/case-pool.webp",
+        idx: "01 / VERIFIED"
+      },
+      {
+        name: "Olena Kovalchuk",
+        role: "Marketing Director, Boutique Resort & Spa",
+        quote: "«Our guests noted that virtual immersion into interiors before booking removed all doubts. Direct bookings grew by a third in the first 2 months of using the NextWeb 3D engine!»",
+        avatar: "/media/gen/testimonials/avatar2.png",
+        poster: "/media/gen/case-spa.webp",
+        idx: "02 / VERIFIED"
+      },
+      {
+        name: "Alexander Kravchenko",
+        role: "General Manager, City Premier Hotel",
+        quote: "«3D visualization of conference rooms and suites allowed us to increase corporate bookings by 45%. Clients see real luxury and equipment without visiting the venue in person.»",
+        avatar: "/media/gen/testimonials/avatar3.png",
+        poster: "/media/gen/case-presidential-suite.webp",
+        idx: "03 / VERIFIED"
+      },
+      {
+        name: "Viktoria Melnyk",
+        role: "Head of Sales, Luxury Suites",
+        quote: "«Implementing the NextWeb 3D engine was the best investment decision of the year. 100% ROI in the very first weeks thanks to 60 FPS VIP guest immersion.»",
+        avatar: "/media/gen/testimonials/avatar4.png",
+        poster: "/media/gen/case-rooftop-bar.webp",
+        idx: "04 / VERIFIED"
+      }
+    ],
+    ru: [
+      {
+        name: "Иван Демидов",
+        role: "Управляющий директор Grand Plaza Hotel",
+        quote: "«После интеграции 3D-тура от NextWeb время пребывания гостей на страницах номерного фонда выросло почти вдвое. Гости бронируют номера премиум-сегмента значительно увереннее, так как видят каждый уголок и вид из окна в реальном времени.»",
+        avatar: "/media/gen/testimonials/avatar1.png",
+        poster: "/media/gen/case-pool.webp",
+        idx: "01 / VERIFIED"
+      },
+      {
+        name: "Елена Ковальчук",
+        role: "Маркетинг-директор Boutique Resort & Spa",
+        quote: "«Наши гости отметили, что виртуальное погружение в интерьеры перед бронированием сняло все сомнения. Прямые бронирования выросли на треть за первые 2 месяца работы 3D-движка NextWeb!»",
+        avatar: "/media/gen/testimonials/avatar2.png",
+        poster: "/media/gen/case-spa.webp",
+        idx: "02 / VERIFIED"
+      },
+      {
+        name: "Александр Кравченко",
+        role: "Генеральный менеджер City Premier Hotel",
+        quote: "«3D-визуализация конференц-залов и номеров позволила нам увеличить корпоративные бронирования на 45%. Клиенты видят реальную роскошь и оснащение без выезда на объект.»",
+        avatar: "/media/gen/testimonials/avatar3.png",
+        poster: "/media/gen/case-presidential-suite.webp",
+        idx: "03 / VERIFIED"
+      },
+      {
+        name: "Виктория Мельник",
+        role: "Руководитель отдела продаж Luxury Suites",
+        quote: "«Внедрение 3D-движка NextWeb стало лучшим инвестиционным решением года. Окупаемость 100% в первые же недели благодаря погружению VIP-гостей в 60 FPS.»",
+        avatar: "/media/gen/testimonials/avatar4.png",
+        poster: "/media/gen/case-rooftop-bar.webp",
+        idx: "04 / VERIFIED"
+      }
+    ]
+  };
 
+  let currentLang = localStorage.getItem('nw-lang') || 'en';
+  let reviews = defaultReviews[currentLang] || defaultReviews.en;
   let currentIdx = 0;
   let autoplayTimer = null;
   let isHovered = false;
   let isTransitioning = false;
 
-  function activateTab(index) {
-    if (isTransitioning && index === currentIdx) return;
-    isTransitioning = true;
+  window.updateReviewLang = function(lang) {
+    if (defaultReviews[lang]) {
+      reviews = defaultReviews[lang];
+      activateTab(currentIdx, true);
+    }
+  };
+
+  function activateTab(index, immediate) {
+    if (isTransitioning && index === currentIdx && !immediate) return;
     currentIdx = index;
     const data = reviews[index];
     if (!data) return;
 
-    // Update Tab Buttons immediately
     const btns = document.querySelectorAll('.tp-tab-btn');
     btns.forEach((b, i) => {
       if (i === index) {
@@ -1465,7 +1897,17 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
     const avatarEl = document.getElementById('tp-active-avatar');
     const posterEl = document.getElementById('tp-active-poster');
 
-    // 1-st Phase: Smooth Fade Out
+    if (immediate) {
+      if (nameEl) nameEl.textContent = data.name;
+      if (roleEl) roleEl.textContent = data.role;
+      if (quoteEl) quoteEl.textContent = data.quote;
+      if (idxEl) idxEl.textContent = data.idx;
+      if (avatarEl && data.avatar) avatarEl.src = data.avatar;
+      if (posterEl && data.poster) posterEl.src = data.poster;
+      return;
+    }
+
+    isTransitioning = true;
     const textEls = [nameEl, roleEl, quoteEl, idxEl].filter(Boolean);
     textEls.forEach(el => {
       el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
@@ -1485,7 +1927,6 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
       posterEl.style.transform = 'scale(1.05)';
     }
 
-    // 2-nd Phase: Update sources & Smooth Fade In after 250ms
     setTimeout(() => {
       if (nameEl) nameEl.textContent = data.name;
       if (roleEl) roleEl.textContent = data.role;
@@ -1540,7 +1981,7 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
         const nextIdx = (currentIdx + 1) % reviews.length;
         activateTab(nextIdx);
       }
-    }, 8000); // 8 SECONDS AUTOPLAY
+    }, 8000);
   }
 
   function stopAutoplay() {
@@ -1568,13 +2009,15 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
       });
     });
 
-    activateTab(0);
+    activateTab(0, true);
     startAutoplay();
   }
 
-  if (document.readyState === 'complete') setupSwitcher();
-  else window.addEventListener('load', setupSwitcher);
-  document.addEventListener('DOMContentLoaded', setupSwitcher);
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setupSwitcher();
+  } else {
+    document.addEventListener('DOMContentLoaded', setupSwitcher);
+  }
 })();
 </script>
 
@@ -2101,208 +2544,94 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
 })();
 </script>
 
-<!-- ==================== i18n Language Switcher ==================== -->
+
+
 <script>
-(function initI18n() {
-  var translations = {
-    uk: {
-      'nav.projects': 'Проєкти',
-      'nav.benefits': 'Переваги',
-      'nav.reviews': 'Відгуки',
-      'nav.contacts': 'Контакти',
-      'cta.calculate': 'Отримати розрахунок',
-      'hero.title': 'Гість обирає готель очима.<br><span class="accent-title">Покажіть йому все — до бронювання.</span>',
-      'hero.watchDemo': 'Дивитись демо',
-      'hero.sub': 'Інтерактивні 3D-відеотури головними зонами готелю з ефектом присутності. Гість «проходить» лобі, номер і SPA — і бронює напряму, а не в агрегаторі.',
-      'footer.contact': "Зв'язатися з нами",
-      'modal.title': 'Залиште свої контактні дані',
-      'modal.sub': 'Наш менеджер зв\'яжеться з Вами.',
-      'modal.name': "Ім'я*",
-      'modal.btn': 'Отримати консультацію',
-      'section.cases': 'Наші проєкти',
-      'section.seeAll': 'Дивитись всі (5 проєктів)',
-      'section.benefits': 'Наші переваги',
-      'section.testimonial': 'Що кажуть наші клієнти',
-      'section.partners': 'Наші партнери та готельні мережі',
-      'cta.title': 'Готові перевести<br>ваш готель у<br>3D-формат?',
-      'cta.desc': 'Залиште заявку на безкоштовний аудит вашого сайту. Ми розрахуємо потенціал зростання конверсії та підберемо краще рішення для вашого готельного комплексу.',
-      'cta.tag': 'Безкоштовний аудит',
-      'cta.nameLabel': "Ім'я",
-      'cta.namePh': 'Олександр Петренко',
-      'cta.companyLabel': 'Назва готелю / компанія',
-      'cta.companyPh': 'Grand Resort & SPA',
-      'cta.phoneLabel': 'Телефон / Telegram',
-      'cta.phonePh': '+380 (50) 000-00-00 або @username',
-      'cta.emailLabel': 'Email',
-      'cta.emailPh': 'hotel@example.com',
-      'cta.submit': 'Обговорити проєкт'
-    },
-    en: {
-      'nav.projects': 'Projects',
-      'nav.benefits': 'Benefits',
-      'nav.reviews': 'Reviews',
-      'nav.contacts': 'Contacts',
-      'cta.calculate': 'Get a Quote',
-      'hero.title': 'Guests choose a hotel with their eyes.<br><span class="accent-title">Show them everything — before booking.</span>',
-      'hero.watchDemo': 'Watch Demo',
-      'hero.sub': 'Interactive 3D video tours of the hotel\'s key areas with an immersive presence effect. Guests "walk through" the lobby, room and SPA — and book directly, not via aggregators.',
-      'footer.contact': 'Contact Us',
-      'modal.title': 'Leave your contact details',
-      'modal.sub': 'Our manager will contact you.',
-      'modal.name': 'Name*',
-      'modal.btn': 'Get Consultation',
-      'section.cases': 'Our Projects',
-      'section.seeAll': 'See all (5 projects)',
-      'section.benefits': 'Our Advantages',
-      'section.testimonial': 'What our clients say',
-      'section.partners': 'Our Partners & Hotel Networks',
-      'cta.title': 'Ready to bring<br>your hotel into<br>3D format?',
-      'cta.desc': 'Leave a request for a free audit of your website. We will calculate the conversion growth potential and select the best solution for your hotel complex.',
-      'cta.tag': 'Free Audit',
-      'cta.nameLabel': 'Name',
-      'cta.namePh': 'Alexander Smith',
-      'cta.companyLabel': 'Hotel Name / Company',
-      'cta.companyPh': 'Grand Resort & SPA',
-      'cta.phoneLabel': 'Phone / Telegram',
-      'cta.phonePh': '+1 (555) 000-0000 or @username',
-      'cta.emailLabel': 'Email',
-      'cta.emailPh': 'hotel@example.com',
-      'cta.submit': 'Discuss Project'
-    },
-    ru: {
-      'nav.projects': 'Проекты',
-      'nav.benefits': 'Преимущества',
-      'nav.reviews': 'Отзывы',
-      'nav.contacts': 'Контакты',
-      'cta.calculate': 'Получить расчёт',
-      'hero.title': 'Гость выбирает отель глазами.<br><span class="accent-title">Покажите ему всё — до бронирования.</span>',
-      'hero.watchDemo': 'Смотреть демо',
-      'hero.sub': 'Интерактивные 3D-видеотуры по ключевым зонам отеля с эффектом присутствия. Гость «проходит» лобби, номер и SPA — и бронирует напрямую, а не через агрегатор.',
-      'footer.contact': 'Связаться с нами',
-      'modal.title': 'Оставьте свои контактные данные',
-      'modal.sub': 'Наш менеджер свяжется с Вами.',
-      'modal.name': 'Имя*',
-      'modal.btn': 'Получить консультацию',
-      'section.cases': 'Наши проекты',
-      'section.seeAll': 'Смотреть все (5 проектов)',
-      'section.benefits': 'Наши преимущества',
-      'section.testimonial': 'Что говорят наши клиенты',
-      'section.partners': 'Наши партнёры и гостиничные сети',
-      'cta.title': 'Готовы перевести<br>ваш отель в<br>3D-формат?',
-      'cta.desc': 'Оставьте заявку на бесплатный аудит вашего сайта. Мы рассчитаем потенциал роста конверсии и подберём лучшее решение для вашего гостиничного комплекса.',
-      'cta.tag': 'Бесплатный аудит',
-      'cta.nameLabel': 'Имя',
-      'cta.namePh': 'Александр Петренко',
-      'cta.companyLabel': 'Название отеля / компания',
-      'cta.companyPh': 'Grand Resort & SPA',
-      'cta.phoneLabel': 'Телефон / Telegram',
-      'cta.phonePh': '+7 (900) 000-00-00 или @username',
-      'cta.emailLabel': 'Email',
-      'cta.emailPh': 'hotel@example.com',
-      'cta.submit': 'Обсудить проект'
+  (function initFloatingVideoWidget() {
+    var wrap = document.getElementById('nw-widget-video-wrap');
+    var video = document.getElementById('widget_video');
+    var closeBtn = document.getElementById('nw-widget-video-close');
+    var ctaBtn = document.getElementById('nw-widget-video-btn');
+    if (!wrap || !video) return;
+
+    var isMobile = function() { return window.innerWidth <= 768; };
+    var hasShownOnMobile = false;
+
+    function showWidget() {
+      wrap.classList.remove('_hidden');
+      video.muted = true;
+      var p = video.play();
+      if (p && p.catch) p.catch(function(){});
     }
-  };
 
-  var currentLang = localStorage.getItem('nw-lang') || 'en';
-
-  function applyLang(lang) {
-    if (!translations[lang]) return;
-    currentLang = lang;
-    localStorage.setItem('nw-lang', lang);
-    document.documentElement.lang = lang;
-    var t = translations[lang];
-
-    // Update all data-i18n elements
-    document.querySelectorAll('[data-i18n]').forEach(function(el) {
-      var key = el.getAttribute('data-i18n');
-      if (t[key] !== undefined) el.textContent = t[key];
-    });
-
-    // Update all data-i18n-html elements (allow inner HTML)
-    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
-      var key = el.getAttribute('data-i18n-html');
-      if (t[key] !== undefined) el.innerHTML = t[key];
-    });
-
-    // Hero subtitle
-    var heroSub = document.querySelector('.hero-sub');
-    if (heroSub && t['hero.sub']) heroSub.textContent = t['hero.sub'];
-
-    // Modal form elements
-    var modalTitle = document.querySelector('.popup-callback .title');
-    if (modalTitle && t['modal.title']) modalTitle.textContent = t['modal.title'];
-    var modalSub = document.querySelector('.popup-callback .subtitle');
-    if (modalSub && t['modal.sub']) modalSub.textContent = t['modal.sub'];
-    var modalNameInput = document.querySelector('.popup-callback input[name="your-name"], .popup-callback input[name="name"]');
-    if (modalNameInput && t['modal.name']) modalNameInput.setAttribute('placeholder', t['modal.name']);
-    var modalBtn = document.querySelector('.popup-callback .submit span, .popup-callback .submit .btn-text');
-    if (modalBtn && t['modal.btn']) modalBtn.textContent = t['modal.btn'];
-
-    // Sections headings
-    var casesH = document.querySelector('#cases h2, .projects h2');
-    if (casesH && t['section.cases']) casesH.textContent = t['section.cases'];
-    var seeAllBtn = document.querySelector('.nw-all-cases-btn .btn-text');
-    if (seeAllBtn && t['section.seeAll']) seeAllBtn.textContent = t['section.seeAll'];
-    var benefitsH = document.querySelector('#benefits h2');
-    if (benefitsH && t['section.benefits']) benefitsH.textContent = t['section.benefits'];
-    var testimonialH = document.querySelector('#testimonials-partners h2');
-    if (testimonialH && t['section.testimonial']) testimonialH.textContent = t['section.testimonial'];
-    var partnersH = document.querySelector('.nw-partners-strip h2, .nw-brands-section h2');
-    if (partnersH && t['section.partners']) partnersH.textContent = t['section.partners'];
-
-    // CTA Lead capture section
-    var ctaH2 = document.querySelector('#lead-capture h2');
-    if (ctaH2 && t['cta.title']) ctaH2.innerHTML = t['cta.title'];
-    var ctaP = document.querySelector('#lead-capture .nw-cta-left p');
-    if (ctaP && t['cta.desc']) ctaP.textContent = t['cta.desc'];
-    var ctaTag = document.querySelector('#lead-capture .nw-cta-right p');
-    if (ctaTag && t['cta.tag']) ctaTag.textContent = t['cta.tag'];
-    
-    var nameLabel = document.querySelector('label[for="nw-name"]');
-    if (nameLabel && t['cta.nameLabel']) nameLabel.textContent = t['cta.nameLabel'];
-    var nameInput = document.getElementById('nw-name');
-    if (nameInput && t['cta.namePh']) nameInput.placeholder = t['cta.namePh'];
-
-    var companyLabel = document.querySelector('label[for="nw-company"]');
-    if (companyLabel && t['cta.companyLabel']) companyLabel.textContent = t['cta.companyLabel'];
-    var companyInput = document.getElementById('nw-company');
-    if (companyInput && t['cta.companyPh']) companyInput.placeholder = t['cta.companyPh'];
-
-    var phoneLabel = document.querySelector('label[for="nw-phone"]');
-    if (phoneLabel && t['cta.phoneLabel']) phoneLabel.textContent = t['cta.phoneLabel'];
-    var phoneInput = document.getElementById('nw-phone');
-    if (phoneInput && t['cta.phonePh']) phoneInput.placeholder = t['cta.phonePh'];
-
-    var emailLabel = document.querySelector('label[for="nw-email"]');
-    if (emailLabel && t['cta.emailLabel']) emailLabel.textContent = t['cta.emailLabel'];
-    var emailInput = document.getElementById('nw-email');
-    if (emailInput && t['cta.emailPh']) emailInput.placeholder = t['cta.emailPh'];
-
-    var submitBtnText = document.querySelector('#lead-audit-form .nw-submit-btn .btn-text');
-    if (submitBtnText && t['cta.submit']) submitBtnText.textContent = t['cta.submit'];
-
-    // Update active state of all lang buttons
-    document.querySelectorAll('.nw-lang-btn').forEach(function(btn) {
-      btn.classList.toggle('is-active', btn.getAttribute('data-lang') === lang);
-    });
-  }
-
-  // Delegate all lang button clicks
-  document.addEventListener('click', function(e) {
-    var btn = e.target.closest('.nw-lang-btn');
-    if (btn) {
-      var lang = btn.getAttribute('data-lang');
-      if (lang) applyLang(lang);
+    function hideWidget() {
+      wrap.classList.add('_hidden');
+      wrap.classList.remove('_active');
+      video.pause();
+      video.muted = true;
     }
-  });
 
-  // Init on load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() { applyLang(currentLang); });
-  } else {
-    applyLang(currentLang);
-  }
-})();
+    // Desktop: Show on load / preloader completion
+    // Mobile: Show when scrolled past hero title to subtitle/CTA button
+    if (!isMobile()) {
+      setTimeout(showWidget, 400);
+    } else {
+      var handleMobileScroll = function() {
+        if (window.scrollY > 100 || (document.querySelector('.intro .nw-hero-cta') && document.querySelector('.intro .nw-hero-cta').getBoundingClientRect().top < window.innerHeight * 0.85)) {
+          if (wrap.classList.contains('_hidden') && !hasShownOnMobile) {
+            hasShownOnMobile = true;
+            showWidget();
+          }
+        }
+      };
+      window.addEventListener('scroll', handleMobileScroll, { passive: true });
+      setTimeout(handleMobileScroll, 500);
+    }
+
+    // Video click: toggle expand & unmute audio
+    video.addEventListener('click', function(e) {
+      if (!wrap.classList.contains('_active')) {
+        wrap.classList.add('_active');
+        video.currentTime = 0;
+        video.muted = false;
+        var p = video.play();
+        if (p && p.catch) p.catch(function(){});
+      }
+    });
+
+    // Close/Minimize button click
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        if (wrap.classList.contains('_active')) {
+          wrap.classList.remove('_active');
+          video.muted = true;
+        } else {
+          hideWidget();
+        }
+      });
+    }
+
+    // CTA Button click
+    if (ctaBtn) {
+      ctaBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        wrap.classList.remove('_active');
+        video.muted = true;
+
+        var requestPopup = document.querySelector('.popup[data-popup-name="popup-request"]') || document.querySelector('.popup');
+        if (requestPopup && typeof window.openModal === 'function') {
+          window.openModal(requestPopup);
+        } else {
+          var targetForm = document.getElementById('lead-capture') || document.querySelector('footer');
+          if (targetForm) {
+            targetForm.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    }
+  })();
 </script>
 
 </body>
