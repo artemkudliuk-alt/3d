@@ -650,6 +650,61 @@
     bindButtons();
     window.nwApplyLang(currentLang);
   }
+
+// ==================== Smooth Menu Navigation with ScrollSmoother & Header Offset ====================
+(function initSmoothMenuNavigation() {
+  function scrollToSection(targetId) {
+    var targetEl = document.querySelector(targetId);
+    if (!targetEl) return;
+
+    var header = document.querySelector('header');
+    var headerHeight = header ? header.offsetHeight : 80;
+
+    // Close mobile menu if opened
+    if (header) {
+      header.classList.remove('opened');
+      var burgerEl = document.querySelector('.header-burger');
+      if (burgerEl) burgerEl.classList.remove('active');
+    }
+
+    // Try GSAP ScrollSmoother instance first
+    var smoother = (window.ScrollSmoother && window.ScrollSmoother.get()) || window.smoother;
+
+    if (smoother && typeof smoother.scrollTo === 'function') {
+      smoother.scrollTo(targetEl, true, 'top ' + (headerHeight + 20) + 'px');
+    } else if (window.gsap && window.gsap.to) {
+      window.gsap.to(window, {
+        duration: 1,
+        scrollTo: { y: targetEl, offsetY: headerHeight + 20 },
+        ease: 'power2.out'
+      });
+    } else {
+      var elementPosition = targetEl.getBoundingClientRect().top + window.pageYOffset;
+      var offsetPosition = elementPosition - headerHeight - 20;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    
+    var hash = link.getAttribute('href');
+    if (hash && hash !== '#' && hash.length > 1) {
+      var targetEl = document.querySelector(hash);
+      if (targetEl) {
+        e.preventDefault();
+        e.stopPropagation();
+        scrollToSection(hash);
+      }
+    }
+  }, true);
+})();
+
 })();
 </script>
 </header>  <div class="smooth-wrapper" id="smooth-wrapper">
