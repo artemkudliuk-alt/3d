@@ -651,39 +651,33 @@
     window.nwApplyLang(currentLang);
   }
 
-// ==================== Smooth Menu Navigation with ScrollSmoother & Header Offset ====================
+// ==================== Precise Menu Navigation for Projects (Screen 2) ====================
 (function initSmoothMenuNavigation() {
   function scrollToSection(targetId) {
     var targetEl = document.querySelector(targetId);
     if (!targetEl) return;
 
     var header = document.querySelector('header');
-    var headerHeight = header ? header.offsetHeight : 80;
+    var headerHeight = header ? header.offsetHeight : 60;
 
-    // Close mobile menu if opened
+    // Calculate exact pixel Y coordinate relative to document
+    var elementPosition = targetEl.getBoundingClientRect().top + window.pageYOffset;
+    var targetY = Math.max(0, elementPosition - headerHeight - 10);
+
+    // Close mobile drawer if open
     if (header) {
       header.classList.remove('opened');
       var burgerEl = document.querySelector('.header-burger');
       if (burgerEl) burgerEl.classList.remove('active');
     }
 
-    // Try GSAP ScrollSmoother instance first
+    // Scroll using GSAP ScrollSmoother (numeric Y) or native smooth scroll
     var smoother = (window.ScrollSmoother && window.ScrollSmoother.get()) || window.smoother;
-
     if (smoother && typeof smoother.scrollTo === 'function') {
-      smoother.scrollTo(targetEl, true, 'top ' + (headerHeight + 20) + 'px');
-    } else if (window.gsap && window.gsap.to) {
-      window.gsap.to(window, {
-        duration: 1,
-        scrollTo: { y: targetEl, offsetY: headerHeight + 20 },
-        ease: 'power2.out'
-      });
+      smoother.scrollTo(targetY, true);
     } else {
-      var elementPosition = targetEl.getBoundingClientRect().top + window.pageYOffset;
-      var offsetPosition = elementPosition - headerHeight - 20;
-
       window.scrollTo({
-        top: Math.max(0, offsetPosition),
+        top: targetY,
         behavior: 'smooth'
       });
     }
@@ -699,6 +693,7 @@
       if (targetEl) {
         e.preventDefault();
         e.stopPropagation();
+        if (e.stopImmediatePropagation) e.stopImmediatePropagation();
         scrollToSection(hash);
       }
     }
