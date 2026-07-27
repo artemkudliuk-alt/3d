@@ -3477,3 +3477,10 @@ section.testimonials-partners,
   display: block !important;
   margin: 0 auto !important;
 }
+/* Hide floating presenter video widget per user request */
+.widget_video {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
