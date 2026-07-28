@@ -1526,7 +1526,11 @@
 </div>
 
 <!-- FLOATING VIDEO WIDGET (DTPARTNERS CLONED MECHANIC) -->
-<!-- Floating video widget removed per user request -->
+<div class="widget_video _hidden" id="nw-widget-video-wrap">
+  <div class="widget_video_close" id="nw-widget-video-close" title="Close"></div>
+  <video id="widget_video" data-src="/media/video/avatar.mp4" src="/media/video/avatar.mp4" loop muted playsinline preload="auto"></video>
+  <div class="widget_video_btn" id="nw-widget-video-btn" data-i18n="widget.cta">Consultation</div>
+</div>
 
 <div class="popup popup-callback" data-popup-name='callback' data-msgs='null'>
   <div class="back-close" data-popup-close></div>
@@ -2586,6 +2590,94 @@ var BAMBOO = {"baseUrl":"","ajaxUrl":"/wp-admin/admin-ajax.php","themeUrl":"/wp-
 
 
 
+
+<script>
+  (function initFloatingVideoWidget() {
+    var wrap = document.getElementById('nw-widget-video-wrap');
+    var video = document.getElementById('widget_video');
+    var closeBtn = document.getElementById('nw-widget-video-close');
+    var ctaBtn = document.getElementById('nw-widget-video-btn');
+    if (!wrap || !video) return;
+
+    var isMobile = function() { return window.innerWidth <= 768; };
+    var hasShownOnMobile = false;
+
+    function showWidget() {
+      wrap.classList.remove('_hidden');
+      video.muted = true;
+      var p = video.play();
+      if (p && p.catch) p.catch(function(){});
+    }
+
+    function hideWidget() {
+      wrap.classList.add('_hidden');
+      wrap.classList.remove('_active');
+      video.pause();
+      video.muted = true;
+    }
+
+    // Desktop: Show on load
+    // Mobile: Show when scrolled past hero
+    if (!isMobile()) {
+      setTimeout(showWidget, 400);
+    } else {
+      var handleMobileScroll = function() {
+        if (window.scrollY > 100 || (document.querySelector('.intro .nw-hero-cta') && document.querySelector('.intro .nw-hero-cta').getBoundingClientRect().top < window.innerHeight * 0.85)) {
+          if (wrap.classList.contains('_hidden') && !hasShownOnMobile) {
+            hasShownOnMobile = true;
+            showWidget();
+          }
+        }
+      };
+      window.addEventListener('scroll', handleMobileScroll, { passive: true });
+      setTimeout(handleMobileScroll, 500);
+    }
+
+    // Video click: toggle expand & unmute audio
+    video.addEventListener('click', function(e) {
+      if (!wrap.classList.contains('_active')) {
+        wrap.classList.add('_active');
+        video.currentTime = 0;
+        video.muted = false;
+        var p = video.play();
+        if (p && p.catch) p.catch(function(){});
+      }
+    });
+
+    // Close/Minimize button click
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        if (wrap.classList.contains('_active')) {
+          wrap.classList.remove('_active');
+          video.muted = true;
+        } else {
+          hideWidget();
+        }
+      });
+    }
+
+    // CTA Button click
+    if (ctaBtn) {
+      ctaBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        wrap.classList.remove('_active');
+        video.muted = true;
+
+        var requestPopup = document.querySelector('.popup[data-popup-name="popup-request"]') || document.querySelector('.popup');
+        if (requestPopup && typeof window.openModal === 'function') {
+          window.openModal(requestPopup);
+        } else {
+          var targetForm = document.getElementById('lead-capture') || document.querySelector('footer');
+          if (targetForm) {
+            targetForm.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    }
+  })();
+</script>
 
 </body>
 </html>
