@@ -17,7 +17,7 @@
   </noscript>
   <![endif]-->
   <style type="text/css">
-    /* Reset styles */
+    /* Global Resets */
     html, body { margin: 0 !important; padding: 0 !important; height: 100% !important; width: 100% !important; background-color: #08080a; }
     * { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; box-sizing: border-box; }
     div[style*="margin: 16px 0"] { margin: 0 !important; }
@@ -25,23 +25,24 @@
     table { border-spacing: 0 !important; border-collapse: collapse !important; margin: 0 auto !important; }
     img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; display: block; }
     a { text-decoration: none; }
+    p { margin: 0 0 12px 0; }
 
-    /* Hover effects for modern mail clients */
+    /* Hover States */
     .btn-gold:hover { background-color: #ffffff !important; color: #08080a !important; }
     .btn-white:hover { background-color: #d4af37 !important; color: #08080a !important; }
 
-    /* Responsive styles for mobile email clients */
+    /* Mobile Responsive Layout */
     @media screen and (max-width: 600px) {
       .email-container { width: 100% !important; margin: auto !important; border-radius: 0 !important; }
-      .content-padding { padding: 28px 20px !important; }
-      .header-title { font-size: 22px !important; line-height: 28px !important; margin-bottom: 20px !important; }
+      .content-padding { padding: 24px 18px !important; }
+      .header-title { font-size: 22px !important; line-height: 30px !important; margin-bottom: 20px !important; }
       
-      .stat-card-row { display: block !important; width: 100% !important; margin-bottom: 28px !important; }
-      .stat-badge-td { display: block !important; width: 100% !important; padding-right: 0 !important; margin-bottom: 12px !important; text-align: left !important; }
-      .stat-text-td { display: block !important; width: 100% !important; padding-left: 0 !important; text-align: left !important; }
-      .stat-badge-val { display: inline-block !important; text-align: center !important; min-width: 130px !important; }
+      .stat-card-table { margin-bottom: 28px !important; }
+      .stat-badge-td { display: block !important; width: 100% !important; padding-right: 0 !important; margin-bottom: 10px !important; }
+      .stat-text-td { display: block !important; width: 100% !important; padding-left: 0 !important; }
+      .stat-badge-val { display: inline-block !important; width: auto !important; padding: 10px 20px !important; }
 
-      .btn-mobile { width: 100% !important; display: block !important; box-sizing: border-box !important; text-align: center !important; padding: 18px 20px !important; font-size: 15px !important; }
+      .btn-mobile { width: 100% !important; display: block !important; box-sizing: border-box !important; text-align: center !important; padding: 18px 16px !important; font-size: 15px !important; }
     }
   </style>
 </head>
@@ -54,16 +55,16 @@
   </div>
 
   <!-- Email Outer Wrapper -->
-  <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #08080a; padding: 36px 12px;">
+  <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #08080a; padding: 32px 12px;">
     <tr>
       <td align="center">
 
         <!-- Container (600px Max Width) -->
-        <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" class="email-container" style="background-color: #121216; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; width: 600px; max-width: 600px;">
+        <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" class="email-container" style="background-color: #121216; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; overflow: hidden; width: 600px; max-width: 600px;">
 
           <!-- BRAND HEADER -->
           <tr>
-            <td style="padding: 36px 44px 28px 44px; background: linear-gradient(180deg, #191924 0%, #121216 100%); border-bottom: 1px solid rgba(255,255,255,0.06);" class="content-padding">
+            <td style="padding: 32px 40px 24px 40px; background: linear-gradient(180deg, #191924 0%, #121216 100%); border-bottom: 1px solid rgba(255,255,255,0.06);" class="content-padding">
               <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                 <tr>
                   <td>
@@ -80,44 +81,45 @@
 
           <!-- MAIN CONTENT BODY -->
           <tr>
-            <td style="padding: 44px 44px 36px 44px;" class="content-padding">
+            <td style="padding: 40px 40px 36px 40px;" class="content-padding">
               
               <!-- Greeting -->
-              <h1 class="header-title" style="margin: 0 0 24px 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 26px; line-height: 34px; font-weight: 700; color: #ffffff;">
+              <h1 class="header-title" style="margin: 0 0 24px 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 25px; line-height: 33px; font-weight: 700; color: #ffffff;">
                 Здравствуйте, {{manager_name}}!
               </h1>
 
-              <!-- Intro Paragraphs -->
-              <p style="margin: 0 0 20px 0; font-size: 15px; line-height: 26px; color: #c8c8d0;">
+              <!-- Intro Paragraph 1 -->
+              <p style="margin: 0 0 18px 0; font-size: 15px; line-height: 25px; color: #c8c8d0;">
                 Современный гость избалован стандартными фотографиями. Вы наверняка замечали: даже самые красивые и профессиональные снимки номеров часто не передают реальный масштаб, атмосферу и уют отеля. Гости хотят «пощупать» пространство до того, как оплатят бронь в <strong style="color: #ffffff;">{{hotel_name}}</strong>.
               </p>
 
-              <p style="margin: 0 0 36px 0; font-size: 15px; line-height: 26px; color: #c8c8d0;">
+              <!-- Intro Paragraph 2 -->
+              <p style="margin: 0 0 32px 0; font-size: 15px; line-height: 25px; color: #c8c8d0;">
                 Мы в <strong style="color: #ffffff;">NextWeb Hotels</strong> создали решение, которое стирает барьер между экраном телефона и реальным ощущением присутствия.
               </p>
 
               <!-- WHAT WE OFFER BOX -->
-              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #181822; border-left: 4px solid #d4af37; border-radius: 0 12px 12px 0; margin-bottom: 36px;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #181822; border-left: 4px solid #d4af37; border-radius: 0 12px 12px 0; margin-bottom: 32px;">
                 <tr>
-                  <td style="padding: 24px 28px;">
+                  <td style="padding: 24px 26px;">
                     <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; color: #d4af37; text-transform: uppercase; margin-bottom: 12px;">Что мы предлагаем?</div>
-                    <p style="margin: 0 0 12px 0; font-size: 15px; line-height: 24px; color: #ffffff; font-weight: 600;">
+                    <div style="font-size: 15px; line-height: 24px; color: #ffffff; font-weight: 600; margin-bottom: 10px;">
                       Интерактивные 3D-видеотуры по ключевым зонам вашего отеля (номера, SPA, ресторан, лобби) с бесшовным монтажом и кинематографичными пролетами.
-                    </p>
-                    <p style="margin: 0; font-size: 14px; line-height: 22px; color: #a4a4b0;">
+                    </div>
+                    <div style="font-size: 14px; line-height: 22px; color: #a4a4b0;">
                       Это не просто скучные панорамы 360°, которые нужно долго крутить пальцем. Это динамичный, сочный видео-экспириенс нового поколения, создающий мгновенный вау-эффект.
-                    </p>
+                    </div>
                   </td>
                 </tr>
               </table>
 
               <!-- GIF DEMO ANIMATION CARD -->
-              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 16px;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 14px;">
                 <tr>
                   <td align="center" style="background: #08080a; padding: 10px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12);">
                     <a href="https://nextwebhotels.com/#cases" target="_blank" style="display: block; text-decoration: none;">
                       <!-- Optimized Animated GIF with built-in Play Button overlay -->
-                      <img src="/media/email-demo.gif" alt="3D Video Tour Preview - Нажмите для просмотра" width="492" style="width: 100%; max-width: 492px; height: auto; border-radius: 10px; display: block;" />
+                      <img src="/media/email-demo.gif" alt="3D Video Tour Preview - Нажмите для просмотра" width="500" style="width: 100%; max-width: 500px; height: auto; border-radius: 10px; display: block;" />
                     </a>
                   </td>
                 </tr>
@@ -131,68 +133,68 @@
               </div>
 
               <!-- CTA BUTTON 1 -->
-              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 44px;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-top: 10px; margin-bottom: 36px;">
                 <tr>
                   <td align="center">
-                    <a href="https://nextwebhotels.com/#cases" target="_blank" class="btn-white btn-mobile" style="display: inline-block; background-color: #f2f1ed; color: #08080a; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.03em; padding: 18px 40px; border-radius: 10px; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,0.35);">
+                    <a href="https://nextwebhotels.com/#cases" target="_blank" class="btn-white btn-mobile" style="display: inline-block; background-color: #f2f1ed; color: #08080a; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.03em; padding: 18px 36px; border-radius: 10px; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,0.35);">
                       👉 Посмотреть, как это выглядит в движении
                     </a>
                   </td>
                 </tr>
               </table>
 
-              <div style="height: 1px; background: rgba(255,255,255,0.08); margin-bottom: 40px;"></div>
+              <div style="height: 1px; background: rgba(255,255,255,0.08); margin-bottom: 36px;"></div>
 
               <!-- NUMBERS & BENEFITS SECTION HEADER -->
-              <h2 style="margin: 0 0 32px 0; font-size: 20px; font-weight: 700; color: #ffffff; line-height: 26px;">
+              <h2 style="margin: 0 0 28px 0; font-size: 20px; font-weight: 700; color: #ffffff; line-height: 26px;">
                 Что это дает вашему отелю на цифрах?
               </h2>
 
               <!-- STAT CARD 1: +45% -->
-              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 32px;" class="stat-card-row">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 28px;" class="stat-card-table">
                 <tr>
-                  <td width="145" valign="top" class="stat-badge-td" style="padding-right: 20px;">
-                    <div class="stat-badge-val" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 24px; font-weight: 800; color: #d4af37; line-height: 32px; background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.3); border-radius: 10px; padding: 12px 18px; text-align: center; white-space: nowrap;">+45%</div>
+                  <td width="135" valign="top" class="stat-badge-td" style="padding-right: 18px;">
+                    <div class="stat-badge-val" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 22px; font-weight: 800; color: #d4af37; line-height: 26px; background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.3); border-radius: 8px; padding: 12px 14px; text-align: center; white-space: nowrap;">+45%</div>
                   </td>
                   <td valign="top" class="stat-text-td" style="padding-top: 2px;">
-                    <div style="font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 6px; line-height: 22px;">к времени пребывания на сайте</div>
-                    <div style="font-size: 14px; line-height: 22px; color: #a4a4b0;">Гости залипают на интерактивный контент, изучая детали, что сильно поднимает сайт в поисковой выдаче Google.</div>
+                    <div style="font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 8px; line-height: 22px;">к времени пребывания на сайте</div>
+                    <div style="font-size: 14px; line-height: 22px; color: #a4a4b0; margin: 0;">Гости залипают на интерактивный контент, изучая детали, что сильно поднимает сайт в поисковой выдаче Google.</div>
                   </td>
                 </tr>
               </table>
 
               <!-- STAT CARD 2: Direct -->
-              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 32px;" class="stat-card-row">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 28px;" class="stat-card-table">
                 <tr>
-                  <td width="145" valign="top" class="stat-badge-td" style="padding-right: 20px;">
-                    <div class="stat-badge-val" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 800; color: #d4af37; line-height: 32px; background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.3); border-radius: 10px; padding: 12px 18px; text-align: center; white-space: nowrap;">Direct</div>
+                  <td width="135" valign="top" class="stat-badge-td" style="padding-right: 18px;">
+                    <div class="stat-badge-val" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 19px; font-weight: 800; color: #d4af37; line-height: 26px; background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.3); border-radius: 8px; padding: 12px 14px; text-align: center; white-space: nowrap;">Direct</div>
                   </td>
                   <td valign="top" class="stat-text-td" style="padding-top: 2px;">
-                    <div style="font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 6px; line-height: 22px;">Увеличение прямых продаж</div>
-                    <div style="font-size: 14px; line-height: 22px; color: #a4a4b0;">Когда гость видит реальный вид из окна Presidential Suite или глубину бассейна в SPA, он принимает решение о бронировании быстрее и без лишних вопросов службе поддержки.</div>
+                    <div style="font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 8px; line-height: 22px;">Увеличение прямых продаж</div>
+                    <div style="font-size: 14px; line-height: 22px; color: #a4a4b0; margin: 0;">Когда гость видит реальный вид из окна Presidential Suite или глубину бассейна в SPA, он принимает решение о бронировании быстрее и без лишних вопросов службе поддержки.</div>
                   </td>
                 </tr>
               </table>
 
               <!-- STAT CARD 3: UX 2.0 -->
-              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 44px;" class="stat-card-row">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 36px;" class="stat-card-table">
                 <tr>
-                  <td width="145" valign="top" class="stat-badge-td" style="padding-right: 20px;">
-                    <div class="stat-badge-val" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 800; color: #d4af37; line-height: 32px; background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.3); border-radius: 10px; padding: 12px 18px; text-align: center; white-space: nowrap;">UX 2.0</div>
+                  <td width="135" valign="top" class="stat-badge-td" style="padding-right: 18px;">
+                    <div class="stat-badge-val" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 19px; font-weight: 800; color: #d4af37; line-height: 26px; background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.3); border-radius: 8px; padding: 12px 14px; text-align: center; white-space: nowrap;">UX 2.0</div>
                   </td>
                   <td valign="top" class="stat-text-td" style="padding-top: 2px;">
-                    <div style="font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 6px; line-height: 22px;">Отстройка от конкурентов</div>
-                    <div style="font-size: 14px; line-height: 22px; color: #a4a4b0;">Пока другие используют классические галереи, вы предлагаете технологичный и тактильный UX.</div>
+                    <div style="font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 8px; line-height: 22px;">Отстройка от конкурентов</div>
+                    <div style="font-size: 14px; line-height: 22px; color: #a4a4b0; margin: 0;">Пока другие используют классические галереи, вы предлагаете технологичный и тактильный UX.</div>
                   </td>
                 </tr>
               </table>
 
               <!-- HOW IT WORKS SECTION -->
-              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #171722; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; margin-bottom: 40px;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #171722; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; margin-top: 12px; margin-bottom: 36px;">
                 <tr>
-                  <td style="padding: 28px 30px;">
-                    <div style="font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 12px;">⚡ Как это работает на вашем сайте?</div>
-                    <p style="margin: 0 0 12px 0; font-size: 14px; line-height: 22px; color: #c8c8d0;">
+                  <td style="padding: 28px 28px 28px 28px;">
+                    <div style="font-size: 16px; font-weight: 700; color: #ffffff; line-height: 24px; margin-bottom: 14px;">⚡ Как это работает на вашем сайте?</div>
+                    <p style="margin: 0 0 14px 0; font-size: 14px; line-height: 22px; color: #c8c8d0;">
                       Внедрение занимает <strong style="color: #ffffff;">всего пару часов</strong>. Мы даем готовый легкий код, который легко встраивается на любую платформу (Tilda, WordPress или самописный движок) и абсолютно не тормозит загрузку сайта ни на десктопах, ни на смартфонах.
                     </p>
                     <p style="margin: 0; font-size: 14px; line-height: 22px; color: #c8c8d0;">
@@ -203,10 +205,10 @@
               </table>
 
               <!-- CTA BUTTON 2 (FINAL DEMO) -->
-              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 20px;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-top: 12px; margin-bottom: 24px;">
                 <tr>
                   <td align="center">
-                    <a href="https://nextwebhotels.com/#cases" target="_blank" class="btn-gold btn-mobile" style="display: inline-block; background: linear-gradient(135deg, #d4af37 0%, #b89228 100%); color: #08080a; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 0.04em; padding: 20px 48px; border-radius: 10px; text-decoration: none; box-shadow: 0 8px 24px rgba(212,175,55,0.3);">
+                    <a href="https://nextwebhotels.com/#cases" target="_blank" class="btn-gold btn-mobile" style="display: inline-block; background: linear-gradient(135deg, #d4af37 0%, #b89228 100%); color: #08080a; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 0.04em; padding: 18px 44px; border-radius: 10px; text-decoration: none; box-shadow: 0 8px 24px rgba(212,175,55,0.3);">
                       👉 ОТКРЫТЬ ДЕМО И КЕЙСЫ
                     </a>
                   </td>
@@ -218,7 +220,7 @@
 
           <!-- FOOTER / SIGNATURE SECTION -->
           <tr>
-            <td style="padding: 32px 44px 40px 44px; background-color: #0b0b0e; border-top: 1px solid rgba(255,255,255,0.06);" class="content-padding">
+            <td style="padding: 32px 40px 36px 40px; background-color: #0b0b0e; border-top: 1px solid rgba(255,255,255,0.06);" class="content-padding">
               <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                 <tr>
                   <td>
